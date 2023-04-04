@@ -5,7 +5,7 @@ course: Microeconomics
 <script src="/assets/js/ev.js"></script>
 
 <script defer>
-const EdgeWorth = new EconVision(true);
+const EdgeWorth = new EconVision();
     Surplus.setGraphs({
       "idDiv": "SurplusGraph",
       "height": "650px",
