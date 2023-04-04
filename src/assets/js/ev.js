@@ -314,7 +314,8 @@ function isNumber(string) { //check if the string is float or int
 class EconVision {
 	constructor(debug = false) {
 		//let pattern = new RegExp("(file://|https://(econ.vision|dev.econ.vision|[\\w-]+.id.repl.co))");
-        let pattern = new RegExp("(file://|https://(econ.vision|dev.econ.vision|[\\w-]+.id.repl.co)|http://localhost:8080)");
+        //let pattern = new RegExp("(file://|https://(econ.vision|dev.econ.vision|[\\w-]+.id.repl.co)|http://localhost:8080)");
+        let pattern = new RegExp("(file://|https://(econ.vision|dev.econ.vision|[\\w-]+.id.repl.co)|http://localhost:8080|https://econvision.netlify.app)");
 
 		let isValid = pattern.test(window.location.origin);
 		if (!isValid) {
