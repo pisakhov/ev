@@ -12,7 +12,7 @@ collections:
     slug: "{{slug}}"
     fields:
       - { label: "Title", name: "title", widget: "string" }
-      - { label: "Layout", name: "layout", widget: "hidden", default: "model.njk" }
+      - { label: "Layout", name: "layout", widget: "hidden", default: "model" }
       - { label: "Course", name: "course", widget: "hidden", default: "Microeconomics" }
       - { label: "Models", name: "models", widget: "hidden", default: "models" }
       - { label: "Body", name: "body", widget: "code" }
