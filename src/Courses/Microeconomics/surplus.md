@@ -1,15 +1,11 @@
 ---
 title: Surplus
 course: Microeconomics
-code:
-  code: >
-    <script src="/assets/js/ev.js"></script>
+---
 
-    <script defer>
-
-    const Surplus = new EconVision();
-
-
+<script src="/assets/js/ev.js"></script>
+<script defer>
+const EdgeWorth = new EconVision();
     Surplus.setGraphs({
       "idDiv": "SurplusGraph",
       "height": "650px",
@@ -28,9 +24,7 @@ code:
       "xAxisLabel": "Q(units)       ",
       "yAxisLabel": "P($)"
     });
-
     //Price Function
-
     Surplus.addFuncInput({idDiv:'PFunction', title:'Price Function for the firm', func:'f_{p}\\left(Q\\right)', latex:'60-0.5Q', constraint:'\\left\\{Q\\ge0\\right\\}', listGraphs:[0]});
 
     //MC
@@ -269,4 +263,4 @@ code:
 
     Surplus.setScriptPackage({'replaceExp':true,'replaceLatex':true,'replaceTip':true,'replaceTheory':true,'refresh':true});
       </script>
----
+
