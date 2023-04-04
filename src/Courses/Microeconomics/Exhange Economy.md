@@ -9,7 +9,6 @@ tags: models
 <script src="/assets/js/ev.js"></script>
 <script defer>
 const EdgeWorth = new EconVision();
-
 EdgeWorth.setGraphs({
   "idDiv": "BruceVsSheila",
   "engine": "desmos",
