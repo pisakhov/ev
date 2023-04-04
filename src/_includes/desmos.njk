@@ -1,0 +1,56 @@
+<section class="light-section bg-gray-100 py-20">
+            <div class="container mx-auto px-6">
+               <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">Insightful Charts</h2>
+               <div id="calculator" class="w-full h-[50vh]"></div>
+
+            </div>
+         </section>
+
+         <script >
+             var elt = document.getElementById('calculator');
+             var calculator = Desmos.GraphingCalculator(elt);
+
+             calculator.setMathBounds({
+				left: -10,
+				right: 100,
+				bottom: -10,
+				top: 100
+			});
+
+                        calculator.setGraphSettings({
+            xAxisLabel: 'Quantity',
+            yAxisLabel: 'Price',
+            xAxisStep: 10,
+            yAxisStep: 10,
+            xAxisArrows: true,
+            yAxisArrows: true,
+            xAxisNumbers: true,
+            yAxisNumbers: true,
+            xAxisMinorSubdivisions: 1,
+            yAxisMinorSubdivisions: 1,
+            lockViewport: true,
+            expressions: false,
+            showGrid: false,
+            keypad: false,
+				zoomFit: false,
+				settingsMenu: false,
+            fontSize: 18
+            });
+
+       
+            calculator.setExpression({id: 'demand', latex: 'D(x) = 50 - x^2/100+a \\left\\{x\\ge0\\right\\}', color: Desmos.Colors.BLUE});
+calculator.setExpression({id: 'supply', latex: 'S(x) = x^2/100+b \\left\\{x\\ge0\\right\\}', color: Desmos.Colors.RED});
+calculator.setExpression({id: 'labelPoint1', latex: '(a,D(a))', showLabel:true, label: 'Demand Curve', hidden:false, color: Desmos.Colors.BLUE});
+calculator.setExpression({id: 'labelPoint2', latex: '(b,S(b))', showLabel:true, label: 'Supply Curve', hidden:false, color: Desmos.Colors.RED});
+
+
+       
+             var updateVariable = function (evt) {
+               calculator.setExpression({id:'1', latex:'a='+(evt.pageX/100)});
+               calculator.setExpression({id:'2', latex:'b='+(evt.pageY/100)});
+             };
+       
+             // Register the callback as a listener on mousemove, and use it to
+             // update the values of a and b.
+             document.addEventListener('mousemove', updateVariable, true);
+         </script>

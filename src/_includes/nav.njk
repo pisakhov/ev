@@ -1,0 +1,133 @@
+<nav class="p-6 w-full z-40 fixed top-0 flex items-center justify-between backdrop-blur-[3px] bg-white/1 h-16 md:h-16 lg:h-24 xl:h-32">
+         <div class="flex items-center">
+            <div class="text-xl text-gray-700 contrast-200">
+               <a href="/"><img class="main-logo h-14 w-14 md:h-16 md:w-16 lg:h-24 lg:w-24 xl:h-32 xl:w-32" src="https://econ.vision/img/logo.png" alt=""></a>
+               <div class="zebra-2 text-center text-xs md:text-sm leading-none text-violet-300 -mt-2 md:-mt-4">Econ.vision</div>
+            </div>
+         </div>
+         <div class="hidden md:flex">
+            <a class="zebra-1 text-lg px-3 py-2 rounded-lg text-gray-100 hover:text-violet-500 transition-colors duration-300" href="/">
+            <i class="fas fa-home mr-2"></i> Home
+            </a>
+            <div class="relative group flex">
+               <a class="zebra-1 text-lg px-3 py-2 rounded-lg text-gray-100 hover:text-violet-500 transition-colors duration-300 cursor-pointer">
+               <i class="fas fa-graduation-cap mr-2"></i> Courses
+               </a>
+               <div class="absolute left-0 -ml-[200px] mt-8 w-[600px] bg-transparent z-50 hidden group-hover:block">
+                  <div class="p-4">
+                     <div class="flex flex-wrap justify-center h-[90px]">
+                        <!--1-->
+                        <div class="w-full bg-gradient-to-br from-violet-500 to-violet-900 p-6 rounded-lg shadow-lg">
+                           <div class="flex">
+                           <ul class="course-list space-y-2 backdrop-blur-md bg-white/30 p-4">
+
+                                {% for course in collections.courses %}
+
+                                <li>
+                                  <a href="#" class="text-xl font-bold text-white mb-1 cursor-pointer course-link" data-course="{{ course.data.title }}">
+                                  {{ course.data.title }}
+                                  </a>
+                                </li>
+
+                                 {% endfor %}
+
+
+
+
+                              </ul>
+
+
+                              <div class="subcourses-container ml-6">
+                                 
+                                       <ul class="subcourse-list space-y-2 hidden" data-course="'.$entry.'">
+                                       <li>
+                                          <a href="/?course=' . $entry . '&model=' . $fileName . '" class="flex items-center text-gray-200 hover:text-white transition-colors duration-300">
+                                          <i class="fas fa-play-circle mr-2"></i>
+                                          <span>model</span>
+                                          </a>
+                                          </li>
+                                       </ul>
+                              </div>
+
+
+                           </div>
+                        </div>
+                        <!--2-->
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <!-- end mega menu-->
+            <a class="zebra-1 text-lg px-3 py-2 rounded-lg text-gray-100 hover:text-violet-500 transition-colors duration-300" href="?page=creators">
+            <i class="fas fa-user-friends mr-2"></i> Creators
+            </a>
+            <a class="zebra-1 text-lg px-3 py-2 rounded-lg text-gray-100 hover:text-violet-500 transition-colors duration-300" href="?page=about">
+            <i class="fas fa-info-circle mr-2"></i> About
+            </a>
+            <a class="zebra-1 text-lg px-3 py-2 rounded-lg text-gray-100 hover:text-violet-500 transition-colors duration-300" href="?page=contact">
+            <i class="fas fa-envelope mr-2"></i> Contact
+            </a>
+            <a class="zebra-1 text-lg px-3 py-2 rounded-lg text-gray-100 hover:text-violet-500 transition-colors duration-300" href="?page=contact">
+            <i class="fas fa-user-plus mr-2"></i> Join us
+            </a>
+         </div>
+         <div class="relative inline-block text-left lg:hidden md:hidden">
+            <div>
+               <span class="rounded-md shadow-sm">
+               <button type="button" class="zebra-3 nav-button-mobile inline-flex justify-center w-full rounded-md px-2 py-2  text-sm leading-5 text-violet-100 hover:backdrop-blur-sm hover:bg-white/10 active:backdrop-blur-sm active:bg-white/10 hover:text-violet-300 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue">
+               <i class="fas fa-align-left"></i>
+               </button>
+               </span>
+            </div>
+            <div class="nav-menu-mobile z-40 absolute right-0 mt-2 w-56 rounded-md shadow-lg hidden">
+               <div class="rounded-lg backdrop-blur-sm bg-white/90 shadow-lg">
+                  <div class="py-4">
+                     <a class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-violet-900 hover:text-white transition-colors duration-300 focus:outline-none focus:bg-violet-900 focus:text-gray-900" href="/">
+                     <i class="fas fa-home mr-2"></i> Home
+                     </a>
+                     <div class="relative group">
+                        <a class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-violet-900 hover:text-white transition-colors duration-300 focus:outline-none focus:bg-violet-900 focus:text-gray-900 cursor-pointer courses-btn">
+                        <i class="fas fa-graduation-cap mr-2"></i> Courses
+                        </a>
+                        <div class="courses-accordion absolute left-0 w-56 bg-transparent z-50 hidden">
+                           <div class="rounded-lg backdrop-blur-sm bg-white/90 shadow-lg">
+                              <div class="py-4">
+
+
+                                       <div class="course">
+                                       <a class="block px-4 py-2 text-sm leading-5 text-gray-700 bg-gray-200 hover:bg-violet-900 hover:text-white transition-colors duration-300 focus:outline-none focus:bg-violet-900 focus:text-gray-900 cursor-pointer">
+                                       course
+                                       </a>
+
+                                          <div class="subcourse hidden">
+                                          <a href="/?course=' . $entry . '&model=' . $fileName . '" class="block px-8 py-2 text-sm leading-5 text-gray-700 hover:bg-violet-900 hover:text-white transition-colors duration-300 focus:outline-none focus:bg-violet-900 focus:text-gray-900">
+                                          model
+                                          </a>
+                                       </div>
+                                       
+                                    </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <!---->
+                     <a class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-violet-900 hover:text-white transition-colors duration-300 focus:outline-none focus:bg-violet-900 focus:text-gray-900" href="?page=creators">
+                     <i class="fas fa-user-friends mr-2"></i> Creators
+                     </a>
+                     <a class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-violet-900 hover:text-white transition-colors duration-300 focus:outline-none focus:bg-violet-900 focus:text-gray-900" href="?page=about">
+                     <i class="fas fa-info-circle mr-2"></i> About
+                     </a>
+                     <a class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-violet-900 hover:text-white transition-colors duration-300 focus:outline-none focus:bg-violet-900 focus:text-gray-900" href="?page=contact">
+                     <i class="fas fa-envelope mr-2"></i> Contact
+                     </a>
+                     <a class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-violet-900 hover:text-white transition-colors duration-300 focus:outline-none focus:bg-violet-900 focus:text-gray-900" href="?page=contact">
+                     <i class="fas fa-user-plus mr-2"></i> Join us
+                     </a>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </nav>
+
+
+
