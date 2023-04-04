@@ -11,7 +11,6 @@ tags: courses
                 <h1 class="bg-clip-text text-transparent bg-gradient-to-t from-violet-900 to-violet-300 drop-shadow-0_1px_1px_rgba(0,0,0,0.75) text-sm md:text-md lg:text-lg my-4 mx-1 py-4 lg:py-6 xl:p-8 text-center truncate">{{ model.data.title }}</h1>
                 <a href="{{ model.data.title }}" class="text-md md:text-lg bg-violet-900 text-white py-1 px-3 md:py-2 md:px-8 text-center rounded-b-lg border-t-2 border-violet-300 group-hover:bg-violet-600 transition duration-300 ease-in-out">Learn more</a>
                 </div>
-          {% endfor %}
-
+              {% endfor %}
 </div>
 </section>
