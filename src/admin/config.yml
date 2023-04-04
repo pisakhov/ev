@@ -1,0 +1,15 @@
+backend:
+  name: git-gateway
+  branch: main
+media_folder: "public/assets/img"
+public_folder: "/assets/img"
+collections:
+  - name: "microeconomics"
+    label: "Courses > Microeconomics"
+    folder: "src/Courses/Microeconomics"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Course", name: "course", widget: "string" }
+      - { label: "Code", name: "code", widget: "code" }
