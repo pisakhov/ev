@@ -1,5 +1,5 @@
 ---
-title: Surplus
+title: Surplus2
 course: Microeconomics
 ---
 <script src="/assets/js/ev.js"></script>
