@@ -13,4 +13,4 @@ collections:
     fields:
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Course", name: "course", widget: "string" }
-      - { label: "Body", name: "body", widget: "code" }
+      - { label: "Body", name: "body", widget: "markdown" }
