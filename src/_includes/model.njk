@@ -118,7 +118,8 @@
 			<script src="/assets/js/ev.js"></script>
 			<script defer>
             <!-- content -->
-            {{ content | safe }}
+			{% set body = content | unwrapParagraph %}
+			{{ body | safe }}
 			</script>
             <!-- footer -->
             {% include "footer-model.njk" %}
