@@ -4,7 +4,6 @@ layout: model.njk
 course: Microeconomics
 tags: models
 ---
-
 const EdgeWorth = new EconVision();
 EdgeWorth.setGraphs({
   "idDiv": "BruceVsSheila",
@@ -70,7 +69,6 @@ EdgeWorth.setValue({idDiv:"MRSSheilaValue", decimal:2, latex:"M_{s}", listGraphs
 EdgeWorth.setValue({idDiv:"MRSBruceValue", decimal:2, latex:"M_{b}", listGraphs:[0]});
 //contractCurve
 EdgeWorth.addExpression({idDiv:"ContractCurve", latex:'M_{rsB}\\left(w_{x}-x,w_{y}-y\\right)=M_{rsS}\\left(x,y\\right)\\left\\{0<x<w_{x}\\right\\}\\left\\{0<y<w_{y}\\right\\}',color:'#388c46', lineStyle:Desmos.Styles.DASHED, lineWidth:"0.9", listGraphs:[0]});
-
 //tangents
 EdgeWorth.addExpression({idDiv:"SheilaTangent", latex:'y=-M_{rsS}\\left(x_{s},y_{s}\\right)\\left(x-x_{s}\\right)+y_{s} \\left\\{0\\le x\\le w_{x}\\right\\}\\left\\{0\\le y\\le w_{y}\\right\\}', color:'#2d70b3', lineStyle:Desmos.Styles.DASHED, lineWidth:"0.9", listGraphs:[0]});
 EdgeWorth.addExpression({idDiv:"BruceTangent", latex:'y=-M_{rsB}\\left(x_{b},y_{b}\\right)\\left(x-w_{x}+x_{b}\\right)+\\left(w_{y}-y_{b}\\right) \\left\\{0\\le x\\le w_{x}\\right\\}\\left\\{0\\le y\\le w_{y}\\right\\}', color:'#c74440', lineStyle:Desmos.Styles.DASHED, lineWidth:"0.9", listGraphs:[0]});

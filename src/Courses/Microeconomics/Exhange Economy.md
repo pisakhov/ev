@@ -4,9 +4,6 @@ layout: 'model.njk'
 course: Microeconomics
 tags: models
 ---
-
-
-
 const EdgeWorth = new EconVision();
 EdgeWorth.setGraphs({
   "idDiv": "BruceVsSheila",
