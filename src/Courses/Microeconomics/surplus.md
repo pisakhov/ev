@@ -1,6 +1,8 @@
 ---
 title: Surplus2
+layout: 'model.njk'
 course: Microeconomics
+tags: models
 ---
 <script src="/assets/js/ev.js"></script>
 
