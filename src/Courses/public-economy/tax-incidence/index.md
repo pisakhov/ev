@@ -1,5 +1,5 @@
 ---
-tags: public-economy/index
+tags: public-economy
 title: Tax Incidence
 layout: model.njk
 ---

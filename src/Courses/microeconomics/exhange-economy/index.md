@@ -1,5 +1,5 @@
 ---
-tags: microeconomics/index
+tags: microeconomics
 title: Exhange economy
 layout: model.njk
 ---
