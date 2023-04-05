@@ -2,7 +2,7 @@
 title: Exhange economy
 layout: model.njk
 course: Microeconomics
-tags: models
+tags: model
 ---
 <script>
 const EdgeWorth = new EconVision();
