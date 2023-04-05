@@ -8,6 +8,7 @@ collections:
     label: "Courses"
     label_singular: 'Course'
     folder: "src/Courses"
+    path: '{{course}}/{{slug}}'
     create: true
     nested:
       depth: 100
@@ -18,3 +19,4 @@ collections:
       - { label: "Course", name: "course", widget: "hidden", default: "Microeconomics" }
       - { label: "Tags", name: "tags", widget: "hidden", default: "models" }
       - { label: "Body", name: "body", widget: "text" }
+    meta: { path: { label: Parent, widget: parent, index_file: 'index' } }
