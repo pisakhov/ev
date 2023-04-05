@@ -22,6 +22,7 @@ collections:
   - name: "creators"
     label: "Creators"
     folder: "src/Creators"
+    create: true
     fields:
       - { label: 'Name', name: 'name', widget: 'string' }
       - label: "Role"
