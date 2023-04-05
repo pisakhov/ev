@@ -14,6 +14,6 @@ collections:
       - { label: "Layout", name: "layout", widget: "hidden", default: "model.njk" }
       - { label: "Course", name: "course", widget: "hidden", default: "Microeconomics" }
       - { label: "Tags", name: "tags", widget: "hidden", default: "models" }
-      - { label: "Body", name: "body", widget: "markdown" }
+      - { label: "Body", name: "body", widget: "text" }
 
 
