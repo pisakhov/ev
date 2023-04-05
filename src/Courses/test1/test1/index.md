@@ -1,7 +1,7 @@
 ---
-title: test1
+title: sub test
 layout: model.njk
 course: Microeconomics
 tags: models
 ---
-test12
+Hello world
