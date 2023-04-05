@@ -1,5 +1,5 @@
 ---
-tags: Courses
+tags: index
 title: Intermediate Microeconomics
 layout: base.njk
 ---
