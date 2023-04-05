@@ -2,6 +2,6 @@
 title: Tax Incidence
 layout: model.njk
 course: Microeconomics
-tags: model
+tags: Public Economy
 ---
 tax incidence
