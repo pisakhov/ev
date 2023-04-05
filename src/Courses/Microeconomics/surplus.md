@@ -1,6 +1,6 @@
 ---
 title: Surplus
-layout: model.njk
+layout: "model.njk"
 course: Microeconomics
 models: models
 ---
@@ -27,8 +27,6 @@ EdgeWorth.setGraphs({
   "xAxisLabel": "x",
   "yAxisLabel": "y"
 });
-
-
 EdgeWorth.addSliderInput({idDiv:"endownmentXValue", title:"Total Endownment X", latex:"w_{x}", min:0, max:100, step:1, defaultValue:15, listGraphs:[0]});
 EdgeWorth.addSliderInput({idDiv:"endownmentYValue", title:"Total Endownment Y", latex:"w_{y}", min:0, max:100, step:1, defaultValue:15, listGraphs:[0]});
 //show only numbers
@@ -72,7 +70,8 @@ EdgeWorth.addExpression({idDiv:"MRSBruceAtPoint", latex:'M_{b}=M_{rsB}\\left(x_{
 EdgeWorth.setValue({idDiv:"MRSSheilaValue", decimal:2, latex:"M_{s}", listGraphs:[0]});
 EdgeWorth.setValue({idDiv:"MRSBruceValue", decimal:2, latex:"M_{b}", listGraphs:[0]});
 //contractCurve
-EdgeWorth.addExpression({idDiv:"ContractCurve", latex:'M_{rsB}\\left(w_{x}-x,w_{y}-y\\right)=M_{rsS}\\left(x,y\\right)\\left\\{0<x<w_{x}\\right\\}\\left\\{0<y<w_{y}\\right\\}', color:'#388c46', lineStyle:Desmos.Styles.DASHED, lineWidth:"0.9", listGraphs:[0]});
+EdgeWorth.addExpression({idDiv:"ContractCurve", latex:'M_{rsB}\\left(w_{x}-x,w_{y}-y\\right)=M_{rsS}\\left(x,y\\right)\\left\\{0<x<w_{x}\\right\\}\\left\\{0<y<w_{y}\\right\\}',color:'#388c46', lineStyle:Desmos.Styles.DASHED, lineWidth:"0.9", listGraphs:[0]});
+
 //tangents
 EdgeWorth.addExpression({idDiv:"SheilaTangent", latex:'y=-M_{rsS}\\left(x_{s},y_{s}\\right)\\left(x-x_{s}\\right)+y_{s} \\left\\{0\\le x\\le w_{x}\\right\\}\\left\\{0\\le y\\le w_{y}\\right\\}', color:'#2d70b3', lineStyle:Desmos.Styles.DASHED, lineWidth:"0.9", listGraphs:[0]});
 EdgeWorth.addExpression({idDiv:"BruceTangent", latex:'y=-M_{rsB}\\left(x_{b},y_{b}\\right)\\left(x-w_{x}+x_{b}\\right)+\\left(w_{y}-y_{b}\\right) \\left\\{0\\le x\\le w_{x}\\right\\}\\left\\{0\\le y\\le w_{y}\\right\\}', color:'#c74440', lineStyle:Desmos.Styles.DASHED, lineWidth:"0.9", listGraphs:[0]});
