@@ -8,6 +8,7 @@ collections:
     label: "Courses"
     label_singular: 'Course'
     folder: "src/Courses"
+    slug: '{{title}}'
     create: true
     nested:
       depth: 100
