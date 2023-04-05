@@ -1,7 +1,7 @@
 ---
+tags: microeconomics/index
 title: Exhange economy
 layout: model.njk
-tags: microeconomics
 ---
 <script>
 const EdgeWorth = new EconVision();
