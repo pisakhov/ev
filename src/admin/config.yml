@@ -15,6 +15,7 @@ collections:
     fields:
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Layout", name: "layout", widget: "select", options: ["model.njk", "base.njk"], default: "model.njk" }
-      - { label: "Tags", name: "tags", widget: "select", options: ["course", "model"], default: "model" }
+      ##- { label: "Tags", name: "tags", widget: "select", options: ["course", "model"], default: "model" }
+      - { label: "Tags", name: "tags", widget: "relation", collection: "course", search_fields: ["title"], value_field: "title" }
       - { label: "Body", name: "body", widget: "text" }
     meta: { path: { label: Parent, widget: parent, index_file: 'index' } }
