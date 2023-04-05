@@ -1,7 +1,7 @@
 ---
-title: Microeconomics
+title: Surplus
 layout: model.njk
 course: Microeconomics
 tags: models
 ---
-show all courses
+surplus
