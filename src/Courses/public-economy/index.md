@@ -1,5 +1,5 @@
 ---
-tags: Courses
+tags: index
 title: Public Economy
 layout: base.njk
 ---
