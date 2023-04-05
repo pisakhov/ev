@@ -29,4 +29,15 @@ collections:
         name: "role"
         widget: "select"
         options: ["Founder", "Co-Founder", "Developer"]
+      - { label: 'Tags', name: 'tags', widget: 'hidden', default: "creators" }
+      - { label: 'Layout', name: 'layout', widget: 'hidden', default: "base.njk" }
+      - { label: 'Body', name: 'body', widget: 'markdown' }
+  - name: "pages"
+    label: "Pages"
+    folder: "src/Page"
+    create: true
+    fields:
+      - { label: 'Title', name: 'title', widget: 'string' }
+      - { label: 'Tags', name: 'tags', widget: 'hidden', default: "pages" }
+      - { label: 'Layout', name: 'layout', widget: 'hidden', default: "base.njk" }
       - { label: 'Body', name: 'body', widget: 'markdown' }
