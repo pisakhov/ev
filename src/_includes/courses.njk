@@ -5,13 +5,13 @@
 
 
 
-          {% for course in collections.courses %}
+          {% for cls in collections.course %}
 
         <div class="group bg-white shadow-lg rounded-lg hover:shadow-violet-500/50 transition-shadow duration-300 flex flex-col">
              <div class="p-6">
-                <h2 class="bg-clip-text text-transparent bg-gradient-to-t from-violet-900 to-violet-300 text-xl md:text-2xl lg:text-2xl font-semibold mb-4 text-center">{{ course.data.title }}</h2>
+                <h2 class="bg-clip-text text-transparent bg-gradient-to-t from-violet-900 to-violet-300 text-xl md:text-2xl lg:text-2xl font-semibold mb-4 text-center">{{ cls.data.title }}</h2>
              </div>
-             <a href="/Courses/{{ course.data.title }}" class="text-lg bg-violet-900 text-white py-3 px-6 text-center rounded-b-lg border-t-2 border-violet-300 group-hover:bg-violet-600 transition duration-300 ease-in-out flex-1 flex items-center justify-center">Learn more</a>
+             <a href="{{ cls.url }}" class="text-lg bg-violet-900 text-white py-3 px-6 text-center rounded-b-lg border-t-2 border-violet-300 group-hover:bg-violet-600 transition duration-300 ease-in-out flex-1 flex items-center justify-center">Learn more</a>
           </div>
 
           {% endfor %}
