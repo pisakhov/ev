@@ -4,6 +4,7 @@ layout: 'model.njk'
 course: Microeconomics
 tags: models
 ---
+<script>
 const EdgeWorth = new EconVision();
 EdgeWorth.setGraphs({
   "idDiv": "BruceVsSheila",
@@ -116,3 +117,4 @@ Bruce MRS:<br>\
     school: "CC’24"
   });
   EdgeWorth.setScriptPackage({'replaceExp':true,'replaceLatex':true,'replaceTip':true,'replaceTheory':true,'refresh':true});
+</script>
