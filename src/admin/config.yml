@@ -40,6 +40,7 @@ collections:
     slug: '{{title}}'
     fields:
       - { label: 'Title', name: 'title', widget: 'string' }
+      - { label: 'Icon', name: 'icon', widget: 'string', default: "fas fa-info-circle" }
       - { label: 'Tags', name: 'tags', widget: 'hidden', default: "pages" }
       - { label: 'Layout', name: 'layout', widget: 'hidden', default: "base.njk" }
       - { label: 'Body', name: 'body', widget: 'markdown' }
