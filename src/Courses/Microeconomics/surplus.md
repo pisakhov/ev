@@ -2,7 +2,7 @@
 title: Surplus
 layout: "model.njk"
 course: Microeconomics
-models: models
+tags: models
 ---
 <script src="/assets/js/ev.js"></script>
 <script defer>
