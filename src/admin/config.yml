@@ -19,3 +19,4 @@ collections:
       - { label: "Tags", name: "tags", widget: "hidden", default: "models" }
       - { label: "Body", name: "body", widget: "text" }
     meta: { path: { widget: string, label: 'Path', index_file: '_index.md' } }
+    allow_nesting: true
