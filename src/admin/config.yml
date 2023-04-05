@@ -19,3 +19,13 @@ collections:
       - { label: "Layout", name: "layout", widget: "select", options: ["model.njk", "base.njk"], default: "model.njk" }     
       - { label: "Body", name: "body", widget: "text" }
     meta: { path: { label: Parent, widget: parent, index_file: 'index' } }
+  - name: "creators"
+    label: "Creators"
+    folder: "src/Creators"
+    fields:
+      - { label: 'Name', name: 'name', widget: 'string' }
+      - label: "Role"
+        name: "role"
+        widget: "select"
+        options: ["Founder", "Co-Founder", "Developer"]
+      - { label: 'Body', name: 'body', widget: 'markdown' }
