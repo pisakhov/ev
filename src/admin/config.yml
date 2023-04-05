@@ -10,7 +10,7 @@ collections:
     folder: "src/Courses"
     create: true
     nested:
-      depth: 100
+      depth: 2
       summary: '{{title}}'
     fields:
       - { label: "Title", name: "title", widget: "string" }
