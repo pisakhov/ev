@@ -14,7 +14,7 @@ collections:
       depth: 100
       summary: '{{title}}'
     fields:
-      - { label: "Tags", name: "tags", widget: "relation", collection: "courses", search_fields: ["{{slug}}"], value_field: "{{slug}}" }
+      - { label: "Tags", name: "tags", widget: "relation", collection: "courses", search_fields: ["{{tag}}"], value_field: "{{tag}}" }
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Layout", name: "layout", widget: "select", options: ["model.njk", "base.njk"], default: "model.njk" }     
       - { label: "Body", name: "body", widget: "text" }
