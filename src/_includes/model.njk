@@ -116,11 +116,9 @@
 </div>
 
 			<script src="/assets/js/ev.js"></script>
-			<script defer>
+			
             <!-- content -->
-			{% set body = content | unwrapParagraph %}
-			{{ body | safe }}
-			</script>
+			{{ content | safe }}
             <!-- footer -->
             {% include "footer-model.njk" %}
 
