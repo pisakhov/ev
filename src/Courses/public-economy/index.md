@@ -3,7 +3,7 @@ tags: index
 title: Public Economy
 layout: base.njk
 tag: public-economy
-show: false
+show: true
 ---
 <section class="relative mx-1 md:mx-[8rem] min-h-screen pt-[4em] md:pt-[8rem]">
     <h1 class="text-lg md:text-xl lg:text-2xl text-violet-900 font-medium leading-tight tracking-tight border-b-2 border-violet-400 mb-8 pb-2">{{ title }}</h1>
