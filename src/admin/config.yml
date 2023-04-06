@@ -5,6 +5,7 @@ media_folder: "public/assets/img"
 public_folder: "/assets/img"
 publish_mode: editorial_workflow
 display_url: https://Econ.vision
+logo_url: https://econ.vision/img/logo.png
 collections:
   - name: "courses"
     label: "Courses"
