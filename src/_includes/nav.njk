@@ -119,18 +119,11 @@
                         </div>
                      </div>
                      <!---->
-                     <a class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-violet-900 hover:text-white transition-colors duration-300 focus:outline-none focus:bg-violet-900 focus:text-gray-900" href="?page=creators">
-                     <i class="fas fa-user-friends mr-2"></i> Creators
+                     {% for page in collections.pages %}{% if page.data.show %}
+                     <a class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-violet-900 hover:text-white transition-colors duration-300 focus:outline-none focus:bg-violet-900 focus:text-gray-900" href="{{page.url}}">
+                     <i class="{{page.data.icon}} mr-2"></i> {{page.data.title}}
                      </a>
-                     <a class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-violet-900 hover:text-white transition-colors duration-300 focus:outline-none focus:bg-violet-900 focus:text-gray-900" href="?page=about">
-                     <i class="fas fa-info-circle mr-2"></i> About
-                     </a>
-                     <a class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-violet-900 hover:text-white transition-colors duration-300 focus:outline-none focus:bg-violet-900 focus:text-gray-900" href="?page=contact">
-                     <i class="fas fa-envelope mr-2"></i> Contact
-                     </a>
-                     <a class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-violet-900 hover:text-white transition-colors duration-300 focus:outline-none focus:bg-violet-900 focus:text-gray-900" href="?page=contact">
-                     <i class="fas fa-user-plus mr-2"></i> Join us
-                     </a>
+                     {% endif %}{% endfor %}
                   </div>
                </div>
             </div>
