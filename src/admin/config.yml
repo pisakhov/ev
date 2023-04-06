@@ -16,7 +16,8 @@ collections:
     fields:
       - { label: "Tags", name: "tags", widget: "relation", collection: "courses", search_fields: ["{{tag}}"], value_field: "{{tag}}" }
       - { label: "Title", name: "title", widget: "string" }
-      - { label: "Layout", name: "layout", widget: "select", options: ["model.njk", "base.njk"], default: "model.njk" }     
+      - { label: "Layout", name: "layout", widget: "select", options: ["model.njk", "base.njk"], default: "model.njk" }
+      - {label: "Draft", name: "draft", widget: "boolean", default: true}
       - { label: "Body", name: "body", widget: "text" }
     meta: { path: { label: Parent, widget: parent, index_file: 'index' } }
   - name: "creators"
@@ -32,6 +33,7 @@ collections:
         options: ["Founder", "Co-Founder", "Developer"]
       - { label: 'Tags', name: 'tags', widget: 'hidden', default: "creators" }
       - { label: 'Layout', name: 'layout', widget: 'hidden', default: "base.njk" }
+      - {label: "Draft", name: "draft", widget: "boolean", default: true}
       - { label: 'Body', name: 'body', widget: 'markdown' }
   - name: "pages"
     label: "Pages"
@@ -43,4 +45,5 @@ collections:
       - { label: 'Icon', name: 'icon', widget: 'string', default: "fas fa-info-circle" }
       - { label: 'Tags', name: 'tags', widget: 'hidden', default: "pages" }
       - { label: 'Layout', name: 'layout', widget: 'hidden', default: "base.njk" }
+      - {label: "Draft", name: "draft", widget: "boolean", default: true}
       - { label: 'Body', name: 'body', widget: 'markdown' }
