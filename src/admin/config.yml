@@ -26,6 +26,7 @@ collections:
     create: true
     slug: '{{name}}'
     fields:
+      - { label: "Featured Image", name: "thumbnail", widget: "image"}
       - { label: 'Name', name: 'name', widget: 'string' }
       - label: "Role"
         name: "role"
