@@ -2,7 +2,7 @@
 tags: microeconomics
 title: Exhange economy
 layout: model.njk
-show: false
+show: true
 ---
 <script>
 const EdgeWorth = new EconVision();
