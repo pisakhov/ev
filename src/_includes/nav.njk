@@ -61,18 +61,20 @@
                </div>
             </div>
             <!-- end mega menu-->
-            <a class="zebra-1 text-lg px-3 py-2 rounded-lg text-gray-100 hover:text-violet-500 transition-colors duration-300" href="?page=creators">
-            <i class="fas fa-user-friends mr-2"></i> Creators
+            {% for page in collections.pages %}{% if page.data.show %}
+            <a class="zebra-1 text-lg px-3 py-2 rounded-lg text-gray-100 hover:text-violet-500 transition-colors duration-300" href="{{page.url}}">
+            <i class="{{page.data.icon}} mr-2"></i> {{page.data.title}}
             </a>
-            <a class="zebra-1 text-lg px-3 py-2 rounded-lg text-gray-100 hover:text-violet-500 transition-colors duration-300" href="?page=about">
-            <i class="fas fa-info-circle mr-2"></i> About
+            {% endif %}{% endfor %}
+            {# <a class="zebra-1 text-lg px-3 py-2 rounded-lg text-gray-100 hover:text-violet-500 transition-colors duration-300" href="?page=about">
+            <i class="fas fa-info-circle /fa-user-friends mr-2"></i> About
             </a>
             <a class="zebra-1 text-lg px-3 py-2 rounded-lg text-gray-100 hover:text-violet-500 transition-colors duration-300" href="?page=contact">
             <i class="fas fa-envelope mr-2"></i> Contact
             </a>
             <a class="zebra-1 text-lg px-3 py-2 rounded-lg text-gray-100 hover:text-violet-500 transition-colors duration-300" href="?page=contact">
             <i class="fas fa-user-plus mr-2"></i> Join us
-            </a>
+            </a> #}
          </div>
          <div class="relative inline-block text-left lg:hidden md:hidden">
             <div>
