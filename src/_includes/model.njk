@@ -81,10 +81,14 @@
 					<a href="/" class="text-gray-600 font-normal hover:text-violet-300 transition-colors duration-300 hover:underline decoration-1 decoration-dotted md:text-md text-xs">Home</a>
 					<i class="fas fa-angle-right text-gray-600 mx-2 md:text-md text-xs"></i>
 				</li>
+				{% for cls in collections.index %}
+				{% if cls.data.tag == tags %}
 				<li class="flex items-center">
-					<a href="{{ course.url }}" class="text-gray-600 font-normal hover:text-violet-600 transition-colors duration-300 hover:underline decoration-1 decoration-dotted md:text-md text-xs">{{ course }}</a>
+					<a href="{{ cls.url }}" class="text-gray-600 font-normal hover:text-violet-600 transition-colors duration-300 hover:underline decoration-1 decoration-dotted md:text-md text-xs">{{ cls.data.title }}</a>
 					<i class="fas fa-angle-right text-gray-600 mx-2 md:text-md text-xs"></i>
 				</li>
+				{% endif %}
+				{% endfor %}
 				<li class="flex items-center">
 					<p class="font-normal text-violet-600 underline decoration-1 decoration-dotted md:text-md text-xs">{{ title }}</p>
 				</li>
