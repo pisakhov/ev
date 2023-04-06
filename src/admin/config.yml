@@ -4,6 +4,7 @@ backend:
 media_folder: "public/assets/img"
 public_folder: "/assets/img"
 publish_mode: editorial_workflow
+display_url: https://Econ.vision
 collections:
   - name: "courses"
     label: "Courses"
