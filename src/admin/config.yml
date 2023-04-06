@@ -33,7 +33,7 @@ collections:
         widget: "select"
         options: ["Founder", "Co-Founder", "Developer"]
       - { label: 'Tags', name: 'tags', widget: 'hidden', default: "creators" }
-      - { label: 'Layout', name: 'layout', widget: 'hidden', default: "base.njk" }
+      - { label: 'Layout', name: 'layout', widget: 'hidden', default: "creator.njk" }
       - {label: "Show", name: "show", widget: "boolean", default: true}
       - { label: 'Body', name: 'body', widget: 'markdown' }
   - name: "pages"

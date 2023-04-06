@@ -3,7 +3,7 @@ thumbnail: /assets/img/radi.jpg
 name: Radi
 role: Founder
 tags: creators
-layout: base.njk
+layout: creator.njk
 draft: false
 show: true
 ---

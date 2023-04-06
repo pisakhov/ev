@@ -3,7 +3,7 @@ thumbnail: /assets/img/kyla.jpg
 name: Kyla
 role: Co-Founder
 tags: creators
-layout: base.njk
+layout: creator.njk
 draft: false
 show: true
 ---
