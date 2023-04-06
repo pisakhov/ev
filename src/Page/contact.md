@@ -2,7 +2,7 @@
 title: Contact
 icon: fas fa-envelope
 tags: pages
-layout: base.njk
+layout: page.njk
 show: true
 ---
 c﻿ontact
