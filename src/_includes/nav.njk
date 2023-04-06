@@ -21,7 +21,7 @@
                            <div class="flex">
                            <ul class="course-list space-y-2 backdrop-blur-md bg-white/30 p-4">
 
-                                {% for course in collections.courses %}
+                                {% for course in collections.index %}{% if course.data.show %}
 
                                 <li>
                                   <a href="#" class="text-xl font-bold text-white mb-1 cursor-pointer course-link" data-course="{{ course.data.title }}">
@@ -29,7 +29,7 @@
                                   </a>
                                 </li>
 
-                                 {% endfor %}
+                                 {% endif %}{% endfor %}
 
 
 
@@ -38,15 +38,18 @@
 
 
                               <div class="subcourses-container ml-6">
-                                 
-                                       <ul class="subcourse-list space-y-2 hidden" data-course="'.$entry.'">
+                                 {% for course in collections.index %}
+                                       <ul class="subcourse-list space-y-2 hidden" data-course="{{ course.data.title }}">
+                                       {% for model in collections.all %}{% if course.data.tag == model.data.tags and model.data.show %}
                                        <li>
-                                          <a href="/?course=' . $entry . '&model=' . $fileName . '" class="flex items-center text-gray-200 hover:text-white transition-colors duration-300">
+                                          <a href="{{model.url}}" class="flex items-center text-gray-200 hover:text-white transition-colors duration-300">
                                           <i class="fas fa-play-circle mr-2"></i>
-                                          <span>model</span>
+                                          <span>{{model.data.title}}</span>
                                           </a>
                                           </li>
+                                       {% endif %}{% endfor %}
                                        </ul>
+                                 {% endfor %}      
                               </div>
 
 
