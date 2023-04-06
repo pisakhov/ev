@@ -96,19 +96,22 @@
                            <div class="rounded-lg backdrop-blur-sm bg-white/90 shadow-lg">
                               <div class="py-4">
 
-
+                                       {% for course in collections.index %}{% if course.data.show %} 
                                        <div class="course">
                                        <a class="block px-4 py-2 text-sm leading-5 text-gray-700 bg-gray-200 hover:bg-violet-900 hover:text-white transition-colors duration-300 focus:outline-none focus:bg-violet-900 focus:text-gray-900 cursor-pointer">
-                                       course
+                                       {{ course.data.title }}
                                        </a>
 
                                           <div class="subcourse hidden">
-                                          <a href="/?course=' . $entry . '&model=' . $fileName . '" class="block px-8 py-2 text-sm leading-5 text-gray-700 hover:bg-violet-900 hover:text-white transition-colors duration-300 focus:outline-none focus:bg-violet-900 focus:text-gray-900">
-                                          model
+                                          {% for model in collections.all %}{% if course.data.tag == model.data.tags and model.data.show %}
+                                          <a href="{{model.url}}" class="block px-8 py-2 text-sm leading-5 text-gray-700 hover:bg-violet-900 hover:text-white transition-colors duration-300 focus:outline-none focus:bg-violet-900 focus:text-gray-900">
+                                          {{model.data.title}}
                                           </a>
-                                       </div>
+                                          {% endif %}{% endfor %}
+                                          </div>
                                        
-                                    </div>
+                                       </div>
+                                       {% endif %}{% endfor %}
                               </div>
                            </div>
                         </div>
