@@ -118,6 +118,67 @@
 		</div>
 	</div>
 </div>
+			<div id="modal" class="hidden fixed inset-0 flex items-center justify-center z-50">
+			<div class="bg-white rounded-lg w-full max-w-md p-6">
+				<div class="flex justify-between items-center">
+					<h2 class="text-2xl font-bold">Report a Bug</h2>
+					<button id="closeModal" class="text-gray-600 hover:text-gray-800">&times;</button>
+				</div>
+				<form class="mt-6" name="contact"
+                method="POST"
+                data-netlify-recaptcha="true"
+                data-netlify="true">
+				<input type="hidden" name="page" value="'+window.location.href+'">
+					<div class="mb-4">
+						<label class="block text-gray-700 text-sm font-bold mb-2" for="title">
+							Bug Title
+						</label>
+						<input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="title" name="title" type="text" placeholder="Enter bug title" required>
+					</div>
+					<div class="mb-6">
+						<label class="block text-gray-700 text-sm font-bold mb-2" for="description">
+							Bug Description
+						</label>
+						<textarea class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline h-32 resize-none" id="description" name="description" placeholder="Describe the bug in detail" required></textarea>
+					</div>
+					<div class="flex items-center justify-between">
+                    <div data-netlify-recaptcha="true"></div>
+						<button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
+							Submit
+						</button>
+					</div>
+				</form>
+			</div>
+		</div>
+		<script>
+			const openModalButton = document.getElementById("openModal");
+			const closeModalButton = document.getElementById("closeModal");
+			const modal = document.getElementById("modal");
+			openModalButton.addEventListener("click", () => {
+				modal.classList.remove("hidden");
+			});
+			closeModalButton.addEventListener("click", () => {
+				modal.classList.add("hidden");
+			});
+			const handleSubmit = (event) => {
+				event.preventDefault();
+			  
+				const myForm = event.target;
+				const formData = new FormData(myForm);
+				
+				fetch("/", {
+				  method: "POST",
+				  headers: { "Content-Type": "application/x-www-form-urlencoded" },
+				  body: new URLSearchParams(formData).toString(),
+				})
+				  .then(() => alert("Form successfully submitted!"))
+				  .catch((error) => alert(error));
+			  };
+			  
+			  document
+				.querySelector("form")
+				.addEventListener("submit", handleSubmit);
+		</script>
 
 			<script src="/assets/js/ev.min.js"></script>
 			
