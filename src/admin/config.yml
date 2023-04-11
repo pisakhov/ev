@@ -3,3 +3,48 @@ backend:
   branch: main
 media_folder: "public/assets/img"
 public_folder: "/assets/img"
+collections:
+  - name: "courses"
+    label: "Courses"
+    label_singular: 'Course'
+    folder: "src/Courses"
+    slug: '{{title}}'
+    create: true
+    nested:
+      depth: 100
+      summary: '{{title}}'
+    fields:
+      - { label: "Tags", name: "tags", widget: "relation", collection: "courses", search_fields: ["{{tag}}"], value_field: "{{tag}}" }
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Layout", name: "layout", widget: "select", options: ["model.njk", "base.njk"], default: "model.njk" }
+      - {label: "Show", name: "show", widget: "boolean", default: true}
+      - { label: "Body", name: "body", widget: "text" }
+    meta: { path: { label: Parent, widget: parent, index_file: 'index' } }
+  - name: "creators"
+    label: "Creators"
+    folder: "src/Creators"
+    create: true
+    slug: '{{name}}'
+    fields:
+      - { label: "Featured Image", name: "thumbnail", widget: "image"}
+      - { label: 'Name', name: 'name', widget: 'string' }
+      - label: "Role"
+        name: "role"
+        widget: "select"
+        options: ["Founder", "Co-Founder", "Developer"]
+      - { label: 'Tags', name: 'tags', widget: 'hidden', default: "creators" }
+      - { label: 'Layout', name: 'layout', widget: 'hidden', default: "creator.njk" }
+      - {label: "Show", name: "show", widget: "boolean", default: true}
+      - { label: 'Body', name: 'body', widget: 'markdown' }
+  - name: "pages"
+    label: "Pages"
+    folder: "src/Page"
+    create: true
+    slug: '{{title}}'
+    fields:
+      - { label: 'Title', name: 'title', widget: 'string' }
+      - { label: 'Icon', name: 'icon', widget: 'string', default: "fas fa-info-circle" }
+      - { label: 'Tags', name: 'tags', widget: 'hidden', default: "pages" }
+      - { label: 'Layout', name: 'layout', widget: 'hidden', default: "base.njk" }
+      - {label: "Show", name: "show", widget: "boolean", default: true}
+      - { label: 'Body', name: 'body', widget: 'markdown' }

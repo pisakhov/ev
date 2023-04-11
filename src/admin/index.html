@@ -11,36 +11,5 @@
   <!-- Include the script that builds the page and powers Decap CMS -->
   <script src="https://unpkg.com/netlify-cms@^2.0.0/dist/netlify-cms.js"></script>
   <script src="https://unpkg.com/@netlify/netlify-cms-widget-parent@^1.0.0/dist/netlify-cms-widget-parent.js"></script>
-<script>
-  const parentWidget = window.NetlifyCmsWidgetParent;
-  CMS.registerWidget('parent', parentWidget.control, parentWidget.preview);
-</script>
-<script>
-  CMS.registerPreviewStyle("/style.css");
-</script>
-<script>
-function extractSetGraphs(bodyContent) {
-  const setGraphsRegex = /function\s+setGraphs\([^)]*\)\s*\{[^]*?\}/;
-  const match = bodyContent.match(setGraphsRegex);
-
-  return match ? match[0] : null;
-}
-
-
-var PostPreview = createClass({
-  render: function() {
-    var entry = this.props.entry;
-    var bodyContent = this.props.widgetFor('body');
-    var setGraphs = extractSetGraphs(bodyContent);
-
-    return h('div', {},
-      h('h1', {}, entry.getIn(['data', 'title'])),
-      h('div', {"className": "text"}, setGraphs)
-    );
-  }
-});
-
-CMS.registerPreviewTemplate("posts", PostPreview);
-</script>
 </body>
 </html>
