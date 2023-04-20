@@ -13,7 +13,7 @@ myCalculator.setGraphs({ 'engine': 'desmos', 'idDiv': 'DynamicMarshallianGraph',
 myCalculator.addFuncInput({ 'idDiv': 'UtilityFunction', 'title': 'Utility Function', 'func': "U(x,y)", 'latex': "\\ln\\left(x\\right)+\\ln\\left(y\\right)", 'listGraphs': [0] });
 myCalculator.line(); //draw line
 //dynamic budget line
-myCalculator.addDynamicInput({ 'idDiv': 'BudgetLine', 'title': 'Budget Line ', 'func': "F(x,y)", 'rhs': 'I', 'latex': '3x+4y=120', 'listGraphs': [0] });
+myCalculator.addDynamicInput({ 'idDiv': 'BudgetLine', 'title': 'Budget Line ', 'func': "F(x,y)", 'rhs': 'I', 'latex': '3x+4y=120', 'limit': 5, 'listGraphs': [0] });
 
 //draw indifference curve
 myCalculator.addExpression({ idDiv: "Pi2I1", latex: 'x_{2}\\left(x,y\\right)=x\\cos\\left(-2\\pi\\right)-y\\sin\\left(-2\\pi\\right)', listGraphs: [0] });
