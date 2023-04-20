@@ -5,9 +5,9 @@ layout: model.njk
 show: true
 ---
 <script>
-const myCalculator = new EconVision(true);
+const myCalculator = new EconVision();
 
-myCalculator.setGraphs({ 'engine': 'desmos', 'idDiv': 'DynamicMarshallianGraph', 'height': '650px', 'width': '100', 'left': '-25', 'right': '150', 'bottom': '-15', 'top': '100', 'copy': true, 'expressions': true, 'zoomFit': true, 'showXAxis': true, 'showYAxis': true, 'xAxisLabel': 'x(units)', 'yAxisLabel': 'y(units)' });
+myCalculator.setGraphs({ 'engine': 'desmos', 'idDiv': 'DynamicMarshallianGraph', 'height': '650px', 'width': '100', 'left': '-25', 'right': '150', 'bottom': '-15', 'top': '100', 'copy': true, 'expressions': false, 'zoomFit': true, 'showXAxis': true, 'showYAxis': true, 'xAxisLabel': 'x(units)', 'yAxisLabel': 'y(units)' });
 
 //utility function
 myCalculator.addFuncInput({ 'idDiv': 'UtilityFunction', 'title': 'Utility Function', 'func': "U(x,y)", 'latex': "\\ln\\left(x\\right)+\\ln\\left(y\\right)", 'listGraphs': [0] });
