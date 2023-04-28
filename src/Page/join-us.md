@@ -3,12 +3,11 @@ title: Join Us
 icon: fas fa-university
 tags: pages
 layout: base.njk
-show: true
+show: false
 ---
 # Join the EconVision Team as a Research Assistant!
 
-## 
-About EconVision
+## About EconVision
 
 EconVision is an innovative website developed by Radi (GS'23) and Kyla (CC'24) that offers interactive visualizations of economic models to enhance student learning. Our user-friendly interface allows students to easily explore graphs and models from their coursework.
 
@@ -26,12 +25,9 @@ We're looking for a passionate and dedicated individual to join our team as a re
 * Have strong teamwork skills and dedication
 * Coding experience is a plus, but not required
 
-## 
-Commitment
+## Commitment
 
 As a research assistant, you'll be expected to commit at least 4 hours per week and attend a weekly 1.5-hour meeting. In return, you'll receive 1-2 academic credits for your contribution to the project.
-
-
 
 ## Apply Now!
 
