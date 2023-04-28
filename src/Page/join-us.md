@@ -5,6 +5,7 @@ tags: pages
 layout: base.njk
 show: false
 ---
+<div class="p-8">
 # Join the EconVision Team as a Research Assistant!
 
 ## About EconVision
@@ -32,3 +33,4 @@ As a research assistant, you'll be expected to commit at least 4 hours per week 
 ## Apply Now!
 
 To apply, please send an email to kt2805@columbia.edu with a short statement of interest and your CV attached. We look forward to hearing from you and possibly welcoming you to the EconVision team as a research assistant!
+<﻿/div>
