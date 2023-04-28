@@ -2,7 +2,7 @@
 title: Join Us
 icon: fas fa-university
 tags: pages
-layout: base.njk
+layout: page.njk
 show: false
 ---
 <div class="p-8">
