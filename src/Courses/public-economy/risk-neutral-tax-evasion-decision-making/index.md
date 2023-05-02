@@ -5,7 +5,7 @@ layout: model.njk
 show: true
 ---
 <script>
-const myCalculator = new EconVision(true);
+const myCalculator = new EconVision();
 
 //set graph
 myCalculator.setGraphs({'engine':'desmos','idDiv':'TaxEvasion','height':'650px','width':'100','left':'-25','right':'150','bottom':'-15','top':'100','copy':true,'expressions':false,'zoomFit':true,'showXAxis':true,'showYAxis':true,'xAxisLabel':'Tax Evasion Amount($)','yAxisLabel':'Expected Monetary Value($)'});
