@@ -5,7 +5,7 @@ tags: pages
 layout: page.njk
 show: false
 ---
-<span class="p-8">
+<div class="p-8">
     <h1>Join the EconVision Team as a Research Assistant!</h1>
     <h2>About EconVision</h2>
     <p>EconVision is an innovative website developed by Radi (GS'23) and Kyla (CC'24) that offers interactive visualizations of economic models to enhance student learning. Our user-friendly interface allows students to easily explore graphs and models from their coursework.</p>
@@ -25,4 +25,4 @@ show: false
     <p>As a research assistant, you'll be expected to commit at least 4 hours per week and attend a weekly 1.5-hour meeting. In return, you'll receive 1-2 academic credits for your contribution to the project.</p>
     <h2>Apply Now!</h2>
     <p>To apply, please send an email to <a href="mailto:kt2805@columbia.edu">kt2805@columbia.edu</a> with a short statement of interest and your CV attached. We look forward to hearing from you and possibly welcoming you to the EconVision team as a research assistant!</p>
-</span>
+</div>
