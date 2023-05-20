@@ -6,7 +6,7 @@ layout: page.njk
 show: false
 ---
 <span class="p-8">
-    <h1 class="text-2xl p-2 text-violet-800">Join the EconVision Team as a Research Assistant!</h1>
+    <h1 class="text-3xl p-2 text-violet-600 text-center">Join the EconVision Team as a Research Assistant!</h1>
     <h2 class="text-xl p-2">About EconVision</h2>
     <p>EconVision is an innovative website developed by Radi (GS'23) and Kyla (CC'24) that offers interactive visualizations of economic models to enhance student learning. Our user-friendly interface allows students to easily explore graphs and models from their coursework.</p>
     <p>We're involved in coding new calculators, writing instructions and explanations, designing the website, and improving calculator functionality. We work under the guidance of Professor Susan Elmes and receive 1-2 credits as research assistants for our work.</p>
