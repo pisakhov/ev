@@ -12,7 +12,7 @@ show: false
     <p>We're involved in coding new calculators, writing instructions and explanations, designing the website, and improving calculator functionality. We work under the guidance of Professor Susan Elmes and receive 1-2 credits as research assistants for our work.</p>
     <h2 class="text-xl">Research Assistant Opportunity</h2>
     <p>We're looking for a passionate and dedicated individual to join our team as a research assistant. If you meet the following criteria, we'd love to hear from you:</p>
-    <ul>
+    <ul class="list-disc">
         <li>Graduate in 2025 or later</li>
         <li>Completed Principles of Economics</li>
         <li>Plan to pursue a major/minor in Economics</li>
