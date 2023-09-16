@@ -25,6 +25,10 @@ myCalculator.addExpression({ idDiv: "drawUtilFunction", latex: 'U\\left(x_{2}\\l
 
 myCalculator.addLabel({ 'idDiv': 'tangentMarshalian', 'latex': "(\\mu_{x},\\mu_{y})", 'color': '#84009e', label: '', 'pointStyle': Desmos.Styles.OPEN, 'showLabel': true, 'listGraphs': [0] });
 
+//set bounds
+myCalculator.addExpression({ 'idDiv': 'findYinterceptOldBL', 'latex': "I\\sim F(0,B_{T})", 'listGraphs': [0] });
+myCalculator.addExpression({ 'idDiv': 'findXinterceptOldBL', 'latex': "I\\sim F(B_{R},0)", 'listGraphs': [0] });
+myCalculator.setBounds({ 'top': 'B_{T}', 'right': 'B_{R}', 'tolerance':1.2, 'mtolerance':1.2, 'listGraphs': [0] });
 
 
 //instructions
