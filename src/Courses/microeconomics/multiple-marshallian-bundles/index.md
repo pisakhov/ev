@@ -25,10 +25,10 @@ myCalculator.addDynamicExp({ 'calc': 'simpleCompute', 'idDiv': 'dynamicUtil', 'p
 
 myCalculator.addDynamicExp({ 'calc': 'simpleCompute', 'idDiv': 'totalBudgetLine', 'parentIdDiv': 'BudgetLine', 'compute': 'BudgetLine-BudgetLine_rhs', 'NewfunEqu': '\\mu(x,y)', 'listGraphs': [0] });
 
-myCalculator.addDynamicExp({ 'calc': 'simpleLag', 'idDiv': 'LagMultipleDynamic', 'parentIdDiv': 'totalBudgetLine', 'objective': 'UtilityFunction', 'constraint': 'totalBudgetLine', 'FOCmax': true, 'NewfunEqu': "\\theta", 'listGraphs': [0] });
-myCalculator.addDynamicExp({ 'calc': 'simpleDraw', 'color': 'blue', 'idDiv': 'drawUtilEach', 'parentIdDiv': 'dynamicUtil', 'lhs': ["x_{2}(x,y)", "y_{2}(x,y)"], 'rhs': 'G(\\theta[2],\\theta[3])', 'listGraphs': [0] });
+myCalculator.addDynamicExp({ 'calc': 'simpleMarshalian', 'idDiv': 'LagMultipleDynamic', 'parentIdDiv': 'totalBudgetLine', 'objective': 'UtilityFunction', 'constraint': 'totalBudgetLine', 'NewfunEqu': "\\theta", 'listGraphs': [0] });
+myCalculator.addDynamicExp({ 'calc': 'simpleDraw', 'color': 'blue', 'idDiv': 'drawUtilEach', 'parentIdDiv': 'dynamicUtil', 'lhs': ["x_{2}(x,y)", "y_{2}(x,y)"], 'rhs': 'G(\\theta[1],\\theta[2])', 'listGraphs': [0] });
 
-myCalculator.addDynamicExp({ 'calc': 'simpleDrawLabel', 'color': 'orange', 'idDiv': 'drawLabelEach', 'parentIdDiv': 'dynamicUtil', 'rhs': '(\\theta[2],\\theta[3])', 'label': '', 'listGraphs': [0] });
+myCalculator.addDynamicExp({ 'calc': 'simpleDrawLabel', 'color': 'orange', 'idDiv': 'drawLabelEach', 'parentIdDiv': 'dynamicUtil', 'rhs': '(\\theta[1],\\theta[2])', 'label': '', 'listGraphs': [0] });
 
 //add instructions
 myCalculator.setInstructions({ 'title': 'Visualize Multiple Marshallian Bundles', 'content': 'This calculator allows you to visualize multiple Marshallian bundles in the same graph. <b>Use the "Add" button to input additional budget lines and click "Refresh".</b> The budget lines should be written in the format %%P_xx+P_yy=Income%% where %%P_x%%, %%P_y%%, and %%I%% are constants. The calculator will display the Marshallian bundle corresponding to each budget line.\
