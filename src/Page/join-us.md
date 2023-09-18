@@ -24,5 +24,7 @@ show: true
     <h2 class="text-xl p-2">Commitment</h2>
     <p>As a research assistant, you'll be expected to commit at least 4 hours per week and attend a weekly 1.5-hour meeting. In return, you'll receive 1-2 academic credits for your contribution to the project.</p>
     <h2 class="text-xl p-2">Apply Now!</h2>
-    <p>To apply, please send an email to <a href="mailto:kt2805@columbia.edu">kt2805@columbia.edu</a> with a short statement of interest and your CV attached. We look forward to hearing from you and possibly welcoming you to the EconVision team as a research assistant!</p>
-</span>
+    <p>To apply for this position, please fill out <a href="https://forms.gle/zykumZUM6weDTptN6" target=“_blank">this Application Form</a>. We will reach out to you within 2 weeks to schedule an interview if we think you may be a good fit. Please contact Kyla at <a href="mailto:kt2805@columbia.edu">kt2805@columbia.edu</a> if you have any questions/ concerns. Thank you!</p> </span>
+
+
+
