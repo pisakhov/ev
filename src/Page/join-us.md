@@ -8,21 +8,21 @@ show: true
 <span class="p-8">
     <h1 class="text-3xl p-2 text-violet-600 text-center">Join the EconVision Team as a Research Assistant!</h1>
     <h2 class="text-xl p-2">About EconVision</h2>
-    <p>EconVision is an innovative website developed by Radi (GS'23) and Kyla (CC'24) that offers interactive visualizations of economic models to enhance student learning. Our user-friendly interface allows students to easily explore graphs and models from their coursework.</p>
-    <p>We're involved in coding new calculators, writing instructions and explanations, designing the website, and improving calculator functionality. We work under the guidance of Professor Susan Elmes and receive 1-2 credits as research assistants for our work.</p>
+    <p>EconVision is an innovative website developed by Radi (GS'23) and Kyla (CC'24) that provides students with interactive visualizations of economic models to enhance their learning. Through the user-friendly interface, students can effortlessly explore graphs of the models that they encounter in their coursework. </p>
+    <p>Our day-to-day work involves coding new calculators, writing instructions and explanations, designing the website, and improving the calculators' functionality. Professor Susan Elmes is our faculty advisor and we receive credit as research assistants for our work.</p>
     <h2 class="text-xl p-2">Research Assistant Opportunity</h2>
-    <p>We're looking for a passionate and dedicated individual to join our team as a research assistant. If you meet the following criteria, we'd love to hear from you:</p>
+    <p>We're looking for a passionate and dedicated individual to join our team. The person should:</p>
     <ul class="list-disc p-4">
         <li>Graduate in 2025 or later</li>
-        <li>Completed Principles of Economics</li>
+        <li>Have taken Principles of Economics</li>
         <li>Plan to pursue a major/minor in Economics</li>
         <li>Possess strong economic intuition</li>
-        <li>Interested in technology, education, and the mission of EconVision</li>
+        <li>Be interested in technology and education, and the mission of EconVision</li>
         <li>Have strong teamwork skills and dedication</li>
-        <li>Coding experience is a plus, but not required</li>
+        <li>Coding experience is desirable, but not required</li>
     </ul>
     <h2 class="text-xl p-2">Commitment</h2>
-    <p>As a research assistant, you'll be expected to commit at least 4 hours per week and attend a weekly 1.5-hour meeting. In return, you'll receive 1-2 academic credits for your contribution to the project.</p>
+    <p>As a research assistant, you'll be expected to commit at least 4 hours per week and attend a weekly 1-hour meeting. You will receive 1-2 academic credits for your contribution to the project.</p>
     <h2 class="text-xl p-2">Apply Now!</h2>
     <p>To apply for this position, please fill out <a href="https://forms.gle/zykumZUM6weDTptN6" target=“_blank">this Application Form</a>. We will reach out to you within 2 weeks to schedule an interview if we think you may be a good fit. Please contact Kyla at <a href="mailto:kt2805@columbia.edu">kt2805@columbia.edu</a> if you have any questions/ concerns. Thank you!</p> </span>
 
