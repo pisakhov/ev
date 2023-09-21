@@ -13,7 +13,7 @@ myCalculator.setGraphs({ 'engine': 'desmos', 'idDiv': 'SimpleHicksianGraph', 'he
 myCalculator.addFuncInput({ 'idDiv': 'UtilityFunction', 'title': 'Utility Function', 'func': "U(x,y)", 'latex': "\\ln(x)+\\ln(y)", 'color': '#6d1fff', 'listGraphs': [0] });
 myCalculator.addFuncInput({ 'idDiv': 'IsocostLine', 'title': 'Isocost Line', 'func': "F(x,y)", 'latex': "5x+6y", 'color': '#6d1fff', 'listGraphs': [0] });
 //fixed utility
-myCalculator.addSliderInput({ 'idDiv': 'FixedUtility', 'title': 'Fixed Utility Level', 'latex': 'K', 'min': '0', 'max': '100', 'step': '0.01', 'defaultValue': '2', 'listGraphs': [0] });
+myCalculator.addSliderInput({ 'idDiv': 'FixedUtility', 'title': 'Fixed Utility Level', 'latex': 'K', 'min': '0', 'max': '100000', 'step': '0.01', 'defaultValue': '2', 'listGraphs': [0] });
 myCalculator.addExpression({ 'calc': 'simpleCompute', 'idDiv': 'totalUtilityCurve', 'compute': "UtilityFunction-FixedUtility", 'NewfunEqu': "f(x,y)", 'listGraphs': [0] });
 
 //find Hicksian bundle
