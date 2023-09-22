@@ -16,7 +16,7 @@ myCalculator.addFuncInput({ 'idDiv': 'BudgetLine', 'title': 'Budget Line', 'func
 myCalculator.addSliderInput({ 'idDiv': 'totalBudget', 'title': 'Total Budget', 'latex': 'I', 'min': '0', 'max': '1000', 'step': '1', 'defaultValue': '30', 'listGraphs': [0] });
 myCalculator.addExpression({ 'calc': 'simpleCompute', 'idDiv': 'totalBudgetLine', 'compute': "BudgetLine-totalBudget", 'NewfunEqu': "f(x,y)", 'listGraphs': [0] });
 
-myCalculator.addExpression({ 'calc': 'simpleLag', 'idDiv': 'M', 'parentIdDiv': 'UtilityFunction', 'constraint': 'totalBudgetLine', 'FOCmax':true, 'NewfunEqu': '\\mu', 'listGraphs': [0] });
+myCalculator.addExpression({ 'calc': 'simpleMarshalian', 'idDiv': 'M', 'parentIdDiv': 'UtilityFunction', 'constraint': 'totalBudgetLine', 'NewfunEqu': '\\mu', 'listGraphs': [0] });
 
 myCalculator.addExpression({ idDiv: "Pi2I1", latex: 'x_{2}\\left(x,y\\right)=x\\cos\\left(-2\\pi\\right)-y\\sin\\left(-2\\pi\\right)', listGraphs: [0] });
 myCalculator.addExpression({ idDiv: "Pi2I2", latex: 'y_{2}\\left(x,y\\right)=x\\sin\\left(-2\\pi\\right)+y\\cos\\left(-2\\pi\\right)', listGraphs: [0] });
