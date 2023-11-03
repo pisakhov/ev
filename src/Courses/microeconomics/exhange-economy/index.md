@@ -1,6 +1,6 @@
 ---
 tags: microeconomics
-title: Exhange economy
+title: Exchange economy
 layout: model.njk
 show: true
 ---
