@@ -92,7 +92,7 @@ EdgeWorth.setInstructions({
   });
   EdgeWorth.setInstructions({
     title: "Display Tangents",
-    content: '<b>Display the tangent lines by turning on the “tangent lines” switch.</b> The tangent lines are tangent to the indifference curves of Sheila and Bruce at their respective currently-selected bundles. The line tangent to Sheila’s bundle is in red, and the line tangent to Bruce’s bundle is in blue. The slope of the tangent line equals the marginal rate of substitution (MRS) at that point of the indifference curve.\
+    content: '<b>Display the tangent lines by turning on the “tangent lines” switch.</b> The tangent lines are tangent to the indifference curves of Sheila and Bruce at their respective currently-selected bundles. The line tangent to Sheila’s bundle is in blue, and the line tangent to Bruce’s bundle is in red. The slope of the tangent line equals the marginal rate of substitution (MRS) at that point of the indifference curve.\
     \\theory{"Marginal Rate of Substitution","The MRS is given by the value of the partial derivative of utility with respect to x divided by the partial derivative of utility with respect to y. The MRS tells us the maximum number of units of good y one is willing to give up for an extra unit of good x."}'
   });
   EdgeWorth.setInstructions({
