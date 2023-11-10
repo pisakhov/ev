@@ -28,8 +28,8 @@ EdgeWorth.setGraphs({
 });
 
 
-EdgeWorth.addSliderInput({idDiv:"endownmentXValue", title:"Total Endownment X", latex:"w_{x}", min:0, max:100, step:1, defaultValue:15, listGraphs:[0]});
-EdgeWorth.addSliderInput({idDiv:"endownmentYValue", title:"Total Endownment Y", latex:"w_{y}", min:0, max:100, step:1, defaultValue:15, listGraphs:[0]});
+EdgeWorth.addSliderInput({idDiv:"endownmentXValue", title:"Total Endowment X", latex:"w_{x}", min:0, max:100, step:1, defaultValue:15, listGraphs:[0]});
+EdgeWorth.addSliderInput({idDiv:"endownmentYValue", title:"Total Endowment Y", latex:"w_{y}", min:0, max:100, step:1, defaultValue:15, listGraphs:[0]});
 //show only numbers
 EdgeWorth.setValue({idDiv:"endownmentXValueDisplay", decimal:0, latex:"w_{x}", listGraphs:[0]});
 EdgeWorth.setValue({idDiv:"endownmentYValueDisplay", decimal:0, latex:"w_{y}", listGraphs:[0]});
