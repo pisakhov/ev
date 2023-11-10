@@ -99,13 +99,6 @@ EdgeWorth.setInstructions({
     title: "Display Contract Curve",
     content: '<b>Display the contract curve by turning on the “contract curve” switch.</b> The contract curve shows the set of all Pareto Efficient feasible allocations in the exchange economy. At bundles along the contract curve, the two indifference curves are tangent to each other, i.e., the MRSs of both parties at their respective bundles are equal.'
   });
-  EdgeWorth.setInstructions({
-    title: "Compute MRSs",
-    content: 'Sheila MRS:<br>\
-\\exp{MRSSheilaValue}<br>\
-Bruce MRS:<br>\
-\\exp{MRSBruceValue}'
-  });
   EdgeWorth.setCreators({
     title: "Developer",
     name: "Radi",
