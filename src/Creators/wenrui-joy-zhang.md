@@ -1,6 +1,6 @@
 ---
 thumbnail: /assets/img/img_0414.jpeg
-name: Wenrui (Joy) Zhang
+name: Wenrui (Joy)
 role: Developer
 tags: creators
 layout: creator.njk
