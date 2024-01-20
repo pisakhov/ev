@@ -6,7 +6,7 @@ layout: base.njk
 show: true
 ---
 <section class="relative mx-1 md:mx-[8rem] min-h-screen pt-[4em] md:pt-[8rem]">
-<h1 class="text-lg md:text-xl lg:text-2xl text-violet-900 font-medium leading-tight tracking-tight border-b-2 border-violet-400 mb-8 pb-2"><i class="fas fa-user-friends mr-2"></i>Creators</h1>
+<h1 class="text-lg md:text-xl lg:text-2xl text-violet-900 font-medium leading-tight tracking-tight border-b-2 border-violet-400 mb-8 pb-2"><i class="fas fa-user-friends mr-2">s</i>Creators</h1>
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16 pt-[2rem]">{% for creator in collections.creators %}{% if creator.data.show %}
     <div class="group backdrop-blur-sm bg-white/60 rounded-lg hover:shadow-lg hover:shadow-violet-500/50 flex flex-col items-center justify-between relative">
         <div class="relative rounded-full h-12 w-12 -mt-6 md:h-22 md:w-22 md:-mt-22 lg:h-24 lg:w-24 lg:-mt-12 shadow-lg">
