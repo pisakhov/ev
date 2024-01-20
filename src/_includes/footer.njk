@@ -1,4 +1,4 @@
-<footer class="bg-violet-800 py-8 text-white relative">
+<footer class="bg-gray-800 p-8 h-[100px] flex items-center text-white relative">
   <div id="footer" class="container mx-auto px-6">
      <div class="relative z-10">
         <div class="flex flex-wrap justify-between items-center">
@@ -16,151 +16,33 @@
   </div>
 </footer>
 
-      <script>
+<script>
+const scrollers = document.querySelectorAll(".scroller");
 
-$(document).ready(function() {
-  var nav = $('nav');
-  var navLinks = $('.zebra-1');
-  var navLogo = $('.zebra-2');
-  var navHamIcon = $('.zebra-3');
+// If a user hasn't opted in for recuded motion, then we add the animation
+if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+  addAnimation();
+}
 
-  function updateNavColors() {
-    var scroll = $(window).scrollTop() + nav.outerHeight();
-    var sections = $('.dark-section, .light-section');
-    var currentSection = null;
+function addAnimation() {
+  scrollers.forEach((scroller) => {
+    // add data-animated="true" to every `.scroller` on the page
+    scroller.setAttribute("data-animated", true);
 
-    sections.each(function() {
-      if (scroll >= $(this).offset().top) {
-        currentSection = $(this);
-      } else {
-        return false; // Break out of the loop when the current section is found
-      }
+    // Make an array from the elements within `.scroller-inner`
+    const scrollerInner = scroller.querySelector(".scroller__inner");
+    const scrollerContent = Array.from(scrollerInner.children);
+
+    // For each item in the array, clone it
+    // add aria-hidden to it
+    // add it into the `.scroller-inner`
+    scrollerContent.forEach((item) => {
+      const duplicatedItem = item.cloneNode(true);
+      duplicatedItem.setAttribute("aria-hidden", true);
+      scrollerInner.appendChild(duplicatedItem);
     });
-
-    if (currentSection && currentSection.hasClass('light-section')) {
-      navLinks.removeClass('text-gray-100').addClass('text-gray-600');
-      navLogo.removeClass('text-violet-300').addClass('text-violet-600');
-      navHamIcon.removeClass('text-violet-100').addClass('text-violet-600');
-    } else {
-      navLinks.removeClass('text-gray-600').addClass('text-gray-100');
-      navLogo.removeClass('text-violet-600').addClass('text-violet-300');
-      navHamIcon.removeClass('text-violet-600').addClass('text-violet-100');
-    }
-  }
-
-  $(window).on('scroll', updateNavColors);
-  updateNavColors(); // Call it once on page load to set the initial colors
-});
+  });
+}
 
 
-
-
-         $(document).ready(function() {
-           function animateNumbers(element, targetValue) {
-         	let currentValue = 0;
-         	let interval = setInterval(function() {
-         	  if (currentValue >= targetValue) {
-         		clearInterval(interval);
-         		return;
-         	  }
-         	  currentValue += Math.ceil(targetValue / 100);
-         	  element.text(currentValue.toLocaleString());
-         	}, 20);
-           }
-          
-           const $numberElements = $("[data-count]");
-           $numberElements.waypoint(
-         	function() {
-         	  const $element = $(this.element);
-         	  const targetValue = parseInt($element.attr("data-count"), 10);
-         	  animateNumbers($element, targetValue);
-         	  this.destroy();
-         	},
-         	{
-         	  offset: "90%",
-         	}
-           );
-         });
-          
-      </script>
-      <script>
-         $(document).ready(function () {
-           const courseLinks = $('.course-link');
-           const subcourseLists = $('.subcourse-list');
-          
-           // Set the first course to active and apply the text-violet-900 class
-           //courseLinks.eq(0).removeClass('text-white').addClass('active text-violet-900');
-          
-           courseLinks.on('click', function (e) {
-         	e.preventDefault();
-          
-         	// Remove active class from all course links
-         	courseLinks.removeClass('active text-violet-900').addClass('text-white');
-          
-         	// Add active class and text-violet-900 class to the clicked course link
-         	$(this).addClass('active text-violet-900').removeClass('text-white');
-          
-         	// Hide all subcourse lists
-         	subcourseLists.addClass('hidden');
-          
-         	// Show the subcourse list for the clicked course
-         	const courseId = $(this).data('course');
-         	const subcourseList = $(`.subcourse-list[data-course="${courseId}"]`);
-         	subcourseList.removeClass('hidden');
-           });
-         });
-          
-      </script>
-      <script>
-         $(document).ready(function () {
-           // Toggle courses accordion on click
-           $(".courses-btn").on("click", function (e) {
-         	e.stopPropagation();
-         	$(this).siblings(".courses-accordion").slideToggle(300);
-           });
-          
-           // Toggle subcourses on click
-           $(".course > a").on("click", function (e) {
-         	e.stopPropagation();
-         	$(this).siblings(".subcourse").slideToggle(300);
-           });
-          
-           // Close accordion when clicking outside
-           $(document).on("click", function () {
-         	$(".courses-accordion, .subcourse").slideUp(300);
-           });
-         });
-          
-      </script>
-      <script src='/assets/js/typewriter.js'></script>
-      <script type='text/javascript'>
-         $(document).ready(function(){
-           $(window).scroll(function(){
-             var viewportTop = $(window).scrollTop();
-             var viewportBottom = viewportTop + $(window).height() - 100;
-             var featuresSectionTop = $('.scroll-this').offset().top;
-             var featuresSectionHeight = $('.scroll-this').height();
-             var featuresSectionBottom = featuresSectionTop + featuresSectionHeight;
-         
-             if (featuresSectionBottom > viewportTop && featuresSectionTop < viewportBottom) {
-         		$('.scroll-this').addClass('scale-105');
-         		$('.scroll-this div:first-child').removeClass('md:h-auto').addClass('md:h-auto');
-             } else {
-         		$('.scroll-this').removeClass('scale-105');
-         	  $('.scroll-this div:first-child').removeClass('md:h-auto');
-             }
-           });
-         });
-                
-         
-         		$(".nav-button-mobile").click(function() {
-         			$(".nav-menu-mobile").toggleClass("hidden");
-         		});
-         		const typewriter = new Typewriter('#mainlogo', {
-         			autoStart: true
-         		});
-         		typewriter.typeString('Envision economic models.').pauseFor(1500).deleteChars(24).typeString('con').pauseFor(500).typeString('<strong>.</strong>').pauseFor(100).typeString('vision').pauseFor(2500).start();
-         	
-      </script>
-
-      
+</script>

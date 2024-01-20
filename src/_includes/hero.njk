@@ -1,39 +1,69 @@
-<section class="bg-gray-800 relative">
-                    <video autoplay muted loop class="h-screen w-screen object-cover fixed opacity-10">
-                     <source src="https://econ.vision/assets/img/hero.mp4" type="video/mp4">
-                  </video>
-  <base class="grid grid-rows-3 gap-4 content-between sticky">
-  <div class="bg-violet-600 opacity-40 h-64 w-64 blur-2xl fixed top-0 left-0"></div>
-  <div class="bg-cyan-600 opacity-40 h-64 w-64 blur-2xl fixed bottom-0 right-0"></div>
+<section class="bg-gray-900 relative bg-center bg-fixed">
+                    <!-- <video autoplay muted loop class="h-screen w-screen object-cover fixed opacity-10">
+                     <source src="https://cdn-cf-east.streamable.com/video/mp4/c0sb2q.mp4?Expires=1706038560&Signature=XTeCnhdNeBGCRGrIc8TL-DE4VRkNMtcF-qxhrTpaRH0R7iIxVxmmfGA2xQqVNDpNfMaYbRRRnsth9nSP0m1~8XnQtf900KVaa5Uc~G1smOBvgYRL4L~qAY~P4gX-T6AGwDsFZL5DNSB-5xcR-dhWXl0vcyUJB25RO8kxdQ-Q4~y7KvNfj4LR4oH4wPGs~MBalEWMXtJ31QTwYUgjrh1F5QOZQ-aR-6skjf7wjFpyL5Cqx67RBwFuZg3qIN3TbV-cF6-lt3doyV~UmFSL-EXbR~J69XYjEsu0T81vvc9eVEar0wLQ3aysp8892SAOJTs2rrWTOI~BJntG6uFy3dE6RQ__&Key-Pair-Id=APKAIEYUVEN4EVB2OKEQ" type="video/mp4">
+                  </video> -->
+{% include "desmos.njk" %}
+  <base class="grid grid-rows-3 gap-8 content-between sticky [&_div]:rounded-full">
+  <div class="bg-violet-600 opacity-5 h-1/2 w-1/2 blur-2xl fixed top-0 left-0"></div>
+  <div class="bg-cyan-600 opacity-5 h-1/2 w-1/2 blur-2xl fixed bottom-0 right-0"></div>
 </base>
-  <main class="lg:m-8 m-2">
-<div class="grid grid-cols-1 grid-rows-1 lg:grid-cols-3 lg:grid-rows-2 gap-2 [&>*]:ring-1 [&>*]:ring-black/5  [&>*]:shadow-md [&>*]:rounded-xl hover:[&>*]:transition-all hover:[&>*]:bg-white/50 [&>*]:duration-300 [&>*]:delay-80 [&>*]:ease-in-out [&>*]:backdrop-blur-sm [&>*]:bg-white/20 [&>*]:p-2 m-2 [&>*]:text-gray-100">
-  <div class="lg:col-span-2 lg:row-span-1 lg:row-start-2 h-24">
+  <main class="md:mx-16 mx-2 p-8">
+<div class="grid grid-cols-1 grid-rows-1 md:grid-cols-3 md:grid-rows-2 gap-2 [&>*]:ring-1 [&>*]:ring-white/20  [&>*]:shadow-md md:[&>*]:rounded-xl [&>*]:rounded-md hover:[&>*]:transition-all hover:[&>*]:bg-white/50 [&>*]:duration-300 [&>*]:delay-80 [&>*]:ease-in-out [&>*]:backdrop-blur-[1px] [&>*]:bg-white/10 [&>*]:p-2 m-2 [&>*]:text-gray-100">
+  <div class="md:col-span-2 md:row-span-1 md:row-start-2 h-24">
    <div class="flex flex-row justify-between items-center">
-         <img class="w-20" src="https://econ.vision/assets/img/logo.png" alt=""> <h1 class="font-mono	text-4xl text-gray-200">Econ.Vision</h1>
+         <img class="w-20" src="https://econ.vision/assets/img/logo.png" alt=""> <h1 class="font-sans	text-4xl text-gray-200">Econ.Vision</h1>
    </div>
   </div>
-  <div class="lg:col-span-1 lg:row-span-2">Contact</div>
+  <div class="md:col-span-1 md:row-span-2 h-36">Contact
+<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAACXBIWXMAAAsTAAALEwEAmpwYAAAFQklEQVR4nO2aa0xTdxiHD05dlsW4bIl+wEQzvKDT6KZuMC8gtkK5tBY4QGkBwcEsigSTucypJfswmLtE9mGJc4mJSyRxEwUv6FDQMW9xfpn6YSZq4sLcxWiMmdEpPsvbtFtbQOhpu3DMeZInOZf//33f3wm9hFRRDAwMDAwMDAwMDAz6Y4aH0fGr+Sh+Nb9OWAN6MH4NPRPW0CizK5EysZrGSdWgS900RPwAElbRM9kNCW7eVHTCy9Us9M68ip6IiyW+DaKiMyKee24Vo2ZWsmVmJejcLSkeRob9AGZX8MmclfA0OHslH4f9AOaX8+f8CphfwSpFp8jsvgx/hL05eQWISWXcT17Bu4qHEYpuIC65jKrkMv7y5wi7xKJSCHRhKQeTXYxThjkyo8waOn/YhZa4QEwtwZbq5Kb32MnvqU6yBtpTd5I9dacgpp5kz0D9U0owpbro8c7u5HZqMYX+HGE/ALMTRDlOK2K8uZh237XHJidNGRk8G7rn/W4ObvwBYqn06O8Ty+yk3lRMr8xoctKZ4WRCaI6wsDhA/O8KcRYHtRkOHsj1DAcXLMXMCtyz7UdGNZygvuE4vQ0nIAbu/PQUzwX2THcyzeLgvG/ehxYH9arKMwPnGCI5hSCGXrcWMS+ngMtyL7uQe9ZCakPXbD2OuamL35q6ICp2cnvrcdTQPlkFlGYXctc7SwHXcgpYMNQcg2JXQezvntXKGLvKNv+a5SotqsqLgWu2H2X89g6OfHUUIvT0ji4mBdZWVcba89nl729X2W2z8UK4OZ6Img/iE9eo5OfncUvW5edxXVVJCbzv8TCi+Ttqmw/zd/MRCNPe5sM0ycsqsGaBnSQ1j6u+nnfUPFyR5ugXRy6IyiAU5zKxKJduWVtkp9eRS1NVVfDQrYdIajvE1bZ2GIqt7fyy7wCLA2ukpDDSYafeYeeRt1cuZ10qk6OVow8ly0FUhoAMV2KjvsTGI9njsnHWlRM8XEcHY48dYPexAzCIbR0tvBT6kF02un21e0tsfR9yNHIEUW4FUQmDshySVli54tt7pzyn75/nmf2Unmnj3pk2CLKV+6f3UQvEhcyRX27llrdmDtfLs4NfZrHI4aUyG0QlTKpMjK3MYpd//1vZ7C4LeYO61MorP7Vw8cJe8PnzpX28GrimwsqYymy2+etUZtOyclnwG20scyjVWSAqGnFnUerO5K6vzjV3ZvA/VG7s5Pkr3+IW5Tjw3moL86ozuSx73Zncc2f1/aiNeY61FhCVCKhNZ1qNhfNSp8bCwxpL8JeUvhC31kJtTQYPvHsyuLA2i5mRzKA5x7p0EJUIqZrLqLp06uuW0eur2VmXRXyfQdMYvy6ddt+ax+uW0VTTz9ft/y3HejOIkQ7wbz0T6evN3JCa75i5ud5MmUdltCjHvmvS84asjVpfrTk2mEBUoojHzLgNSznor/2eiYei/1zuyZpo9tScY3MaiErUIW7zUgo3pXFu0xIeeE3j3MYlFMi9aHfTnOODVBCVGOJJYaQYyx6ac3y4GERF52jOsWURiIrO0ZzjswUgKjpHc47Pk0FUdI7mHF+8AaKiczTn+PJ1EBWdoznHjnkgKsMU/3wDGbou7AZfvwaiMkzxzzeQoevCbtA8B0St58MFzXN9MxtErefDBc1z7Z0FotbzWOHvM5gRz7X/FRC1nscKf5/BjHiu9ukgKjpHc46ORHo6EqFjKgsVnXJ0Oou8GRI1/FiqawqNXVPhabBzioafy12cwejuBBq/T6CnezLoUe/sCTRKlrAfgIGBgYGBgYGBgYHyVPMPNEVWlkHq+EQAAAAASUVORK5CYII=">
 
-  <div class="lg:col-span-1 row-span-1 h-72">About</div>
-  <div class="lg:col-span-2 row-span-1 h-36 flex flex-row overflow-x-auto gap-8 hover:[&_img]:grayscale-0 hover:[&_img]:shadow-md [&_img]:grayscale">
-      <img src="https://econ.vision/assets/img/radi.jpg"
-      class="h-full w-auto rounded-full object-cover">
-
-         <img src="https://econ.vision/assets/img/kyla.jpg"
-      class="h-full w-auto rounded-full object-cover">
-
-         <img src="https://econ.vision/assets/img/9a8f93cf-d51e-431f-9860-4a72adfcd95f.jpg"
-      class="h-full w-auto rounded-full object-cover">
-
-         <img src="https://econ.vision/assets/img/img_0414.jpeg"
-      class="h-full w-auto rounded-full object-cover">
   </div>
-  <!--Courses-->
-<div class="lg:col-span-3 row-span-1 row-end-5 h-fit relative">
-<div class="flex flex-col lg:flex-row gap-2 h-full hover:[&>*]:transition-transform [&>*]:duration-300 [&>*]:delay-1000 [&>*]:ease-in-out lg:[&>*]:w-1/3 w-full [&>*]:flex-1 hover:[&>*]:flex-auto">
 
-    <div class="choice items-center overflow-hidden rounded-md bg-cyan-500 text-white p-4">
+  <div class="md:col-span-1 row-span-1 md:h-36 h-28">
+
+   <div class="scroller" data-direction="right" data-speed="slow">
+         <div class="scroller__inner md:h-32 h-24 flex flex-row gap-8 hover:[&_img]:grayscale-0 hover:[&_img]:shadow-md [&_img]:grayscale [&_img]:rounded-full [&_img]:h-full [&_img]:object-cover">
+
+        <img src="https://econ.vision/assets/img/radi.jpg" alt="" />
+        <img src="https://econ.vision/assets/img/kyla.jpg" alt="" />
+        <img src="https://econ.vision/assets/img/9a8f93cf-d51e-431f-9860-4a72adfcd95f.jpg" alt="" />
+        <img src="https://econ.vision/assets/img/img_0414.jpeg" alt="" />
+      </div>
+    </div>
+    
+
+  </div>
+  
+
+  <div class="md:col-span-2 row-span-1 h-72">About</div>
+  <div class="md:col-span-3 row-span-1 h-18 row-start-4">
+
+   <div class="scroller" data-speed="slow">
+      <ul class="scroller__inner flex flex-row h-full items-center [&_li]:bg-violet-600 [&_li]:p-2 [&_li]:rounded-md">
+         <li>HTML</li>
+         <li>CSS</li>
+         <li>JS</li>
+         <li>SSG</li>
+         <li>webdev</li>
+         <li>animation</li>
+         <li>UI/UX</li>
+         <li>HTML</li>
+         <li>CSS</li>
+         <li>JS</li>
+         <li>SSG</li>
+         <li>webdev</li>
+         <li>animation</li>
+         <li>UI/UX</li>
+        </ul>
+    </div>
+ 
+
+</div>
+  <!--Courses-->
+<div class="md:col-span-3 row-span-1 row-start-5 h-fit relative">
+<div class="flex flex-col md:flex-row gap-2 h-full hover:[&>*]:transition-transform [&>*]:duration-300 [&>*]:delay-1000 [&>*]:ease-in-out md:[&>*]:w-1/3 w-full [&>*]:flex-1 hover:[&>*]:flex-auto">
+
+    <div class="choice items-center overflow-hidden rounded-md bg-cyan-500 text-white p-4 relative">
       <h5 class="text-lg font-bold">Principals of Economics</h5>
       <span class="">
          <ul class="[&_li]:bg-cyan-600 [&_li]:rounded-md [&_li]:flex-auto [&_li]:p-2 grid grid-cols-2 gap-1 items-center flex">

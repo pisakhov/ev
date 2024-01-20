@@ -1,10 +1,7 @@
-<section class="light-section bg-gray-100 py-20">
-            <div class="container mx-auto px-6">
-               <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">Insightful Charts</h2>
-               <div id="calculator" class="w-full h-[50vh]"></div>
 
-            </div>
-         </section>
+
+               <div id="calculator" class="fixed w-full w-full h-full opacity-100"></div>
+
 
          <script >
              var elt = document.getElementById('calculator');
@@ -18,6 +15,7 @@
 			});
 
                         calculator.setGraphSettings({
+            backgroundColor: '#232323',
             xAxisLabel: 'Quantity',
             yAxisLabel: 'Price',
             xAxisStep: 10,
@@ -30,18 +28,16 @@
             yAxisMinorSubdivisions: 1,
             lockViewport: true,
             expressions: false,
-            showGrid: false,
+            showGrid: true,
             keypad: false,
 				zoomFit: false,
 				settingsMenu: false,
-            fontSize: 18
+            fontSize: 10
             });
 
        
-            calculator.setExpression({id: 'demand', latex: 'D(x) = 50 - x^2/100+a \\left\\{x\\ge0\\right\\}', color: Desmos.Colors.BLUE});
-calculator.setExpression({id: 'supply', latex: 'S(x) = x^2/100+b \\left\\{x\\ge0\\right\\}', color: Desmos.Colors.RED});
-calculator.setExpression({id: 'labelPoint1', latex: '(a,D(a))', showLabel:true, label: 'Demand Curve', hidden:false, color: Desmos.Colors.BLUE});
-calculator.setExpression({id: 'labelPoint2', latex: '(b,S(b))', showLabel:true, label: 'Supply Curve', hidden:false, color: Desmos.Colors.RED});
+            calculator.setExpression({id: 'demand', latex: 'D(x) = 50 - x^2/100+a', color: 'rgb(124, 58, 237)'});
+calculator.setExpression({id: 'supply', latex: 'S(x) = x^2/100+b', color: 'color: rgb(13, 148, 136);'});
 
 
        
