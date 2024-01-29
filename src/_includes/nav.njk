@@ -1,11 +1,28 @@
-<nav class="p-6 w-full z-40 fixed top-0 flex items-center justify-between backdrop-blur-[3px] bg-white/1 h-16 md:h-16 lg:h-24 xl:h-32">
-   <div class="md:col-span-1 md:row-span-1 flex flex-row justify-normal items-center">
-      <div class="flex justify-center">
-            <img class="w-24 md:w-32 lg:w-36 saturate-200" src="/assets/img/__econ.png" alt=""> 
+<nav class="grid grid-cols-3 gap-4 p-8 h-full w-full items-center backdrop-blur-[3px] bg-gradient-to-b from-violet-200 from-20% via-violet-400 via-90%  to-transparent to-90%">
+   <div class="col-span-1 flex justify-center items-center">
+      <img class="h-32 aspect-square saturate-200" src="/assets/img/__econ.png" alt=""> 
+   </div>
+
+   <nav class="col-span-2 self-end backdrop-blur-[10px] bg-white/1">
+      <div class="mx-auto px-4">
+            <ol class="list-none p-0 inline-flex
+            [&_li]:text-gray-600 hover:[&_li]:text-violet-600">
+            <li class="flex items-center">
+                  <a href="/" class="font-normal transition-colors duration-300 hover:underline decoration-1 decoration-dotted md:text-lg text-sm">Home</a>
+                  <i class="fas fa-angle-right text-gray-600 mx-2 md:text-lg text-md"></i>
+            </li>
+            {% for cls in collections.index %}
+            {% if cls.data.tag == tags %}
+            <li class="flex items-center">
+                  <a href="{{ cls.url }}" class="font-normal transition-colors duration-300 hover:underline decoration-1 decoration-dotted md:text-lg text-sm">{{ cls.data.title }}</a>
+                  <i class="fas fa-angle-right text-gray-600 mx-2 md:text-lg text-md"></i>
+            </li>
+            {% endif %}
+            {% endfor %}
+            <li class="flex items-center">
+                  <p class="font-normal text-violet-900 underline decoration-1 decoration-dotted md:text-lg text-sm">{{ title }}</p>
+            </li>
+            </ol>
       </div>
-     </div>
-   
    </nav>
-
-
-
+</nav>
