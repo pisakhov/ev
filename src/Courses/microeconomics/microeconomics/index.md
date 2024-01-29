@@ -6,6 +6,7 @@ layout: model.njk
 tag: microeconomics
 show: true
 ---
+<script>
 const myCalculator = new EconVision();
 
 myCalculator.setGraphs({
@@ -119,3 +120,5 @@ myCalculator.setCreators({
     name: "Kyla",
     school: "CC’24"
 });
+
+</script>
