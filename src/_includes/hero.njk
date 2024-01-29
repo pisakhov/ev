@@ -53,6 +53,22 @@
    <div class="
    flex flex-col md:flex-row gap-2 [&>*]:transition-all [&>*]:duration-500 [&>*]:delay-1000 [&>*]:ease-in-out md:[&>*]:w-[100%] md:[&_div]:min-w-10 [&_div]:h-[100%] [&_div]:min-h-10 h-full w-full [&>*]:flex-1 first:[&>*]:flex-auto">
 
+   {% for cls in collections.index %}
+
+   <div class="saturate-200 choice md:hover:[&_h5]:bg-cyan-700 items-center overflow-hidden rounded-md bg-cyan-500 text-white p-4 relative">
+      <h5 class="p-2 rounded-md text-lg font-semibold md:[writing-mode:vertical-lr] md:absolute cursor-pointer md:-ml-4 -mt-4 md:h-full">{{ cls.data | dump }}</h5>
+      <span class="">
+         <ul class="md:ml-10 [&_li]:bg-cyan-600 hover:[&_li]:bg-cyan-700 [&_li]:rounded-md [&_li]:flex-auto [&_li]:p-1 grid grid-cols-2 gap-1 items-center flex">
+            {% for model in collections.cls.data %}
+            <li>{{ model.data.title }}</li>
+            {% endfor %}
+         </ul>
+      </span>
+   </div>
+
+     {% endfor %}
+
+
       <div class="saturate-200 choice md:hover:[&_h5]:bg-cyan-700 items-center overflow-hidden rounded-md bg-cyan-500 text-white p-4 relative">
          <h5 class="p-2 rounded-md text-lg font-semibold md:[writing-mode:vertical-lr] md:absolute cursor-pointer md:-ml-4 -mt-4 md:h-full">Principals of Economics</h5>
          <span class="">
