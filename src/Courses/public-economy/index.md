@@ -3,6 +3,7 @@ tags: index
 title: Public Economy
 layout: base.njk
 tag: public-economy
+color: teal
 show: true
 ---
 <section class="relative mx-1 md:mx-[8rem] min-h-screen pt-[4em] md:pt-[8rem]">

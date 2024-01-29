@@ -49,73 +49,22 @@
 
 
     <!--Courses-->
-<div class="md:col-span-3 row-span-1 h-[400px]">
+<div class="md:col-span-3 row-span-1 h-full min-h-[400px]">
    <div class="
    flex flex-col md:flex-row gap-2 [&>*]:transition-all [&>*]:duration-500 [&>*]:delay-1000 [&>*]:ease-in-out md:[&>*]:w-[100%] md:[&_div]:min-w-10 [&_div]:h-[100%] [&_div]:min-h-10 h-full w-full [&>*]:flex-1 first:[&>*]:flex-auto">
 
-   {% for cls in collections.index %}
-
-   <div class="saturate-200 choice md:hover:[&_h5]:bg-cyan-700 items-center overflow-hidden rounded-md bg-cyan-500 text-white p-4 relative">
-      <h5 class="p-2 rounded-md text-lg font-semibold md:[writing-mode:vertical-lr] md:absolute cursor-pointer md:-ml-4 -mt-4 md:h-full">{{ cls.data | dump }}</h5>
-      <span class="">
-         <ul class="md:ml-10 [&_li]:bg-cyan-600 hover:[&_li]:bg-cyan-700 [&_li]:rounded-md [&_li]:flex-auto [&_li]:p-1 grid grid-cols-2 gap-1 items-center flex">
-            {% for model in collections.cls.data %}
-            <li>{{ model.data.title }}</li>
-            {% endfor %}
-         </ul>
-      </span>
-   </div>
-
-     {% endfor %}
-
-
-      <div class="saturate-200 choice md:hover:[&_h5]:bg-cyan-700 items-center overflow-hidden rounded-md bg-cyan-500 text-white p-4 relative">
-         <h5 class="p-2 rounded-md text-lg font-semibold md:[writing-mode:vertical-lr] md:absolute cursor-pointer md:-ml-4 -mt-4 md:h-full">Principals of Economics</h5>
+   {% for course in collections.index %}
+      <div class="saturate-200 choice md:hover:[&_h5]:bg-{{course.data.color}}-700 items-center overflow-hidden rounded-md bg-{{course.data.color}}-500 text-white p-4 relative">
+         <h5 class="p-2 rounded-md text-lg font-semibold md:[writing-mode:vertical-lr] md:absolute cursor-pointer md:-ml-4 -mt-4 md:h-full">{{ course.data.title }}</h5>
          <span class="">
-            <ul class="md:ml-10 [&_li]:bg-cyan-600 hover:[&_li]:bg-cyan-700 [&_li]:rounded-md [&_li]:flex-auto [&_li]:p-1 grid grid-cols-2 gap-1 items-center flex">
-               <li>Exchange economy</li>
-               <li>Supply and Demand</li> 
-               <li>Elasticity</li>
-               <li>Aggregate Demand</li>
-               <li>Market Structure</li>  
-               <li>Public Goods and Taxes</li>
-               <li>Income Tax</li>
-               <li>Corporate Taxes</li>
+            <ul class="md:ml-10 [&_li]:bg-{{course.data.color}}-600 hover:[&_li]:bg-{{course.data.color}}-700 [&_li]:rounded-md [&_li]:flex-auto [&_li]:p-1 grid md:grid-cols-2 md:grid-cols-1 gap-1 items-center flex">
+               {% for model in collections[course.data.tag] %}
+               <li><a href="{{ model.url }}">{{ model.data.title }}</a></li>
+               {% endfor %}
             </ul>
          </span>
       </div>
-      <div class="saturate-200 choice md:hover:[&_h5]:bg-teal-600 items-center overflow-hidden rounded-md bg-teal-500 text-white p-4 relative">
-         <h5 class="p-2 rounded-md text-lg font-bold md:[writing-mode:vertical-lr] md:absolute cursor-pointer md:-ml-4 -mt-4 md:h-full">Intermediate Microeconomics</h5>
-         <span class="">
-            <ul class="md:ml-10 [&_li]:bg-teal-600 [&_li]:rounded-md [&_li]:flex-auto [&_li]:p-1 grid grid-cols-2 gap-1 items-center flex">
-               <li>Exchange economy</li>
-               <li>Supply and Demand</li> 
-               <li>Elasticity</li>
-               <li>Aggregate Demand and Aggregate Supply</li>
-               <li>Market Structure</li>  
-               <li>Public Goods and Taxes</li>
-               <li>Income Tax</li>
-               <li>Corporate Taxes</li>
-            </ul>
-         </span>
-      </div>
-      
-      <div class="saturate-200 choice md:hover:[&_h5]:bg-sky-600 items-center overflow-hidden rounded-md bg-sky-500 text-white p-4 relative">
-         <h5 class="p-2 rounded-md text-lg font-bold md:[writing-mode:vertical-lr] md:absolute cursor-pointer md:-ml-4 -mt-4 md:h-full">Public Economy</h5>
-         <span class="">
-            <ul class="md:ml-10 [&_li]:bg-sky-600 [&_li]:rounded-md [&_li]:flex-auto [&_li]:p-1 grid grid-cols-2 gap-1 items-center flex">
-               <li>Exchange economy</li>
-               <li>Supply and Demand</li> 
-               <li>Elasticity</li>
-               <li>Aggregate Demand and Aggregate Supply</li>
-               <li>Market Structure</li>  
-               <li>Public Goods and Taxes</li>
-               <li>Income Tax</li>
-               <li>Corporate Taxes</li>
-            </ul>
-         </span>
-      </div>
-
+   {% endfor %}
 
    </div>
 
@@ -173,10 +122,14 @@ function handleClick(event) {
     // If there is a currently selected choice, minimize it
     if (currentChoice) {
         currentChoice.style.flex = '1';
+        currentChoice.style.overflow = 'hidden';
     }
 
     // Expand the clicked choice
     event.currentTarget.style.flex = 'auto';
+
+    //replace overflow-hidden for overflow-auto
+    event.currentTarget.style.overflow = 'auto';
 
     // Update the currently selected choice
     currentChoice = event.currentTarget;
@@ -189,4 +142,5 @@ for (var i = 0; i < choices.length; i++) {
 
 // Expand the first choice by default
 choices[0].style.flex = 'auto';
+choices[0].style.overflow = 'auto';
 </script>
