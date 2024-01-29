@@ -64,8 +64,15 @@ layout: 'base.njk'
          <span class="">
             <ul class="md:ml-10 [&_li]:bg-{{course.data.color}}-600 hover:[&_li]:bg-{{course.data.color}}-700 [&_li]:rounded-md [&_li]:flex-auto [&_li]:p-1 grid md:grid-cols-2 md:grid-cols-1 gap-1 items-center flex">
                {% for model in collections[course.data.tag] %}
-               <li><a href="{{ model.url }}">{{ model.data.title }}</a></li>
-               {% endfor %}
+            <div class="relative group">
+                <img src="{{ model.url }}{{ model.data.thumbnail }}" alt="{{ model.data.title }}" class="w-full h-32 object-cover rounded-md transform transition-all duration-500" />
+                <div class="absolute inset-0 bg-gradient-to-t from-50% group-hover:from-0% from-{{course.data.color}}-800/40 to-transparent p-4 rounded-md transition-colors transition-all duration-1000">
+                    <h2 class="text-{{course.data.color}}-700 text-lg transition-colors duration-200 group-hover:text-{{course.data.color}}-700 group-hover:translate-x-4 group-hover:translate-y-1 transition-transform duration-400">{{ model.data.title }}</h2>
+                </div>
+                <a href="{{ model.url }}" class="absolute inset-0"></a>
+            </div>
+            
+            {% endfor %}
             </ul>
          </span>
       </div>

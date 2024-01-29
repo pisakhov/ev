@@ -1,5 +1,6 @@
 ---
 tags: microeconomics
+thumbnail: preview.png
 title: Effect of a Price Change
 layout: model.njk
 show: true
