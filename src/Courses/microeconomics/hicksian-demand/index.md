@@ -1,6 +1,7 @@
 ---
 tags: microeconomics
 title: Hicksian Demand
+thumbnail: /assets/img/simplehicksiangraph.png
 layout: model.njk
 show: true
 ---
