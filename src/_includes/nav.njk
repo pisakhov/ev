@@ -1,9 +1,102 @@
-<nav class="grid grid-cols-3 gap-4 p-8 h-full w-full items-center backdrop-blur-[3px] bg-gradient-to-b from-violet-200 from-20% via-violet-400 via-90%  to-transparent to-90%">
-   <div class="col-span-1 flex justify-center items-center">
-      <img class="h-32 aspect-square saturate-200" src="/assets/img/__econ.png" alt=""> 
-   </div>
+<nav class="grid grid-cols-2 gap-4 p-8 h-full w-full items-center backdrop-blur-[3px] bg-gradient-to-b from-violet-200 from-20% via-violet-400 via-90%  to-transparent to-90%">
+      <div class="col-span-1 flex justify-between items-center">
+            <a href="/">
+                  <img class="h-32 aspect-square saturate-200" src="/assets/img/__econ.png" alt=""> 
+            </a>
+      </div>
 
-   <nav class="col-span-2 self-end backdrop-blur-[10px] bg-white/1">
+   <div class="hidden md:grid grid-cols-5 gap-4
+   [&_summary]:list-none 
+   [&_summary]:text-md [&_summary]:text-violet-700 hover:[&_summary]:text-violet-500 [&_summary]:transition-colors [&_summary]:duration-300
+   [&_a]:text-md [&_a]:text-violet-700 hover:[&_a]:text-violet-500 [&_a]:transition-colors [&_a]:duration-300
+    ">
+      <a class="" href="/">
+      <i class="fas fa-home mr-2"></i> Home
+      </a>
+      <div class="relative group flex">
+            <details class="flex flex-col">
+                  <summary class="cursor-pointer">
+                        <i class="fas fa-graduation-cap mr-2"></i> Courses
+                  </summary>
+                  <div class="absolute w-[320px] right-1/2 translate-x-1/2 bg-transparent z-50">
+                        <div class="flex flex-row justify-center">
+                              <div class="w-full backdrop-blur-md bg-white/30 rounded-lg shadow-lg">
+                                    <ul class="p-2">
+                                          {% for course in collections.index %}
+                                                {% if course.data.show %}
+                                                <li>
+                                                      <a href="{{course.url}}" class="cursor-pointer text-md text-gray-500 hover:text-white">
+                                                            {{ course.data.title }}
+                                                      </a>
+                                                </li>
+                                                {% endif %}
+                                          {% endfor %}
+                                    </ul>
+                              </div>
+                        </div>
+                  </div>
+            </details>
+      </div>
+      <!-- end mega menu-->
+      {% for page in collections.pages %}{% if page.data.show %}
+      <a class="" href="{{page.url}}">
+      <i class="{{page.data.icon}} mr-2"></i> {{page.data.title}}
+      </a>
+      {% endif %}{% endfor %}
+      {# <a class="" href="?page=about">
+      <i class="fas fa-info-circle /fa-user-friends mr-2"></i> About
+      </a>
+      <a class="" href="?page=contact">
+      <i class="fas fa-envelope mr-2"></i> Contact
+      </a>
+      <a class="" href="?page=contact">
+      <i class="fas fa-user-plus mr-2"></i> Join us
+      </a> #}
+   </div>
+<details class="relative inline-block text-left lg:hidden md:hidden [&_summary]:list-none">
+      <summary class="">
+            <span class="rounded-md shadow-sm cursor-pointer hover:bg-violet-700 hover:text-violet-100 p-2">
+                  <i class="fas fa-align-left"> Menu</i>
+            </span>
+      </summary>
+      <div class="z-[999] absolute left-0 w-56 rounded-md shadow-lg">
+            <div class="rounded-lg backdrop-blur-sm bg-white/30 shadow-lg">
+                  <div class="py-4">
+                        <a class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-violet-900 hover:text-white transition-colors duration-300 focus:outline-none focus:bg-violet-900 focus:text-gray-900" href="/">
+                              <i class="fas fa-home mr-2"></i> Home
+                        </a>
+                        <details class="relative group">
+                              <summary class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-violet-900 hover:text-white transition-colors duration-300 focus:outline-none focus:bg-violet-900 focus:text-gray-900 cursor-pointer courses-btn">
+                                    <i class="fas fa-graduation-cap mr-2"></i> Courses
+                              </summary>
+                              <div class="courses-accordion left-0 w-56 bg-transparent z-50">
+                                    <div class="rounded-lg backdrop-blur-sm bg-white/90 shadow-lg">
+                                          <div class="py-4">
+                                                {% for course in collections.index %}
+                                                      {% if course.data.show %}
+                                                                  <a href="{{course.url}}" class="block px-4 py-2 text-sm leading-5 text-gray-700 bg-gray-200 hover:bg-violet-900 hover:text-white transition-colors duration-300 focus:outline-none focus:bg-violet-900 focus:text-gray-900 cursor-pointer">
+                                                                        {{ course.data.title }}
+                                                                  </a>
+                                                      {% endif %}
+                                                {% endfor %}
+                                          </div>
+                                    </div>
+                              </div>
+                        </details>
+                        {% for page in collections.pages %}
+                              {% if page.data.show %}
+                                    <a class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-violet-900 hover:text-white transition-colors duration-300 focus:outline-none focus:bg-violet-900 focus:text-gray-900" href="{{page.url}}">
+                                          <i class="{{page.data.icon}} mr-2"></i> {{page.data.title}}
+                                    </a>
+                              {% endif %}
+                        {% endfor %}
+                  </div>
+            </div>
+      </div>
+</details>
+
+   <!-- breadcrumb-->
+   <nav class="col-span-2 self-end backdrop-blur-[10px] bg-white/50 text-center">
       <div class="mx-auto px-4">
             <ol class="list-none p-0 inline-flex
             [&_li]:text-gray-600 hover:[&_li]:text-violet-600">
@@ -26,3 +119,7 @@
       </div>
    </nav>
 </nav>
+
+
+
+
