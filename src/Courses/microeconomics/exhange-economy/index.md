@@ -1,7 +1,7 @@
 ---
 tags: microeconomics
 title: Exchange economy
-thumbnail: /assets/img/preview.png
+thumbnail: /assets/img/exhange-economy.png
 layout: model.njk
 show: true
 ---
