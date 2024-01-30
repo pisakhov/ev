@@ -18,7 +18,7 @@ layout: 'base.njk'
 
 <div class="grid grid-cols-1 grid-rows-1 md:grid-cols-3 md:grid-rows-2 lg:gap-4 md:gap-3 gap-2 [&>*:not(:first-child)]:ring-1 [&>*]:ring-white/20  [&>*:not(:first-child)]:shadow-md md:[&>*]:rounded-xl [&>*]:rounded-md hover:[&>*]:transition-all md:hover:[&>*:not(:first-child)]:bg-white/20 [&>*]:duration-300 [&>*]:delay-80 [&>*]:ease-in-out [&>*]:backdrop-blur-[1px] [&>*:not(:first-child)]:bg-white/10 [&>*]:p-2 m-2 [&>*]:text-gray-100">
   <!-- LOGO -->
-   <div class="md:col-span-1 md:row-span-1 flex flex-row justify-normal items-center">
+   <div class="md:col-span-1 md:row-span-2 flex flex-row justify-normal items-center">
    <div class="flex justify-center">
          <img class="w-24 md:w-32 lg:w-36 saturate-200" src="./assets/img/__econ.png" alt=""> 
    </div>
@@ -26,31 +26,14 @@ layout: 'base.njk'
     <!-- LOGO -->
 
   <!-- ABOUT -->
-  <div class="font-light text-sm md:text-xl lg:text-[2rem] md:col-span-1 row-span-2 text-center text-transparent flex md:flex-col flex-row justify-evenly items-center">
-   <h1 class="saturate-200 w-full  tracking-wide antialiased leading-loose bg-clip-text text-transparent bg-gradient-to-b from-teal-300 via-cyan-400 to-blue-400 select-none">Smart Learning Through Interactive Economics...</h1>
+  <div class="font-light text-sm md:text-xl lg:text-[2rem] md:col-span-2 row-span-2 text-center text-transparent flex md:flex-col flex-row justify-evenly items-center">
+   <h1 class="saturate-200 w-full tracking-wide antialiased leading-loose bg-clip-text text-transparent bg-gradient-to-b from-teal-300 via-cyan-400 to-blue-400 select-none">Smart Learning Through Interactive Economics...</h1>
    <button class="bg-violet-500 hover:bg-violet-400 text-white md:py-2 md:px-4 md:border-b-4 py-1 px-2 border-b-2 border-violet-700 hover:border-violet-500 rounded">
       Learn more
     </button>
 </div>
   <!-- ABOUT -->
 
-     <!-- CREATORS -->
-     <div class="md:col-span-2 row-span-1 md:h-full h-28 row-start-2">
-
-      <div class="scroller" data-direction="right" data-speed="slow">
-            <div class="
-            scroller__inner md:h-32 h-24 flex flex-row gap-8 hover:[&_img]:grayscale-0 hover:[&_img]:shadow-md [&_img]:grayscale [&_img]:rounded-full [&_img]:h-full [&_img]:object-cover">
-   
-           <img src="https://econ.vision/assets/img/radi.jpg" alt="" />
-           <img src="https://econ.vision/assets/img/kyla.jpg" alt="" />
-           <img src="https://econ.vision/assets/img/9a8f93cf-d51e-431f-9860-4a72adfcd95f.jpg" alt="" />
-           <img src="https://econ.vision/assets/img/img_0414.jpeg" alt="" />
-         </div>
-       </div>
-       
-   
-     </div>
-        <!-- CREATORS -->
 
 
     <!--Courses-->
@@ -66,8 +49,8 @@ layout: 'base.njk'
                {% for model in collections[course.data.tag] %}
             <div class="relative group">
                 <img src="{{ model.data.thumbnail }}" alt="{{ model.data.title }}" class="w-full h-32 object-cover rounded-md transform transition-all duration-500" />
-                <div class="absolute inset-0 bg-gradient-to-t from-50% group-hover:from-0% from-{{course.data.color}}-800/40 to-transparent p-4 rounded-md transition-colors transition-all duration-1000">
-                    <h2 class="text-{{course.data.color}}-700 text-lg transition-colors duration-200 group-hover:text-{{course.data.color}}-700 group-hover:translate-x-4 group-hover:translate-y-1 transition-transform duration-400">{{ model.data.title }}</h2>
+                <div class="shadow-md absolute inset-0 bg-gradient-to-t from-50% group-hover:from-0% from-{{course.data.color}}-800/40 to-transparent p-4 rounded-md transition-colors transition-all duration-1000">
+                  <h2 class="text-{{course.data.color}}-100 p-2 rounded-md bg-{{course.data.color}}-700 group-hover:saturate-200 group-hover:bg-{{course.data.color}}-600 md:text-md text-sm transition-colors duration-200 group-hover:text-{{course.data.color}}-50 transition-transform duration-400">{{ model.data.title }}</h2>
                 </div>
                 <a href="{{ model.url }}" class="absolute inset-0"></a>
             </div>
@@ -87,7 +70,7 @@ layout: 'base.njk'
 
 
 
-  <div class="md:col-span-3 row-span-1 h-18">
+  <div class="md:col-span-1 row-span-1 h-18">
 
    <div class="scroller" data-speed="slow">
       <ul class="scroller__inner flex flex-row h-full items-center [&_li]:bg-violet-600 [&_li]:p-2 [&_li]:rounded-md">
@@ -111,6 +94,24 @@ layout: 'base.njk'
 
 
 </div>
+     <!-- CREATORS -->
+     <div class="md:col-span-2 row-span-1 md:h-full h-28">
+
+      <div class="scroller" data-direction="right" data-speed="slow">
+            <div class="
+            scroller__inner md:h-32 h-24 flex flex-row gap-8 hover:[&_img]:grayscale-0 hover:[&_img]:shadow-md [&_img]:grayscale [&_img]:rounded-full [&_img]:h-full [&_img]:object-cover">
+   
+           <img src="https://econ.vision/assets/img/radi.jpg" alt="" />
+           <img src="https://econ.vision/assets/img/kyla.jpg" alt="" />
+           <img src="https://econ.vision/assets/img/9a8f93cf-d51e-431f-9860-4a72adfcd95f.jpg" alt="" />
+           <img src="https://econ.vision/assets/img/img_0414.jpeg" alt="" />
+         </div>
+       </div>
+       
+   
+     </div>
+        <!-- CREATORS -->
+
   <!-- GET IN TOUCH -->
   <div class="flex flex-row justify-end items-center md:col-span-3 md:row-span-1 md:max-h-48 max-h-24">
    <h1 class="saturate-200 text-xl lg:text-3xl lg:text-2xl font-bold tracking-wide bg-clip-text text-transparent bg-gradient-to-br from-violet-600 to-violet-400 select-none">GET IN TOUCH</h1>
@@ -156,3 +157,35 @@ for (var i = 0; i < choices.length; i++) {
 choices[0].style.flex = 'auto';
 choices[0].style.overflow = 'auto';
 </script>
+
+<script>
+   const scrollers = document.querySelectorAll(".scroller");
+   
+   // If a user hasn't opted in for recuded motion, then we add the animation
+   if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+     addAnimation();
+   }
+   
+   function addAnimation() {
+     scrollers.forEach((scroller) => {
+       // add data-animated="true" to every `.scroller` on the page
+       scroller.setAttribute("data-animated", true);
+ 
+ 
+     // Make an array from the elements within `.scroller-inner`
+     const scrollerInner = scroller.querySelector(".scroller__inner");
+     const scrollerContent = Array.from(scrollerInner.children);
+ 
+     // For each item in the array, clone it
+     // add aria-hidden to it
+     // add it into the `.scroller-inner`
+     scrollerContent.forEach((item) => {
+       const duplicatedItem = item.cloneNode(true);
+       duplicatedItem.setAttribute("aria-hidden", true);
+       scrollerInner.appendChild(duplicatedItem);
+     });
+   });
+ }
+ 
+ 
+ </script>
