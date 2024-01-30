@@ -1,5 +1,6 @@
 ---
 tags: public-economy
+thumbnail: /assets/img/tax-on-monopoly.png
 title: Tax Incidence in Monopoly
 layout: model.njk
 show: true

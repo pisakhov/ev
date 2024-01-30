@@ -50,7 +50,7 @@ layout: 'base.njk'
             <div class="relative group">
                 <img src="{{ model.data.thumbnail }}" alt="{{ model.data.title }}" class="w-full h-32 object-cover rounded-md transform transition-all duration-500" />
                 <div class="shadow-md absolute inset-0 bg-gradient-to-t from-50% group-hover:from-0% from-{{course.data.color}}-800/40 to-transparent p-4 rounded-md transition-colors transition-all duration-1000">
-                  <h2 class="text-{{course.data.color}}-100 p-2 rounded-md bg-{{course.data.color}}-700 group-hover:saturate-200 group-hover:bg-{{course.data.color}}-600 md:text-md text-sm transition-colors duration-200 group-hover:text-{{course.data.color}}-50 transition-transform duration-400">{{ model.data.title }}</h2>
+                  <h2 class="text-{{course.data.color}}-50 font-extralight p-2 rounded-md bg-{{course.data.color}}-600 saturate-200 group-hover:saturate-100 group-hover:bg-{{course.data.color}}-700 md:text-md text-sm transition-colors duration-200 group-hover:text-{{course.data.color}}-50 transition-transform duration-400">{{ model.data.title }}</h2>
                 </div>
                 <a href="{{ model.url }}" class="absolute inset-0"></a>
             </div>
@@ -72,22 +72,22 @@ layout: 'base.njk'
 
   <div class="md:col-span-1 row-span-1 h-18">
 
-   <div class="scroller" data-speed="slow">
-      <ul class="scroller__inner flex flex-row h-full items-center [&_li]:bg-violet-600 [&_li]:p-2 [&_li]:rounded-md">
-         <li>Microeconomics</li>
-         <li>Macroeconomics</li>
-         <li>Supply and Demand</li>
-         <li>Market Structure</li>
-         <li>Income Elasticity</li>
-         <li>Price Elasticity</li>
-         <li>Consumer Surplus</li>
-         <li>Producer Surplus</li>
-         <li>Opportunity Cost</li>
-         <li>Comparative Advantage</li>
-         <li>Game Theory</li>
-         <li>Monetary Policy</li>
-         <li>Fiscal Policy</li>
-         <li>Exchange Rates</li>         
+   <div class="scroller flex justify-between" data-speed="slow">
+      <ul class="scroller__inner text-sm flex flex-row h-full items-center justify-between [&_li]:bg-violet-600 [&_li]:w-auto [&_li]:p-2 [&_li]:rounded-md">
+        <li>Supply</li>
+        <li>Demand</li>
+        <li>Inflation</li>
+        <li>Recession</li>
+        <li>Trade</li>
+        <li>Monopoly</li>
+        <li>Scarcity</li>
+        <li>Equity</li>
+        <li>Efficiency</li>
+        <li>Stability</li>
+        <li>Growth</li>
+        <li>Deficit</li>
+        <li>Surplus</li>
+        <li>Interest</li>   
         </ul>
     </div>
  
@@ -113,9 +113,15 @@ layout: 'base.njk'
         <!-- CREATORS -->
 
   <!-- GET IN TOUCH -->
-  <div class="flex flex-row justify-end items-center md:col-span-3 md:row-span-1 md:max-h-48 max-h-24">
-   <h1 class="saturate-200 text-xl lg:text-3xl lg:text-2xl font-bold tracking-wide bg-clip-text text-transparent bg-gradient-to-br from-violet-600 to-violet-400 select-none">GET IN TOUCH</h1>
-   <img src="./assets/img/contactus.png" class="saturate-200 h-full aspect-square">
+  <div class="flex flex-row gap-4 justify-end items-center md:col-span-3 md:row-span-2 md:max-h-48 max-h-24">
+    <div class="relative z-0 w-1/2 mb-5 group self-end grid gap-2 col-span-2">
+      <input type="email" name="floating_email" id="floating_email" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-violet-400 appearance-none text-white focus:border-cyan-400 focus:outline-none focus:ring-0 focus:border-cyan-400 peer" placeholder=" " required />
+      <label for="floating_email" class="peer-focus:font-medium absolute text-sm text-gray-100 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-violet-400 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Email address</label>
+      <button class="bg-violet-400 text-xs sm:text-sm md:text-md py-2 px-4 rounded-md hover:bg-cyan-400 transition-colors duration-200 md:py-2 md:px-4 lg:py-3 lg:px-6 xl:py-4 xl:px-8">Stay in touch</button>    </div>
+    
+    <img src="./assets/img/contactus.png" class="row-span-1 col-span-1 saturate-200 h-full aspect-square">
+    <h1 class="col-span-1 saturate-200 text-xl lg:text-3xl lg:text-2xl font-bold tracking-wide bg-clip-text text-transparent bg-gradient-to-br from-violet-600 to-violet-400 select-none">GET IN TOUCH</h1>
+
   </div>
    <!-- GET IN TOUCH -->
 

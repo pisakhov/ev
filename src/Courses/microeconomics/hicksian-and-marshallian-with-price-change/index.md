@@ -1,6 +1,6 @@
 ---
 tags: microeconomics
-thumbnail: public/assets/img/MarshalianGraph.png
+thumbnail: /assets/img/effect-on-price-change.png
 title: Effect of a Price Change
 layout: model.njk
 show: true

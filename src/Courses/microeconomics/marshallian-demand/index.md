@@ -1,5 +1,6 @@
 ---
 tags: microeconomics
+thumbnail: /assets/img/marshallian-demand.png
 title: Marshallian Demand
 layout: model.njk
 show: true

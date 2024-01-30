@@ -1,5 +1,6 @@
 ---
 tags: microeconomics
+thumbnail: /assets/img/multi-market-pricing.png
 title: Multi Market Pricing
 layout: model.njk
 show: true

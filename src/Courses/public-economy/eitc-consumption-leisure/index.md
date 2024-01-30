@@ -1,5 +1,6 @@
 ---
 tags: public-economy
+thumbnail: /assets/img/eitc-graph.png
 title: EITC Consumption-Leisure
 layout: model.njk
 show: true
