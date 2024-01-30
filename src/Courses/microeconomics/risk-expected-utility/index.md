@@ -1,5 +1,6 @@
 ---
 tags: microeconomics
+thumbnail: /assets/img/risk.png
 title: Risk - Expected Utility
 layout: model.njk
 show: true

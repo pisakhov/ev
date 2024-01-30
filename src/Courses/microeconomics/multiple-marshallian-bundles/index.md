@@ -1,5 +1,6 @@
 ---
 tags: microeconomics
+thumbnail: /assets/img/price-dynamic.png
 title: Multiple Marshallian Bundles
 layout: model.njk
 show: true
@@ -7,7 +8,7 @@ show: true
 <script>
 const myCalculator = new EconVision();
 
-myCalculator.setGraphs({ 'engine': 'desmos', 'idDiv': 'DynamicMarshallianGraph', 'height': '650px', 'width': '100', 'left': '-25', 'right': '150', 'bottom': '-15', 'top': '100', 'copy': true, 'expressions': false, 'zoomFit': true, 'showXAxis': true, 'showYAxis': true, 'xAxisLabel': 'x(units)', 'yAxisLabel': 'y(units)' });
+myCalculator.setGraphs({ 'engine': 'desmos', 'idDiv': 'DynamicMarshallianGraph', 'height': '650px', 'width': '100', 'left': '-25', 'right': '150', 'bottom': '-15', 'top': '100', 'copy': true, 'expressions': true, 'zoomFit': true, 'showXAxis': true, 'showYAxis': true, 'xAxisLabel': 'x(units)', 'yAxisLabel': 'y(units)' });
 
 //utility function
 myCalculator.addFuncInput({ 'idDiv': 'UtilityFunction', 'title': 'Utility Function', 'func': "U(x,y)", 'latex': "\\ln\\left(x\\right)+\\ln\\left(y\\right)", 'listGraphs': [0] });
@@ -20,6 +21,7 @@ myCalculator.addExpression({ idDiv: "Pi2I1", latex: 'x_{2}\\left(x,y\\right)=x\\
 myCalculator.addExpression({ idDiv: "Pi2I2", latex: 'y_{2}\\left(x,y\\right)=x\\sin\\left(-2\\pi\\right)+y\\cos\\left(-2\\pi\\right)', listGraphs: [0] });
 
 myCalculator.addDynamicExp({ 'calc': 'simpleDraw', 'color': 'purple', 'idDiv': 'solvecompute', 'parentIdDiv': 'BudgetLine', 'lhs': ["x_{2}(x,y)", "y_{2}(x,y)"], 'rhs': 'I', 'listGraphs': [0] });
+
 myCalculator.addDynamicExp({ 'calc': 'simpleCompute', 'idDiv': 'dynamicUtil', 'parentIdDiv': 'BudgetLine', 'compute': 'UtilityFunction', 'NewfunEqu': 'G(x,y)', 'listGraphs': [0] });
 
 
@@ -40,6 +42,4 @@ myCalculator.setCreators({
 	name: "Kyla",
 	school: "CC’24"
 });
-
-myCalculator.setScriptPackage({ 'replaceExp': true, 'replaceLatex': true, 'replaceTip': true, 'replaceTheory': true, 'refresh': true });
 </script>
