@@ -1,5 +1,5 @@
 ---
-thumbnail: /assets/img/9a8f93cf-d51e-431f-9860-4a72adfcd95f.jpg
+thumbnail: /assets/img/elea.jpg
 name: Elea
 role: Developer
 tags: creators
