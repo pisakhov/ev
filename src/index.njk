@@ -41,6 +41,7 @@ layout: 'base.njk'
   <div class="
   flex flex-col md:flex-row gap-2 [&>*]:transition-all [&>*]:duration-500 [&>*]:delay-1000 [&>*]:ease-in-out md:[&>*]:w-[100%] md:[&_div]:min-w-10 [&_div]:h-[100%] [&_div]:min-h-10 h-full w-full [&>*]:flex-1 first:[&>*]:flex-auto">
 
+<<<<<<< HEAD
   {% for course in collections.index %}
     <div class="saturate-200 choice md:hover:[&_h5]:bg-{{course.data.color}}-700 items-center overflow-hidden rounded-md bg-{{course.data.color}}-500 text-white p-4 relative">
       <h5 class="p-2 rounded-md text-lg font-semibold md:[writing-mode:vertical-lr] md:absolute cursor-pointer md:-ml-4 -mt-4 md:h-full"><p class="">{{ course.data.title }}</p></h5>
@@ -60,6 +61,27 @@ layout: 'base.njk'
       </span>
     </div>
   {% endfor %}
+=======
+   {% for course in collections.index %}
+      <div class="saturate-200 choice md:hover:[&_h5]:bg-{{course.data.color}}-700 items-center overflow-hidden rounded-md bg-{{course.data.color}}-500 text-white p-4 relative">
+         <h5 class="p-2 rounded-md text-lg font-semibold md:[writing-mode:vertical-lr] md:absolute cursor-pointer md:-ml-4 -mt-4 md:h-full">{{ course.data.title }}</h5>
+         <span class="">
+            <ul class="md:ml-10 animate-pulse [&_li]:bg-{{course.data.color}}-600 hover:[&_li]:bg-{{course.data.color}}-700 [&_li]:rounded-md [&_li]:flex-auto [&_li]:p-1 grid md:grid-cols-2 md:grid-cols-1 gap-1 items-center flex">
+               {% for model in collections[course.data.tag] %}
+            <div class="relative group">
+                <img src="{{ model.data.thumbnail }}" alt="{{ model.data.title }}" class="invisible w-full h-32 object-cover rounded-md transform transition-all duration-500" />
+                <div class="shadow-md absolute inset-0 bg-gradient-to-t from-50% group-hover:from-0% from-{{course.data.color}}-800/40 to-transparent p-4 rounded-md transition-colors transition-all duration-1000">
+                  <h2 class="invisible text-{{course.data.color}}-50 font-extralight p-2 rounded-md bg-{{course.data.color}}-600 saturate-200 group-hover:saturate-100 group-hover:bg-{{course.data.color}}-700 md:text-md text-sm transition-colors duration-200 group-hover:text-{{course.data.color}}-50 transition-transform duration-400">{{ model.data.title }}</h2>
+                </div>
+                <a href="{{ model.url }}" class="absolute inset-0"></a>
+            </div>
+            
+            {% endfor %}
+            </ul>
+         </span>
+      </div>
+   {% endfor %}
+>>>>>>> 54479de43cf10d5558a740e744af51df25092b72
 
   </div>
 
@@ -193,4 +215,24 @@ choices[0].style.overflow = 'auto';
  }
  
  
+ </script>
+
+ <script>
+window.addEventListener('load', function() {
+    var ulElements = document.getElementsByTagName('ul');
+    for(var i = 0; i < ulElements.length; i++) {
+        ulElements[i].classList.remove('animate-pulse');
+
+        var imgElements = ulElements[i].getElementsByTagName('img');
+        for(var j = 0; j < imgElements.length; j++) {
+            imgElements[j].classList.remove('invisible');
+        }
+
+        var h2Elements = ulElements[i].getElementsByTagName('h2');
+        for(var k = 0; k < h2Elements.length; k++) {
+            h2Elements[k].classList.remove('invisible');
+        }
+    }
+});
+
  </script>
