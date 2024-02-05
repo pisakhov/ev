@@ -2,21 +2,22 @@
 title: Econ.vision
 layout: 'base.njk'
 ---
+<video autoplay muted loop class="inset-0 h-screen w-screen object-cover snap-start fixed">
+  <source src="./assets/img/hero.mp4" type="video/mp4">
+</video>
+<!-- {% include "desmos.njk" %} -->
 
-<section class="bg-gray-900 relative bg-center bg-fixed">
-                    <!-- <video autoplay muted loop class="h-screen w-screen object-cover fixed opacity-10">
-                     <source src="https://cdn-cf-east.streamable.com/video/mp4/c0sb2q.mp4?Expires=1706038560&Signature=XTeCnhdNeBGCRGrIc8TL-DE4VRkNMtcF-qxhrTpaRH0R7iIxVxmmfGA2xQqVNDpNfMaYbRRRnsth9nSP0m1~8XnQtf900KVaa5Uc~G1smOBvgYRL4L~qAY~P4gX-T6AGwDsFZL5DNSB-5xcR-dhWXl0vcyUJB25RO8kxdQ-Q4~y7KvNfj4LR4oH4wPGs~MBalEWMXtJ31QTwYUgjrh1F5QOZQ-aR-6skjf7wjFpyL5Cqx67RBwFuZg3qIN3TbV-cF6-lt3doyV~UmFSL-EXbR~J69XYjEsu0T81vvc9eVEar0wLQ3aysp8892SAOJTs2rrWTOI~BJntG6uFy3dE6RQ__&Key-Pair-Id=APKAIEYUVEN4EVB2OKEQ" type="video/mp4">
-                  </video> -->
+<section class="relative bg-center bg-fixed snap-y snap-mandatory">
 
-{% include "desmos.njk" %}
-<base class="grid grid-rows-3 gap-8 content-between fixed">
+
+<div class="grid grid-rows-3 gap-8 content-between fixed">
 <div class="saturate-200 bg-violet-600 opacity-100 aspect-square w-1/2 blur-[200px] fixed top-0 left-0 rounded-full"></div>
 <div class="saturate-200 bg-cyan-600 opacity-100 aspect-square w-1/2  blur-[200px] fixed bottom-0 right-0 rounded-full"></div>
-</base>
-  <main class="lg:mx-[10%] md:mx-4 mx-0">
+</div>
+  <main class="lg:mx-[10%] md:mx-4 mx-0 snap-start">
 
 
-<div class="grid grid-cols-1 grid-rows-1 md:grid-cols-3 md:grid-rows-2 lg:gap-4 md:gap-3 gap-2 [&>*:not(:first-child)]:ring-1 [&>*]:ring-white/20  [&>*:not(:first-child)]:shadow-md md:[&>*]:rounded-xl [&>*]:rounded-md hover:[&>*]:transition-all md:hover:[&>*:not(:first-child)]:bg-white/20 [&>*]:duration-300 [&>*]:delay-80 [&>*]:ease-in-out [&>*]:backdrop-blur-[1px] [&>*:not(:first-child)]:bg-white/10 [&>*]:p-2 m-2 [&>*]:text-gray-100">
+<div class="grid grid-cols-1 grid-rows-1 md:grid-cols-3 md:grid-rows-2 lg:gap-4 md:gap-3 gap-2 [&>*:not(:first-child)]:ring-1 [&>*]:ring-white/20  [&>*:not(:first-child)]:shadow-[-2px_-2px_6px_rgba(255,255,255,0.2),2px_2px_6px_rgba(0,0,0,0.2)] md:[&>*]:rounded-md [&>*]:rounded-md hover:[&>*]:transition-all md:hover:[&>*:not(:first-child)]:bg-transparent [&>*]:duration-300 [&>*]:delay-80 [&>*]:ease-in-out [&>*]:backdrop-blur-[1px] [&>*:not(:first-child)]:bg-white/10 [&>*]:p-2 m-2 [&>*]:text-gray-100">
   <!-- LOGO -->
   <div class="md:col-span-1 md:row-span-2 flex flex-row items-center justify-center">
     <div class="flex justify-center">
@@ -45,7 +46,8 @@ layout: 'base.njk'
       <div class="saturate-200 choice md:hover:[&_h5]:bg-{{course.data.color}}-700 items-center overflow-hidden rounded-md bg-{{course.data.color}}-500 text-white relative">
          <h5 class="p-2 rounded-md text-lg font-semibold md:[writing-mode:vertical-lr] sticky z-20 top-0 cursor-pointer md:left-0 md:h-full bg-{{course.data.color}}-500">{{ course.data.title }}</h5>
          <span class="">
-            <ul class="md:left-12 md:top-0 top-10 absolute z-10 animate-pulse [&_li]:bg-{{course.data.color}}-600 hover:[&_li]:bg-{{course.data.color}}-700 [&_li]:rounded-md [&_li]:flex-auto hover:[&_li]:shadow-lg grid md:grid-cols-5 grid-cols-1 gap-2 items-center flex p-8 w-full md:w-auto">
+            <ul class="
+            md:left-12 md:top-0 top-10 absolute z-10 animate-pulse [&_li]:bg-{{course.data.color}}-600 hover:[&_li]:bg-{{course.data.color}}-700 [&_li]:rounded-md [&_li]:flex-auto hover:[&_li]:shadow-lg grid md:grid-cols-2 grid-cols-1 gap-2 items-center flex p-8 w-full md:w-[94%]">
                {% for model in collections[course.data.tag] %}
             <li class="relative group">
                 <img src="{{ model.data.thumbnail }}" alt="{{ model.data.title }}" class="invisible w-full h-32 object-cover rounded-md transform transition-all duration-500" />
@@ -72,12 +74,18 @@ layout: 'base.njk'
   <div class="grid grid-cols-3 gap-2">
     <ul id="tabs" class="shadow-md [&_li]:p-2 [&_li]:rounded-md absolute [&_li]:z-20 [&_li]:cursor-pointer
     col-span-1 flex flex-col p-1 list-none rounded-lg text-xs md:text-md text-sky-900 saturate-200 bg-sky-500 relative">
-      <li class="tab active" data-target="math">Advanced Functions</li>
-      <li class="tab" data-target="graph">Interactive Graphing</li>
-      <li class="tab" data-target="help">Helpful Resources</li>
+      <li class="tab active" data-target="math">
+        <i class="fas fa-calculator"></i>
+        Advanced Functions</li>
+      <li class="tab" data-target="graph">
+        <i class="fas fa-chart-line"></i>
+        Interactive Graphing</li>
+      <li class="tab" data-target="help">
+        <i class="fas fa-info-circle"></i>
+        Helpful Resources</li>
       <div id="highlight" class="absolute shadow-md h-content z-10 w-[96%] left-0 ml-1 m-auto bg-sky-100 rounded-md opacity-100 transition-all duration-300"></div>
     </ul>
-    <div class="col-span-2 p-5 text-sm md:text-md rounded-md shadow-[2px_2px_6px_rgba(255,255,255,0.2),-2px_-2px_6px_rgba(0,0,0,0.2)]">
+    <div class="col-span-2 p-5 text-sm md:text-md rounded-md shadow-[1px_1px_10px_rgba(0,0,0,0.2),-1px_-1px_10px_rgba(255,255,255,0.2)]">
       <div id="math" class="content active">Our tool is capable of using advanced mathematical functions in our graphing calculator, offering you complete freedom and flexibility in the input section.</div>
       <div id="graph" class="content hidden">Our graph not only displays precise input, but is also highly interactive, allowing you to explore and manipulate the graph for a more in-depth understanding.</div>
       <div id="help" class="content hidden">We've got you covered with our help section, providing instructions and guidance on how to use our model effectively and make the most out of our tools.</div>
@@ -93,8 +101,8 @@ document.querySelectorAll('.tab').forEach(button => {
   });
 
   button.addEventListener('click', () => {
-    document.querySelectorAll('.tab').forEach(btn => btn.classList.remove('active', 'bg-sky-100'));
-    button.classList.add('active', 'bg-sky-100');
+    document.querySelectorAll('.tab').forEach(btn => btn.classList.remove('active'));
+    button.classList.add('active');
     const target = button.dataset.target;
     document.querySelectorAll('.content').forEach(content => {
       if (content.id === target) {
@@ -124,9 +132,9 @@ window.addEventListener('load', () => {
 
 
 
-  <div class="md:col-span-1 row-span-1 h-18">
+  <div class="md:col-span-1 row-span-1 h-18 flex items-center">
 
-   <div class="scroller flex justify-between" data-speed="slow">
+   <div class="scroller flex justify-between items-center" data-speed="slow">
       <ul class="scroller__inner text-sm flex flex-row h-full items-center justify-between [&_li]:bg-violet-600 [&_li]:w-auto [&_li]:p-2 [&_li]:rounded-md">
         <li>Supply</li>
         <li>Demand</li>
@@ -149,7 +157,7 @@ window.addEventListener('load', () => {
 
 </div>
      <!-- CREATORS -->
-     <div class="md:col-span-1 row-span-1 md:h-full h-28">
+     <div class="md:col-span-1 row-span-1 md:h-full h-28 flex items-center">
 
       <div class="scroller" data-direction="right" data-speed="slow">
             <div class="
