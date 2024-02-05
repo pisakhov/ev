@@ -41,27 +41,6 @@ layout: 'base.njk'
   <div class="
   flex flex-col md:flex-row gap-2 [&>*]:transition-all [&>*]:duration-500 [&>*]:delay-1000 [&>*]:ease-in-out md:[&>*]:w-[100%] md:[&_div]:min-w-10 [&_div]:h-[100%] [&_div]:min-h-10 h-full w-full [&>*]:flex-1 first:[&>*]:flex-auto">
 
-<<<<<<< HEAD
-  {% for course in collections.index %}
-    <div class="saturate-200 choice md:hover:[&_h5]:bg-{{course.data.color}}-700 items-center overflow-hidden rounded-md bg-{{course.data.color}}-500 text-white p-4 relative">
-      <h5 class="p-2 rounded-md text-lg font-semibold md:[writing-mode:vertical-lr] md:absolute cursor-pointer md:-ml-4 -mt-4 md:h-full"><p class="">{{ course.data.title }}</p></h5>
-      <span class="">
-        <ul class="md:ml-10 [&_li]:bg-{{course.data.color}}-600 hover:[&_li]:bg-{{course.data.color}}-700 [&_li]:rounded-md [&_li]:flex-auto [&_li]:p-1 grid md:grid-cols-2 md:grid-cols-1 gap-1 items-center flex sm:h-auto">
-          {% for model in collections[course.data.tag] %}
-        <div class="relative group h-auto">
-           <img src="{{ model.data.thumbnail }}" alt="{{ model.data.title }}" class="w-full md:h-32 h-16 object-cover rounded-md transform transition-all duration-500" />
-           <div class="shadow-md absolute inset-0 bg-gradient-to-t from-50% group-hover:from-0% from-{{course.data.color}}-800/40 to-transparent p-4 rounded-md transition-colors transition-all duration-1000">
-            <h2 class="text-{{course.data.color}}-50 font-extralight p-2 rounded-md bg-{{course.data.color}}-600 saturate-200 group-hover:saturate-100 group-hover:bg-{{course.data.color}}-700 md:text-md text-sm transition-colors duration-200 group-hover:text-{{course.data.color}}-50 transition-transform duration-400">{{ model.data.title }}</h2>
-           </div>
-           <a href="{{ model.url }}" class="absolute inset-0"></a>
-        </div>
-        
-        {% endfor %}
-        </ul>
-      </span>
-    </div>
-  {% endfor %}
-=======
    {% for course in collections.index %}
       <div class="saturate-200 choice md:hover:[&_h5]:bg-{{course.data.color}}-700 items-center overflow-hidden rounded-md bg-{{course.data.color}}-500 text-white p-4 relative">
          <h5 class="p-2 rounded-md text-lg font-semibold md:[writing-mode:vertical-lr] md:absolute cursor-pointer md:-ml-4 -mt-4 md:h-full">{{ course.data.title }}</h5>
@@ -81,14 +60,55 @@ layout: 'base.njk'
          </span>
       </div>
    {% endfor %}
->>>>>>> 54479de43cf10d5558a740e744af51df25092b72
 
   </div>
 
 
 </div>
 
+  <!-- FEATURES -->
+  
+  <div class="text-center text-transparent font-light text-base md:text-2xl lg:text-lg md:col-span-1 row-span-1">
+    <details class="flex flex-col md:flex-row justify-evenly items-center w-full p-4 bg-teal-100 rounded-md transition-all duration-200 ease-in-out hover:shadow-lg">
+      <summary class="flex items-center justify-center space-x-2">
+        <i class="cursor-pointer fas fa-calculator text-4xl bg-clip-text text-transparent bg-gradient-to-b from-teal-400 via-cyan-500 to-blue-500"></i>
+        <h1 class="cursor-pointer tracking-wide antialiased leading-relaxed bg-clip-text text-transparent bg-gradient-to-b from-teal-400 via-cyan-500 to-blue-500 select-none">Interactive Graphing</h1>
+      </summary>
+      <p class="mt-4 bg-teal-900 text-white p-2 rounded-b-lg">
+        Our tool is capable of using advanced mathematical functions in our graphing calculator, offering you complete freedom and flexibility in the input section.
+      </p>
+    </details>
+  </div>
 
+
+
+
+  <div class="text-center text-transparent font-light text-base md:text-2xl lg:text-lg md:col-span-1 row-span-1">
+    <details class="flex flex-col md:flex-row justify-evenly items-center w-full p-4 bg-emerald-100 rounded-md transition-all duration-200 ease-in-out hover:shadow-lg">
+      <summary class="flex items-center justify-center space-x-2">
+        <i class="cursor-pointer fas fa-chart-line text-4xl bg-clip-text text-transparent bg-gradient-to-b from-green-400 via-emerald-500 to-lime-500"></i>
+        <h1 class="cursor-pointer tracking-wide antialiased leading-relaxed bg-clip-text text-transparent bg-gradient-to-b from-green-400 via-emerald-500 to-lime-500 select-none">Interactive Graphing</h1>
+      </summary>
+      <p class="mt-4 bg-emerald-900 text-white p-2 rounded-b-lg">
+        Our graph not only displays precise input, but is also highly interactive, allowing you to explore and manipulate the graph for a more in-depth understanding.
+      </p>
+    </details>
+  </div>
+
+
+  <div class="text-center text-transparent font-light text-base md:text-2xl lg:text-lg md:col-span-1 row-span-1">
+    <details class="flex flex-col md:flex-row justify-evenly items-center w-full p-4 bg-rose-100 rounded-md transition-all duration-200 ease-in-out hover:shadow-lg">
+      <summary class="flex items-center justify-center space-x-2">
+        <i class="cursor-pointer fas fa-info-circle text-4xl bg-clip-text text-transparent bg-gradient-to-b from-rose-400 via-pink-500 to-red-500"></i>
+        <h1 class="cursor-pointer tracking-wide antialiased leading-relaxed bg-clip-text text-transparent bg-gradient-to-b from-rose-400 via-pink-500 to-red-500 select-none">Interactive Graphing</h1>
+      </summary>
+      <p class="mt-4 bg-rose-900 text-white p-2 rounded-b-lg">
+        We've got you covered with our help section, providing instructions and guidance on how to use our model effectively and make the most out of our tools.
+      </p>
+    </details>
+  </div>
+  
+   <!-- FEATURES -->
 
 
   <div class="md:col-span-1 row-span-1 h-18">
@@ -122,10 +142,10 @@ layout: 'base.njk'
             <div class="
             scroller__inner md:h-32 h-24 flex flex-row gap-8 hover:[&_img]:grayscale-0 hover:[&_img]:shadow-md [&_img]:grayscale [&_img]:rounded-full [&_img]:h-full [&_img]:object-cover">
    
-           <img src="https://econ.vision/assets/img/radi.jpg" alt="" />
-           <img src="https://econ.vision/assets/img/kyla.jpg" alt="" />
-           <img src="https://econ.vision/assets/img/9a8f93cf-d51e-431f-9860-4a72adfcd95f.jpg" alt="" />
-           <img src="https://econ.vision/assets/img/img_0414.jpeg" alt="" />
+           <img src="https://econ.vision/assets/img/radi.jpg" alt="Radi" class=""/>
+           <img src="https://econ.vision/assets/img/kyla.jpg" alt="Kyla" class="" />
+           <img src="https://econ.vision/assets/img/elea.jpg" alt="Elea" class="" />
+           <img src="https://econ.vision/assets/img/joy.jpg" alt="Joy" class="" />
          </div>
        </div>
        
