@@ -102,7 +102,6 @@
     place-content: center;
     font-family: system-ui;
     font-size: 1.125rem;
-    background-color: var(--clr-primary-800);
   }
   
   .tag-list {
