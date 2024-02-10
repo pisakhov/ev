@@ -3,7 +3,7 @@ tags: index
 title: Principals of Economics
 layout: base.njk
 tag: principal-economics
-color: sky
+color: rose
 show: true
 ---
 <section class="relative mx-1 md:mx-[8rem] min-h-screen pt-[4em] md:pt-[8rem]">

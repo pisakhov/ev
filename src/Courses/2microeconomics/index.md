@@ -3,7 +3,7 @@ tags: index
 title: Intermediate Microeconomics
 layout: base.njk
 tag: microeconomics
-color: cyan
+color: fuchsia
 show: true
 ---
             {% include "nav.njk" %}
