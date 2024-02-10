@@ -1,5 +1,5 @@
 ---
-tags: public-economy
+tags: principal-economics
 thumbnail: /assets/img/tax-evasion.png
 title: Risk-Neutral Tax Evasion Decision-Making
 layout: model.njk

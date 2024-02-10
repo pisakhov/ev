@@ -1,5 +1,5 @@
 ---
-tags: public-economy
+tags: principal-economics
 thumbnail: /assets/img/tax-incidence.png
 title: Tax Incidence
 layout: model.njk

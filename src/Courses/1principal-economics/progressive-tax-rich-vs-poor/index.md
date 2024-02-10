@@ -1,5 +1,5 @@
 ---
-tags: public-economy
+tags: principal-economics
 thumbnail: /assets/img/progressive-tax.png
 title: Progressive Tax Rich Vs Poor
 layout: model.njk
