@@ -1,5 +1,5 @@
 ---
-thumbnail: /assets/img/joy.jpeg
+thumbnail: /assets/img/joy.jpg
 name: Wenrui (Joy)
 role: Developer
 tags: creators
