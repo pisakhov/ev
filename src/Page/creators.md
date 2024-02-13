@@ -6,9 +6,9 @@ layout: page.njk
 show: true
 ---
 
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16 pt-[2rem] p-2">{% for creator in collections.creators %}{% if creator.data.show %}
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16 pt-[4rem] p-4">{% for creator in collections.creators %}{% if creator.data.show %}
     <div class="group backdrop-blur-sm bg-white/60 rounded-lg hover:shadow-lg hover:shadow-violet-500/50 flex flex-col items-center justify-between relative">
-        <div class="relative rounded-full h-12 w-12 -mt-6 md:h-22 md:w-22 md:-mt-22 lg:h-24 lg:w-24 lg:-mt-12 shadow-lg">
+        <div class="relative rounded-full h-20 w-20 -mt-10 md:h-24 md:w-24 md:-mt-12 shadow-lg">
             <img src="{{creator.data.thumbnail}}" class="absolute rounded-full h-full w-full" alt="{{creator.data.name}}" />
             <div class="absolute rounded-full opacity-30 h-full w-full bg-violet-900"></div>
         </div>
