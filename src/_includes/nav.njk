@@ -53,14 +53,16 @@
       <i class="fas fa-user-plus mr-2"></i> Join us
       </a> #}
    </div>
-<details class="relative inline-block text-left lg:hidden md:hidden [&_summary]:list-none">
-      <summary class="">
-            <span class="rounded-md shadow-sm cursor-pointer hover:bg-violet-700 hover:text-violet-100 p-2">
-                  <i class="fas fa-align-left"> Menu</i>
+<!-- Mobile -->
+  
+<details class="z-[9999] fixed top-0 right-0 h-svh inline-block text-left lg:hidden md:hidden [&_summary]:list-none">
+      <summary class="top-0">
+            <span class="text-2xl rounded-es-md hover:shadow-md cursor-pointer hover:bg-violet-700 hover:text-violet-100 p-2">
+                  Menu <i class="fas fa-align-left"></i>
             </span>
       </summary>
-      <div class="z-[999] absolute left-0 w-56 rounded-md shadow-lg">
-            <div class="rounded-lg backdrop-blur-sm bg-white/30 shadow-lg">
+      <div class="fixed left-0 top-10 w-full h-svh rounded-md shadow-lg">
+            <div class="rounded-lg backdrop-blur-sm bg-white/90 shadow-lg">
                   <div class="py-4">
                         <a class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-violet-900 hover:text-white transition-colors duration-300 focus:outline-none focus:bg-violet-900 focus:text-gray-900" href="/">
                               <i class="fas fa-home mr-2"></i> Home
@@ -69,7 +71,7 @@
                               <summary class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-violet-900 hover:text-white transition-colors duration-300 focus:outline-none focus:bg-violet-900 focus:text-gray-900 cursor-pointer courses-btn">
                                     <i class="fas fa-graduation-cap mr-2"></i> Courses
                               </summary>
-                              <div class="courses-accordion left-0 w-56 bg-transparent z-50">
+                              <div class="courses-accordion top-0 left-0 w-full bg-transparent z-50">
                                     <div class="rounded-lg backdrop-blur-sm bg-white/90 shadow-lg">
                                           <div class="py-4">
                                                 {% for course in collections.index %}
@@ -95,6 +97,10 @@
       </div>
 </details>
 
+
+{% if layout == "model.njk" %}
+
+
    <!-- breadcrumb-->
    <nav class="col-span-2 self-end backdrop-blur-[10px] bg-white/50 rounded-md text-center">
       <div class="mx-auto px-4">
@@ -118,6 +124,8 @@
             </ol>
       </div>
    </nav>
+   {% endif %}
+
 </nav>
 
 
