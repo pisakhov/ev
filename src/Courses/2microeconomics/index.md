@@ -6,9 +6,14 @@ tag: microeconomics
 color: violet
 show: true
 ---
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-2">             {% for model in collections.microeconomics %}{% if model.data.show %}
-                <div class="group lg:h-auto md:h-auto h-auto backdrop-blur-sm bg-white/60 rounded-lg hover:shadow-lg hover:shadow-violet-500/50 flex flex-col justify-between">
-                <h1 class="bg-clip-text text-transparent bg-gradient-to-t from-violet-900 to-violet-300 drop-shadow-0_1px_1px_rgba(0,0,0,0.75) text-sm md:text-md lg:text-lg my-4 mx-1 py-4 lg:py-6 xl:p-8 text-center truncate">{{ model.data.title }}</h1>
-                <a href="{{ model.url }}" class="text-md md:text-lg bg-violet-900 text-white py-1 px-3 md:py-2 md:px-8 text-center rounded-b-lg border-t-2 border-violet-300 group-hover:bg-violet-600 transition duration-300 ease-in-out">Learn more</a>
-                </div>              {% endif %}{% endfor %}
+<ul class="[&_li]:bg-slate-600 hover:[&_li]:bg-slate-700 [&_li]:rounded-md hover:[&_li]:shadow-lg hover:[&_li]:shadow-slate-500/50 grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 md:p-8 p-4 md:gap-4 gap-2 w-full">
+{% for model in collections.microeconomics %}{% if model.data.show %}
+<li class="relative group h-64">
+<img src="{{ model.data.thumbnail }}" alt="{{ model.data.title }}" class="w-full h-full object-cover rounded-md transform transition-all duration-500" />
+<div class="shadow-md absolute inset-0 bg-gradient-to-t from-50% group-hover:from-0% from-slate-800/40 to-transparent p-4 rounded-md transition-colors transition-all duration-1000">
+<h2 class="text-violet-50 font-extralight p-2 rounded-md bg-violet-600 saturate-200 group-hover:saturate-100 group-hover:bg-violet-700 md:text-md text-xs transition-colors duration-200 group-hover:text-violet-50 transition-all duration-1000">{{ model.data.title }}</h2>
 </div>
+<a href="{{ model.url }}" class="absolute inset-0"></a>
+</li>
+{% endif %}{% endfor %}
+</ul>

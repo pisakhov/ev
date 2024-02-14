@@ -1,4 +1,4 @@
-<nav class="grid grid-cols-2 gap-4 p-8 w-full items-center backdrop-blur-[3px] bg-gradient-to-b from-violet-400 from-20% via-violet-300 via-70% to-transparent to-90%">
+<nav class="z-20 relative grid grid-cols-2 gap-4 p-8 w-full items-center backdrop-blur-[3px] bg-gradient-to-b from-violet-400 from-80% via-violet-300 via-80% to-transparent to-100%">
       <div class="col-span-1 flex justify-between items-center">
             <a href="/">
                   <img class="h-32 aspect-square saturate-200" src="/assets/img/__econ.png" alt=""> 
@@ -20,8 +20,8 @@
                   </summary>
                   <div class="absolute w-[320px] right-1/2 translate-x-1/2 bg-transparent z-50">
                         <div class="flex flex-row justify-center">
-                              <div class="w-full backdrop-blur-md bg-white/30 rounded-lg shadow-lg">
-                                    <ul class="p-2">
+                              <div class="w-full backdrop-blur-md bg-slate-200/90 rounded-lg shadow-lg">
+                                    <ul class="p-2 hover:[&_li]:bg-slate-100 [&_li]:p-2 [&_li]:rounded-md">
                                           {% for course in collections.index %}
                                                 {% if course.data.show %}
                                                 <li>
@@ -55,28 +55,28 @@
    </div>
 <!-- Mobile -->
   
-<details class="z-[9999] fixed top-0 right-0 h-svh inline-block text-left lg:hidden md:hidden [&_summary]:list-none">
-      <summary class="top-0">
-            <span class="text-2xl rounded-es-md hover:shadow-md cursor-pointer hover:bg-violet-700 hover:text-violet-100 p-2">
-                  Menu <i class="fas fa-align-left"></i>
+<details class="z-[9999] relative inline-block text-left lg:hidden md:hidden [&_summary]:list-none">
+      <summary class="">
+            <span class="relative rounded-md hover:shadow-md cursor-pointer hover:bg-violet-700 hover:text-violet-100 p-3 w-36 h-36">
+            <i class="fas fa-align-left inset-0"></i>
             </span>
       </summary>
-      <div class="fixed left-0 top-10 w-full h-svh rounded-md shadow-lg">
-            <div class="rounded-lg backdrop-blur-sm bg-white/90 shadow-lg">
+      <div class="absolute left-[-50%] top-10 w-full rounded-md shadow-lg">
+            <div class="rounded-lg backdrop-blur-sm bg-slate-200/90 shadow-lg">
                   <div class="py-4">
                         <a class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-violet-900 hover:text-white transition-colors duration-300 focus:outline-none focus:bg-violet-900 focus:text-gray-900" href="/">
                               <i class="fas fa-home mr-2"></i> Home
                         </a>
                         <details class="relative group">
-                              <summary class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-violet-900 hover:text-white transition-colors duration-300 focus:outline-none focus:bg-violet-900 focus:text-gray-900 cursor-pointer courses-btn">
+                              <summary class="block px-4 py-2 text-sm leading-5 text-gray-700 group-hover:bg-violet-900 group-hover:text-white transition-colors duration-300 focus:outline-none focus:bg-violet-900 focus:text-gray-900 cursor-pointer courses-btn">
                                     <i class="fas fa-graduation-cap mr-2"></i> Courses
                               </summary>
                               <div class="courses-accordion top-0 left-0 w-full bg-transparent z-50">
-                                    <div class="rounded-lg backdrop-blur-sm bg-white/90 shadow-lg">
+                                    <div class="rounded-b-lg backdrop-blur-sm bg-slate-400/90 border border-violet-600 shadow-lg">
                                           <div class="py-4">
                                                 {% for course in collections.index %}
                                                       {% if course.data.show %}
-                                                                  <a href="{{course.url}}" class="block px-4 py-2 text-sm leading-5 text-gray-700 bg-gray-200 hover:bg-violet-900 hover:text-white transition-colors duration-300 focus:outline-none focus:bg-violet-900 focus:text-gray-900 cursor-pointer">
+                                                                  <a href="{{course.url}}" class="block px-4 py-2 text-sm leading-5 text-gray-700 bg-slate-400/90 hover:bg-violet-900 hover:text-white transition-colors duration-300 focus:outline-none focus:bg-violet-900 focus:text-gray-900 cursor-pointer">
                                                                         {{ course.data.title }}
                                                                   </a>
                                                       {% endif %}
@@ -102,19 +102,19 @@
 
 
    <!-- breadcrumb-->
-   <nav class="col-span-2 self-end backdrop-blur-[10px] bg-white/50 rounded-md text-center">
+   <nav class="col-span-2 self-end backdrop-blur-[20px] bg-violet-100/70 shadow-md rounded-md text-center md:p-2">
       <div class="mx-auto px-4">
             <ol class="list-none p-0 inline-flex
             [&_li]:text-gray-600 hover:[&_li]:text-violet-600">
             <li class="flex items-center">
                   <a href="/" class="font-normal transition-colors duration-300 hover:underline decoration-1 decoration-dotted md:text-lg text-sm">Home</a>
-                  <i class="fas fa-angle-right text-gray-600 mx-2 md:text-lg text-md"></i>
+                  <i class="fas fa-angle-right text-gray-600 mx-2 md:text-lg text-sm"></i>
             </li>
             {% for cls in collections.index %}
             {% if cls.data.tag == tags %}
             <li class="flex items-center">
                   <a href="{{ cls.url }}" class="font-normal transition-colors duration-300 hover:underline decoration-1 decoration-dotted md:text-lg text-sm">{{ cls.data.title }}</a>
-                  <i class="fas fa-angle-right text-gray-600 mx-2 md:text-lg text-md"></i>
+                  <i class="fas fa-angle-right text-gray-600 mx-2 md:text-lg text-sm"></i>
             </li>
             {% endif %}
             {% endfor %}
