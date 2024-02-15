@@ -6,14 +6,19 @@ layout: 'base.njk'
   <source src="./assets/img/hero.mp4" type="video/mp4">
 </video> -->
 <!-- {% include "desmos.njk" %} -->
-<section class="snap-center bg-fixed bg-center bg-cover h-screen relative contrast-100" style="background-image:url('./assets/img/background.jpg');">
-  <div class="backdrop-blur-md bg-gradient-to-b from-white via-slate-100/70 to-slate-300/30 rounded-b-3xl shadow-[inset_0px_-12px_20px_8px_rgba(255,255,255,0.3),0_20px_20px_0px_rgba(0,0,0,0.5)] mb-4 lg:p-28 md:p-20 p-2 text-indigo-900 sticky top-0 z-[9990] flex flex-col justify-center items-center space-y-6">
-    <div id="mainlogo" class="lg:text-5xl md:text-3xl text-xl font-thin font-mono"></div>
-    <p class="text-center lg:text-xl md:text-lg text-sm font-mono">
+<section class="snap-center bg-fixed bg-center bg-cover h-screen relative contrast-100" style="background-image:url('https://cdn.midjourney.com/2b99f23f-b564-42cb-8519-cd7d729e026e/0_0.webp');">
+  <div class="backdrop-blur-md bg-gradient-to-b from-white/80 via-slate-100/40 to-slate-300/30 rounded-b-3xl shadow-[inset_0px_-12px_20px_8px_rgba(255,255,255,0.3),0_20px_20px_0px_rgba(0,0,0,0.5)] mb-4 md:p-12 p-2 text-[color:var(--c-2)] sticky top-0 z-[9990] flex flex-col justify-center items-center space-y-6">
+     <!-- LOGO -->
+    <div class="flex top-0 relative justify-start w-full">
+      <img class="saturate-200 w-28 md:w-32 lg:w-40" src="./assets/img/___econ.png" alt=""> 
+    </div>
+    <!-- LOGO -->
+    <div id="mainlogo" class="lg:text-4xl md:text-3xl text-xl font-thin font-mono"></div>
+    <p class="text-center lg:text-xl md:text-lg text-sm font-mono px-18">
   Unlock the hidden depths of economics by embracing the power of visualization.
 Let graphs and charts be your guide, and discover a new world of understanding, analysis, and insight.
 </p>
-<a href="#courses" class="group md:w-1/4 w-1/3 lg:text-lg md:text-md text-xs font-mono bg-white hover:bg-gray-100 text-indigo-900 font-bold py-3 px-6 rounded text-center flex items-center justify-center gap-2 transition-all duration-300 hover:transform translateY(3px) focus:outline-none focus:ring-2 focus:ring-indigo-400">
+<a href="#courses" class="group md:w-1/4 w-1/3 lg:text-lg md:text-md text-xs font-mono bg-white hover:bg-gray-100 text-[color:var(--c-2)] font-bold py-3 px-6 rounded text-center flex items-center justify-center gap-2 transition-all duration-300 hover:transform translateY(3px) focus:outline-none focus:ring-2 focus:ring-indigo-400">
   Explore Models <i class="fas fa-arrow-down group-hover:animate-bounce"></i> 
 </a>
 
@@ -36,31 +41,13 @@ Let graphs and charts be your guide, and discover a new world of understanding, 
 
 
 <div class="grid grid-rows-3 gap-8 content-between fixed top-0 -z-10">
-<div class="saturate-200 -translate-x-[50%] -translate-y-[50%] bg-violet-600 opacity-100 aspect-square w-1/2 blur-[200px] fixed top-0 left-0 rounded-full"></div>
-<div class="saturate-200 translate-x-[50%] translate-y-[50%] bg-cyan-600 opacity-100 aspect-square w-1/2  blur-[200px] fixed bottom-0 right-0 rounded-full"></div>
+<div class="-translate-x-[50%] -translate-y-[50%] bg-[color:var(--c-1)] opacity-100 aspect-square w-1/2 blur-[200px] fixed top-0 left-0 rounded-full"></div>
+<div class="translate-x-[50%] translate-y-[50%] bg-[color:var(--c-2)] opacity-100 aspect-square w-1/2  blur-[200px] fixed bottom-0 right-0 rounded-full"></div>
 </div>
   <main class="lg:mx-[10%] md:mx-4 mx-0 snap-start">
 
 
-<div class="mt-[5%] grid grid-cols-1 grid-rows-1 md:grid-cols-3 md:grid-rows-2 lg:gap-4 md:gap-3 gap-2 [&>*]:ring-white/20  [&>*:not(:first-child)]:shadow-[-2px_-2px_6px_rgba(255,255,255,0.2),2px_2px_6px_rgba(0,0,0,0.2)] md:[&>*]:rounded-md [&>*]:rounded-md hover:[&>*]:transition-all md:hover:[&>*:not(:first-child)]:bg-transparent [&>*]:duration-300 [&>*]:delay-80 [&>*]:ease-in-out [&>*]:backdrop-blur-[1px] [&>*:not(:first-child)]:bg-white/10 [&>*]:p-2 m-2 [&>*]:text-gray-100">
-  <!-- LOGO -->
-  <div class="md:col-span-2 md:row-span-2 flex flex-row items-center justify-start mx-8">
-    <div class="flex top-0 sticky justify-center">
-      <img class="w-24 md:w-32 lg:w-36 saturate-200" src="./assets/img/__econ.png" alt=""> 
-    </div>
-  </div>
-    <!-- LOGO -->
-
-  <!-- ABOUT -->
-  <div class="glowit font-light text-sm md:text-xl lg:text-[2rem] md:col-span-1 row-span-2 text-center text-transparent flex md:flex-col flex-row justify-evenly items-center">
-   <h1 class="saturate-200 w-full tracking-wide antialiased leading-loose bg-clip-text text-transparent bg-gradient-to-b from-teal-300 via-cyan-400 to-blue-400 select-none">Smart Learning Through Interactive Economics...</h1>
-
-    <a href="/Page/about/" class="md:py-2 md:px-4 lg:text-lg md:text-md text-xs bg-white hover:bg-gray-100 text-cyan-600 hover:text-cyan-900 font-bold py-3 px-6 rounded-md text-center flex items-center justify-center gap-2 transition-all duration-300 hover:transform translateY(3px) focus:outline-none focus:ring-2 focus:ring-cyan-400">
-      What is Econ.vision <i class="fas fa-question"></i> 
-    </a>
-</div>
-  <!-- ABOUT -->
-
+<div class="mt-[5%] grid grid-cols-1 grid-rows-1 md:grid-cols-3 lg:gap-4 md:gap-3 gap-2 [&>*]:ring-white/20  [&>*:not(:first-child)]:shadow-[-2px_-2px_6px_rgba(255,255,255,0.2),2px_2px_6px_rgba(0,0,0,0.2)] md:[&>*]:rounded-md [&>*]:rounded-md hover:[&>*]:transition-all md:hover:[&>*:not(:first-child)]:bg-transparent [&>*]:duration-300 [&>*]:delay-80 [&>*]:ease-in-out [&>*]:backdrop-blur-[1px] [&>*:not(:first-child)]:bg-white/10 [&>*]:p-2 m-2 [&>*]:text-gray-100">
 
 
 
@@ -70,18 +57,20 @@ Let graphs and charts be your guide, and discover a new world of understanding, 
   flex flex-col md:flex-row gap-2 [&>*]:transition-all [&>*]:duration-500 [&>*]:delay-1000 [&>*]:ease-in-out md:[&>*]:w-[100%] md:[&_div]:min-w-10 [&_div]:h-[100%] [&_div]:min-h-10 h-full w-full [&>*]:flex-1 first:[&>*]:flex-auto">
 
    {% for course in collections.index %}
-      <div class="saturate-200 choice md:hover:[&_h5]:bg-{{course.data.color}}-700 items-center overflow-hidden rounded-md bg-{{course.data.color}}-500 text-white relative">
-         <h5 class="p-2 rounded-md text-lg font-semibold md:[writing-mode:vertical-lr] sticky z-20 top-0 cursor-pointer md:left-0 md:h-full bg-{{course.data.color}}-500">{{ course.data.title }}</h5>
+      <div class="choice md:hover:[&_h5]:bg-[color:var(--c-2)] items-center overflow-hidden rounded-md bg-[color:var(--c-2)] text-white relative">
+         <h5 class="p-2 rounded-md text-lg font-semibold md:[writing-mode:vertical-lr] sticky z-20 top-0 cursor-pointer md:left-0 md:h-full bg-[color:var(--c-1)]">{{ course.data.title }}</h5>
          <span class="">
             <ul class="
-            md:left-12 md:top-0 top-10 absolute z-10 animate-pulse [&_li]:bg-{{course.data.color}}-600 hover:[&_li]:bg-{{course.data.color}}-700 [&_li]:rounded-md [&_li]:flex-auto hover:[&_li]:shadow-lg grid md:grid-cols-2 grid-cols-1 gap-2 items-center flex p-8 w-full md:w-[94%]">
+            md:left-12 md:top-0 top-10 absolute z-10 animate-pulse [&_li]:bg-[color:var(--c-2)] hover:[&_li]:bg-[color:var(--c-1)] [&_li]:rounded-md [&_li]:flex-auto hover:[&_li]:shadow-lg grid md:grid-cols-2 grid-cols-1 gap-4 items-center flex p-8 w-full md:w-[94%]">
                {% for model in collections[course.data.tag] %}
             <li class="relative group">
                 <img src="{{ model.data.thumbnail }}" alt="{{ model.data.title }}" class="invisible w-full h-32 object-cover rounded-md transform transition-all duration-500" />
-                <div class="shadow-md absolute inset-0 bg-gradient-to-t from-50% group-hover:from-0% from-{{course.data.color}}-800/40 to-transparent p-4 rounded-md transition-colors transition-all duration-1000">
-                  <h2 class="invisible text-{{course.data.color}}-50 font-extralight p-2 rounded-md bg-{{course.data.color}}-600 saturate-200 group-hover:saturate-100 group-hover:bg-{{course.data.color}}-700 md:text-md text-xs transition-colors duration-200 group-hover:text-{{course.data.color}}-50 transition-transform duration-400">{{ model.data.title }}</h2>
+                <div class="shadow-md absolute inset-0 bg-gradient-to-t from-50% group-hover:from-0% from-[color:var(--c-1)]/40 to-transparent p-4 rounded-md transition-colors transition-all duration-1000">
+                  <h2 class="group-hover:translate-y-24 transition duration-300
+                  absolute z-20 w-full left-0 top-0 invisible text-[color:var(--background)] font-extralight p-2 rounded-md bg-[color:var(--c-1)] group-hover:bg-[color:var(--c-1)] md:text-md text-xs transition-colors duration-200 group-hover:text-{{course.data.color}}-50 transition-transform duration-400">{{ model.data.title }}</h2>
+                  <a href="{{ model.url }}" class="absolute z-10 inset-0 bg-white rounded-md group-hover:opacity-0 transition duration-400 delay-200"></a>
+
                 </div>
-                <a href="{{ model.url }}" class="absolute inset-0"></a>
               </li>
             
             {% endfor %}
@@ -96,11 +85,16 @@ Let graphs and charts be your guide, and discover a new world of understanding, 
 </div>
 
 
+<div
+class="glowit md:col-span-3 row-span-2 md:h-20 h-16 flex items-center snap-center bg-fixed bg-center bg-cover contrast-100" style="background-image:url('https://cdn.midjourney.com/2b99f23f-b564-42cb-8519-cd7d729e026e/0_0.webp');">
+
+ </div>
+
 
 <div class="glowit col-span-1 md:col-span-2">
   <div class="grid grid-cols-3 gap-2">
     <ul id="tabs" class="shadow-md [&_li]:p-2 [&_li]:rounded-md absolute [&_li]:z-20 [&_li]:cursor-pointer
-    col-span-1 flex flex-col p-1 list-none rounded-lg text-xs md:text-md text-sky-900 saturate-200 bg-sky-500 relative">
+    col-span-1 flex flex-col p-1 list-none rounded-lg text-xs md:text-md text-[color:var(--c-2)] bg-[color:var(--c-1)] relative">
       <li class="tab active" data-target="math">
         <i class="fas fa-calculator"></i>
         Advanced Functions</li>
@@ -162,7 +156,7 @@ window.addEventListener('load', () => {
   <div class="glowit md:col-span-1 row-span-1 h-18 flex items-center">
 
    <div class="scroller flex justify-between items-center" data-speed="slow">
-      <ul class="scroller__inner text-sm flex flex-row h-full items-center justify-between [&_li]:bg-indigo-600 [&_li]:w-auto [&_li]:p-2 [&_li]:rounded-md">
+      <ul class="scroller__inner text-sm flex flex-row h-full items-center justify-between [&_li]:bg-[color:var(--c-3)] [&_li]:w-auto [&_li]:p-2 [&_li]:rounded-md">
         <li>Supply</li>
         <li>Demand</li>
         <li>Inflation</li>
@@ -188,7 +182,7 @@ window.addEventListener('load', () => {
 
       <div class="scroller" data-direction="right" data-speed="fast">
             <div class="
-            scroller__inner md:h-32 h-24 flex flex-row gap-8 hover:[&_img]:grayscale-0 hover:[&_img]:shadow-md [&_img]:grayscale [&_img]:rounded-full [&_img]:h-full [&_img]:object-cover">
+            scroller__inner md:h-32 h-24 flex flex-row gap-8 hover:[&_img]:grayscale-0 hover:[&_img]:shadow-md [&_img]:grayscale [&_img]:rounded-lg [&_img]:h-full [&_img]:object-cover">
             {% for creator in collections.creators %}{% if creator.data.show %}
             <a href="{{creator.url}}"><img src="{{creator.data.thumbnail}}" alt="{{creator.data.name}}" class=""/></a>
             {%endif%}{%endfor%}
@@ -201,9 +195,9 @@ window.addEventListener('load', () => {
 
   <!-- GET IN TOUCH -->
   <div class="glowit flex flex-row gap-4 justify-around items-center md:col-span-2 md:row-span-1 md:max-h-48 max-h-24">
-      <a href="/Page/contact/" class="group w-full md:py-2 md:px-4 lg:text-lg md:text-md text-xs bg-transparent hover:bg-gray-100/10 text-cyan-600 hover:text-cyan-900 font-bold py-3 px-6 rounded-md text-center flex items-center justify-center gap-2 transition-all duration-1000 group-hover:transform">
-            <h1 class="group-hover:drop-shadow-[1px_1px_3px_rgba(76,29,149,0.5)] col-span-1 saturate-200 text-xl lg:text-3xl lg:text-2xl font-bold tracking-wide bg-clip-text text-transparent bg-gradient-to-tl from-cyan-600 to-cyan-400 select-none">GET IN TOUCH</h1>
-            <img src="./assets/img/contactus.png" class="h-32 saturate-200 aspect-square">
+      <a href="/Page/contact/" class="group w-full md:py-2 md:px-4 lg:text-lg md:text-md text-xs bg-transparent hover:bg-gray-100/10 text-[color:var(--c-2)] hover:text-[color:var(--c-3)] font-bold py-3 px-6 rounded-md text-center flex items-center justify-center gap-2 transition-all duration-1000 group-hover:transform">
+            <h1 class="drop-shadow-[1px_1px_2px_rgba(255,255,255,0.2)] col-span-1 text-xl lg:text-3xl lg:text-2xl font-bold tracking-wide bg-clip-text text-transparent bg-gradient-to-br from-[color:var(--c-3)] to-[color:var(--c-4)] select-none">GET IN TOUCH</h1>
+            <img src="./assets/img/contactus.png" class="h-32 aspect-square">
 
           </a>
     
