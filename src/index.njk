@@ -6,11 +6,11 @@ layout: 'base.njk'
   <source src="./assets/img/hero.mp4" type="video/mp4">
 </video> -->
 <!-- {% include "desmos.njk" %} -->
-<section class="snap-center bg-fixed bg-center bg-cover h-screen relative contrast-100" style="background-image:url('https://cdn.midjourney.com/2b99f23f-b564-42cb-8519-cd7d729e026e/0_0.webp');">
-  <div class="backdrop-blur-md bg-gradient-to-b from-white/80 via-slate-100/40 to-slate-300/30 rounded-b-3xl shadow-[inset_0px_-12px_20px_8px_rgba(255,255,255,0.3),0_20px_20px_0px_rgba(0,0,0,0.5)] mb-4 md:p-12 p-2 text-[color:var(--c-2)] sticky top-0 z-[9990] flex flex-col justify-center items-center space-y-6">
+<section class="snap-center bg-fixed bg-center bg-cover h-screen relative contrast-75" style="background-image:url('https://cdn.midjourney.com/cea7fa75-07d2-420a-a122-c9906f59d7f7/0_0.webp');">
+  <div class="backdrop-blur-sm bg-gradient-to-bl from-slate-300/90 via-slate-50/60 to-slate-300/40 rounded-3xl shadow-[inset_0px_-12px_20px_8px_rgba(255,255,255,0.3),0_20px_20px_0px_rgba(0,0,0,0.5)] mb-4 md:p-12 p-2 text-[color:var(--c-2)] sticky top-5 mx-2 z-[9990] flex flex-col justify-center items-center space-y-6">
      <!-- LOGO -->
     <div class="flex top-0 relative justify-start w-full">
-      <img class="saturate-200 w-28 md:w-32 lg:w-40" src="./assets/img/___econ.png" alt=""> 
+      <img class="md:[clip-path:circle(0px)] group-hover/logo:[clip-path:circle(100px)] delay-300 duration-[2000ms] ease-in-out rounded-full transition-all group-hover:scale-[0] saturate-200 w-28 md:w-32 lg:w-40" src="./assets/img/_aalogo.png" alt=""> 
     </div>
     <!-- LOGO -->
     <div id="mainlogo" class="lg:text-4xl md:text-3xl text-xl font-thin font-mono"></div>
@@ -67,8 +67,9 @@ Let graphs and charts be your guide, and discover a new world of understanding, 
                 <img src="{{ model.data.thumbnail }}" alt="{{ model.data.title }}" class="invisible w-full h-32 object-cover rounded-md transform transition-all duration-500" />
                 <div class="shadow-md absolute inset-0 bg-gradient-to-t from-50% group-hover:from-0% from-[color:var(--c-1)]/40 to-transparent p-4 rounded-md transition-colors transition-all duration-1000">
                   <h2 class="group-hover:translate-y-24 transition duration-300
-                  absolute z-20 w-full left-0 top-0 invisible text-[color:var(--background)] font-extralight p-2 rounded-md bg-[color:var(--c-1)] group-hover:bg-[color:var(--c-1)] md:text-md text-xs transition-colors duration-200 group-hover:text-{{course.data.color}}-50 transition-transform duration-400">{{ model.data.title }}</h2>
-                  <a href="{{ model.url }}" class="absolute z-10 inset-0 bg-white rounded-md group-hover:opacity-0 transition duration-400 delay-200"></a>
+                  absolute z-20 w-full left-0 top-0 invisible text-[color:var(--background)] font-extralight p-2 rounded-md bg-[color:var(--c-3)] group-hover:bg-[color:var(--c-4)] md:text-md text-xs transition-colors duration-200 group-hover:text-[color:var(--c-3)] font-semibold shadow-sm transition-transform duration-400">{{ model.data.title }}</h2>
+                  <a href="{{ model.url }}" class="shadow-[inset_-1px_-1px_0px_rgba(255,255,255,0.3),inset_1px_1px_0px_rgba(150,150,150,0.9)]
+                  absolute z-10 inset-0 bg-gradient-to-b opacity-90 from-[color:var(--c-3)] to-[color:var(--c-4)] rounded-md group-hover:opacity-0 transition duration-400 delay-200"></a>
 
                 </div>
               </li>
@@ -86,10 +87,18 @@ Let graphs and charts be your guide, and discover a new world of understanding, 
 
 
 <div
-class="glowit md:col-span-3 row-span-2 md:h-20 h-16 flex items-center snap-center bg-fixed bg-center bg-cover contrast-100" style="background-image:url('https://cdn.midjourney.com/2b99f23f-b564-42cb-8519-cd7d729e026e/0_0.webp');">
+class="glowit md:col-span-1 row-span-2 md:h-20 h-16 flex items-center snap-center bg-fixed bg-center bg-cover contrast-100 " style="background-image:url('https://cdn.midjourney.com/cea7fa75-07d2-420a-a122-c9906f59d7f7/0_0.webp');">
 
  </div>
-
+ <div
+ class="glowit md:col-span-1 row-span-2 md:h-20 h-16 flex items-center snap-center bg-fixed bg-center bg-cover contrast-100 " style="background-image:url('https://cdn.midjourney.com/cea7fa75-07d2-420a-a122-c9906f59d7f7/0_0.webp');">
+ 
+  </div>
+  <div
+  class="glowit md:col-span-1 row-span-2 md:h-20 h-16 flex items-center snap-center bg-fixed bg-center bg-cover contrast-100 " style="background-image:url('https://cdn.midjourney.com/cea7fa75-07d2-420a-a122-c9906f59d7f7/0_0.webp');">
+  
+   </div>
+   
 
 <div class="glowit col-span-1 md:col-span-2">
   <div class="grid grid-cols-3 gap-2">

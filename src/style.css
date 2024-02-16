@@ -105,11 +105,11 @@
 }
 
   :root {
-    --background: #F2F2F2;
+    --background: #f5f3ff;
     --c-1: #6AAED9;
     --c-2: #416CA6;
-    --c-3: #7858A6;
-    --c-4: #D78BD9;
+    --c-3: #601bc1;
+    --c-4: #9f3fde;
     --success: #71ba7f;
     --warning: #eeaa47;
     --danger: #f44336;
@@ -134,7 +134,6 @@
   body {
     display: grid;
     min-block-size: 100vh;
-    place-content: center;
     font-family: system-ui;
     font-size: 1.125rem;
     background: linear-gradient(-45deg, var(--c-1), var(--c-2), var(--c-3), var(--c-4));
