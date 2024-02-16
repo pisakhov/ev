@@ -105,11 +105,12 @@
 }
 
   :root {
-    --background: #f5f3ff;
-    --c-1: #6AAED9;
-    --c-2: #416CA6;
+    --background: #C4B5FD;
+    --background2: #E9D5FF;
+    --c-1: #2b2d38;
+    --c-2: #ebf2f6;
     --c-3: #601bc1;
-    --c-4: #9f3fde;
+    --c-4: #A855F7;
     --success: #71ba7f;
     --warning: #eeaa47;
     --danger: #f44336;
