@@ -26,9 +26,14 @@
 @-webkit-keyframes bounce-in-right{0%{-webkit-transform:translateX(600px);transform:translateX(600px);-webkit-animation-timing-function:ease-in;animation-timing-function:ease-in;opacity:0}38%{-webkit-transform:translateX(0);transform:translateX(0);-webkit-animation-timing-function:ease-out;animation-timing-function:ease-out;opacity:1}55%{-webkit-transform:translateX(68px);transform:translateX(68px);-webkit-animation-timing-function:ease-in;animation-timing-function:ease-in}72%{-webkit-transform:translateX(0);transform:translateX(0);-webkit-animation-timing-function:ease-out;animation-timing-function:ease-out}81%{-webkit-transform:translateX(32px);transform:translateX(32px);-webkit-animation-timing-function:ease-in;animation-timing-function:ease-in}90%{-webkit-transform:translateX(0);transform:translateX(0);-webkit-animation-timing-function:ease-out;animation-timing-function:ease-out}95%{-webkit-transform:translateX(8px);transform:translateX(8px);-webkit-animation-timing-function:ease-in;animation-timing-function:ease-in}100%{-webkit-transform:translateX(0);transform:translateX(0);-webkit-animation-timing-function:ease-out;animation-timing-function:ease-out}}@keyframes bounce-in-right{0%{-webkit-transform:translateX(600px);transform:translateX(600px);-webkit-animation-timing-function:ease-in;animation-timing-function:ease-in;opacity:0}38%{-webkit-transform:translateX(0);transform:translateX(0);-webkit-animation-timing-function:ease-out;animation-timing-function:ease-out;opacity:1}55%{-webkit-transform:translateX(68px);transform:translateX(68px);-webkit-animation-timing-function:ease-in;animation-timing-function:ease-in}72%{-webkit-transform:translateX(0);transform:translateX(0);-webkit-animation-timing-function:ease-out;animation-timing-function:ease-out}81%{-webkit-transform:translateX(32px);transform:translateX(32px);-webkit-animation-timing-function:ease-in;animation-timing-function:ease-in}90%{-webkit-transform:translateX(0);transform:translateX(0);-webkit-animation-timing-function:ease-out;animation-timing-function:ease-out}95%{-webkit-transform:translateX(8px);transform:translateX(8px);-webkit-animation-timing-function:ease-in;animation-timing-function:ease-in}100%{-webkit-transform:translateX(0);transform:translateX(0);-webkit-animation-timing-function:ease-out;animation-timing-function:ease-out}}
 .bounce-out-left{-webkit-animation:bounce-out-left 1.5s both;animation:bounce-out-left 1.5s both}
 @-webkit-keyframes bounce-out-left{0%{-webkit-transform:translateX(0);transform:translateX(0);-webkit-animation-timing-function:ease-out;animation-timing-function:ease-out}5%{-webkit-transform:translateX(-30px);transform:translateX(-30px);-webkit-animation-timing-function:ease-in;animation-timing-function:ease-in}15%{-webkit-transform:translateX(0);transform:translateX(0);-webkit-animation-timing-function:ease-out;animation-timing-function:ease-out}25%{-webkit-transform:translateX(-38px);transform:translateX(-38px);-webkit-animation-timing-function:ease-in;animation-timing-function:ease-in}38%{-webkit-transform:translateX(0);transform:translateX(0);-webkit-animation-timing-function:ease-out;animation-timing-function:ease-out}52%{-webkit-transform:translateX(-80px);transform:translateX(-80px);-webkit-animation-timing-function:ease-in;animation-timing-function:ease-in}70%{-webkit-transform:translateX(0);transform:translateX(0);-webkit-animation-timing-function:ease-out;animation-timing-function:ease-out}85%{opacity:1}100%{-webkit-transform:translateX(-1000px);transform:translateX(-1000px);opacity:0}}@keyframes bounce-out-left{0%{-webkit-transform:translateX(0);transform:translateX(0);-webkit-animation-timing-function:ease-out;animation-timing-function:ease-out}5%{-webkit-transform:translateX(-30px);transform:translateX(-30px);-webkit-animation-timing-function:ease-in;animation-timing-function:ease-in}15%{-webkit-transform:translateX(0);transform:translateX(0);-webkit-animation-timing-function:ease-out;animation-timing-function:ease-out}25%{-webkit-transform:translateX(-38px);transform:translateX(-38px);-webkit-animation-timing-function:ease-in;animation-timing-function:ease-in}38%{-webkit-transform:translateX(0);transform:translateX(0);-webkit-animation-timing-function:ease-out;animation-timing-function:ease-out}52%{-webkit-transform:translateX(-80px);transform:translateX(-80px);-webkit-animation-timing-function:ease-in;animation-timing-function:ease-in}70%{-webkit-transform:translateX(0);transform:translateX(0);-webkit-animation-timing-function:ease-out;animation-timing-function:ease-out}85%{opacity:1}100%{-webkit-transform:translateX(-1000px);transform:translateX(-1000px);opacity:0}}
+.fade-in-top{-webkit-animation:fade-in-top .6s cubic-bezier(.39,.575,.565,1.000) both;animation:fade-in-top .6s cubic-bezier(.39,.575,.565,1.000) both}
+@-webkit-keyframes fade-in-top{0%{-webkit-transform:translateY(-50px);transform:translateY(-50px);opacity:0}100%{-webkit-transform:translateY(0);transform:translateY(0);opacity:1}}@keyframes fade-in-top{0%{-webkit-transform:translateY(-50px);transform:translateY(-50px);opacity:0}100%{-webkit-transform:translateY(0);transform:translateY(0);opacity:1}}
 
-
-
+.fade-in-700{-webkit-animation:fade-in .7s ease-in-out both;animation:fade-in .7s ease-in-out both}
+.fade-in-800{-webkit-animation:fade-in .8s ease-in-out both;animation:fade-in .8s ease-in-out both}
+.fade-in-900{-webkit-animation:fade-in .9s ease-in-out both;animation:fade-in .9s ease-in-out both}
+.fade-in-1000{-webkit-animation:fade-in 1s ease-in-out both;animation:fade-in 1s ease-in-out both}
+@-webkit-keyframes fade-in{0%{opacity:0}100%{opacity:1}}@keyframes fade-in{0%{opacity:0}100%{opacity:1}}
 /* kevin */
   .scroller {
     max-width: 100%;
@@ -128,34 +133,10 @@
     }
   }
   
-  html {
-    color-scheme: dark;
-  }
-  
+
   body {
     display: grid;
     min-block-size: 100vh;
     font-family: system-ui;
-    font-size: 1.125rem;
-    background: linear-gradient(-45deg, var(--c-1), var(--c-2), var(--c-3), var(--c-4));
-    background-size: 400% 400%;
-    animation: gradient 15s ease infinite;
   }
   
-  .tag-list {
-    margin: 0;
-    padding-inline: 0;
-    list-style: none;
-  }
-  
-  .tag-list li {
-    padding: 1rem;
-    background: var(--clr-primary-400);
-    border-radius: 0.5rem;
-    box-shadow: 0 0.5rem 1rem -0.25rem var(--clr-primary-900);
-  }
-  
-  /* for testing purposed to ensure the animation lined up correctly */
-  .test {
-    background: red !important;
-  }

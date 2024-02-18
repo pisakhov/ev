@@ -7,11 +7,13 @@ layout: "base.njk"
     }
 </style>
 
+<header class="flex justify-center w-full">
 {% include "nav.njk" %}
+</header>
 
 <section class="z-0 relative mx-1 md:mx-[8rem]">
 
-<h1 class="text-lg md:text-xl lg:text-2xl text-violet-900 font-medium leading-tight tracking-tight border-b-2 border-violet-400 mb-8 pb-2"><i class="{{icon}} mr-2"></i>{{title}}</h1>
+<h1 class="text-lg md:text-xl lg:text-2xl text-[color:var(--c-1)] font-medium leading-tight tracking-tight border-b-2 border-[color:var(--c-1)] mb-8 pb-2"><i class="{{icon}} mr-2"></i>{{title}}</h1>
 <div class="grid grid-cols-1 mb-8">        
     <div class="backdrop-blur-sm bg-white/60 rounded-lg shadow-lg flex flex-col items-center justify-center relative text-md md:text-lg">
         <div class="gap-x-4 flex flex-col relative w-full">

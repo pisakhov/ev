@@ -7,18 +7,16 @@ layout: 'base.njk'
 </video> -->
 <!-- {% include "desmos.njk" %} -->
 <section class="snap-center bg-fixed bg-center bg-cover h-screen relative" style="background-image:url('https://cdn.midjourney.com/cea7fa75-07d2-420a-a122-c9906f59d7f7/0_0.webp');">
-  <div class="backdrop-blur-lg bg-gradient-to-bl from-slate-50/90 via-slate-50/60 to-slate-300/40 rounded-3xl shadow-[inset_0px_-12px_20px_8px_rgba(255,255,255,0.3),0_20px_20px_0px_rgba(0,0,0,0.5)] mb-4 md:p-12 p-2 text-[color:var(--c-3)] sticky top-5 mx-2 z-[9990] flex flex-col justify-center items-center space-y-6">
+  <div class="backdrop-blur-lg bg-gradient-to-bl from-slate-50/90 via-slate-50/60 to-slate-300/40 rounded-3xl shadow-[inset_0px_-12px_20px_8px_rgba(255,255,255,0.3),0_20px_20px_0px_rgba(0,0,0,0.5)] mb-8 md:px-12 p-2 text-[color:var(--c-1)] sticky top-5 mx-2 z-[9990] flex flex-col justify-center items-center space-y-6">
      <!-- LOGO -->
-    <div class="flex top-0 relative justify-start w-full">
-      <img class="md:[clip-path:circle(0px)] group-hover/logo:[clip-path:circle(100px)] delay-300 duration-[2000ms] ease-in-out rounded-full transition-all group-hover:scale-[0] saturate-200 w-28 md:w-32 lg:w-40" src="./assets/img/_aalogo.png" alt=""> 
-    </div>
+     {% include "nav.njk" %}
     <!-- LOGO -->
     <div id="mainlogo" class="lg:text-4xl md:text-3xl text-xl font-bold"></div>
-    <p class="text-center lg:text-xl md:text-lg text-sm font-bold px-18">
-  Unlock the hidden depths of economics by embracing the power of visualization.
+    <p class="text-center lg:text-xl md:text-lg text-sm px-18">
+  Unlock the hidden depths of economics by embracing the power of visualization.<br>
 Let graphs and charts be your guide, and discover a new world of understanding, analysis, and insight.
 </p>
-<a href="#courses" class="group md:w-1/4 w-1/3 lg:text-lg md:text-md text-xs font-bold bg-[color:var(--c-2)] hover:bg-[color:var(--c-1)] text-[color:var(--c-1)] hover:text-[color:var(--c-2)] font-bold py-3 px-6 rounded text-center flex items-center justify-center gap-2 transition-all duration-300 ring-3 ring-[color:var(--c-1)]">
+<a href="#courses" class="fade-in-1000 group md:w-1/4 w-1/3 lg:text-lg md:text-md text-xs font-bold bg-[color:var(--c-3)] hover:bg-[color:var(--c-1)] text-[color:var(--c-2)] hover:text-[color:var(--c-2)] font-bold py-3 px-6 rounded text-center flex items-center justify-center gap-2 transition-all duration-300 ring-3 ring-[color:var(--c-1)]">
   Explore Models <i class="fas fa-arrow-down group-hover:animate-bounce"></i> 
 </a>
 
@@ -58,14 +56,14 @@ Let graphs and charts be your guide, and discover a new world of understanding, 
 
    {% for course in collections.index %}
       <div class="choice md:hover:[&_h5]:bg-[color:var(--c-2)] items-center overflow-hidden rounded-md bg-[color:var(--c-2)] text-[color:var(--c-2)] relative">
-         <h5 class="p-2 rounded-md text-lg hover:text-[color:var(--c-1)] font-semibold md:[writing-mode:vertical-lr] sticky z-20 top-0 cursor-pointer md:left-0 md:h-full bg-[color:var(--c-1)]">{{ course.data.title }}</h5>
+         <h5 class="p-2 rounded-md text-lg md:hover:text-[color:var(--c-1)] font-semibold md:[writing-mode:vertical-lr] sticky z-20 top-0 cursor-pointer md:left-0 md:h-full bg-[color:var(--c-1)]">{{ course.data.title }}</h5>
          <span class="">
             <ul class="
-            md:left-12 md:top-0 top-10 absolute z-10 animate-pulse [&_li]:bg-[color:var(--c-2)] hover:[&_li]:bg-[color:var(--c-1)]  [&_li]:rounded-md [&_li]:flex-auto hover:[&_li]:shadow-lg grid md:grid-cols-2 grid-cols-1 gap-4 items-center flex p-8 w-full md:w-[94%]">
+            md:left-12 md:top-0 top-10 absolute z-10 animate-pulse [&_li]:bg-[color:var(--c-2)] hover:[&_li]:bg-[color:var(--c-1)] [&_li]:rounded-md [&_li]:flex-auto hover:[&_li]:shadow-lg grid md:grid-cols-2 grid-cols-1 gap-4 items-center flex p-8 w-full md:w-[94%]">
                {% for model in collections[course.data.tag] %}
             <li class="relative group">
                 <img src="{{ model.data.thumbnail }}" alt="{{ model.data.title }}" class="invisible w-full h-32 object-cover rounded-md transform transition-all duration-500" />
-                <div class="shadow-md absolute inset-0 bg-gradient-to-t from-10% group-hover:from-10% from-[color:var(--c-4)] to-transparent p-4 rounded-md transition-colors transition-all duration-1000">
+                <div class="shadow-md absolute inset-0 bg-gradient-to-t from-10% group-hover:from-10% backdrop-blur-md from-slate-100/10 to-slate-100/10 p-4 rounded-md transition-colors transition-all duration-1000">
                   <h2 class="group-hover:translate-y-24 transition duration-300
                   absolute z-20 w-full left-0 top-0 invisible text-[color:var(--c-2)] font-extralight p-2 rounded-md bg-[color:var(--c-3)] group-hover:bg-[color:var(--c-4)] md:text-md text-xs transition-colors duration-200 group-hover:text-[color:var(--c-2)] font-semibold shadow-sm transition-transform duration-400">{{ model.data.title }}</h2>
                   <a href="{{ model.url }}" class="shadow-[inset_-1px_-1px_0px_rgba(255,255,255,0.3),inset_1px_1px_0px_rgba(150,150,150,0.9)]
@@ -88,7 +86,7 @@ Let graphs and charts be your guide, and discover a new world of understanding, 
 
 <div
 class="glowit md:col-span-1 row-span-2 flex items-center snap-center bg-fixed bg-center bg-cover contrast-100 " style="background-image:url('https://cdn.midjourney.com/cea7fa75-07d2-420a-a122-c9906f59d7f7/0_0.webp');">
-<div class="relative bg-[color:var(--c-2)] shadow-md rounded px-8 pt-6 pb-8 flex flex-col">
+<div class="relative bg-[color:var(--c-2)] shadow-md rounded px-8 pt-6 pb-8 flex flex-col h-full">
   <h2 class="font-bold text-2xl mb-2 text-[color:var(--c-1)]">Advanced Functions</h2>
   <span class="text-sm text-[color:var(--c-1)]">Our tool is capable of using advanced mathematical functions in our graphing calculator, offering you complete freedom and flexibility in the input section.</span>
 </div>
@@ -97,7 +95,7 @@ class="glowit md:col-span-1 row-span-2 flex items-center snap-center bg-fixed bg
 
  <div
  class="glowit md:col-span-1 row-span-2 flex items-center snap-center bg-fixed bg-center bg-cover contrast-100 " style="background-image:url('https://cdn.midjourney.com/cea7fa75-07d2-420a-a122-c9906f59d7f7/0_0.webp');">
- <div class="relative bg-[color:var(--c-2)] shadow-md rounded px-8 pt-6 pb-8 flex flex-col">
+ <div class="relative bg-[color:var(--c-2)] shadow-md rounded px-8 pt-6 pb-8 flex flex-col h-full">
    <h2 class="font-bold text-2xl mb-2 text-[color:var(--c-1)]">Interactive Graphing</h2>
    <span class="text-sm text-[color:var(--c-1)]">Our graph not only displays precise input, but is also highly interactive, allowing you to explore and manipulate the graph for a more in-depth understanding.</span>
  </div>
@@ -106,7 +104,7 @@ class="glowit md:col-span-1 row-span-2 flex items-center snap-center bg-fixed bg
   
   <div
 class="glowit md:col-span-1 row-span-2 flex items-center snap-center bg-fixed bg-center bg-cover contrast-100 " style="background-image:url('https://cdn.midjourney.com/cea7fa75-07d2-420a-a122-c9906f59d7f7/0_0.webp');">
-<div class="relative bg-[color:var(--c-2)] shadow-md rounded px-8 pt-6 pb-8 flex flex-col">
+<div class="relative bg-[color:var(--c-2)] shadow-md rounded px-8 pt-6 pb-8 flex flex-col h-full">
   <h2 class="font-bold text-2xl mb-2 text-[color:var(--c-1)]">Helpful Resources</h2>
   <span class="text-sm text-[color:var(--c-1)]">We've got you covered with our help section, providing instructions and guidance on how to use our model effectively and make the most out of our tools.</span>
 </div>
@@ -118,9 +116,9 @@ class="glowit md:col-span-1 row-span-2 flex items-center snap-center bg-fixed bg
 
   <!-- GET IN TOUCH -->
   <div class="glowit flex flex-row justify-around items-center md:col-span-1 md:row-span-1">
-      <a href="/Page/contact/" class="group w-full md:py-2 md:px-4 lg:text-lg md:text-md text-xs bg-[color:var(--c-2)] font-bold py-3 px-6 rounded-md text-center flex items-center justify-center gap-2 transition-all duration-1000 group-hover:transform">
+      <a href="/Page/contact/" class="group w-full md:py-2 md:px-4 lg:text-lg md:text-md text-xs font-bold py-3 px-6 rounded-md text-center flex items-center justify-center gap-2 transition-all duration-1000 group-hover:transform">
             <h1 class="drop-shadow-[1px_1px_2px_rgba(255,255,255,0.2)] col-span-1 text-xl lg:text-3xl lg:text-2xl font-bold tracking-wide bg-clip-text text-transparent bg-gradient-to-t from-[color:var(--c-1)] to-[color:var(--c-1)] select-none">GET IN TOUCH</h1>
-            <img src="./assets/img/envelop.webp" class="h-32 aspect-square">
+            <img src="./assets/img/envelop.webp" class="h-32 aspect-square transform-all duration-1000">
 
           </a>
     
@@ -130,19 +128,18 @@ class="glowit md:col-span-1 row-span-2 flex items-center snap-center bg-fixed bg
      <!-- CREATORS -->
      <div class="glowit md:col-span-2 row-span-1 flex items-center">
 
-      <div class="w-full flex justify-between hover:[&_a>*]:grayscale-0 hover:[&_a>*]shadow-md [&_a>*]:grayscale">
+      <div class="w-full flex justify-between hover:[&_a>img]:grayscale-0 [&_a>img]:grayscale">
         {% for creator in collections.creators %}
             {% if creator.data.show %}
-            <div>
-              <a href="{{creator.url}}" class="inset-0 transition duration-500 ease-in-out">
-                <img src="{{creator.data.thumbnail}}" alt="{{creator.data.name}}" class="ring-2 ring-[color:var(--c-1)] md:h-32 h-24 w-full object-cover rounded-lg"/>
-                <h3 class="absolute bottom:0 left:0 md:text-sm text-xs -translate-y-[100%] bg-[color:var(--c-1)] md:w-32 w-24 px-2 rounded-b-lg">{{creator.data.name}}</h3>
+            <div class="ring-2 ring-[color:var(--c-3)] rounded-lg shadow-md">
+              <a href="{{creator.url}}" class=" transition duration-500 ease-in-out">
+                <img src="{{creator.data.thumbnail}}" alt="{{creator.data.name}}" class="aspect-square lg:h-32 md:h-26 h-24 object-cover rounded-lg"/>
+                <h3 class="absolute bottom:0 left:0 lg:text-sm md:text-xs text-xs -translate-y-[100%] bg-[color:var(--c-3)] lg:w-32 md:w-26 w-24 px-2 rounded-b-lg">{{creator.data.name | trim}}</h3>
             </a>
             </div>
             {% endif %}
         {% endfor %}
     </div>
-    
    
      </div>
         <!-- CREATORS -->

@@ -45,38 +45,14 @@
 	<meta property="twitter:description" content="Unlock the hidden depths of economics by embracing the power of visualization. Let graphs and charts be your guide, and discover a new world of understanding, analysis, and insight.">
 	<meta property="twitter:image" content="https://econ.vision/img/rsz_hero-3d.png">
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-   <style>
-		/* ===== Scrollbar CSS ===== */
-  /* Firefox */
-  #sideInputsContent {
-    scrollbar-width: thin;
-    scrollbar-color: #8b5cf6 #dabfdd;
-  }
-
-  /* Chrome, Edge, and Safari */
-  #sideInputsContent::-webkit-scrollbar {
-    width: 12px;
-  }
-
-  #sideInputsContent::-webkit-scrollbar-track {
-    background: #dabfdd;
-  }
-
-  #sideInputsContent::-webkit-scrollbar-thumb {
-    background-color: #8b5cf6;
-    border-radius: 12px;
-    border: 0px none #ffffff;
-  }
-	</style>
 </head>
-<body class="bg-gradient-to-b from-violet-300 to-purple-200 group/logo">
+<body class="bg-gradient-to-b from-violet-300 to-purple-200">
             <!-- navbar -->
-
-			<section class="z-100 relative bg-[color:var(--background)]">
-				{% include "nav.njk" %}
-				<div id="myCalculator" class="relative z-10"></div>
-				{% include "footer.njk" %}
-			</section>	  
+<header class="flex flex-col items-center justify-center w-full [&_img]:absolute md:[&_img]:left-10 [&_img]:left-5 md:[&_img]:w-20 [&_img]:w-14">
+{% include "nav.njk" %}
+</header>
+<div id="myCalculator" class="relative z-10"></div>
+{% include "footer.njk" %}
 
 
 			<script src="/assets/js/ev.js"></script>

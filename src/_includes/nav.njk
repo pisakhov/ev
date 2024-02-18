@@ -1,19 +1,16 @@
-<nav class="z-20 relative grid grid-cols-2 gap-4 px-4 w-full items-center backdrop-blur-[3px] bg-gradient-to-b from-[color:var(--background)] to-transparent to-100%">
-      <div class="col-span-1 flex justify-between items-center -my-4">
+<nav class="z-20 flex-col px-4 lg:w-[600px] md:w-[400px] items-center">
+      <div class="col-span-1 z-10 flex justify-center items-center p-2">
             <a href="/">
-                  <img class="md:[clip-path:circle(0px)] group-hover/logo:[clip-path:circle(100px)] delay-300 duration-[2000ms] ease-in-out rounded-full transition-all group-hover:scale-[0] saturate-200 w-28 md:w-32" src="/assets/img/_aalogo.png" alt=""> 
+                  <img class="fade-in-top [clip-path:circle(100px)] shadow-sm rounded-full transition-all saturate-200 w-24 md:w-28" src="/assets/img/__aalogo.png" alt=""> 
             </a>
       </div>
 
-   <div class="hidden md:grid grid-cols-5 gap-2
+   <div class="hidden md:grid grid-cols-4 gap-2
    [&_summary]:list-none 
-   [&_summary]:text-md [&_summary]:text-[color:var(--c-3)] hover:[&_summary]:text-[color:var(--c-4)] [&_summary]:transition-colors [&_summary]:duration-300
-   [&_a]:text-md [&_a]:text-[color:var(--c-3)] hover:[&_a]:text-[color:var(--c-4)] [&_a]:transition-colors [&_a]:duration-300
+   [&_summary]:text-md [&_summary]:text-[color:var(--c-1)] hover:[&_summary]:text-[color:var(--c-3)] [&_summary]:transition-colors [&_summary]:duration-300
+   [&_a]:text-center [&_a]:text-md [&_a]:text-[color:var(--c-1)] hover:[&_a]:text-[color:var(--c-3)] [&_a]:transition-colors [&_a]:duration-300
     ">
-      <a class="" href="/">
-      <i class="fas fa-home mr-2"></i> Home
-      </a>
-      <div class="relative group flex">
+      <div class="fade-in-700 relative group flex justify-center">
             <details class="flex flex-col">
                   <summary class="cursor-pointer">
                         <i class="fas fa-graduation-cap mr-2"></i> Courses
@@ -39,44 +36,35 @@
       </div>
       <!-- end mega menu-->
       {% for page in collections.pages %}{% if page.data.show %}
-      <a class="" href="{{page.url}}">
+      <a class="fade-in-1000" href="{{page.url}}">
       <i class="{{page.data.icon}} mr-2"></i> {{page.data.title}}
       </a>
       {% endif %}{% endfor %}
-      {# <a class="" href="?page=about">
-      <i class="fas fa-info-circle /fa-user-friends mr-2"></i> About
-      </a>
-      <a class="" href="?page=contact">
-      <i class="fas fa-envelope mr-2"></i> Contact
-      </a>
-      <a class="" href="?page=contact">
-      <i class="fas fa-user-plus mr-2"></i> Join us
-      </a> #}
    </div>
 <!-- Mobile -->
   
-<details class="z-[9999] relative inline-block text-left lg:hidden md:hidden [&_summary]:list-none">
+<details class="min-w-[400px] w-[100%] z-[9999] relative text-center inline-block lg:hidden md:hidden [&_summary]:list-none">
       <summary class="">
-            <span class="relative rounded-md hover:shadow-md cursor-pointer hover:bg-[color:var(--c-3)] text-[color:var(--c-3)] hover:text-[color:var(--background)] p-3 w-36 h-36">
-            <i class="fas fa-align-left inset-0"></i>
+            <span class="relative rounded-md hover:shadow-md cursor-pointer hover:bg-[color:var(--c-3)] text-[color:var(--c-1)] hover:text-[color:var(--c-2)] p-3 w-36 h-36">
+            Menu <i class="fas fa-align-left inset-0"></i>
             </span>
       </summary>
-      <div class="absolute left-[-50%] top-10 w-full rounded-md shadow-lg">
+      <div class="absolute left-[0%] top-10 w-full rounded-md shadow-lg text-left w-full">
             <div class="rounded-lg backdrop-blur-sm bg-slate-200/90 shadow-lg">
                   <div class="py-4">
-                        <a class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-[color:var(--c-3)] hover:text-white transition-colors duration-300 focus:outline-none focus:bg-[color:var(--c-3)] focus:text-gray-900" href="/">
+                        <a class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-[color:var(--c-3)] hover:text-white transition-colors duration-300 focus:outline-none focus:bg-[color:var(--c-3)]" href="/">
                               <i class="fas fa-home mr-2"></i> Home
                         </a>
                         <details class="relative group">
-                              <summary class="block px-4 py-2 text-sm leading-5 text-gray-700 group-hover:bg-[color:var(--c-3)] group-hover:text-white transition-colors duration-300 focus:outline-none focus:bg-[color:var(--c-3)] focus:text-gray-900 cursor-pointer courses-btn">
+                              <summary class="block px-4 py-2 text-sm leading-5 text-[color:var(--c-1)] group-hover:bg-[color:var(--c-3)] group-hover:text-white transition-colors duration-300 focus:outline-none focus:bg-[color:var(--c-3)] cursor-pointer courses-btn">
                                     <i class="fas fa-graduation-cap mr-2"></i> Courses
                               </summary>
                               <div class="courses-accordion top-0 left-0 w-full bg-transparent z-50">
-                                    <div class="rounded-b-lg backdrop-blur-sm bg-slate-400/90 border border-violet-600 shadow-lg">
-                                          <div class="py-4">
+                                    <div class="bg-[color:var(--c-1)] shadow-lg w-[106%] -translate-x-[3%] rounded-md">
+                                          <div class="py-0 mb-1 divide-y divide-[color:var(--c-2)] first:[&_a]:rounded-t-md last:[&_a]:rounded-b-md">
                                                 {% for course in collections.index %}
                                                       {% if course.data.show %}
-                                                                  <a href="{{course.url}}" class="block px-4 py-2 text-sm leading-5 text-gray-700 bg-slate-400/90 hover:bg-[color:var(--c-3)] hover:text-white transition-colors duration-300 focus:outline-none focus:bg-[color:var(--c-3)] focus:text-gray-900 cursor-pointer">
+                                                                  <a href="{{course.url}}" class="block px-4 py-2 text-sm leading-5 text-[color:var(--c-2)] bg-[color:var(--c-1)] hover:bg-[color:var(--c-3)] hover:text-[color:var(--c-2)] transition-colors duration-300 focus:outline-none cursor-pointer">
                                                                         {{ course.data.title }}
                                                                   </a>
                                                       {% endif %}
@@ -102,24 +90,24 @@
 
 
    <!-- breadcrumb-->
-   <nav class="col-span-2 self-end bg-[color:var(--backgroun2)] shadow-md rounded-sm text-center md:px-2">
+   <nav class="col-span-2 self-end bg-[color:var(--backgroun2)] shadow-md rounded-sm text-center md:px-2 md:my-4">
       <div class="mx-auto px-4">
             <ol class="list-none p-0 inline-flex
-            [&_li]:text-gray-600 hover:[&_li]:text-violet-600">
+            [&_li]:text-[color:var(--c-1)] hover:[&_li]:text-violet-600">
             <li class="flex items-center">
-                  <a href="/" class="font-normal transition-colors duration-300 hover:underline decoration-1 decoration-dotted md:text-lg text-sm">Home</a>
+                  <a href="/" class="font-normal transition-colors duration-300 hover:underline decoration-1 decoration-dotted lg:text-lg md:text-md text-sm">Home</a>
                   <i class="fas fa-angle-right text-gray-600 mx-2 md:text-lg text-sm"></i>
             </li>
             {% for cls in collections.index %}
             {% if cls.data.tag == tags %}
             <li class="flex items-center">
-                  <a href="{{ cls.url }}" class="font-normal transition-colors duration-300 hover:underline decoration-1 decoration-dotted md:text-lg text-sm">{{ cls.data.title }}</a>
+                  <a href="{{ cls.url }}" class="font-normal transition-colors duration-300 hover:underline decoration-1 decoration-dotted lg:text-lg md:text-md text-sm">{{ cls.data.title }}</a>
                   <i class="fas fa-angle-right text-gray-600 mx-2 md:text-lg text-sm"></i>
             </li>
             {% endif %}
             {% endfor %}
             <li class="flex items-center">
-                  <p class="font-normal text-[color:var(--c-3)] underline decoration-1 decoration-dotted md:text-lg text-sm">{{ title }}</p>
+                  <p class="font-normal text-[color:var(--c-3)] underline decoration-1 decoration-dotted lg:text-lg md:text-md text-sm">{{ title }}</p>
             </li>
             </ol>
       </div>
@@ -127,7 +115,6 @@
    {% endif %}
 
 </nav>
-
 
 
 
