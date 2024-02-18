@@ -6,7 +6,14 @@ layout: 'base.njk'
   <source src="./assets/img/hero.mp4" type="video/mp4">
 </video> -->
 <!-- {% include "desmos.njk" %} -->
+
 <section class="snap-center bg-fixed bg-center bg-cover h-screen relative" style="background-image:url('https://cdn.midjourney.com/cea7fa75-07d2-420a-a122-c9906f59d7f7/0_0.webp');">
+  <video autoplay muted loop class="absolute h-screen w-screen object-cover">
+    <source src="./assets/img/hero.mp4" type="video/mp4">
+  </video>
+  <div class="absolute top-0 inset-0 bg-black opacity-50"></div>
+
+  
   <div class="backdrop-blur-lg bg-gradient-to-bl from-slate-50/90 via-slate-50/60 to-slate-300/40 rounded-3xl shadow-[inset_0px_-12px_20px_8px_rgba(255,255,255,0.3),0_20px_20px_0px_rgba(0,0,0,0.5)] mb-8 md:px-12 p-2 text-[color:var(--c-1)] sticky top-5 mx-2 z-[9990] flex flex-col justify-center items-center space-y-6">
      <!-- LOGO -->
      {% include "nav.njk" %}
