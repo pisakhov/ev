@@ -1,4 +1,4 @@
-<nav class="z-20 flex-col px-4 lg:w-[600px] md:w-[400px] w-full items-center">
+<nav class="z-20 flex-col px-4 lg:w-[600px] md:w-[450px] w-full items-center">
       <div class="col-span-1 z-10 flex justify-center items-center p-2">
             <a href="/">
                   <img class="fade-in-top [clip-path:circle(100px)] shadow-sm rounded-full transition-all saturate-200 w-24 md:w-28" src="/assets/img/__aalogo.png" alt=""> 
@@ -7,23 +7,24 @@
 
    <div class="hidden md:grid grid-cols-4 gap-2
    [&_summary]:list-none 
-   [&_summary]:text-md [&_summary]:text-[color:var(--c-1)] hover:[&_summary]:text-[color:var(--c-3)] [&_summary]:transition-colors [&_summary]:duration-300
+   [&_summary]:text-md [&_summary]:text-[color:var(--c-3)] hover:[&_summary]:text-[color:var(--c-3)] [&_summary]:transition-colors [&_summary]:duration-300
    [&_a]:text-center [&_a]:text-md [&_a]:text-[color:var(--c-1)] hover:[&_a]:text-[color:var(--c-3)] [&_a]:transition-colors [&_a]:duration-300
     ">
       <div class="fade-in-700 relative group flex justify-center">
             <details class="flex flex-col">
                   <summary class="cursor-pointer">
                         <i class="fas fa-graduation-cap mr-2"></i> Courses
+                        <div class="opacity-80 my-1 ml-8 h-[1px] from-1% to-99% bg-gradient-to-r from-transparent via-[color:var(--c-3)] to-transparent"></div>
                   </summary>
                   <div class="absolute w-[320px] right-1/2 translate-x-1/2 bg-transparent z-50">
                         <div class="flex flex-row justify-center">
-                              <div class="w-full backdrop-blur-md bg-slate-200/90 rounded-lg shadow-lg">
-                                    <ul class="p-2 hover:[&_li]:bg-slate-100 [&_li]:p-2 [&_li]:rounded-md">
+                              <div class="w-full bg-[color:var(--c-3)] rounded-lg shadow-lg">
+                                    <ul class="p-0 hover:[&_li]:bg-[color:var(--c-2)] [&_li]:p-2 first:[&_li]:rounded-t-md last:[&_li]:rounded-b-md divide-y">
                                           {% for course in collections.index %}
                                                 {% if course.data.show %}
-                                                <li>
-                                                      <a href="{{course.url}}" class="cursor-pointer text-md text-gray-500 hover:text-white">
-                                                            {{ course.data.title }}
+                                                <li class="cursor-pointer group/menu">
+                                                      <a href="{{course.url}}" class="text-md">
+                                                            <p class="text-[color:var(--c-2)] text-left group-hover/menu:text-[color:var(--c-3)]">{{ course.data.title }}</p>
                                                       </a>
                                                 </li>
                                                 {% endif %}
