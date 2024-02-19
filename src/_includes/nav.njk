@@ -1,11 +1,12 @@
-<nav class="z-20 flex-col px-4 lg:w-[600px] md:w-[450px] w-full items-center">
+<nav class="z-20 flex-col px-4 w-full items-center flex justify-center">
       <div class="col-span-1 z-10 flex justify-center items-center p-2">
             <a href="/">
-                  <img class="fade-in-top [clip-path:circle(100px)] shadow-sm rounded-full transition-all saturate-200 w-24 md:w-28" src="/assets/img/__aalogo.png" alt=""> 
+                  <img class="fade-in-top [clip-path:circle(100px)] shadow-[inset_-20px_20px_20px_var(--c-3)] hover:shadow-[inset_-20px_-20px_20px_var(--c-3)] rounded-full transition-all duration-1000 saturate-200 w-24 md:w-28" src="/assets/img/__aalogo.png" alt=""> 
             </a>
       </div>
 
    <div class="hidden md:grid grid-cols-4 gap-2
+   lg:w-[600px] md:w-[450px]
    [&_summary]:list-none 
    [&_summary]:text-md [&_summary]:text-[color:var(--c-3)] hover:[&_summary]:text-[color:var(--c-3)] [&_summary]:transition-colors [&_summary]:duration-300
    [&_a]:text-center [&_a]:text-md [&_a]:text-[color:var(--c-1)] hover:[&_a]:text-[color:var(--c-3)] [&_a]:transition-colors [&_a]:duration-300
@@ -51,7 +52,7 @@
             </span>
       </summary>
       <div class="absolute left-[0%] top-10 w-full rounded-md shadow-lg text-left w-full">
-            <div class="rounded-lg backdrop-blur-sm bg-slate-200/90 shadow-lg">
+            <div class="rounded-lg bg-[color:var(--c-2)] shadow-lg">
                   <div class="py-4">
                         <a class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-[color:var(--c-3)] hover:text-white transition-colors duration-300 focus:outline-none focus:bg-[color:var(--c-3)]" href="/">
                               <i class="fas fa-home mr-2"></i> Home
@@ -91,19 +92,21 @@
 
 
    <!-- breadcrumb-->
-   <nav class="col-span-2 self-end bg-[color:var(--backgroun2)] shadow-md rounded-sm text-center md:px-2 md:my-4">
-      <div class="mx-auto px-4">
-            <ol class="list-none p-0 inline-flex
-            [&_li]:text-[color:var(--c-1)] hover:[&_li]:text-violet-600">
+   <nav class="mx-[4rem] col-span-1 bg-[color:var(--c-2)] shadow-lg rounded-xl text-center md:px-2 mt-6">
+      <div class="mx-auto px-1">
+            <ol class="list-none p-2 md:p-0 md:inline-flex
+            [&_li]:text-[color:var(--c-1)] hover:[&_li]:text-[color:var(--c-3)]">
             <li class="flex items-center">
                   <a href="/" class="font-normal transition-colors duration-300 hover:underline decoration-1 decoration-dotted lg:text-lg md:text-md text-sm">Home</a>
-                  <i class="fas fa-angle-right text-gray-600 mx-2 md:text-lg text-sm"></i>
+                  <i class="hidden md:block fas fa-angle-right text-[color:var(--c-1)] mx-2 text-lg"></i>
+                  <i class="md:hidden block fa-solid fa-turn-down text-[color:var(--c-1)] mx-1 pt-2 text-xs"></i>
             </li>
             {% for cls in collections.index %}
             {% if cls.data.tag == tags %}
             <li class="flex items-center">
                   <a href="{{ cls.url }}" class="font-normal transition-colors duration-300 hover:underline decoration-1 decoration-dotted lg:text-lg md:text-md text-sm">{{ cls.data.title }}</a>
-                  <i class="fas fa-angle-right text-gray-600 mx-2 md:text-lg text-sm"></i>
+                  <i class="hidden md:block fas fa-angle-right text-[color:var(--c-1)] mx-2 text-lg"></i>
+                  <i class="md:hidden block fa-solid fa-turn-down text-[color:var(--c-1)] mx-1 pt-2 text-xs"></i>
             </li>
             {% endif %}
             {% endfor %}
