@@ -7,14 +7,16 @@ layout: 'base.njk'
 </video> -->
 <!-- {% include "desmos.njk" %} -->
 
-<section class="snap-center bg-fixed bg-center bg-cover h-screen relative" style="background-image:url('https://cdn.midjourney.com/cea7fa75-07d2-420a-a122-c9906f59d7f7/0_0.webp');">
-  <video autoplay muted loop class="absolute h-screen w-screen object-cover">
+<section class="snap-center bg-fixed bg-center bg-cover h-screen relative" style="
+background-image:url('https://cdn.midjourney.com/48eaf9e4-27db-4b46-98dc-91459b67bcd8/0_0.webp');
+">
+  <!-- <video autoplay muted loop class="absolute h-screen w-screen object-cover">
     <source src="./assets/img/hero.mp4" type="video/mp4">
   </video>
-  <div class="absolute top-0 inset-0 bg-black opacity-50"></div>
+  <div class="absolute top-0 inset-0 bg-black opacity-50"></div> -->
 
   
-  <div class="backdrop-blur-lg bg-gradient-to-bl from-slate-50/90 via-slate-50/60 to-slate-300/40 rounded-3xl shadow-[inset_0px_-12px_20px_8px_rgba(255,255,255,0.3),0_20px_20px_0px_rgba(0,0,0,0.5)] mb-8 md:px-12 p-2 text-[color:var(--c-1)] sticky top-5 mx-2 z-[9990] flex flex-col justify-center items-center space-y-6">
+  <div id="isSticky" class="backdrop-blur-md bg-gradient-to-bl from-violet-300/90 via-violet-300/60 to-violet-300/30 rounded-b-xl shadow-[inset_0px_-12px_20px_8px_rgba(255,255,255,0.3),0_20px_20px_0px_rgba(0,0,0,0.5)] mb-8 md:px-12 p-2 text-[color:var(--c-1)] sticky top-0 md:mx-[3rem] z-[9990] flex flex-col justify-center items-center space-y-6">
      <!-- LOGO -->
      {% include "nav.njk" %}
     <!-- LOGO -->
@@ -35,6 +37,19 @@ Let graphs and charts be your guide, and discover a new world of understanding, 
 <script src='/assets/js/typewriter.js'></script>
 
 <script>
+
+// get the sticky element
+const stickyElm = document.getElementById('isSticky')
+
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 20) {
+    stickyElm.classList.add('isSticky')
+  } else {
+    stickyElm.classList.remove('isSticky')
+  }
+})
+
+
              		const typewriter = new Typewriter('#mainlogo', {
          			autoStart: true
          		});
@@ -92,7 +107,7 @@ Let graphs and charts be your guide, and discover a new world of understanding, 
 
 
 <div
-class="glowit md:col-span-1 row-span-2 flex items-center snap-center bg-fixed bg-center bg-cover contrast-100 " style="background-image:url('https://cdn.midjourney.com/cea7fa75-07d2-420a-a122-c9906f59d7f7/0_0.webp');">
+class="glowit md:col-span-1 row-span-1 flex items-center snap-center bg-fixed bg-center bg-cover contrast-100" style="background-image:url('https://cdn.midjourney.com/cea7fa75-07d2-420a-a122-c9906f59d7f7/0_0.webp');">
 <div class="relative bg-[color:var(--c-2)] shadow-md rounded px-8 pt-6 pb-8 flex flex-col h-full">
   <h2 class="font-bold text-2xl mb-2 text-[color:var(--c-1)]">Advanced Functions</h2>
   <span class="text-sm text-[color:var(--c-1)]">Our tool is capable of using advanced mathematical functions in our graphing calculator, offering you complete freedom and flexibility in the input section.</span>
@@ -101,7 +116,7 @@ class="glowit md:col-span-1 row-span-2 flex items-center snap-center bg-fixed bg
 
 
  <div
- class="glowit md:col-span-1 row-span-2 flex items-center snap-center bg-fixed bg-center bg-cover contrast-100 " style="background-image:url('https://cdn.midjourney.com/cea7fa75-07d2-420a-a122-c9906f59d7f7/0_0.webp');">
+ class="glowit md:col-span-1 row-span-1 flex items-center snap-center bg-fixed bg-center bg-cover contrast-100 " style="background-image:url('https://cdn.midjourney.com/cea7fa75-07d2-420a-a122-c9906f59d7f7/0_0.webp');">
  <div class="relative bg-[color:var(--c-2)] shadow-md rounded px-8 pt-6 pb-8 flex flex-col h-full">
    <h2 class="font-bold text-2xl mb-2 text-[color:var(--c-1)]">Interactive Graphing</h2>
    <span class="text-sm text-[color:var(--c-1)]">Our graph not only displays precise input, but is also highly interactive, allowing you to explore and manipulate the graph for a more in-depth understanding.</span>
@@ -110,7 +125,7 @@ class="glowit md:col-span-1 row-span-2 flex items-center snap-center bg-fixed bg
 
   
   <div
-class="glowit md:col-span-1 row-span-2 flex items-center snap-center bg-fixed bg-center bg-cover contrast-100 " style="background-image:url('https://cdn.midjourney.com/cea7fa75-07d2-420a-a122-c9906f59d7f7/0_0.webp');">
+class="glowit md:col-span-1 row-span-1 flex items-center snap-center bg-fixed bg-center bg-cover contrast-100 " style="background-image:url('https://cdn.midjourney.com/cea7fa75-07d2-420a-a122-c9906f59d7f7/0_0.webp');">
 <div class="relative bg-[color:var(--c-2)] shadow-md rounded px-8 pt-6 pb-8 flex flex-col h-full">
   <h2 class="font-bold text-2xl mb-2 text-[color:var(--c-1)]">Helpful Resources</h2>
   <span class="text-sm text-[color:var(--c-1)]">We've got you covered with our help section, providing instructions and guidance on how to use our model effectively and make the most out of our tools.</span>

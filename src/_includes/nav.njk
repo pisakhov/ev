@@ -1,21 +1,23 @@
-<nav class="z-20 flex-col px-4 w-full items-center flex justify-center">
+<nav class="z-20 sticky flex-col px-4 w-full items-center flex justify-center">
       <div class="col-span-1 z-10 flex justify-center items-center p-2">
             <a href="/">
                   <img class="fade-in-top [clip-path:circle(100px)] shadow-[inset_-20px_20px_20px_var(--c-3)] hover:shadow-[inset_-20px_-20px_20px_var(--c-3)] rounded-full transition-all duration-1000 saturate-200 w-24 md:w-28" src="/assets/img/__aalogo.png" alt=""> 
             </a>
       </div>
 
-   <div class="hidden md:grid grid-cols-4 gap-2
+   <div class="hidden md:flex flex-row justify-center gap-4
    lg:w-[600px] md:w-[450px]
    [&_summary]:list-none 
    [&_summary]:text-md [&_summary]:text-[color:var(--c-3)] hover:[&_summary]:text-[color:var(--c-3)] [&_summary]:transition-colors [&_summary]:duration-300
    [&_a]:text-center [&_a]:text-md [&_a]:text-[color:var(--c-1)] hover:[&_a]:text-[color:var(--c-3)] [&_a]:transition-colors [&_a]:duration-300
     ">
-      <div class="fade-in-700 relative group flex justify-center">
+      <div class="fade-in-900 relative group flex justify-between flex flex-row">
             <details class="flex flex-col">
-                  <summary class="cursor-pointer">
-                        <i class="fas fa-graduation-cap mr-2"></i> Courses
-                        <div class="opacity-80 my-1 ml-8 h-[1px] from-1% to-99% bg-gradient-to-r from-transparent via-[color:var(--c-3)] to-transparent"></div>
+                  <summary class="cursor-pointer flex flex-row gap-2 items-center">
+                        <i class="fas fa-graduation-cap fade-in-900 self-center"></i> 
+                        <div class="fade-in-800">Courses
+                              <div class="inset-0 opacity-80 h-[1px] from-1% to-99% bg-gradient-to-r from-transparent via-[color:var(--c-3)] to-transparent"></div>
+                        </div>
                   </summary>
                   <div class="absolute w-[320px] right-1/2 translate-x-1/2 bg-transparent z-50">
                         <div class="flex flex-row justify-center">
@@ -38,8 +40,9 @@
       </div>
       <!-- end mega menu-->
       {% for page in collections.pages %}{% if page.data.show %}
-      <a class="fade-in-1000" href="{{page.url}}">
-      <i class="{{page.data.icon}} mr-2"></i> {{page.data.title}}
+      <a class="fade-in-900 flex flex-row gap-2 items-center" href="{{page.url}}">
+      <i class="{{page.data.icon}} fade-in-900"></i>
+      <div class="fade-in-800">{{page.data.title}}</div>
       </a>
       {% endif %}{% endfor %}
    </div>
@@ -119,6 +122,4 @@
    {% endif %}
 
 </nav>
-
-
 

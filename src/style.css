@@ -75,3 +75,8 @@
     font-family: system-ui;
   }
   
+
+  div.isSticky .fade-in-800{
+      visibility: collapse;
+      display: none;
+  }
