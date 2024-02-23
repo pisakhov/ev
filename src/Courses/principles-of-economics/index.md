@@ -1,6 +1,6 @@
 ---
 tags: index
-title: Principals of Economics
+title: Principles of Economics
 layout: page.njk
 tag: principal-economics
 color: cyan
