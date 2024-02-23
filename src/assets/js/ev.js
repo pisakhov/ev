@@ -1698,13 +1698,13 @@ class View {
                   <div class="grid grid-cols-12" id="graphsContent"></div>
                 </div>
                 <div style="display:none;" class="md:fixed relative top-0 right-0 z-40 backdrop-blur-lg bg-violet-100/50 md:h-full md:w-full cursor-pointer" id="dark-screen"></div>
-                <dialog style="display:none;" class="col-span-12 rounded-lg md:absolute md:overflow-y-auto relative md:inset-0 w-full md:w-3/4 lg:w-1/2 md:h-fit shadow-[0_0px_16px_-6px_rgba(0,0,0,0.9)] p-8 md:backdrop-blur-md md:bg-white/50 z-50 flex flex-col items-center justify-around" id="offcanvasPanel">
+                <dialog style="display:none;" class="col-span-12 rounded-lg md:absolute md:overflow-y-auto relative md:inset-0 w-full md:w-3/4 lg:w-1/2 md:h-fit shadow-[0_0px_16px_-6px_rgba(0,0,0,0.9)] px-10 py-2 md:backdrop-blur-md md:bg-white/50 z-50 flex flex-col items-center justify-around" id="offcanvasPanel">
 				<button id="integrate-mode" class="group md:block hidden absolute right-0 bottom-0 transform px-4 py-2 bg-violet-600 hover:bg-violet-900 text-white text-center rounded-ee-lg rounded-ss-lg">
 				<i class="fas fa-hand-point-down group-hover:animate-bounce"></i>				
 				</button>
 				<div class="md:m-auto w-full"> <!-- This div centers the content vertically on medium screens -->
                   <button class="float-right absolute top-0 right-0 m-4 hidden md:block" id="exit-button-offcanvas"><i class="fa fa-times text-black"></i></button>
-                  <div id="sideInstructionsContent" class="mt-8 overflow-y-auto flex flex-row [&_div]:w-full"></div>
+                  <div id="sideInstructionsContent" class="mt-0 overflow-y-auto flex flex-row [&_div]:w-full"></div>
                 </div>
                 <button id="openReportModal" class="self-start bg-red-500 text-white font-bold text-xs py-1 px-2 rounded group inline-flex items-center">
                 <i class="fas fa-shield-alt text-xs mr-1 transition-transform duration-200 group-hover:translate-x-1"></i>
