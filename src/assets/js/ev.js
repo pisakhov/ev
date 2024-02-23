@@ -877,6 +877,7 @@ class SliderComponent {
 		this.DEFAULT_MIN = this.config.min || 0;
 		this.DEFAULT_MAX = this.config.max || 655000;
 		this.DEFAULT_STEP = this.config.step || 1;
+		this.DEFAULT_MULTI_VISIBILITY = this.config.multiVisibility || false;
 		this.DEFAULT_VALUE = this.config.defaultValue || 0;
 		this.TITLE = this.config.title || 'Title Here:';
 		this.latex = this.config.latex;
@@ -955,9 +956,34 @@ class SliderComponent {
 							   <input type="range" class="w-[95%] ml-2 range-config appearance-none bg-violet-50 [&::-webkit-slider-runnable-track]:rounded-full [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:h-4 [&::-webkit-slider-thumb]:w-4 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-violet-600 cursor-pointer rounded-lg hover:bg-violet-300 dark:hover:bg-gray-600 active:outline-none active:ring-2 active:ring-violet-600"/>
 						   </div>`;
 		} else {
-			// Full mode HTML setup
-			htmlContent = `<p class="p-1 text-md">${this.TITLE}:</p><div class="h-auto relative flex flex-col w-full items-stretch justify-between rounded-md border-0 border-violet-500 bg-transperent p-2"><input type="range" class="range-config appearance-none mb-2 bg-violet-50 [&::-webkit-slider-runnable-track]:rounded-full [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:h-4 [&::-webkit-slider-thumb]:w-4 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-violet-600 cursor-pointer rounded-lg hover:bg-violet-300 dark:hover:bg-gray-600 active:outline-none active:ring-2 active:ring-violet-600"/><div class="relative flex items-center"><div class="flex w-2/3 text-sm hover:outline hover:outline-offset-1 hover:outline-1 hover:rounded-md hover:outline-violet-900/20"><div class="relative flex-grow"><button class="decreaseValue w-full h-full rounded-l-md bg-violet-600 p-2 text-white hover:bg-violet-700 active:bg-violet-800"><i class="fas fa-minus"></i></button><div class="absolute right-0 top-1 z-10 flex items-center justify-end"><button class="decreaseMultiplier transform rounded-l-md bg-red-500 p-1 text-white hover:bg-red-600 active:bg-red-700 active:translate-y-1 active:scale-95"><i class="fas fa-minus"></i></button></div></div><div class="relative flex-grow"><button class="increaseValue w-full h-full rounded-r-md bg-violet-600 p-2 text-white hover:bg-violet-700 active:bg-violet-800"><i class="fas fa-plus"></i></button><div class="absolute left-0 top-1 z-10 flex items-center justify-start"><button class="increaseMultiplier transform rounded-r-md bg-green-500 p-1 text-white hover:bg-green-600 active:bg-green-700 active:translate-y-1 active:scale-95"><i class="fas fa-plus"></i></button></div></div></div><div class="relative ml-2 w-1/3 flex-grow"><span class="multiplierIndicator absolute inset-y-0 left-1 text-xs z-10 pointer-events-none"></span><input type="number" class="number-config bg-transperent w-full rounded-md border border-violet-400 p-2 text-center text-sm focus:outline-none focus:ring-2 focus:ring-violet-300 hover:border-violet-500"/></div></div></div>`;
+			    // Check if the multiplier buttons should be visible
+				const displayMultiplier = this.DEFAULT_MULTI_VISIBILITY ? 'block' : 'none';
 
+			// Full mode HTML setup
+    htmlContent = `<p class="p-1 text-md">${this.TITLE}:</p>
+	<div class="h-auto relative flex flex-col w-full items-stretch justify-between rounded-md border-0 border-violet-500 bg-transperent p-2">
+	   <input type="range" class="range-config appearance-none mb-2 bg-violet-50 [&::-webkit-slider-runnable-track]:rounded-full [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:h-4 [&::-webkit-slider-thumb]:w-4 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-violet-600 cursor-pointer rounded-lg hover:bg-violet-300 dark:hover:bg-gray-600 active:outline-none active:ring-2 active:ring-violet-600"/>
+	   <div class="relative flex items-center">
+		  <div class="relative mx-4 w-1/3 flex">
+			 <span class="multiplierIndicator absolute inset-y-0 left-1 text-xs z-10 pointer-events-none"></span>
+			 <input type="number" class="number-config bg-transperent w-full rounded-md border border-violet-400 p-2 text-center text-sm focus:outline-none focus:ring-2 focus:ring-violet-300 hover:border-violet-500"/>
+		  </div>
+		  <div class="flex mx-4 w-2/3 text-sm hover:outline hover:outline-offset-1 hover:outline-1 hover:rounded-md hover:outline-violet-900/20">
+			 <div class="relative flex-grow">
+				<button class="decreaseValue w-full h-full rounded-l-md bg-violet-600 p-2 text-white hover:bg-violet-700 active:bg-violet-800"><i class="fas fa-minus"></i></button>
+				<div class="absolute right-0 top-1 z-10 flex items-center justify-end" style="display: ${displayMultiplier};">
+				   <button class="decreaseMultiplier transform rounded-l-md bg-red-500 p-1 text-white hover:bg-red-600 active:bg-red-700 active:translate-y-1 active:scale-95"><i class="fas fa-minus"></i></button>
+				</div>
+			 </div>
+			 <div class="relative flex-grow">
+				<button class="increaseValue w-full h-full rounded-r-md bg-violet-600 p-2 text-white hover:bg-violet-700 active:bg-violet-800"><i class="fas fa-plus"></i></button>
+				<div class="absolute left-0 top-1 z-10 flex items-center justify-start" style="display: ${displayMultiplier};">
+				   <button class="increaseMultiplier transform rounded-r-md bg-green-500 p-1 text-white hover:bg-green-600 active:bg-green-700 active:translate-y-1 active:scale-95"><i class="fas fa-plus"></i></button>
+				</div>
+			 </div>
+		  </div>
+	   </div>
+	</div>`;
 		}
 
 		this.container.innerHTML = htmlContent;
@@ -1103,39 +1129,47 @@ class SliderComponent {
 	}
 
 	addEventListeners() {
-		// Conditionally add event listeners for decrease/increase value buttons
-		const decreaseValueButton = this.container.querySelector('.decreaseValue');
-		const increaseValueButton = this.container.querySelector('.increaseValue');
-		const handleContinuousAdjustment = (adjustment) => {
-			return setInterval(() => {
-				this.adjustValue(adjustment);
-				this.rangeInput.dispatchEvent(new Event('input'));
-			}, 100); // Adjust this interval as needed
-		};
+    // Conditionally add event listeners for decrease/increase value buttons
+    const decreaseValueButton = this.container.querySelector('.decreaseValue');
+    const increaseValueButton = this.container.querySelector('.increaseValue');
+    const handleContinuousAdjustment = (adjustment) => {
+        return setInterval(() => {
+            this.adjustValue(adjustment);
+            this.rangeInput.dispatchEvent(new Event('input'));
+        }, 100); // Adjust this interval as needed
+    };
 
-		// Modify event listeners for decrease/increase value buttons
-		if (decreaseValueButton && increaseValueButton) {
-			let decreaseInterval, increaseInterval;
+    // Modify event listeners for decrease/increase value buttons
+    if (decreaseValueButton && increaseValueButton) {
+        let decreaseInterval, increaseInterval;
 
-			decreaseValueButton.addEventListener('mousedown', () => {
-				decreaseInterval = handleContinuousAdjustment(-1);
-			});
-			increaseValueButton.addEventListener('mousedown', () => {
-				increaseInterval = handleContinuousAdjustment(1);
-			});
+        const startAdjustment = (event) => {
+            event.preventDefault();
+            if (event.target === decreaseValueButton) {
+                decreaseInterval = handleContinuousAdjustment(-1);
+            } else if (event.target === increaseValueButton) {
+                increaseInterval = handleContinuousAdjustment(1);
+            }
+        };
 
-			const stopAdjustment = () => {
-				clearInterval(decreaseInterval);
-				clearInterval(increaseInterval);
-			};
+        const stopAdjustment = () => {
+            clearInterval(decreaseInterval);
+            clearInterval(increaseInterval);
+        };
 
-			// Add event listeners to stop the interval
-			['mouseup', 'mouseleave'].forEach(event => {
-				decreaseValueButton.addEventListener(event, stopAdjustment);
-				increaseValueButton.addEventListener(event, stopAdjustment);
-			});
+        // Add event listeners to start the interval
+        ['mousedown', 'touchstart'].forEach(event => {
+            decreaseValueButton.addEventListener(event, startAdjustment, {passive: false});
+            increaseValueButton.addEventListener(event, startAdjustment, {passive: false});
+        });
+
+        // Add event listeners to stop the interval
+        ['mouseup', 'mouseleave', 'touchend'].forEach(event => {
+            decreaseValueButton.addEventListener(event, stopAdjustment);
+            increaseValueButton.addEventListener(event, stopAdjustment);
+        });
 		}
-
+	
 		// Conditionally add event listeners for decrease/increase multiplier buttons
 		const decreaseMultiplierButton = this.container.querySelector('.decreaseMultiplier');
 		const increaseMultiplierButton = this.container.querySelector('.increaseMultiplier');
@@ -1444,7 +1478,7 @@ class Instructions {
             <i class="fas fa-chevron-left text-sm"></i>
           </button>          
           </div>
-          <div id="body-${randomSubId}" data-display="none" class="hidden p-2 md:p-6 bg-violet-600 text-white rounded-lg text-sm">
+          <div id="body-${randomSubId}" data-display="none" class="hidden p-2 md:p-6 bg-violet-600 text-white [&_math-field]:text-white rounded-lg text-sm">
             ${p2}
           </div>
         </div>`;
@@ -1496,14 +1530,14 @@ class Instructions {
 		if (!paginationExists) {
 			const markup = `
         <div class="flex items-center justify-center py-4 lg:px-0 sm:px-6 px-4">
-          <div class="w-5/6 flex items-center justify-between border-t border-gray-200">
-            <div class="flex items-center pt-2 text-gray-600 hover:text-violet-700 cursor-pointer" id="previousButton">
+          <div class="w-full flex items-center justify-center space-x-10 border-t border-gray-200">
+            <div class="space-x-2 flex items-center pt-2 text-gray-600 hover:text-violet-700 cursor-pointer" id="previousButton">
               <i class="fas fa-arrow-left"></i>
-              <p class="text-sm ml-3 font-medium leading-none ">Previous</p>
+              <p class="text-sm font-medium leading-none ">Previous</p>
             </div>
             <div class="sm:flex hidden" id="pagination"></div>
-            <div class="flex items-center pt-2 text-gray-600 hover:text-violet-700 cursor-pointer" id="nextButton">
-              <p class="text-sm font-medium leading-none mr-3">Next</p>
+            <div class="space-x-2 flex items-center pt-2 text-gray-600 hover:text-violet-700 cursor-pointer" id="nextButton">
+              <p class="text-sm font-medium leading-none">Next</p>
               <i class="fas fa-arrow-right"></i>
             </div>
           </div>
@@ -1606,7 +1640,7 @@ class Developer {
 		document.body.appendChild(editorElement);
 		require.config({
 			paths: {
-				'vs': 'https://unpkg.com/monaco-editor@0.43.0/min/vs'
+				'vs': '/static/monaco-editor/min/vs'
 			}
 		});
 		require(['vs/editor/editor.main'], () => {
@@ -1663,14 +1697,16 @@ class View {
                 <div class="md:col-span-8 lg:col-span-9 col-span-12 text-left d-inline shadow-2xl rounded-md">
                   <div class="grid grid-cols-12" id="graphsContent"></div>
                 </div>
-                <div style="display:none;" class="md:fixed relative top-0 right-0 z-40 backdrop-blur-sm bg-white/30 md:h-full md:w-full cursor-pointer" id="dark-screen"></div>
-
-                <dialog style="display:none;" class="col-span-12 lg:col-span-10 md:col-span-9 rounded-lg md:absolute md:overflow-y-auto relative md:inset-0 w-full md:w-1/2 md:h-fit shadow-[0_0px_16px_-6px_rgba(0,0,0,0.9)] p-8 md:backdrop-blur-md md:bg-white/50 z-50 flex items-center justify-center" id="offcanvasPanel">
-                <div class="md:m-auto"> <!-- This div centers the content vertically on medium screens -->
+                <div style="display:none;" class="md:fixed relative top-0 right-0 z-40 backdrop-blur-lg bg-violet-100/50 md:h-full md:w-full cursor-pointer" id="dark-screen"></div>
+                <dialog style="display:none;" class="col-span-12 rounded-lg md:absolute md:overflow-y-auto relative md:inset-0 w-full md:w-3/4 lg:w-1/2 md:h-fit shadow-[0_0px_16px_-6px_rgba(0,0,0,0.9)] p-8 md:backdrop-blur-md md:bg-white/50 z-50 flex flex-col items-center justify-around" id="offcanvasPanel">
+				<button id="integrate-mode" class="group md:block hidden absolute right-0 bottom-0 transform px-4 py-2 bg-violet-600 hover:bg-violet-900 text-white text-center rounded-ee-lg rounded-ss-lg">
+				<i class="fas fa-hand-point-down group-hover:animate-bounce"></i>				
+				</button>
+				<div class="md:m-auto w-full"> <!-- This div centers the content vertically on medium screens -->
                   <button class="float-right absolute top-0 right-0 m-4 hidden md:block" id="exit-button-offcanvas"><i class="fa fa-times text-black"></i></button>
-                  <div id="sideInstructionsContent" class="mt-8 overflow-y-auto h-96"></div>
+                  <div id="sideInstructionsContent" class="mt-8 overflow-y-auto flex flex-row [&_div]:w-full"></div>
                 </div>
-                <button id="openReportModal" class="bg-red-500 text-white font-bold text-xs py-1 px-2 rounded group inline-flex items-center">
+                <button id="openReportModal" class="self-start bg-red-500 text-white font-bold text-xs py-1 px-2 rounded group inline-flex items-center">
                 <i class="fas fa-shield-alt text-xs mr-1 transition-transform duration-200 group-hover:translate-x-1"></i>
                 <span class="transition-transform duration-200 group-hover:translate-x-1">Report</span>
               </button>
@@ -1692,6 +1728,8 @@ class View {
           </div>
         </footer>
         `;
+
+
 		let appIDElement = document.getElementById(this.appID);
 		appIDElement.innerHTML += combinedHtmlString;
 		const openModalButton = document.getElementById('openReportModal');
@@ -1711,6 +1749,27 @@ class View {
 				sideInstructionsContent.style.display = "none";
 				sideInstructionsContent.parentNode.insertBefore(newDiv, sideInstructionsContent.nextSibling); // Insert the iframe after sideInstructionsContent
 				openModalButton.innerHTML = '<i class="fas fa-times text-xs mr-1 transition-transform duration-200 group-hover:translate-x-1"></i><span class="transition-transform duration-200 group-hover:translate-x-1">Exit</span>'; // Change the button text/icon to "Exit"
+			}
+		});
+
+		document.getElementById('integrate-mode').addEventListener('click', function() {
+			var offcanvasPanel = document.getElementById('offcanvasPanel');
+			var darkscreen = document.getElementById('dark-screen');
+
+			offcanvasPanel.classList.toggle('md:absolute');
+			offcanvasPanel.classList.toggle('md:w-3/4');
+			offcanvasPanel.classList.toggle('lg:w-1/2');
+			darkscreen.classList.toggle('md:fixed');
+
+			var icon = this.querySelector('i');
+			if (icon.classList.contains('fa-hand-point-down')) {
+				icon.classList.remove('fa-hand-point-down');
+				icon.classList.add('fa-hand-point-up');
+				window.scrollTo({top: document.body.scrollHeight, behavior: 'smooth'});				
+			} else {
+				icon.classList.remove('fa-hand-point-up');
+				icon.classList.add('fa-hand-point-down');
+				window.scrollTo({top: 0, behavior: 'smooth'});
 			}
 		});
 	}
@@ -1843,6 +1902,8 @@ class EconVision {
 		this.creatorNumber = 0;
 		this.debounceTimers = {}; // Object to hold debounce timers for each idDiv
 		this.queue = {};
+		this.selectInputCount = {};
+		this.addSelectInputData = {};
 		this.inThrottle = false;
 		this.inputToExpressionsMap = [];
 		this.totalFunctions = 0;
@@ -2069,6 +2130,7 @@ class EconVision {
 			min,
 			max,
 			step,
+			multiVisibility,
 			defaultValue,
 			listGraphs,
 			simpleMode = false,
@@ -2091,6 +2153,7 @@ class EconVision {
 			min,
 			max,
 			step,
+			multiVisibility,
 			defaultValue,
 			id: idDiv,
 			title,
@@ -3085,26 +3148,99 @@ class EconVision {
 		});
 	}
 	addSelectInput(options) {
-		function addSelectInputField() {
+		const idDiv = options.idDiv;
+		const title = options.title;
+		const hideAllTitle = options.hideAllTitle || "Hide All";
+		const item = options.item;
+		const listGroup = options.listGroup;
+		const listGraphs = options.listGraphs;
+		const listOfGraphs = this.view.graphs.listOfGraphs;
+		const selectedExp = this.view.inputs.selectedExpressions;
+		const hasSize = options.hasSize || false;
+
+		const collectSelectData = () => {
+			if (!this.addSelectInputData[idDiv]) {
+				this.addSelectInputData[idDiv] = {
+					title: title,
+					hideAllTitle: hideAllTitle,
+					hasSize: hasSize,
+					counter: 0,
+					children: []
+				};
+			}
+
+			this.addSelectInputData[idDiv].children.push({
+				item: item,
+				listGroup: listGroup
+			});
+
+			this.addSelectInputData[idDiv].counter += 1;
+		}
+		collectSelectData();
+
+		console.log(`addSelectInputData after collectSelectData: ${JSON.stringify(this.addSelectInputData)}`);
+
+		const trackMethodCalls = async () => {
+			const intervalId = setInterval(() => {
+				console.log(selectedExp);
+				if (selectedExp && typeof selectedExp === 'object') {
+					this.addSelectInputData[idDiv].children.forEach(child => {
+						const keys = Object.keys(selectedExp);
+						const hasKey = keys.some(key => child.listGroup.includes(key));
+						if (hasKey) {
+							hideAllListGroups();
+							console.log(`hideAllListGroups called for idDiv: ${idDiv}`);
+							clearInterval(intervalId);
+						}
+					});
+				}
+			}, 1); // Check every second
+
+			// Remember to clear the interval when you no longer need it
+			// clearInterval(intervalId);
+		}
+
+		if (!this.selectInputCount[idDiv]) {
+			this.selectInputCount[idDiv] = 0;
+		}
+
+		const addSelectInputField = () => {
 			if (document.getElementById(idDiv) === null) {
 				const sideInputsContent = document.getElementById("sideInputsContent");
 				const selectDiv = document.createElement('div');
-				selectDiv.className = 'w-full flex flex-col p-2';
-				selectDiv.innerHTML = `<select class="form-select bg-transparent border-2 border-violet-500 text-gray-900 text-sm rounded-md focus:ring-violet-500 focus:border-violet-500 mx-2 p-2.5" id="${idDiv}"><option selected="selected">Hide All</option></select>`;
+				selectDiv.className = 'w-full flex flex-col';
+
+				const titleElem = document.createElement('p');
+				titleElem.textContent = title + ':';
+
+				selectDiv.appendChild(titleElem);
+
+				selectDiv.innerHTML += `<select class="overflow-hidden p-4 form-select bg-transparent border-2 border-violet-600 text-gray-900 text-md rounded-md focus:ring-violet-500 focus:border-violet-500 divide-y-2 divide-violet-600 [&_option]:py-3 [&_option]:px-4 checked:[&_option]:bg-violet-600 checked:[&_option]:text-slate-50" id="${idDiv}"><option selected="selected">${hideAllTitle}</option></select>`;
 				sideInputsContent.appendChild(selectDiv);
 			}
+
 			const selectElem = document.getElementById(idDiv);
 			const optionElem = document.createElement('option');
 			optionElem.textContent = item;
 			selectElem.appendChild(optionElem);
+
+			this.selectInputCount[idDiv] += 1;
+
+			if (this.selectInputCount[idDiv] === 1 && hasSize) {
+				this.hasSize = true;
+			}
+			if (this.hasSize) {
+				selectElem.setAttribute('size', this.selectInputCount[idDiv]+1);
+				selectElem.classList.remove('p-4'); // Remove p-4 class
+			}
 		}
 
-		function hideAllListGroups() {
+		const hideAllListGroups = () => {
 			hideInputsFromList();
 			hideExpressionsFromList();
 		}
 
-		function hideInputsFromList() {
+		const hideInputsFromList = () => {
 			listGroup.forEach(value => {
 				const elem = document.querySelector(`#sideInputsContent #${value}`);
 				if (elem) {
@@ -3113,7 +3249,7 @@ class EconVision {
 			});
 		}
 
-		function hideExpressionsFromList() {
+		const hideExpressionsFromList = () => {
 			listGraphs.forEach(i => {
 				listGroup.forEach(j => {
 					listOfGraphs[i].setExpression({
@@ -3125,12 +3261,12 @@ class EconVision {
 			});
 		}
 
-		function showPickedItem(Pitem) {
+		const showPickedItem = (Pitem) => {
 			showInputsFromList(Pitem);
 			showExpressionsFromList(Pitem);
 		}
 
-		function showInputsFromList(Pitem) {
+		const showInputsFromList = (Pitem) => {
 			hideInputsFromList();
 			if (Pitem === item) {
 				listGroup.forEach(value => {
@@ -3142,7 +3278,7 @@ class EconVision {
 			}
 		}
 
-		function showExpressionsFromList(Pitem) {
+		const showExpressionsFromList = (Pitem) => {
 			hideExpressionsFromList();
 			if (Pitem === item) {
 				listGraphs.forEach(i => {
@@ -3156,17 +3292,16 @@ class EconVision {
 				});
 			}
 		}
-		const idDiv = options.idDiv;
-		const item = options.item;
-		const listGroup = options.listGroup;
-		const listGraphs = options.listGraphs;
-		const listOfGraphs = this.view.graphs.listOfGraphs;
-		const selectedExp = this.view.inputs.selectedExpressions;
+
 		addSelectInputField();
 		hideAllListGroups();
+		trackMethodCalls();
+
+		console.log(`addSelectInputData after trackMethodCalls: ${JSON.stringify(this.addSelectInputData)}`);
+
 		document.getElementById(idDiv).addEventListener('change', function() {
 			const pickedItem = this.value;
-			if (pickedItem === "Hide All") {
+			if (pickedItem === hideAllTitle) {
 				hideInputsFromList();
 				hideExpressionsFromList();
 			} else {
@@ -3174,10 +3309,11 @@ class EconVision {
 			}
 		});
 	}
+
 	line() {
 		const sideInputsContent = document.getElementById("sideInputsContent");
 		const newElement = document.createElement("div");
-		newElement.className = "h-[3px] bg-gradient-to-r from-transparent via-violet-500 to-transparent mx-12 my-8";
+		newElement.className = "h-[3px] bg-gradient-to-r from-transparent via-violet-500 to-transparent mx-12 my-8 rounded-full";
 		sideInputsContent.appendChild(newElement);
 	}
 	setInstructions(options) {
