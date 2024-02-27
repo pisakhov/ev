@@ -17,7 +17,7 @@ myCalculator.setGraphs({
   "bottom": -10,
   "top": 100,
   "showGrid": false,
-  "expressions": true,
+  "expressions": false,
   "keypad": false,
   "zoomFit": true,
   "settingsMenu": true,
