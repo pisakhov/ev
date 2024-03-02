@@ -12,7 +12,9 @@ show: true
             <img src="{{creator.data.thumbnail}}" class="absolute rounded-3xl h-full w-full ring-2 ring-[color:var(--c-3)]" alt="{{creator.data.name}}" />
             <div class="absolute rounded-3xl group-hover:opacity-0 group-hover:shadow-md opacity-50 h-full w-full bg-[color:var(--c-1)] transition duration-[400ms] shadow-lg"></div>
         </div>
-        <h1 class="bg-clip-text text-transparent bg-gradient-to-t from-violet-900 to-violet-300 drop-shadow-0_1px_1px_rgba(0,0,0,0.75) text-xl md:text-2xl lg:text-3xl m-4 p-4 lg:p-6 xl:p-8 text-center">{{creator.data.name}}</h1>
+        <h1 class="bg-clip-text text-transparent bg-gradient-to-t from-violet-900 to-violet-300 drop-shadow-0_1px_1px_rgba(0,0,0,0.75) text-xl md:text-2xl lg:text-3xl m-4 p-4 lg:p-6 xl:p-8 text-center">{{creator.data.name}}
+<div class="h-[2px] transition-all duration-[1000ms] bg-gradient-to-r from-transparent md:group-hover:opacity-100 md:opacity-0 via-[color:var(--c-3)] to-transparent inset-0"></div>
+</h1>
         <a href="{{creator.url}}" class="w-full text-md md:text-lg bg-violet-900 text-white py-1 px-3 md:py-2 md:px-8 text-center rounded-b-lg border-t-2 border-violet-300 group-hover:bg-violet-600 transition duration-300 ease-in-out">Learn more</a>
     </div>    {%endif%}{%endfor%}
 </div>
