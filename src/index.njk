@@ -107,7 +107,7 @@ window.addEventListener('scroll', () => {
 
 
 <div
-class="glowit md:col-span-1 row-span-1 flex items-center snap-center bg-fixed bg-center bg-cover contrast-100" style="background-image:url('https://cdn.midjourney.com/48eaf9e4-27db-4b46-98dc-91459b67bcd8/0_0.webp');">
+class="glowit left md:col-span-1 row-span-1 flex items-center snap-center bg-fixed bg-center bg-cover contrast-100" style="background-image:url('https://cdn.midjourney.com/48eaf9e4-27db-4b46-98dc-91459b67bcd8/0_0.webp');">
 
 <div class="relative bg-[color:var(--c-2)] shadow-md rounded px-8 pt-6 pb-8 flex flex-col h-full">
   <h2 class="font-bold text-2xl mb-2 text-[color:var(--c-1)]">Advanced Functions</h2>
@@ -126,7 +126,7 @@ class="glowit md:col-span-1 row-span-1 flex items-center snap-center bg-fixed bg
 
   
   <div
-class="glowit md:col-span-1 row-span-1 flex items-center snap-center bg-fixed bg-center bg-cover contrast-100 " style="background-image:url('https://cdn.midjourney.com/48eaf9e4-27db-4b46-98dc-91459b67bcd8/0_0.webp');">
+class="glowit right md:col-span-1 row-span-1 flex items-center snap-center bg-fixed bg-center bg-cover contrast-100 " style="background-image:url('https://cdn.midjourney.com/48eaf9e4-27db-4b46-98dc-91459b67bcd8/0_0.webp');">
 <div class="relative bg-[color:var(--c-2)] shadow-md rounded px-8 pt-6 pb-8 flex flex-col h-full">
   <h2 class="font-bold text-2xl mb-2 text-[color:var(--c-1)]">Helpful Resources</h2>
   <span class="text-sm text-[color:var(--c-1)]">We've got you covered with our help section, providing instructions and guidance on how to use our model effectively and make the most out of our tools.</span>
@@ -138,10 +138,10 @@ class="glowit md:col-span-1 row-span-1 flex items-center snap-center bg-fixed bg
 
 
   <!-- GET IN TOUCH -->
-  <div class="glowit flex flex-row justify-around items-center md:col-span-1 md:row-span-1">
+  <div class="glowit left flex flex-row justify-around items-center md:col-span-1 md:row-span-1">
       <a href="/Page/contact/" class="group w-full md:py-2 md:px-4 lg:text-lg md:text-md text-xs font-bold py-3 px-6 rounded-md text-center flex items-center justify-center gap-2 transition-all duration-1000 group-hover:transform">
             <h1 class="drop-shadow-[1px_1px_2px_rgba(255,255,255,0.2)] col-span-1 text-xl lg:text-3xl lg:text-2xl font-bold tracking-wide bg-clip-text text-transparent bg-gradient-to-t from-[color:var(--c-1)] to-[color:var(--c-1)] select-none">GET IN TOUCH</h1>
-            <img src="./assets/img/envelop.webp" class="h-32 aspect-square transform-all duration-1000">
+            <img src="./assets/img/envelop.webp" class="group-hover:size-32 size-24 object-cover transform-all duration-1000">
 
           </a>
     
@@ -149,15 +149,15 @@ class="glowit md:col-span-1 row-span-1 flex items-center snap-center bg-fixed bg
   </div>
    <!-- GET IN TOUCH -->
      <!-- CREATORS -->
-     <div class="glowit md:col-span-2 row-span-1 flex items-center">
+     <div class="glowit right md:col-span-2 row-span-1 flex items-center">
 
-      <div class="w-full flex justify-between hover:[&_a>img]:grayscale-0 [&_a>img]:grayscale">
+      <div class="w-full flex space-x-6 p-2 justify-between hover:[&_a>img]:grayscale-0 [&_a>img]:grayscale">
         {% for creator in collections.creators %}
             {% if creator.data.show %}
-            <div class="ring-2 ring-[color:var(--c-3)] rounded-lg shadow-md">
-              <a href="{{creator.url}}" class=" transition duration-500 ease-in-out">
-                <img src="{{creator.data.thumbnail}}" alt="{{creator.data.name}}" class="aspect-square lg:h-32 md:h-26 h-20 object-cover rounded-lg"/>
-                <h3 class="absolute bottom:0 left:0 lg:text-sm md:text-xs text-xs -translate-y-[100%] bg-[color:var(--c-3)] lg:w-32 md:w-26 w-20 px-1 rounded-b-lg">{{creator.data.name | trim}}</h3>
+            <div class="ring-2 ring-[color:var(--c-3)] w-full rounded-lg shadow-md">
+              <a href="{{creator.url}}" class=" transition duration-500 ease-in-out relative">
+                <img src="{{creator.data.thumbnail}}" alt="{{creator.data.name}}" class="h-full transition-all duration-1000 object-cover rounded-lg"/>
+                <h3 class="absolute bottom:0 left:0 lg:text-sm md:text-xs text-xs bottom-0 w-full bg-[color:var(--c-3)] px-1 rounded-b-lg">{{creator.data.name | trim}}</h3>
             </a>
             </div>
             {% endif %}
@@ -166,6 +166,7 @@ class="glowit md:col-span-1 row-span-1 flex items-center snap-center bg-fixed bg
    
      </div>
         <!-- CREATORS -->
+
 </main>
 </section>
 
