@@ -85,13 +85,16 @@ window.addEventListener('scroll', () => {
                {% for model in collections[course.data.tag] %}
             <li class="relative group">
                 <img src="{{ model.data.thumbnail }}" alt="{{ model.data.title }}" class="invisible w-full h-32 object-cover rounded-md transform transition-all duration-500" />
-                <div class="shadow-md absolute inset-0 bg-gradient-to-t from-10% group-hover:from-10% backdrop-blur-sm from-violet-300/70 to-slate-100/10 p-4 rounded-md transition-colors transition-all duration-1000">
-                  <h2 class="group-hover:translate-y-24 transition duration-300
-                  absolute z-20 w-full left-0 top-0 invisible text-[color:var(--c-2)] font-extralight p-2 rounded-md bg-[color:var(--c-3)] group-hover:bg-[color:var(--c-4)] md:text-md text-xs transition-colors duration-200 group-hover:text-[color:var(--c-2)] font-semibold shadow-sm transition-transform duration-400">{{ model.data.title }}</h2>
-                  <a href="{{ model.url }}" class="shadow-[inset_-1px_-1px_0px_rgba(255,255,255,0.3),inset_1px_1px_0px_rgba(150,150,150,0.9)]
-                  absolute z-10 inset-0 bg-gradient-to-b opacity-90 from-[color:var(--c-3)] to-[color:var(--c-4)] rounded-md group-hover:opacity-0 transition duration-400 delay-200"></a>
 
+                <div class=" shadow-md absolute inset-0 bg-gradient-to-t from-10% group-hover:from-10% backdrop-blur-sm from-violet-300/70 to-slate-100/10 p-4 rounded-md transition-colors transition-all duration-1000">
+                  <p class="group-hover:translate-y-0 group-hover:opacity-100 opacity-0 translate-y-20 transition duration-300 ease-in-out truncate text-pretty h-3/4 absolute line-clamp-4 text-[color:var(--c-4)] top-0 left-0 p-2 md:text-base text-sm">{{ model.data.description }}</p>
+
+                  <h2 class="group-hover:translate-y-24 transition duration-300
+                  absolute z-20 w-full left-0 top-0 invisible text-[color:var(--c-2)] font-medium p-2 rounded-md bg-[color:var(--c-3)] group-hover:bg-[color:var(--c-4)] md:text-base text-sm transition-colors duration-200 group-hover:text-[color:var(--c-2)] font-semibold shadow-sm transition-transform duration-400">{{ model.data.title }}</h2>
+                  <a href="{{ model.url }}" class="shadow-[inset_-1px_-1px_0px_rgba(255,255,255,0.3),inset_1px_1px_0px_rgba(150,150,150,0.9)]
+                  absolute z-10 inset-0 bg-gradient-to-b from-[color:var(--c-3)] to-[color:var(--c-4)] rounded-md group-hover:opacity-0 transition duration-400 delay-200"></a>
                 </div>
+                
               </li>
             
             {% endfor %}
