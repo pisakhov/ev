@@ -48,7 +48,7 @@
 .fade-in-1000{-webkit-animation:fade-in 1s ease-in-out both;animation:fade-in 1s ease-in-out both}
 @-webkit-keyframes fade-in{0%{opacity:0}100%{opacity:1}}@keyframes fade-in{0%{opacity:0}100%{opacity:1}}
 
-  
+
   /* general styles */
   .glowit {
     animation-name: gloweffect;
@@ -62,6 +62,8 @@
   -webkit-animation-direction: alternate; /* for Safari */
   -webkit-animation-timing-function: ease; /* for Safari */
   }
+
+
 
   .glowit.right{
     animation-name: righteffect;

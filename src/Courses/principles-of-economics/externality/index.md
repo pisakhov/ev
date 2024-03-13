@@ -2,6 +2,7 @@
 tags: principal-economics
 thumbnail: /assets/img/externality.png
 title: Externality
+description: The Edgeworth Box visualizes trade outcomes in a two-good economy
 layout: model.njk
 show: true
 ---

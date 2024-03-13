@@ -60,19 +60,27 @@ window.addEventListener('scroll', () => {
 <section class="relative bg-center bg-fixed snap-center">
 
 
-<!-- <div class="grid grid-rows-3 gap-8 content-between fixed top-0 -z-10">
-<div class="-translate-x-[50%] -translate-y-[50%] bg-[color:var(--c-1)] opacity-100 aspect-square w-1/2 blur-[200px] fixed top-0 left-0 rounded-full"></div>
-<div class="translate-x-[50%] translate-y-[50%] bg-[color:var(--c-2)] opacity-100 aspect-square w-1/2  blur-[200px] fixed bottom-0 right-0 rounded-full"></div>
-</div> -->
-  <main class="lg:mx-[10%] md:mx-4 mx-0 snap-start">
+
+  <main class="lg:mx-[10%] md:mx-4 mx-1 snap-start">
 
 
-<div class="mt-[5%] grid grid-cols-1 grid-rows-1 md:grid-cols-3 lg:gap-4 md:gap-3 gap-2 [&>*]:ring-white/20  [&>*]:shadow-[-2px_-2px_6px_rgba(255,255,255,0.2),2px_2px_6px_rgba(0,0,0,0.2)] md:[&>*]:rounded-md [&>*]:rounded-md hover:[&>*]:transition-all md:hover:[&>*:not(:first-child)]:bg-transparent [&>*]:duration-300 [&>*]:delay-80 [&>*]:ease-in-out [&>*]:backdrop-blur-[1px] [&>*]:bg-white/10 [&>*]:p-2 m-2 [&>*]:text-gray-100">
+
+<div class="group/title mt-[10%] grid grid-cols-1 grid-rows-1 md:grid-cols-4 lg:gap-6 md:gap-4 gap-2 [&>div]:ring-[color:var(--c-2)] [&>div]:ring-2  [&>div]:shadow-[-4px_-4px_10px_rgba(255,255,255,0.2),6px_6px_10px_rgba(0,0,0,0.2)] md:[&>div]:rounded-lg [&>div]:rounded-md md:hover:[&>div]:bg-white/0 [&>div]:backdrop-blur-[3px] [&>div]:bg-[color:var(--c-2)] [&>div]:py-2 [&>div]:px-2  [&>div]:text-gray-100">
+
+
+  
 
 
 
     <!--Courses-->
-<div class="glowit md:col-span-3 row-span-1 h-[400px] min-h-[400px]" id="courses">
+<div class=" relative glowit md:col-span-4 row-span-1 h-[400px] min-h-[400px] transition-all duration-500" id="courses">
+          <!-- Title -->
+          <span  class="flex top-0 left-1/2 -translate-x-[50%] flex-col items-end md:opacity-0 md:group-hover/title:opacity-100 md:translate-y-10 -translate-y-5 -z-20 md:group-hover/title:-translate-y-6 absolute transition duration-1000 ease-in-out">
+            <h1 class="md:text-base text-sm font-light uppercase tracking-wide text-[color:var(--c-1)] ">Explore Our Models</h1>
+          </span>
+
+
+
   <div class="
   flex flex-col md:flex-row gap-2 [&>*]:transition-all [&>*]:duration-500 [&>*]:delay-1000 [&>*]:ease-in-out md:[&>*]:w-[100%] md:[&_div]:min-w-10 [&_div]:h-[100%] [&_div]:min-h-10 h-full w-full [&>*]:flex-1 first:[&>*]:flex-auto">
 
@@ -87,7 +95,7 @@ window.addEventListener('scroll', () => {
                 <img src="{{ model.data.thumbnail }}" alt="{{ model.data.title }}" class="invisible w-full h-32 object-cover rounded-md transform transition-all duration-500" />
 
                 <div class=" shadow-md absolute inset-0 bg-gradient-to-t from-10% group-hover:from-10% backdrop-blur-sm from-violet-300/70 to-slate-100/10 p-4 rounded-md transition-colors transition-all duration-1000">
-                  <p class="group-hover:translate-y-0 group-hover:opacity-100 opacity-0 translate-y-20 transition duration-300 ease-in-out truncate text-pretty h-3/4 absolute line-clamp-4 text-[color:var(--c-4)] top-0 left-0 p-2 md:text-base text-sm">{{ model.data.description }}</p>
+                  <p class="group-hover:translate-y-0 group-hover:opacity-100 opacity-0 translate-y-20 transition duration-300 ease-in-out text-pretty h-3/4 absolute w-full line-clamp-4 text-[color:var(--c-4)] top-0 left-0 p-2 md:text-base text-sm">{{ model.data.description }}</p>
 
                   <h2 class="group-hover:translate-y-24 transition duration-300
                   absolute z-20 w-full left-0 top-0 invisible text-[color:var(--c-2)] font-medium p-2 rounded-md bg-[color:var(--c-3)] group-hover:bg-[color:var(--c-4)] md:text-base text-sm transition-colors duration-200 group-hover:text-[color:var(--c-2)] font-semibold shadow-sm transition-transform duration-400">{{ model.data.title }}</h2>
@@ -109,8 +117,10 @@ window.addEventListener('scroll', () => {
 </div>
 
 
+
+
 <div
-class="glowit left md:col-span-1 row-span-1 flex items-center snap-center bg-fixed bg-center bg-cover contrast-100" style="background-image:url('https://cdn.midjourney.com/48eaf9e4-27db-4b46-98dc-91459b67bcd8/0_0.webp');">
+class=" md:col-span-1 row-span-1 flex items-center snap-center bg-fixed bg-center bg-cover contrast-100" style="background-image:url('https://cdn.midjourney.com/48eaf9e4-27db-4b46-98dc-91459b67bcd8/0_0.webp');">
 
 <div class="relative bg-[color:var(--c-2)] shadow-md rounded px-8 pt-6 pb-8 flex flex-col h-full">
   <h2 class="font-bold text-2xl mb-2 text-[color:var(--c-1)]">Advanced Functions</h2>
@@ -120,7 +130,7 @@ class="glowit left md:col-span-1 row-span-1 flex items-center snap-center bg-fix
 
 
  <div
- class="glowit md:col-span-1 row-span-1 flex items-center snap-center bg-fixed bg-center bg-cover contrast-100 " style="background-image:url('https://cdn.midjourney.com/48eaf9e4-27db-4b46-98dc-91459b67bcd8/0_0.webp');">
+ class=" md:col-span-1 row-span-1 flex items-center snap-center bg-fixed bg-center bg-cover contrast-100 " style="background-image:url('https://cdn.midjourney.com/48eaf9e4-27db-4b46-98dc-91459b67bcd8/0_0.webp');">
  <div class="relative bg-[color:var(--c-2)] shadow-md rounded px-8 pt-6 pb-8 flex flex-col h-full">
    <h2 class="font-bold text-2xl mb-2 text-[color:var(--c-1)]">Interactive Graphing</h2>
    <span class="text-sm text-[color:var(--c-1)]">Our graph not only displays precise input, but is also highly interactive, allowing you to explore and manipulate the graph for a more in-depth understanding.</span>
@@ -129,7 +139,7 @@ class="glowit left md:col-span-1 row-span-1 flex items-center snap-center bg-fix
 
   
   <div
-class="glowit right md:col-span-1 row-span-1 flex items-center snap-center bg-fixed bg-center bg-cover contrast-100 " style="background-image:url('https://cdn.midjourney.com/48eaf9e4-27db-4b46-98dc-91459b67bcd8/0_0.webp');">
+class=" right md:col-span-1 row-span-1 flex items-center snap-center bg-fixed bg-center bg-cover contrast-100 " style="background-image:url('https://cdn.midjourney.com/48eaf9e4-27db-4b46-98dc-91459b67bcd8/0_0.webp');">
 <div class="relative bg-[color:var(--c-2)] shadow-md rounded px-8 pt-6 pb-8 flex flex-col h-full">
   <h2 class="font-bold text-2xl mb-2 text-[color:var(--c-1)]">Helpful Resources</h2>
   <span class="text-sm text-[color:var(--c-1)]">We've got you covered with our help section, providing instructions and guidance on how to use our model effectively and make the most out of our tools.</span>
@@ -140,20 +150,23 @@ class="glowit right md:col-span-1 row-span-1 flex items-center snap-center bg-fi
 
 
 
-  <!-- GET IN TOUCH -->
-  <div class="glowit left flex flex-row justify-around items-center md:col-span-1 md:row-span-1">
-      <a href="/Page/contact/" class="group w-full md:py-2 md:px-4 lg:text-lg md:text-md text-xs font-bold py-3 px-6 rounded-md text-center flex items-center justify-center gap-2 transition-all duration-1000 group-hover:transform">
-            <h1 class="drop-shadow-[1px_1px_2px_rgba(255,255,255,0.2)] col-span-1 text-xl lg:text-3xl lg:text-2xl font-bold tracking-wide bg-clip-text text-transparent bg-gradient-to-t from-[color:var(--c-1)] to-[color:var(--c-1)] select-none">GET IN TOUCH</h1>
-            <img src="./assets/img/envelop.webp" class="group-hover:size-32 size-24 object-cover transform-all duration-1000">
+<!-- GET IN TOUCH -->
+<div class="glowit right flex flex-col justify-center items-center md:col-span-1 md:row-span-2 transition-all duration-500">
+  <h2 class="text-2xl md:text-3xl font-bold text-center text-[color:var(--c-1)] mb-4">Get in Touch</h2>
+  <p class="text-sm md:text-base text-center text-[color:var(--c-1)] mb-6">Have questions? Reach out to our dedicated Econ.Vision team.</p>
+  <a href="/Page/contact/" class="bg-[color:var(--c-3)] hover:bg-[color:var(--c-1)] text-[color:var(--c-2)] hover:text-[color:var(--c-2)] font-bold py-3 px-6 rounded-md flex items-center justify-center gap-2 transition-all duration-300">
+    <span>Contact Us</span>
+    <i class="fas fa-arrow-right"></i>
+  </a>
+</div>
+<!-- GET IN TOUCH -->
 
-          </a>
-    
 
-  </div>
-   <!-- GET IN TOUCH -->
+
      <!-- CREATORS -->
-     <div class="glowit right md:col-span-2 row-span-1 flex items-center">
 
+
+     <div class="group/title2 relative glowit left md:col-span-3 row-span-1 flex items-center group transition-all duration-500">
       <div class="w-full flex md:space-x-4 space-x-2 py-2 justify-between hover:[&_a>img]:grayscale-0 [&_a>img]:grayscale">
         {% for creator in collections.creators %}
             {% if creator.data.show %}
@@ -167,8 +180,14 @@ class="glowit right md:col-span-1 row-span-1 flex items-center snap-center bg-fi
         {% endfor %}
     </div>
    
-     </div>
-        <!-- CREATORS -->
+          <!-- Title -->
+          <span  class="flex bottom-0 left-0 flex-col items-end md:opacity-0 md:group-hover/title2:opacity-100 md:-translate-y-10 translate-y-5 -z-20 md:group-hover/title2:translate-y-6 absolute transition duration-1000 ease-in-out">
+            <h1 class="md:text-base text-sm font-light uppercase tracking-wide text-[color:var(--c-1)] ">Meet Our Team</h1>
+          </span>
+  </div>
+
+<!-- CREATORS -->
+
 
 </main>
 </section>
