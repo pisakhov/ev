@@ -65,7 +65,7 @@ window.addEventListener('scroll', () => {
 
 
 
-<div class="group/title mt-[10%] mb-[5%] grid grid-cols-1 grid-rows-1 md:grid-cols-4 lg:gap-6 md:gap-4 gap-2 md:[&>div]:h-auto [&>div]:h-auto [&>div]:ring-[color:var(--c-2)] [&>div]:ring-2  [&>div]:shadow-[-4px_-4px_10px_rgba(255,255,255,0.2),6px_6px_10px_rgba(0,0,0,0.2)] md:[&>div]:rounded-lg [&>div]:rounded-md md:hover:[&>div]:bg-white/0 [&>div]:backdrop-blur-[3px] [&>div]:bg-[color:var(--c-2)] [&>div]:py-2 [&>div]:px-2  [&>div]:text-gray-100">
+<div class="group/title mt-[10%] mb-[5%] grid grid-cols-1 grid-rows-1 md:grid-cols-4 lg:gap-6 md:gap-4 gap-2 md:[&>div]:h-auto first:[&>div]:h-[80vh] first:[&>div]:mb-14 first:md:[&>div]:mb-10 [&>div]:ring-[color:var(--c-2)] [&>div]:ring-2  [&>div]:shadow-[-4px_-4px_10px_rgba(255,255,255,0.2),6px_6px_10px_rgba(0,0,0,0.2)] md:[&>div]:rounded-lg [&>div]:rounded-md md:hover:[&>div]:bg-white/0 [&>div]:backdrop-blur-[3px] [&>div]:bg-[color:var(--c-2)] [&>div]:py-2 [&>div]:px-2  [&>div]:text-gray-100">
 
 
   
@@ -81,7 +81,7 @@ window.addEventListener('scroll', () => {
 
           <div id="heroImage" class="backdrop-blur-xs opacity-100 snap-center h-full bg-center absolute inset-0 z-[999]">
             <div class="circle-container h-full w-full transform flex justify-around">
-              <div class="circle-half cursor-pointer bg-[color:var(--c-2)] rounded-l-lg flex flex-col items-center justify-around p-20" onclick="openDoor()">
+              <div class="circle-half cursor-pointer bg-[color:var(--c-2)] rounded-l-lg flex flex-col items-center justify-around md:p-20 p-0" onclick="openDoor()">
                 <div class="icon-container group translate-x-14 md:transalte-x-0">
                   <i class="fas fa-lock text-5xl text-[color:var(--c-1)] -translate-x-5 group-hover/title:-translate-x-10 transition duration-[2.8s] ease-in-out translate-y-6 group-hover:hidden"></i>
                   <i class="fas fa-lock-open text-5xl text-[color:var(--c-1)] -translate-x-5 group-hover/title:-translate-x-10 transition-all duration-[2.8s] ease-in-out translate-y-6 hidden group-hover:block"></i>
@@ -89,7 +89,7 @@ window.addEventListener('scroll', () => {
                 <div class="text-6xl font-extrabold text-[color:var(--c-1)] tracking-widest uppercase [writing-mode:vertical-lr] -translate-x-5 group-hover/title:-translate-x-10 transition duration-[2.5s]">Unlock</div>
                 <div class="lg:text-xl md:text-sm text-xs text-[color:var(--c-1)] hover:text-[color:var(--c-2)] ring-2 ring-[color:var(--c-1)] hover:bg-[color:var(--c-1)] text-center rounded-3xl md:py-2 py-1 md:px-4 px-2 font-normal tracking-wide uppercase">ECONOMIC INSIGHTS</div>
               </div>
-              <div class="circle-half cursor-pointer bg-[color:var(--c-2)] rounded-r-lg flex flex-col items-center justify-center p-40" onclick="openDoor()">
+              <div class="circle-half cursor-pointer bg-[color:var(--c-2)] rounded-r-lg flex flex-col items-center justify-center md:p-40 p-0" onclick="openDoor()">
                 <div class="md:text-6xl text-4xl font-extrabold text-[color:var(--c-2)] text-center bg-[color:var(--c-1)] hover:text-[color:var(--c-1)] hover:bg-[color:var(--c-2)] tracking-widest uppercase transition duration-300 text-center">EXPLORE</div>
                 <div class="md:text-3xl text-2xl text-[color:var(--c-1)] font-light tracking-wide -translate-y-10 opacity-0 group-hover/title:opacity-100 group-hover/title:translate-y-5 transition duration-[2.3s] uppercase text-left">GRAPHICAL MODELS</div>
               </div>
