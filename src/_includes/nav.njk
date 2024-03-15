@@ -22,12 +22,12 @@
                   <div class="absolute w-[320px] right-1/2 translate-x-1/2 bg-transparent z-50">
                         <div class="flex flex-row justify-center">
                               <div class="w-full bg-[color:var(--c-1)] rounded-lg shadow-lg">
-                                    <ul class="p-0 hover:[&_li]:bg-[color:var(--c-2)] [&_li]:p-2 first:[&_li]:rounded-t-md last:[&_li]:rounded-b-md divide-y">
+                                    <ul class="p-0 hover:[&_li]:bg-[color:var(--c-3)] [&_li]:p-2 first:[&_li]:rounded-t-md last:[&_li]:rounded-b-md divide-y">
                                           {% for course in collections.index %}
                                                 {% if course.data.show %}
-                                                <li class="cursor-pointer group/menu">
+                                                <li class="cursor-pointer group/menu transition-colors duration-300">
                                                       <a href="{{course.url}}" class="text-md">
-                                                            <p class="text-[color:var(--c-2)] text-left group-hover/menu:text-[color:var(--c-1)]">{{ course.data.title }}</p>
+                                                            <p class="text-[color:var(--c-2)] text-left">{{ course.data.title }}</p>
                                                       </a>
                                                 </li>
                                                 {% endif %}
