@@ -81,11 +81,7 @@ window.addEventListener('scroll', () => {
 
           <div id="heroImage" class="backdrop-blur-xs opacity-100 snap-center h-full bg-center absolute inset-0 z-[999]">
             <div class="circle-container h-full w-full transform flex justify-around">
-              <div class="circle-half cursor-pointer bg-[color:var(--c-2)] rounded-l-lg flex flex-col items-center justify-around md:p-20 p-0" onclick="openDoor()">
-                <div class="icon-container group translate-x-14 md:transalte-x-0">
-                  <i class="fas fa-lock text-5xl text-[color:var(--c-1)] -translate-x-5 group-hover/title:-translate-x-10 transition duration-[2.8s] ease-in-out translate-y-6 group-hover:hidden"></i>
-                  <i class="fas fa-lock-open text-5xl text-[color:var(--c-1)] -translate-x-5 group-hover/title:-translate-x-10 transition-all duration-[2.8s] ease-in-out translate-y-6 hidden group-hover:block"></i>
-                </div>    
+              <div class="circle-half cursor-pointer bg-[color:var(--c-2)] rounded-l-lg flex flex-col items-center justify-around md:p-20 p-0" onclick="openDoor()"> 
                 <div class="text-6xl font-extrabold text-[color:var(--c-1)] tracking-widest uppercase [writing-mode:vertical-lr] -translate-x-5 group-hover/title:-translate-x-10 transition duration-[2.5s]">Unlock</div>
                 <div class="lg:text-xl md:text-sm text-xs text-[color:var(--c-1)] hover:text-[color:var(--c-2)] ring-2 ring-[color:var(--c-1)] hover:bg-[color:var(--c-1)] text-center rounded-3xl md:py-2 py-1 md:px-4 px-2 font-normal tracking-wide uppercase">ECONOMIC INSIGHTS</div>
               </div>
@@ -103,26 +99,20 @@ window.addEventListener('scroll', () => {
       <div class="choice md:hover:[&_h5]:bg-[color:var(--c-2)] items-center overflow-hidden rounded-md bg-[color:var(--c-2)] text-[color:var(--c-2)] relative">
          <h5 class="p-2 rounded-md text-lg md:hover:text-[color:var(--c-1)] font-semibold md:[writing-mode:vertical-lr] sticky z-20 top-0 cursor-pointer md:left-0 md:h-full bg-[color:var(--c-1)]">{{ course.data.title }}</h5>
          <span class="">
-            <ul class="
-            md:left-12 md:top-0 top-10 absolute z-10 animate-pulse [&_li]:bg-[color:var(--c-2)] hover:[&_li]:bg-[color:var(--c-1)] [&_li]:rounded-md [&_li]:flex-auto hover:[&_li]:shadow-lg grid md:grid-cols-2 grid-cols-1 gap-4 items-center flex p-8 w-full md:w-[94%]">
-               {% for model in collections[course.data.tag] %}
-            <li class="relative group">
-                <img src="{{ model.data.thumbnail }}" alt="{{ model.data.title }}" class="invisible w-full h-32 object-cover rounded-md transform transition-all duration-500" />
+            <ul class="md:left-12 md:top-0 top-10 absolute z-10 animate-pulse [&_li]:bg-[color:var(--c-2)] hover:[&_li]:bg-[color:var(--c-1)] [&_li]:rounded-md [&_li]:flex-auto hover:[&_li]:shadow-lg grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4 items-center flex p-8 w-full md:w-[94%]">
+              {% for model in collections[course.data.tag] %}
+                <li class="relative group aspect-video">
+                  <img src="{{ model.data.thumbnail }}" alt="{{ model.data.title }}" class="invisible w-full h-full object-cover rounded-md transform transition-all duration-500" />
 
-                <div class=" shadow-md absolute inset-0 bg-gradient-to-t from-10% group-hover:from-10% backdrop-blur-sm from-violet-300/70 to-slate-100/10 p-4 rounded-md transition-colors transition-all duration-1000">
-                  <p class="group-hover:translate-y-0 group-hover:opacity-100 opacity-0 translate-y-20 transition duration-300 ease-in-out text-pretty h-3/4 absolute w-full line-clamp-4 text-[color:var(--c-4)] top-0 left-0 p-2 md:text-base text-sm">{{ model.data.description }}</p>
+                  <div class="shadow-md absolute inset-0 bg-gradient-to-t from-10% group-hover:from-10% backdrop-blur-sm from-violet-300/10 to-slate-100/10 p-4 rounded-md transition-colors transition-all duration-1000">
+                    <p class="group-hover:translate-y-0 group-hover:opacity-100 opacity-0 translate-y-20 transition duration-300 ease-in-out text-pretty h-3/4 absolute w-full line-clamp-4 text-[color:var(--c-4)] bottom-0 left-0 p-2 md:text-base text-sm">{{ model.data.description }}</p>
 
-                  <h2 class="group-hover:translate-y-24 transition duration-300
-                  absolute z-20 w-full left-0 top-0 invisible text-[color:var(--c-2)] font-medium p-2 rounded-md bg-[color:var(--c-3)] group-hover:bg-[color:var(--c-4)] md:text-base text-sm transition-colors duration-200 group-hover:text-[color:var(--c-2)] font-semibold shadow-sm transition-transform duration-400">{{ model.data.title }}</h2>
-                  <a href="{{ model.url }}" class="shadow-[inset_-1px_-1px_0px_rgba(255,255,255,0.3),inset_1px_1px_0px_rgba(150,150,150,0.9)]
-                  absolute z-10 inset-0 bg-gradient-to-b from-[color:var(--c-3)] to-[color:var(--c-4)] rounded-md group-hover:opacity-0 transition duration-400 delay-200"></a>
-                </div>
-                
-              </li>
-            
-            {% endfor %}
-            </ul>
-         </span>
+                    <h2 class="transition duration-300 absolute z-20 w-full left-0 top-0 text-[color:var(--c-2)] font-medium p-2 rounded-md bg-[color:var(--c-3)] group-hover:bg-[color:var(--c-4)] md:text-base text-sm transition-colors duration-200 group-hover:text-[color:var(--c-2)] font-semibold shadow-sm">{{ model.data.title }}</h2>
+                    <a href="{{ model.url }}" class="shadow-[inset_-1px_-1px_0px_rgba(255,255,255,0.3),inset_1px_1px_0px_rgba(150,150,150,0.9)] absolute z-10 inset-0 bg-gradient-to-b from-[color:var(--c-3)] to-[color:var(--c-4)] rounded-md group-hover:opacity-0 transition duration-400 delay-200"></a>
+                  </div>
+                </li>
+              {% endfor %}
+            </ul>         </span>
       </div>
    {% endfor %}
 
