@@ -1,4 +1,36 @@
-		/* ===== Scrollbar CSS ===== */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .text-sm {
+    font-size: min(4vw, 0.875rem);
+    line-height: 1.25rem;
+  }
+
+  .text-base {
+    font-size: min(6vw, 1rem);
+    line-height: 1.5rem;
+  }
+
+  .text-lg {
+    font-size: min(8vw, 1.25rem);
+    line-height: 1.75rem;
+  }
+
+  .text-xl {
+    font-size: min(10vw, 1.5rem);
+    line-height: 2rem;
+  }
+
+  .text-2xl {
+    font-size: min(12vw, 2.5rem);
+    line-height: 3rem;
+  }
+}
+  
+  
+  /* ===== Scrollbar CSS ===== */
   /* Firefox */
   * {
     scrollbar-width: auto;
