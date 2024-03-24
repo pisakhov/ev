@@ -51,7 +51,12 @@
 <header class="flex flex-col items-center justify-center w-full [&_img]:absolute md:[&_img]:left-10 [&_img]:left-5 md:[&_img]:w-20 [&_img]:w-14">
 {% include "nav.njk" %}
 </header>
-<div id="myCalculator" class="relative z-10"></div>
+<div id="myCalculator" class="relative z-10 h-screen"></div>
+<script>
+window.addEventListener('load', function () {
+	document.getElementById('myCalculator').classList.remove('h-screen');
+});
+</script>
 {% include "footer.njk" %}
 
 
