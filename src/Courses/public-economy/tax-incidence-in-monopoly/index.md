@@ -2,6 +2,7 @@
 tags: public-economy
 thumbnail: /assets/img/tax-on-monopoly.png
 title: Tax Incidence in Monopoly
+description: Visualize the impact of taxation on market outcomes using interactive graphs
 layout: model.njk
 show: true
 ---

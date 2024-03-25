@@ -2,6 +2,7 @@
 tags: microeconomics
 thumbnail: /assets/img/effect-on-price-change.png
 title: Effect of a Price Change
+description: Decomposing consumer response into income and substitution consequences using indifference curves
 layout: model.njk
 show: true
 ---

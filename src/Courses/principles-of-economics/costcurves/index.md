@@ -2,6 +2,7 @@
 tags: principal-economics
 thumbnail: /assets/img/InterventionsGraph.png
 title: Perfect Competition
+description: 10-16 words max here... don't repeat title words.
 layout: model.njk
 show: true
 ---

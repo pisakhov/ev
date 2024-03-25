@@ -2,6 +2,7 @@
 tags: microeconomics
 thumbnail: /assets/img/surplus.png
 title: Surplus
+description: Visualizing welfare impacts of market interventions like taxes, subsidies, quotas, price ceilings
 layout: model.njk
 show: true
 ---

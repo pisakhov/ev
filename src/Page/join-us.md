@@ -3,7 +3,7 @@ title: Join Us
 icon: fas fa-university
 tags: pages
 layout: page.njk
-show: false
+show: true
 ---
 <span class="p-8">
     <h1 class="text-3xl p-2 text-violet-600 text-center">Join the EconVision Team as a Research Assistant!</h1>

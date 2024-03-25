@@ -2,6 +2,7 @@
 tags: principal-economics
 thumbnail: /assets/img/InterventionsGraph.png
 title: Supply and Demand
+description: 10-16 words max here... don't repeat title words.
 layout: model.njk
 show: true
 ---

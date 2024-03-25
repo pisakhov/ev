@@ -2,6 +2,7 @@
 tags: public-economy
 thumbnail: /assets/img/eitc-graph.png
 title: EITC Consumption-Leisure
+description: modeling labor supply responses to Earned Income Tax Credit phase-in/out regions
 layout: model.njk
 show: true
 ---

@@ -2,6 +2,7 @@
 tags: microeconomics
 thumbnail: /assets/img/risk.png
 title: Risk - Expected Utility
+description: Quantifying risk attitudes via utility functions over stochastic wealth realizations
 layout: model.njk
 show: true
 ---

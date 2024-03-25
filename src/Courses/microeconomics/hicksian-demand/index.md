@@ -2,6 +2,7 @@
 tags: microeconomics
 thumbnail: /assets/img/hicksian-demand.png
 title: Hicksian Demand
+description: Utility-maximizing basket alterations following price fluctuations with fixed real income
 layout: model.njk
 show: true
 ---

@@ -2,6 +2,7 @@
 tags: microeconomics
 thumbnail: /assets/img/price-dynamic.png
 title: Price Dynamics
+description: Equilibrium price/quantity shifts from firm entry/exit through industry supply curve shifts
 layout: model.njk
 show: true
 ---

@@ -1,7 +1,7 @@
 ---
 tags: microeconomics
 thumbnail: /assets/img/exhange-economy.png
-title: Exchange economy
+title: Exchange Economy
 description: The Edgeworth Box visualizes trade outcomes in a two-good economy
 layout: model.njk
 show: true

@@ -2,6 +2,7 @@
 tags: microeconomics
 thumbnail: /assets/img/multi-market-pricing.png
 title: Multi Market Pricing
+description: Revenue maximization across competitive and non-competitive segments equalizing marginal revenues and costs
 layout: model.njk
 show: true
 ---
