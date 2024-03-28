@@ -3,27 +3,32 @@ function getRandomInt(min, max) { //returns a random integer between min and max
 	return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-function generateColorShades(color) { //generates a random color from a list of colors
+function generateColorShades(color) {
 	var colors = {
-		'blue': ['#0000ff', '#3399ff', '#0099cc', '#0066cc', '#0033cc', '#000099', '#000066', '#000033', '#99ccff', '#6699ff', '#3366ff', '#003399', '#336699', '#6699cc', '#99ccff', '#99ccff', '#6699cc', '#336699', '#003399', '#3366ff'],
-		'red': ['#ff0000', '#ff3333', '#ff6666', '#ff9999', '#ffcccc', '#cc0000', '#990000', '#660000', '#330000', '#ff0033', '#ff0066', '#ff0099', '#ff00cc', '#ff3300', '#ff6600', '#ff9900', '#ffcc00', '#cc3300', '#990033', '#660033'],
-		'green': ['#00ff00', '#33ff33', '#66ff66', '#99ff99', '#ccffcc', '#00cc00', '#009900', '#006600', '#003300', '#33cc33', '#66cc66', '#99cc99', '#cccc99', '#00ff33', '#00ff66', '#00ff99', '#00ffcc', '#33cc00', '#339900', '#336600'],
-		'purple': ['#800080', '#750075', '#6a006a', '#5f005f', '#540054', '#490049', '#3e003e', '#330033', '#280028', '#1d001d', '#120012', '#11000f', '#20001e', '#2f002d', '#3e003c', '#4d004b', '#5c005a', '#6b0069', '#7a0078', '#890087'],
-		'orange': ['#ff8000', '#ff8033', '#ff8066', '#ff8099', '#ff80cc', '#cc6600', '#cc6633', '#cc6666', '#cc6699', '#cc66cc', '#996600', '#996633', '#996666', '#996699', '#9966cc', '#663300', '#663333', '#663366', '#663399', '#6633cc'],
-		'white': ['#d0d0d0', '#c0c0c0', '#b0b0b0', '#a0a0a0', '#909090', '#808080', '#707070', '#606060', '#505050', '#404040', '#303030', '#202020', '#101010', '#0f0f0f', '#1e1e1e', '#2d2d2d', '#3c3c3c', '#4b4b4b', '#5a5a5a', '#696969'],
-		'yellow': ['#d4a017', '#c49716', '#b38915', '#a27a14', '#916c13', '#7f5d12', '#6e4f11', '#5d4110', '#4c320f', '#3b240e', '#2a150d', '#19070c', '#08000b', '#151c00', '#2e3900', '#465500', '#5f7200', '#788f00', '#91ac00', '#aac900'],
-		'pink': ['#de1d83', '#d31a77', '#c8176b', '#bd145f', '#b21153', '#a80e47', '#9d0b3b', '#92082f', '#870523', '#7c0217', '#71000b', '#6a0010', '#630015', '#5c001a', '#55001f', '#4e0024', '#470029', '#40002e', '#390033', '#320038']
+		'blue': 240,
+		'red': 0,
+		'green': 120,
+		'purple': 300,
+		'orange': 30,
+		'yellow': 60,
+		'pink': 330
 	};
+
 	if (color === 'random') {
 		var randomColor = Object.keys(colors)[getRandomInt(0, Object.keys(colors).length - 1)];
-		return colors[randomColor][getRandomInt(0, colors[randomColor].length - 1)];
+		return generateHSLColor(colors[randomColor]);
 	} else if (colors.hasOwnProperty(color)) {
-		return colors[color][getRandomInt(0, colors[color].length - 1)];
+		return generateHSLColor(colors[color]);
 	} else {
 		return color;
 	}
 }
 
+function generateHSLColor(hue) {
+	var saturation = 100; // Full saturation
+	var lightness = getRandomInt(20, 80); // Random lightness between 20% and 80%
+	return `hsl(${hue}, ${saturation}%, ${lightness}%)`;
+}
 function hasKey(obj, key) { //check if object has key
 	if (typeof obj !== 'object' || obj === null) {
 		return false;
@@ -125,6 +130,10 @@ function getSubstringBeforeEquals(str) { //recieves a string and returns the str
 }
 
 function getSubstringAfterEquals(str) { //recieves a string and returns the strings after "=" if exists
+	if (str === null) {
+        return null;
+    }
+
 	if (str.indexOf("=") === -1) return null;
 	return str.substring(str.indexOf("=") + 1);
 }
@@ -566,7 +575,7 @@ class RunCalc {
 			const dBdy = nerdamer.diff('B(x, y)', 'y').text();
 			const priceRatio = nerdamer(`${dBdx}/(${dBdy})`).text();
 			const MRS = nerdamer(`${MUx}/(${MUy})`).text();
-			const equation = `${MRS}=${priceRatio}*(x/y)`;
+			const equation = `${MRS}=${priceRatio}`;
 			nerdamer.set('SOLUTIONS_AS_OBJECT', true);
 			sol = nerdamer.solveEquations([equation, 'B(x,y)'], ['x', 'y']);
 		}
@@ -824,14 +833,21 @@ class RunCalc {
 		} else {
 			nerdamer.setFunction('U', ['x', 'y'], mainFunc);
 			nerdamer.setFunction('B', ['x', 'y'], constraintFunc);
+
 			const MUx = nerdamer.diff('U(x, y)', 'x').text();
 			const MUy = nerdamer.diff('U(x, y)', 'y').text();
+
 			const dBdx = nerdamer.diff('B(x, y)', 'x').text();
 			const dBdy = nerdamer.diff('B(x, y)', 'y').text();
 			const priceRatio = nerdamer(`${dBdx}/(${dBdy})`).text();
+
 			const MRS = nerdamer(`${MUx}/(${MUy})`).text();
-			const equation = `${MRS}=${priceRatio}*(x/y)`;
+
+			const equation = `${MRS}=${priceRatio}`;
+
 			nerdamer.set('SOLUTIONS_AS_OBJECT', true);
+			console.log('Set SOLUTIONS_AS_OBJECT');
+
 			sol = nerdamer.solveEquations([equation, 'B(x,y)'], ['x', 'y']);
 		}
 		Object.entries(sol).forEach(([key, value]) => {
@@ -1672,13 +1688,37 @@ class View {
 		#sideInputsContent, #sideInstructionsContent {
 			--scrollbar-color-track: transparent;
 			--scrollbar-color-thumb: #8b5cf6;
-		  }
-		  
-		  @supports (scrollbar-width: auto) {
-			#sideInputsContent, #sideInstructionsContent {
-			  scrollbar-color: var(--scrollbar-color-thumb) var(--scrollbar-color-track);
-			  scrollbar-width: thin;
+			scrollbar-color: var(--scrollbar-color-thumb) var(--scrollbar-color-track);
+			scrollbar-width: thin;
+
+			/* For Safari */
+			*::-webkit-scrollbar {
+				width: 8px;
 			}
+
+			*::-webkit-scrollbar-track {
+				background: var(--scrollbar-color-track);
+			}
+
+			*::-webkit-scrollbar-thumb {
+				background-color: var(--scrollbar-color-thumb);
+				border-radius: 20px;
+				border: 3px solid var(--scrollbar-color-track);
+			}
+			/* Styling the scrollbar in Chrome and Safari */
+
+			*::-webkit-scrollbar {
+				width: 0; /* for Chrome, Safari, and Opera */
+			}
+
+			*::-webkit-scrollbar-thumb {
+			background-color: #8b5cf6; /* Set thumb color for Chrome and Safari */
+			}
+
+			*::-webkit-scrollbar-track {
+			background-color: transparent; /* Set track color for Chrome and Safari */
+			}
+
 		}
     
 
@@ -2878,6 +2918,354 @@ class EconVision {
 			});
 		}
 	}
+	addDynamicLabel(options) {
+		let {
+			idDiv,
+			title,
+			func,
+			latex,
+			color,
+			hidden = false,
+			showLabel = false,
+			label = '',
+			labelIndicators = ['Q', 'P'],
+			direction='up',
+			dragMode = Desmos.DragModes.XY,
+			labelOrientation = Desmos.LabelOrientations.DEFAULT,
+			pointSize = '10',
+			pointStyle = Desmos.Styles.POINT,
+			index = 1,
+			min = 0,
+			max = 100,
+			step = 1,
+			limit,
+			listGraphs,
+		} = options;
+		let listOfGraphs = this.view.graphs.listOfGraphs;
+		let selectedExp = this.view.inputs.selectedExpressions;
+
+
+		initializeBaseValue();
+
+		function addPlusButton(idDiv) {
+			const buttonContainer = document.getElementById("sideInputsContent");
+			const buttonHTML = `
+				<div id="${idDiv}${index}add" class="flex justify-center my-1 group">
+					<button id="${idDiv}${index}plus" class="disabled:bg-slate-700 bg-transparent text-violet-700 hover:bg-violet-700 hover:text-white disabled:text-white font-bold py-1 px-2 rounded">
+						<i class="fas fa-plus group-hover:-rotate-90 group-active:rotate-0 group-hover:disabled:rotate-0 transition-all duration-300"></i>
+					</button>
+				</div>
+			`;
+			buttonContainer.insertAdjacentHTML('beforeend', buttonHTML);
+
+			// Add event listener to the plus button
+			const plusButton = document.getElementById(idDiv + index + 'plus');
+			plusButton.addEventListener('click', function() {
+				if (index < limit) {
+					index = index + 1;
+					addComponent(idDiv, index, convertStringToNumbers(latex)[0], convertStringToNumbers(latex)[1]);
+					addMinusButton(idDiv, index);
+
+				}
+				if (index >= limit) {
+					plusButton.disabled = true;
+				}
+			});
+		}
+
+		function addMinusButton(idDiv) {
+			document.getElementById(idDiv + index + 'add').remove();
+
+			const buttonContainer = document.getElementById(idDiv + index);
+			const buttonHTML = `
+				<button id="${idDiv}${index}minus" class="mb-[0.125rem] align-middle bg-red-500 hover:bg-red-700 text-white text-xs font-semibold py-1 px-2 rounded transition duration-500">
+					<i class="fas fa-trash"></i>
+				</button>
+				<style>
+					#${idDiv}${index}minus:active i {
+						animation: trashOpen 0.5s forwards;
+					}
+					@keyframes trashOpen {
+						to {
+							transform: scale(1.2);
+						}
+					}
+				</style>
+			`;
+			let firstDivChild = buttonContainer.querySelector('div');
+			firstDivChild.insertAdjacentHTML('beforeend', buttonHTML);
+			// Add event listener to the minus button
+			document.getElementById(idDiv + index + 'minus').addEventListener('click', function() {
+				document.getElementById(idDiv + index).remove();
+				removeDesmosExpressions();
+				removeEventListeners(idDiv, index);
+				index = index - 1;
+
+					// Enable the plus button when a component is removed
+					const plusButton = document.getElementById(idDiv + '1plus');
+					console.log("this is index", this)
+					console.log("index", index)
+					console.log("plusButton", plusButton)
+					if (plusButton) {
+						plusButton.disabled = false;
+					}
+
+			});
+		}
+
+
+		function removeDesmosExpressions() {
+			listGraphs.forEach(function(i) {
+				listOfGraphs[i].removeExpression({
+					"id": idDiv + index + 'p'
+				});
+				listOfGraphs[i].removeExpression({
+					"id": idDiv + index + 'y'
+				});
+				listOfGraphs[i].removeExpression({
+					"id": idDiv + index + 'x'
+				});
+			});
+			// Remove the selected expression
+			if (selectedExp[idDiv]) {
+				delete selectedExp[idDiv][index];
+			}
+
+		}
+
+
+		function convertStringToNumbers(input) {
+			// Match all numbers in the string and ignore the rest
+			const numbers = input.match(/\d+/g);
+			// Convert each string to a number
+			return numbers.map(Number);
+		}
+
+		function initializeBaseValue() {
+
+
+			addComponent();
+
+
+		}
+
+		function generateRandomPoint(direction='up') {
+			const step = (max - min) / limit;
+			let minForThisIndex, maxForThisIndex;
+
+			if (direction==='up') {
+				minForThisIndex = min + step * (index - 1);
+				maxForThisIndex = minForThisIndex + step;
+			} 
+			else if (direction==='down') {
+				maxForThisIndex = max - step * (index - 1);
+				minForThisIndex = maxForThisIndex - step;
+			}
+			else if (direction==='random'){
+				minForThisIndex = min;
+				maxForThisIndex = max;
+			}
+			else{
+				return 0;
+			}
+
+			return getRandomInt(minForThisIndex, Math.min(maxForThisIndex, max));
+		}
+
+
+		function getRandomInt(min, max) {
+			min = Math.ceil(min);
+			max = Math.floor(max);
+			return Math.floor(Math.random() * (max - min + 1)) + min;
+		}
+
+
+		function addComponent() {
+			const componentHTML = `
+					<div id="${idDiv}${index}">
+						<p class="text-[color:${color}] font-semibold">${title} ${index}:</p>
+						<div class="flex space-x-1 items-end [&_input]:text-center relative">
+							<div class="relative w-full">
+								<input type="number" id="${idDiv}${index}x" value="${((direction==='down')?generateRandomPoint('up'):generateRandomPoint(direction))}" min="${min}" max="${max}" step="${step}" class="out-of-range:border-red-500 relative shadow-md w-full rounded-md px-0 py-0 border-2 border-violet-500 bg-transparent form-control ${idDiv}">
+								<span class="absolute inset-y-0 left-1 text-xs z-10 pointer-events-none">${labelIndicators[0]}</span>
+							</div>
+							<h1 class="text-lg align-text-bottom align-bottom font-semibold">,</h1>
+							<div class="relative w-full">
+								<input type="number" id="${idDiv}${index}y" value="${generateRandomPoint(direction)}" min="${min}" max="${max}" step="${step}" class="out-of-range:border-red-500 relative shadow-md w-full rounded-md px-0 py-0 border-2 border-violet-500 bg-transparent form-control ${idDiv}">
+								<span class="absolute inset-y-0 left-1 text-xs z-10 pointer-events-none">${labelIndicators[1]}</span>
+							</div>
+						</div>
+					</div>
+				`;
+
+
+			document.getElementById("sideInputsContent").insertAdjacentHTML('beforeend', componentHTML);
+
+			const inputX = document.getElementById(idDiv + index + 'x');
+			const inputY = document.getElementById(idDiv + index + 'y');
+
+			inputX.addEventListener('input', function() {
+				if (this.value < min || this.value > max) {
+					this.value = defaultX;
+				}
+			});
+
+			inputY.addEventListener('input', function() {
+				if (this.value < min || this.value > max) {
+					this.value = defaultY;
+				}
+			});
+
+			addDefaultPoint();
+			listGraphs.forEach(function(i) {
+				let calculator = listOfGraphs[i];
+				addEventListeners(idDiv, index, calculator);
+			});
+		}
+
+		function addEventListeners(idDiv, index, calculator) {
+			const inputX = document.getElementById(idDiv + index + 'x');
+			const inputY = document.getElementById(idDiv + index + 'y');
+
+			// Define the functions you're going to bind
+			function inputXHandler() {
+				calculator.setExpression({
+					id: idDiv + index + 'x',
+					latex: func + '_{x' + index + '}=' + inputX.value
+				});
+			}
+
+			function inputYHandler() {
+				calculator.setExpression({
+					id: idDiv + index + 'y',
+					latex: func + '_{y' + index + '}=' + inputY.value
+				});
+			}
+
+			// Bind the functions as event listeners
+			inputX.addEventListener('input', inputXHandler);
+			inputY.addEventListener('input', inputYHandler);
+
+			// Store the functions for later removal
+			inputX.inputXHandler = inputXHandler;
+			inputY.inputYHandler = inputYHandler;
+
+			//onchange from desmos
+			calculator.observeEvent('change.' + idDiv + index, function(eventName, event) {
+				const expressionX = getExpressionById(calculator, idDiv + index + 'x');
+				console.log
+				inputX.value = getSubstringAfterEquals(expressionX);
+				selectedExp[idDiv][index] = func + '_{p' + index + '}=(' + inputX.value + ',' + inputY.value + ')';
+
+				const expressionY = getExpressionById(calculator, idDiv + index + 'y');
+				inputY.value = getSubstringAfterEquals(expressionY);
+				selectedExp[idDiv][index] = func + '_{p' + index + '}=(' + inputX.value + ',' + inputY.value + ')';
+
+			});
+			// Add plus button
+			addPlusButton(idDiv, index);
+
+		}
+
+		function removeEventListeners(idDiv, index) {
+			// Remove the event listeners
+			const inputX = document.getElementById(idDiv + index + 'x');
+			const inputY = document.getElementById(idDiv + index + 'y');
+			if (inputX) {
+				inputX.removeEventListener('input', inputX.inputXHandler);
+			}
+			if (inputY) {
+				inputY.removeEventListener('input', inputY.inputYHandler);
+			}
+
+			    // Remove the point from the list
+				if (selectedExp[idDiv]['list']) {
+					const pointToRemove = func + '_{p' + index + '}';
+					const indexToRemove = selectedExp[idDiv]['list'].indexOf(pointToRemove);
+					if (indexToRemove > -1) {
+						selectedExp[idDiv]['list'].splice(indexToRemove, 1);
+					}
+				}
+
+			// Unobserve the event
+			listGraphs.forEach(function(i) {
+				let calculator = listOfGraphs[i];
+				calculator.unobserveEvent('change.' + idDiv + index);
+				listOfGraphs[i].setExpression({
+					"id": idDiv,
+					"type": "expression",
+					"latex": func + '=[' + selectedExp[idDiv]['list'].join(',') + ']',
+				});
+			});
+		}
+
+		function addDefaultPoint() {
+			if (!selectedExp[idDiv]) {
+				selectedExp[idDiv] = {};
+			}
+			selectedExp[idDiv][index] = func + '_{p' + index + '}=' + latex;
+			listGraphs.forEach(function(i) {
+				listOfGraphs[i].setExpression({
+					"id": idDiv + index + 'x',
+					"type": "expression",
+					"latex": func + '_{x' + index + '}=' + ((direction==='down')?generateRandomPoint('up'):generateRandomPoint(direction)),
+					"sliderBounds": {
+						min: min,
+						max: max,
+						step: step
+					}
+				});
+				listOfGraphs[i].setExpression({
+					"id": idDiv + index + 'y',
+					"type": "expression",
+					"latex": func + '_{y' + index + '}=' + generateRandomPoint(direction),
+					"sliderBounds": {
+						min: min,
+						max: max,
+						step: step
+					}
+				});
+				listOfGraphs[i].setExpression({
+					"id": idDiv + index + 'p',
+					"type": "expression",
+					"latex": func + '_{p' + index + '}=(' + func + '_{x' + index + '},' + func + '_{y' + index + '})',
+					"color": generateColorShades(color),
+					"showLabel": showLabel,
+					"label": label,
+					"dragMode": dragMode,
+					"labelOrientation": labelOrientation,
+					"pointSize": pointSize,
+					"pointStyle": pointStyle,
+					"points": true,
+				});
+
+				    // Add the new point to the list
+					if (!selectedExp[idDiv]['list']) {
+						selectedExp[idDiv]['list'] = [];
+					}
+					const newPoint = func + '_{p' + index + '}';
+					if (!selectedExp[idDiv]['list'].includes(newPoint)) {
+						selectedExp[idDiv]['list'].push(newPoint);
+					}
+
+				listOfGraphs[i].setExpression({
+					"id": idDiv,
+					"type": "expression",
+					"latex": func + '=[' + selectedExp[idDiv]['list'].join(',') + ']',
+					"color": generateColorShades(color),
+					"showLabel": false,
+					"label": '',
+					"hidden":true,
+					"dragMode": dragMode,
+					"labelOrientation": labelOrientation,
+					"pointSize": pointSize,
+					"pointStyle": pointStyle,
+					"points": true,
+				});
+
+			});
+		}
+	}	
 	addDynamicInput(options) {
 		let idDiv = options["idDiv"];
 		let idDiv_rhs = idDiv + "_rhs";
