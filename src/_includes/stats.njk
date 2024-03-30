@@ -1,46 +1,37 @@
-        <!-- Statistics -->
-        <section class="dark-section bg-fixed bg-center bg-cover h-screen relative contrast-100" style="background-image:url('./assets/img/background.jpg');">
-<div class="absolute inset-0 bg-gradient-to-b from-transparent to-gray-900"></div>
-<div class="absolute top-0 left-0 right-0 lg:p-6 md:p-5 sm:p-4 p-3 text-center text-white flex justify-center">
-<div class="container px-4 flex flex-col">
-    <div class="text-center">
-    <h1 class="text-xl md:text-2xl lg:text-3xl text-white font-semibold mb-8">Visualizing Economic Progress Together</h1>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 justify-center col-span-1 md:col-span-4
+md:hover:[&_div]:scale-[1.2] [&_div:not(:hover)]:hover:blur-md [&_div:not(:hover)]:hover:scale-[0.9]
+" style="background-color:transparent;">
+    <div class="relative lg:p-4 md:p-3 sm:p-2 p-1 flex flex-col items-center justify-center bg-[color:var(--c-2)] rounded-lg shadow-lg transition duration-300 ease-in-out transform">
+       <i class="fas fa-graduation-cap text-[color:var(--c-1)] lg:text-3xl md:text-2xl text-xl mb-3"></i>
+       <h3 class="lg:text-lg md:text-md text-sm font-bold text-[color:var(--c-1)] mb-3">Course Selection</h3>
+       <p class="lg:text-2xl md:text-xl text-lg font-bold text-[color:var(--c-3)]">{{collections.index | length}}</p>
+       <p class="lg:text-base md:text-sm text-xs text-[color:var(--c-1)]">courses</p>
     </div>
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 justify-center">
-    <div class="relative lg:p-4 md:p-3 sm:p-2 p-1 flex flex-col items-center justify-center bg-white rounded-lg shadow-lg transition duration-300 ease-in-out transform hover:scale-105">
-        <i class="fas fa-graduation-cap text-violet-600 lg:text-3xl md:text-2xl text-xl mb-3"></i>
-        <h3 class="lg:text-lg md:text-md text-sm font-bold text-violet-900 mb-3">Course Selection</h3>
-        <p class="lg:text-2xl md:text-xl text-lg font-bold text-violet-900" data-count="{{collections.index | length}}">0</p>
-        <p class="lg:text-base md:text-sm text-xs text-gray-500">courses</p>
-    </div>
-    <div class="relative lg:p-4 md:p-3 sm:p-2 p-1 flex flex-col items-center justify-center bg-white rounded-lg shadow-lg transition duration-300 ease-in-out transform hover:scale-105">
-        <i class="fas fa-cogs text-violet-600 lg:text-3xl md:text-2xl text-xl mb-3"></i>
-        <h3 class="lg:text-lg md:text-md text-sm font-bold text-violet-900 mb-3">Model Catalog</h3>
-        <p class="lg:text-2xl md:text-xl text-lg font-bold text-violet-900" data-count="{% set totalSubPages = 0 %}
-{% for parentPage in collections.index %}
-    {% for childPage in collections.all %}
-    {% if parentPage.data.tag == childPage.data.tags and childPage.data.show %}
+    <div class="relative lg:p-4 md:p-3 sm:p-2 p-1 flex flex-col items-center justify-center bg-[color:var(--c-2)] rounded-lg shadow-lg transition duration-300 ease-in-out transform">
+       <i class="fas fa-cogs text-[color:var(--c-1)] lg:text-3xl md:text-2xl text-xl mb-3"></i>
+       <h3 class="lg:text-lg md:text-md text-sm font-bold text-[color:var(--c-1)] mb-3">Model Catalog</h3>
+       <p class="lg:text-2xl md:text-xl text-lg font-bold text-[color:var(--c-3)]">{% set totalSubPages = 0 %}
+        {% for parentPage in collections.index %}
+        {% for childPage in collections.all %}
+        {% if parentPage.data.tag == childPage.data.tags and childPage.data.show %}
         {% set totalSubPages = totalSubPages + 1 %}
-    {% endif %}
-    {% endfor %}
-{% endfor %}
-{{ totalSubPages }}">0</p>
-        <p class="lg:text-base md:text-sm text-xs text-gray-500">models</p>
+        {% endif %}
+        {% endfor %}
+        {% endfor %}
+        {{ totalSubPages }}</p>
+       <p class="lg:text-base md:text-sm text-xs text-[color:var(--c-1)]">models</p>
     </div>
-    <div class="relative lg:p-4 md:p-3 sm:p-2 p-1 flex flex-col items-center justify-center bg-white rounded-lg shadow-lg transition duration-300 ease-in-out transform hover:scale-105">
-        <i class="fas fa-users text-violet-600 lg:text-3xl md:text-2xl text-xl mb-3"></i>
-        <h3 class="lg:text-lg md:text-md text-sm font-bold text-violet-900 mb-3">Visionary Creators</h3>
-        <p class="lg:text-2xl md:text-xl text-lg font-bold text-violet-900" data-count="{{ collections.creators | length }}">0</p>
-        <p class="lg:text-base md:text-sm text-xs text-gray-500">members</p>
+    <div class="relative lg:p-4 md:p-3 sm:p-2 p-1 flex flex-col items-center justify-center bg-[color:var(--c-2)] rounded-lg shadow-lg transition duration-300 ease-in-out transform">
+       <i class="fas fa-users text-[color:var(--c-1)] lg:text-3xl md:text-2xl text-xl mb-3"></i>
+       <h3 class="lg:text-lg md:text-md text-sm font-bold text-[color:var(--c-1)] mb-3">Visionary Creators</h3>
+       <p class="lg:text-2xl md:text-xl text-lg font-bold text-[color:var(--c-3)]" >{{ collections.creators | length }}</p>
+       <p class="lg:text-base md:text-sm text-xs text-[color:var(--c-1)]">members</p>
     </div>
-    <div class="relative lg:p-4 md:p-3 sm:p-2 p-1 flex flex-col items-center justify-center bg-white rounded-lg shadow-lg transition duration-300 ease-in-out transform hover:scale-105">
-<i class="fas fa-book text-violet-600 lg:text-3xl md:text-2xl text-xl mb-3"></i>
-<h3 class="lg:text-lg md:text-md text-sm font-bold text-violet-900 mb-3">Content Collection</h3>
-<p class="lg:text-2xl md:text-xl text-lg font-bold text-violet-900" data-count="3000">0</p>
-<p class="lg:text-base md:text-sm text-xs text-gray-500">words</p>
-</div>
-</div>
-</div>
+    <div class="relative lg:p-4 md:p-3 sm:p-2 p-1 flex flex-col items-center justify-center bg-[color:var(--c-2)] rounded-lg shadow-lg transition duration-300 ease-in-out transform">
+       <i class="fas fa-book text-[color:var(--c-1)] lg:text-3xl md:text-2xl text-xl mb-3"></i>
+       <h3 class="lg:text-lg md:text-md text-sm font-bold text-[color:var(--c-1)] mb-3">Content Collection</h3>
+       <p class="lg:text-2xl md:text-xl text-lg font-bold text-[color:var(--c-3)]">4789</p>
+       <p class="lg:text-base md:text-sm text-xs text-[color:var(--c-1)]">words</p>
+    </div>
+ </div>
 
-</div>
-</section>

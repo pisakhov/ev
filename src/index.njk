@@ -7,13 +7,11 @@ layout: 'base.njk'
 </video> -->
 <!-- {% include "desmos.njk" %} -->
 
-<section class="group snap-center bg-fixed bg-center bg-cover h-screen relative" style="
-background-image:url('https://cdn.midjourney.com/48eaf9e4-27db-4b46-98dc-91459b67bcd8/0_0.webp');
-">
-  <!-- <video autoplay muted loop class="absolute h-screen w-screen object-cover">
+<section class="group snap-center bg-fixed bg-center bg-cover h-screen relative bg-[color:var(--background)]">
+  <video autoplay muted loop class="absolute h-screen w-screen object-cover opacity-70">
+    <source src="./assets/img/hero.webm" type="video/webm">
     <source src="./assets/img/hero.mp4" type="video/mp4">
   </video>
-  <div class="absolute top-0 inset-0 bg-black opacity-50"></div> -->
 
   
   <div id="isSticky" class="fade-in-1000 backdrop-blur-[20px] group-hover:backdrop-blur-[0px] transition-all duration-[2000ms] bg-gradient-to-bl from-violet-300/90 via-violet-300/60 to-violet-300/30 rounded-xl shadow-[inset_0px_-12px_20px_8px_rgba(255,255,255,0.3),0_20px_20px_0px_rgba(0,0,0,0.5)] mb-8 md:px-12 p-2 text-[color:var(--c-1)] sticky top-[20%] lg:mx-[10%] md:mx-4 mx-0  z-[9990] flex flex-col justify-center items-center space-y-6">
@@ -65,7 +63,7 @@ window.addEventListener('scroll', () => {
 
 
 
-<div class="group/title mt-[10%] mb-[5%] grid grid-cols-1 grid-rows-1 md:grid-cols-4 lg:gap-6 md:gap-4 gap-2 md:[&>div]:h-auto first:[&>div]:h-[80vh] first:[&>div]:mb-14 first:md:[&>div]:mb-10 [&>div]:ring-[color:var(--c-2)] [&>div]:ring-2  [&>div]:shadow-[-4px_-4px_10px_rgba(255,255,255,0.2),6px_6px_10px_rgba(0,0,0,0.2)] md:[&>div]:rounded-lg [&>div]:rounded-md md:hover:[&>div]:bg-white/0 [&>div]:backdrop-blur-[3px] [&>div]:bg-[color:var(--c-2)] [&>div]:py-2 [&>div]:px-2  [&>div]:text-gray-100">
+<div class="group/title mt-[10%] mb-[5%] grid grid-cols-1 grid-rows-1 md:grid-cols-4 lg:gap-6 md:gap-4 gap-2 md:[&>div]:h-auto first:[&>div]:h-[80vh] first:[&>div]:mb-14 first:md:[&>div]:mb-10 [&>div]:ring-[color:var(--c-2)] [&>div]:ring-2  [&>div]:shadow-[-4px_-4px_10px_rgba(255,255,255,0.2),6px_6px_10px_rgba(0,0,0,0.2)] md:[&>div]:rounded-lg [&>div]:rounded-md md:hover:[&>div]:bg-white/0 [&>div]:backdrop-blur-[3px] [&>div]:bg-transparent [&>div]:py-2 [&>div]:px-2  [&>div]:text-gray-100">
 
 
   
@@ -74,16 +72,13 @@ window.addEventListener('scroll', () => {
 
     <!--Courses-->
 <div class="relative md:col-span-4 row-span-1 h-[400px] min-h-[400px] transition-all duration-500" id="courses">
-          <!-- Title -->
-          <span  class="flex top-0 w-full items-center left-1/2 -translate-x-[50%] flex-col items-end md:opacity-0 md:group-hover/title:opacity-100 md:translate-y-10 -translate-y-8 -z-20 md:group-hover/title:-translate-y-10 absolute transition duration-1000 ease-in-out">
-            <h1 class="text-[clamp(1.5rem,4vw,1.875rem)] font-light tracking-wide text-[color:var(--c-1)] ">Envision With Us</h1>
-          </span>
+
 
           <div id="heroImage" class="backdrop-blur-xs opacity-100 snap-center h-full bg-center absolute inset-0 z-[999]">
             <div class="circle-container h-full w-full transform flex justify-around">
               <div class="circle-half cursor-pointer bg-[color:var(--c-2)] rounded-l-lg flex flex-col items-center justify-around md:p-20 p-0" onclick="openDoor()"> 
                 <div class="text-[clamp(3rem,7vw,4rem)] font-extrabold text-[color:var(--c-1)] tracking-widest uppercase [writing-mode:vertical-lr] -translate-x-5 group-hover/title:-translate-x-10 transition duration-[2.5s]">Unlock</div>
-                <div class="text-[clamp(1rem,2.5vw,1.125rem)] text-[color:var(--c-1)] hover:text-[color:var(--c-2)] ring-2 ring-[color:var(--c-1)] hover:bg-[color:var(--c-1)] text-center rounded-3xl md:py-2 py-1 md:px-4 px-2 font-normal tracking-wide uppercase">ECONOMIC INSIGHTS</div>
+                <div class="text-[clamp(0.75rem,2vw,1rem)] text-[color:var(--c-1)] hover:text-[color:var(--c-2)] ring-2 ring-[color:var(--c-1)] hover:bg-[color:var(--c-1)] text-center rounded-3xl md:py-2 py-1 md:px-4 px-2 font-normal tracking-wide uppercase">ECONOMIC INSIGHTS</div>
               </div>
               <div class="circle-half cursor-pointer bg-[color:var(--c-2)] rounded-r-lg flex flex-col items-center justify-center md:p-40 p-0" onclick="openDoor()">
                 <div class="text-[clamp(2.5rem,6vw,3rem)] font-extrabold text-[color:var(--c-2)] text-center bg-[color:var(--c-1)] hover:text-[color:var(--c-1)] hover:bg-[color:var(--c-2)] tracking-widest uppercase transition duration-300 text-center">EXPLORE</div>
@@ -92,32 +87,107 @@ window.addEventListener('scroll', () => {
             </div>
           </div>
           
-          <div id="lamp" class="relative
-  flex flex-col md:flex-row gap-2 [&>*]:transition-all [&>*]:duration-500 [&>*]:delay-1000 [&>*]:ease-in-out md:[&>*]:w-[100%] md:[&_div]:min-w-10 [&_div]:h-[100%] [&_div]:min-h-10 h-full w-full [&>*]:flex-1 first:[&>*]:flex-auto">
-
-   {% for course in collections.index %}
-      <div class="choice md:hover:[&_h5]:bg-[color:var(--c-2)] items-center overflow-hidden rounded-md bg-[color:var(--c-2)] text-[color:var(--c-2)] relative">
-         <h5 class="p-2 rounded-md text-[clamp(1rem,2.5vw,1.125rem)] select-none md:hover:text-[color:var(--c-1)] font-semibold md:[writing-mode:vertical-lr] sticky z-20 top-0 cursor-pointer md:left-0 md:h-full bg-[color:var(--c-1)]">{{ course.data.title }}</h5>
-        <span class="">
-          <ul class="gap-4 md:left-12 md:top-0 top-10 absolute z-10 animate-pulse [&_li]:bg-[color:var(--c-2)] hover:[&_li]:bg-[color:var(--c-1)] [&_li]:rounded-md [&_li]:flex-auto hover:[&_li]:shadow-lg flex flex-wrap flex-row justify-around items-center p-8 w-full md:pl-16 md:-ml-12">
-            {% for model in collections[course.data.tag] %}
-              <li class="relative group aspect-[1.618/1] flex-1 w-64">
-                <img src="{{ model.data.thumbnail }}" alt="{{ model.data.title }}" class="invisible w-full h-full object-cover rounded-md transform transition-all duration-500" />
-
-                <div class="shadow-md absolute inset-0 bg-gradient-to-t from-10% group-hover:from-10% backdrop-blur-sm from-violet-300/10 to-slate-100/10 p-4 rounded-md transition-colors transition-all duration-1000">
-                  <p class="group-hover:translate-y-0 group-hover:opacity-100 opacity-0 translate-y-20 transition duration-300 ease-in-out text-pretty h-full relative w-full line-clamp-4 text-[color:var(--c-3)] top-[clamp(28px,10vw,30px)] p-1 text-sm">{{ model.data.description }}</p>
-
-                  <h2 class="transition duration-300 absolute z-20 w-full left-0 top-0 text-[color:var(--c-2)] font-medium p-2 rounded-md bg-[color:var(--c-3)] group-hover:bg-[color:var(--c-3)] text-[clamp(0.875rem,2vw,1rem)] transition-colors duration-200 group-hover:text-[color:var(--c-2)] font-semibold shadow-sm">{{ model.data.title }}</h2>
-                  <a href="{{ model.url }}" class="shadow-[inset_-1px_-1px_0px_rgba(255,255,255,0.3),inset_1px_1px_0px_rgba(150,150,150,0.9)] absolute z-10 inset-0 bg-gradient-to-b from-[color:var(--c-3)] to-[color:var(--c-4)] rounded-md group-hover:opacity-0 transition duration-400 delay-200"></a>
-                </div>
-              </li>
+          <div id="lamp" class="relative flex flex-col md:flex-row gap-2 [&>*]:transition-all [&>*]:duration-500 [&>*]:delay-1000 [&>*]:ease-in-out md:[&>*]:w-[100%] md:[&_div]:min-w-10 [&_div]:h-[100%] [&_div]:min-h-10 h-full w-full [&>*]:flex-1 first:[&>*]:flex-auto">
+            {% for course in collections.index %}
+            <div class="choice md:hover:[&_h5]:bg-[color:var(--c-2)] items-center overflow-hidden rounded-md bg-[color:var(--c-2)] text-[color:var(--c-2)] relative">
+              <h5 class="p-2 rounded-md text-[clamp(1rem,2.5vw,1.125rem)] select-none md:hover:text-[color:var(--c-1)] font-semibold md:[writing-mode:vertical-lr] sticky z-20 top-0 cursor-pointer md:left-0 md:h-full bg-[color:var(--c-1)]">{{ course.data.title }}</h5>
+              <span class="">
+                <ul class="gap-4 md:left-12 md:top-0 top-10 absolute z-10 animate-pulse bg-[color:var(--c-2)] rounded-md flex flex-col w-full md:pl-16 md:-ml-12 p-8">
+                  {% for model in collections[course.data.tag] %}
+                  <li class="w-full accordion-item">
+                    <div class="accordion-header bg-[color:var(--c-2)] hover:bg-[color:var(--c-1)] rounded-md flex flex-col">
+                      <div class="group accordion-title text-[color:var(--c-3)] hover:text-[color:var(--c-2)] font-semibold text-[clamp(0.875rem,2vw,1rem)] p-2 transition duration-200 flex justify-between items-center cursor-pointer">
+                        <span class="model-title group-hover:text-[color:var(--c-2)]">{{ model.data.title }}</span>
+                        <i class="accordion-arrow fas fa-chevron-down text-[color:var(--c-3)] group-hover:text-[color:var(--c-2)]"></i>
+                      </div>
+                      <div class="accordion-content shadow-md bg-gradient-to-t from-10% backdrop-blur-sm from-violet-300/10 to-slate-100/10 p-2 rounded-md transition-colors transition-all duration-1000 hidden">
+                        <p class="translate-y-0 opacity-100 text-[color:var(--c-2)] h-full relative w-full line-clamp-4 p-1 text-sm">
+                          {{ model.data.description }}
+                        </p>
+                        <div class="relative group">
+                          <img src="{{ model.data.thumbnail }}" alt="{{ model.data.title }}" class="opacity-100 w-full md:h-24 h-12 object-cover rounded-md transform transition-all duration-500 group-hover:blur  group-hover:scale-[0.9]">
+                          <a href="{{ model.url }}" class="ring-2 ring-[color:var(--c-1)] py-2 px-4 absolute z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transition duration-400 delay-200 text-[color:var(--c-1)] opacity-0 group-hover:opacity-100 hover:bg-[color:var(--c-1)] hover:text-[color:var(--c-2)]">Open</a>
+                        </div>
+                        
+                      </div>
+                    </div>
+                  </li>
+                  {% endfor %}
+                </ul>
+              </span>
+            </div>
             {% endfor %}
-          </ul>        
-        </span>
-      </div>
-   {% endfor %}
-
-  </div>
+          </div>
+          
+          <script>
+            // JavaScript code for the accordion functionality
+            const choiceContainers = document.querySelectorAll('.choice');
+          
+            choiceContainers.forEach((choiceContainer) => {
+              const accordionHeaders = choiceContainer.querySelectorAll('.accordion-header');
+              let openAccordion = null;
+          
+              accordionHeaders.forEach((header) => {
+                const title = header.querySelector('.accordion-title');
+                const modelTitle = header.querySelector('.model-title');
+                const arrow = header.querySelector('.accordion-arrow');
+                title.addEventListener('click', () => {
+                  const content = header.querySelector('.accordion-content');
+          
+                  closeAllAccordions();
+                  content.classList.toggle('hidden');
+                  arrow.classList.toggle('fa-chevron-down');
+                  arrow.classList.toggle('fa-chevron-up');
+          
+                  if (!content.classList.contains('hidden')) {
+                    header.classList.add('bg-[color:var(--c-1)]');
+                    header.classList.remove('bg-[color:var(--c-2)]');
+                    modelTitle.classList.remove('text-[color:var(--c-3)]');
+                    modelTitle.classList.add('text-[color:var(--c-2)]');
+                    arrow.classList.remove('text-[color:var(--c-3)]');
+                    arrow.classList.add('text-[color:var(--c-2)]');
+                    openAccordion = header;
+                  } else {
+                    header.classList.remove('bg-[color:var(--c-1)]');
+                    header.classList.add('bg-[color:var(--c-2)]');
+                    modelTitle.classList.remove('text-[color:var(--c-2)]');
+                    modelTitle.classList.add('text-[color:var(--c-3)]');
+                    arrow.classList.remove('text-[color:var(--c-2)]');
+                    arrow.classList.add('text-[color:var(--c-3)]');
+                    openAccordion = null;
+                  }
+                });
+              });
+          
+              function closeAllAccordions() {
+                const accordionContents = choiceContainer.querySelectorAll('.accordion-content');
+                const accordionArrows = choiceContainer.querySelectorAll('.accordion-arrow');
+                const accordionHeaders = choiceContainer.querySelectorAll('.accordion-header');
+                const modelTitles = choiceContainer.querySelectorAll('.model-title');
+          
+                accordionContents.forEach((content) => {
+                  content.classList.add('hidden');
+                });
+          
+                accordionArrows.forEach((arrow) => {
+                  arrow.classList.remove('fa-chevron-up');
+                  arrow.classList.add('fa-chevron-down');
+                  arrow.classList.remove('text-[color:var(--c-2)]');
+                  arrow.classList.add('text-[color:var(--c-3)]');
+                });
+          
+                accordionHeaders.forEach((header) => {
+                  header.classList.remove('bg-[color:var(--c-1)]');
+                  header.classList.add('bg-[color:var(--c-2)]');
+                });
+          
+                modelTitles.forEach((title) => {
+                  title.classList.remove('text-[color:var(--c-2)]');
+                  title.classList.add('text-[color:var(--c-3)]');
+                });
+              }
+            });
+          </script>
 
 
 
@@ -167,9 +237,11 @@ function openDoor() {
 </div>
 
 
+<!-- STATS -->
+{% include "stats.njk" %}
 
 
-<div class="relative md:col-span-1 row-span-1 flex items-center snap-center bg-fixed bg-center bg-cover contrast-100" style="background-image:url('https://cdn.midjourney.com/48eaf9e4-27db-4b46-98dc-91459b67bcd8/0_0.webp');">
+<div class="relative md:col-span-1 row-span-1 flex items-center snap-center bg-fixed bg-center bg-cover contrast-100" style="background-color:transparent;">
   <div class="relative bg-[color:var(--c-2)] shadow-md rounded flex flex-col h-full" style="padding: clamp(1rem, 2vw, 2rem);">
     <h2 class="font-bold text-[clamp(1rem,3vw,1.5rem)] mb-2 text-[color:var(--c-1)]">Advanced Functions</h2>
     <span class="text-sm text-[color:var(--c-1)] text-wrap">Our tool is capable of using advanced mathematical functions in our graphing calculator, offering you complete freedom and flexibility in the input section.</span>
@@ -177,14 +249,14 @@ function openDoor() {
 </div>
 
 
-<div class="relative md:col-span-1 row-span-1 flex items-center snap-center bg-fixed bg-center bg-cover contrast-100" style="background-image:url('https://cdn.midjourney.com/48eaf9e4-27db-4b46-98dc-91459b67bcd8/0_0.webp');">
+<div class="relative md:col-span-1 row-span-1 flex items-center snap-center bg-fixed bg-center bg-cover contrast-100" style="background-color:transparent;">
   <div class="relative bg-[color:var(--c-2)] shadow-md rounded flex flex-col h-full" style="padding: clamp(1rem, 2vw, 2rem);">
     <h2 class="font-bold text-[clamp(1.25rem,3.5vw,1.5rem)] mb-2 text-[color:var(--c-1)]">Interactive Graphing</h2>
     <span class="text-sm text-[color:var(--c-1)]">Our graph not only displays precise input, but is also highly interactive, allowing you to explore and manipulate the graph for a more in-depth understanding.</span>
   </div>
 </div>
 
-<div class="relative right md:col-span-1 row-span-1 flex items-center snap-center bg-fixed bg-center bg-cover contrast-100" style="background-image:url('https://cdn.midjourney.com/48eaf9e4-27db-4b46-98dc-91459b67bcd8/0_0.webp');">
+<div class="relative right md:col-span-1 row-span-1 flex items-center snap-center bg-fixed bg-center bg-cover contrast-100" style="background-color:transparent;">
   <div class="relative bg-[color:var(--c-2)] shadow-md rounded flex flex-col h-full" style="padding: clamp(1rem, 2vw, 2rem);">
     <h2 class="font-bold text-[clamp(1.25rem,3.5vw,1.5rem)] mb-2 text-[color:var(--c-1)]">Helpful Resources</h2>
     <span class="text-sm text-[color:var(--c-1)]">We've got you covered with our help section, providing instructions and guidance on how to use our model effectively and make the most out of our tools.</span>
@@ -194,7 +266,7 @@ function openDoor() {
 
 
 <!-- GET IN TOUCH -->
-<div class="glowit right flex flex-col justify-center items-center md:col-span-1 md:row-span-2 transition-all duration-500" style="padding: clamp(1rem, 2vw, 2rem);">
+<div class="glowit right flex flex-col justify-center items-center md:col-span-1 md:row-span-2 transition-all duration-500" style="padding: clamp(1rem, 2vw, 2rem);background-color:var(--c-2)">
   <h2 class="text-[clamp(1.5rem,4vw,1.875rem)] font-bold text-center text-[color:var(--c-1)] mb-[clamp(0.5rem,1vw,1rem)]">Get in Touch</h2>
   <p class="text-[clamp(0.75rem,2vw,1rem)] text-center text-[color:var(--c-1)] mb-[clamp(0.5rem,1vw,1rem)]">Have questions? Reach out to our dedicated Econ.Vision team.</p>
   <a href="/Page/contact/" class="bg-[color:var(--c-3)] hover:bg-[color:var(--c-1)] text-[color:var(--c-2)] hover:text-[color:var(--c-2)] font-bold py-[clamp(0.5rem,1vw,1rem)] px-[clamp(0.5rem,1vw,1rem)] rounded-md flex items-center justify-center gap-2 transition-all duration-300">
@@ -208,14 +280,14 @@ function openDoor() {
      <!-- CREATORS -->
 
 
-     <div class="group/title2 relative glowit left md:col-span-3 row-span-1 flex items-center group transition-all duration-500">
+     <div class="group/title2 relative glowit left md:col-span-3 row-span-1 flex items-center group transition-all duration-500" style="background-color:transparent;">
       <div class="w-full flex md:space-x-4 space-x-2 py-2 justify-between hover:[&_a>img]:grayscale-0 [&_a>img]:grayscale">
         {% for creator in collections.creators %}
             {% if creator.data.show %}
-            <div class="ring-2 ring-[color:var(--c-3)] rounded-lg shadow-md w-full min-h-full object-cover">
+            <div class="ring-2 ring-[color:var(--c-1)] rounded-lg shadow-md w-full min-h-full object-cover">
               <a href="{{creator.url}}" class="transition duration-500 ease-in-out relative">
                 <img src="{{creator.data.thumbnail}}" alt="{{creator.data.name}}" class="h-full w-full relative transition-all duration-1000 object-cover rounded-lg"/>
-                <h3 class="absolute md:text-md text-xs bottom-0 w-content bg-[color:var(--c-3)] px-2 rounded-es-md">{{creator.data.name | trim}}</h3>
+                <h3 class="absolute md:text-md text-xs bottom-0 w-content bg-[color:var(--c-3)] px-2 rounded-tr-md rounded-bl-md">{{creator.data.name | trim}}</h3>
             </a>
             </div>
             {% endif %}
