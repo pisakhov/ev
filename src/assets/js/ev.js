@@ -218,6 +218,10 @@ function replaceLn(str) { //replace log to ln
 	return str.replace(/ln/gi, "log");
 }
 
+function replaceLog(str){
+	return str.replace(/log/gi, "ln");
+}
+
 function replaceMathrm(str) {
 	// Replace "\\log_{n}" with "\\log"
 	str = str.replace(/\\log_{\d+}/g, "\\log");
@@ -228,12 +232,25 @@ function replaceMathrm(str) {
 	return str;
 }
 
+function wrapWithParentheses(expression) {
+	// Split the expression into terms
+	const terms = expression.split('*');
+
+	// Wrap each term in parentheses
+	const wrappedTerms = terms.map(term => `(${term})`);
+
+	// Join the terms back together with '*'
+	const wrappedExpression = wrappedTerms.join('*');
+
+	return wrappedExpression;
+}
+
 function inMath(str) {
-	return nerdamer.convertFromLaTeX(capitalizeLn(str));
+	return nerdamer.convertFromLaTeX(replaceLn(str));
 }
 
 function outMath(str) {
-	return replaceMathrm(nerdamer.convertToLaTeX(nerdamer(str).toString()));
+	return replaceLog(replaceMathrm(nerdamer.convertToLaTeX(nerdamer(str).toString())));
 }
 
 function isNumber(string) { //check if the string is float or int
@@ -303,7 +320,7 @@ class RunCalc {
 	constructor(selectedExpressions, listOfGraphs) {
 		this.selectedExpressions = selectedExpressions;
 		this.listOfGraphs = listOfGraphs;
-		nerdamer.set('USE_LN', true);
+		nerdamer.set('USE_LN', false);
 	}
 	simpleDraw(parms) {
 		let expression = parms['expression'];
@@ -544,11 +561,15 @@ class RunCalc {
 			}
 		});
 
-		const mainFunc = nerdamer.convertFromLaTeX(replaceLn(getSubstringAfterEquals(exportWords.objective))).toString();
+		// const mainFunc = nerdamer.convertFromLaTeX(replaceLn(getSubstringAfterEquals(exportWords.objective))).toString();
+		// const constraintFunc = nerdamer.convertFromLaTeX(replaceLn(getSubstringAfterEquals(exportWords.constraint))).toString();
+
+		const mainFunc = inMath(replaceLn(getSubstringAfterEquals(exportWords.objective))).toString();
 		const constraintFunc = nerdamer.convertFromLaTeX(replaceLn(getSubstringAfterEquals(exportWords.constraint))).toString();
 
+
 		let returnValue = [];
-		let sol;
+		let sol ={};
 
 		if (mainFunc.includes('min(')) {
 			const startIdx = mainFunc.indexOf('(') + 1;
@@ -567,17 +588,48 @@ class RunCalc {
 			alert('Use a different utility function');
 			return;
 		} else {
+			// Handle general cases
+
+			console.log("mainFunc: ", mainFunc);
 			nerdamer.setFunction('U', ['x', 'y'], mainFunc);
 			nerdamer.setFunction('B', ['x', 'y'], constraintFunc);
-			const MUx = nerdamer.diff('U(x, y)', 'x').text();
-			const MUy = nerdamer.diff('U(x, y)', 'y').text();
-			const dBdx = nerdamer.diff('B(x, y)', 'x').text();
-			const dBdy = nerdamer.diff('B(x, y)', 'y').text();
-			const priceRatio = nerdamer(`${dBdx}/(${dBdy})`).text();
-			const MRS = nerdamer(`${MUx}/(${MUy})`).text();
+			console.log('Set function U',nerdamer('U(x, y)'.toString()));
+
+
+			const MUx = nerdamer.diff('U(x, y)', 'x').text('decimals',20);
+			const MUy = nerdamer.diff('U(x, y)', 'y').text('decimals');
+			const dBdx = nerdamer.diff('B(x, y)', 'x').text('decimals');
+			const dBdy = nerdamer.diff('B(x, y)', 'y').text('decimals');
+
+			console.log("MUx: ", MUx);
+			console.log("MUy: ", MUy);
+			console.log("dBdx: ", dBdx);
+			console.log("dBdy: ", dBdy);
+
+			const priceRatio = nerdamer(`${dBdx}/(${dBdy})`).text('decimals');
+			const MRS = nerdamer(`${MUx}/(${MUy})`).text('decimals');
+
+			console.log("priceRatio: ", priceRatio);
+			console.log("MRS: ", MRS);
+
 			const equation = `${MRS}=${priceRatio}`;
+			console.log("equation: ", equation);
+
 			nerdamer.set('SOLUTIONS_AS_OBJECT', true);
-			sol = nerdamer.solveEquations([equation, 'B(x,y)'], ['x', 'y']);
+
+			if (equation.includes('x') && equation.includes('y')) {
+				sol = nerdamer.solveEquations([equation, 'B(x,y)'], ['x', 'y']);
+			} else if (equation.includes('x')) {
+				const subEq = nerdamer(`${MRS}-${priceRatio}=0`);
+				sol.x = Number(subEq.solveFor('x')[0]);
+				sol.y = Number(nerdamer('B(x,y)').evaluate({x:sol.x}).solveFor('y')[0]);
+			} else if (equation.includes('y')) {
+				console.log("here",equation)
+				const subEq = nerdamer(`${MRS}-${priceRatio}=0`);
+				sol.y = Number(subEq.solveFor('y')[0]);
+				sol.x = Number(nerdamer('B(x,y)').evaluate({y:sol.y}).solveFor('x')[0]);
+			}
+
 		}
 
 		Object.entries(sol).forEach(([key, value]) => {
@@ -806,10 +858,10 @@ class RunCalc {
 
 		let listOfGraphs = this.listOfGraphs;
 		let selectedExp = this.selectedExpressions;
-		const mainFunc = nerdamer.convertFromLaTeX(replaceLn(getSubstringAfterEquals(selectedExp[parentIdDiv]))).toString();
+		const mainFunc = inMath(replaceLn(getSubstringAfterEquals(selectedExp[parentIdDiv]))).toString();
 		const constraintFunc = nerdamer.convertFromLaTeX(replaceLn(getSubstringAfterEquals(selectedExp[constraint]))).toString();
 		let returnValue = [];
-		let sol;
+		let sol = {};
 		if (mainFunc.includes('min(')) {
 			const startIdx = mainFunc.indexOf('(') + 1;
 			const endIdx = mainFunc.lastIndexOf(')');
@@ -831,25 +883,49 @@ class RunCalc {
 			alert('Use a different utility function');
 			return;
 		} else {
-			nerdamer.setFunction('U', ['x', 'y'], mainFunc);
-			nerdamer.setFunction('B', ['x', 'y'], constraintFunc);
+    // Handle general cases
 
-			const MUx = nerdamer.diff('U(x, y)', 'x').text();
-			const MUy = nerdamer.diff('U(x, y)', 'y').text();
+    console.log("mainFunc: ", mainFunc);
+    nerdamer.setFunction('U', ['x', 'y'], mainFunc);
+    nerdamer.setFunction('B', ['x', 'y'], constraintFunc);
+    console.log('Set function U',nerdamer('U(x, y)'.toString()));
 
-			const dBdx = nerdamer.diff('B(x, y)', 'x').text();
-			const dBdy = nerdamer.diff('B(x, y)', 'y').text();
-			const priceRatio = nerdamer(`${dBdx}/(${dBdy})`).text();
 
-			const MRS = nerdamer(`${MUx}/(${MUy})`).text();
+    const MUx = nerdamer.diff('U(x, y)', 'x').text('decimals',20);
+    const MUy = nerdamer.diff('U(x, y)', 'y').text('decimals');
+    const dBdx = nerdamer.diff('B(x, y)', 'x').text('decimals');
+    const dBdy = nerdamer.diff('B(x, y)', 'y').text('decimals');
 
-			const equation = `${MRS}=${priceRatio}`;
+    console.log("MUx: ", MUx);
+    console.log("MUy: ", MUy);
+    console.log("dBdx: ", dBdx);
+    console.log("dBdy: ", dBdy);
 
-			nerdamer.set('SOLUTIONS_AS_OBJECT', true);
-			console.log('Set SOLUTIONS_AS_OBJECT');
+    const priceRatio = nerdamer(`${dBdx}/(${dBdy})`).text('decimals');
+    const MRS = nerdamer(`${MUx}/(${MUy})`).text('decimals');
 
-			sol = nerdamer.solveEquations([equation, 'B(x,y)'], ['x', 'y']);
-		}
+    console.log("priceRatio: ", priceRatio);
+    console.log("MRS: ", MRS);
+
+    const equation = `${MRS}=${priceRatio}`;
+    console.log("equation: ", equation);
+
+    nerdamer.set('SOLUTIONS_AS_OBJECT', true);
+
+    if (equation.includes('x') && equation.includes('y')) {
+        sol = nerdamer.solveEquations([equation, 'B(x,y)'], ['x', 'y']);
+    } else if (equation.includes('x')) {
+        const subEq = nerdamer(`${MRS}-${priceRatio}=0`);
+        sol.x = Number(subEq.solveFor('x')[0]);
+        sol.y = Number(nerdamer('B(x,y)').evaluate({x:sol.x}).solveFor('y')[0]);
+    } else if (equation.includes('y')) {
+        console.log("here",equation)
+        const subEq = nerdamer(`${MRS}-${priceRatio}=0`);
+        sol.y = Number(subEq.solveFor('y')[0]);
+        sol.x = Number(nerdamer('B(x,y)').evaluate({y:sol.y}).solveFor('x')[0]);
+    }
+
+}
 		Object.entries(sol).forEach(([key, value]) => {
 			const subId = `${idDiv}_${key}`;
 			const subNewfunEqu = `${NewfunEqu}_${key}`;
@@ -894,6 +970,10 @@ class SliderComponent {
 		this.DEFAULT_MAX = this.config.max || 655000;
 		this.DEFAULT_STEP = this.config.step || 1;
 		this.DEFAULT_MULTI_VISIBILITY = this.config.multiVisibility || false;
+		//if the range of min and max is less than 100, then DEFAULT_MULTI_VISIBILITY is false
+		if (this.DEFAULT_MAX - this.DEFAULT_MIN <= 100) {
+			this.DEFAULT_MULTI_VISIBILITY = false;
+		}
 		this.DEFAULT_VALUE = this.config.defaultValue || 0;
 		this.TITLE = this.config.title || 'Title Here:';
 		this.latex = this.config.latex;
@@ -976,32 +1056,25 @@ class SliderComponent {
 				const displayMultiplier = this.DEFAULT_MULTI_VISIBILITY ? 'block' : 'none';
 
 			// Full mode HTML setup
-    htmlContent = `<p class="p-1 text-md">${this.TITLE}:</p>
-	<div class="h-auto relative flex flex-col w-full items-stretch justify-between rounded-md border-0 border-violet-500 bg-transperent p-2">
-	   <input type="range" class="range-config appearance-none mb-2 bg-violet-50 [&::-webkit-slider-runnable-track]:rounded-full [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:h-4 [&::-webkit-slider-thumb]:w-4 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-violet-600 cursor-pointer rounded-lg hover:bg-violet-300 dark:hover:bg-gray-600 active:outline-none active:ring-2 active:ring-violet-600"/>
-	   <div class="relative flex items-center">
-		  <div class="relative mx-4 w-1/3 flex">
-			 <span class="multiplierIndicator absolute inset-y-0 left-1 text-xs z-10 pointer-events-none"></span>
-			 <input type="number" class="number-config bg-transperent w-full rounded-md border border-violet-400 p-2 text-center text-sm focus:outline-none focus:ring-2 focus:ring-violet-300 hover:border-violet-500"/>
-		  </div>
-		  <div class="flex mx-4 w-2/3 text-sm hover:outline hover:outline-offset-1 hover:outline-1 hover:rounded-md hover:outline-violet-900/20">
-			 <div class="relative flex-grow">
-				<button class="decreaseValue w-full h-full rounded-l-md bg-violet-600 p-2 text-white hover:bg-violet-700 active:bg-violet-800"><i class="fas fa-minus"></i></button>
-				<div class="absolute right-0 top-1 z-10 flex items-center justify-end" style="display: ${displayMultiplier};">
-				   <button class="decreaseMultiplier transform rounded-l-md bg-red-500 p-1 text-white hover:bg-red-600 active:bg-red-700 active:translate-y-1 active:scale-95"><i class="fas fa-minus"></i></button>
+			htmlContent = `
+			<div class="p-1 text-md">${this.TITLE}:</div>
+			<div class="h-auto relative flex flex-col w-full items-stretch justify-between rounded-md border-0 border-violet-500 bg-transparent p-2">
+			  <input type="range" class="range-config appearance-none mb-2 bg-violet-50 [&::-webkit-slider-runnable-track]:rounded-full [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:h-4 [&::-webkit-slider-thumb]:w-4 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-violet-600 cursor-pointer rounded-lg hover:bg-violet-300 dark:hover:bg-gray-600 active:outline-none active:ring-2 active:ring-violet-600" />
+			  <div class="relative flex items-center justify-around">
+				<div class="relative flex flex-row mx-4 w-full text-[6pt]">
+					<div class="relative w-14 flex flex-col items-center justify-center" style="display: ${displayMultiplier};">
+					<button class="disabled:scale-100 disabled:bg-slate-500 h-1/2 translate-x-6 after:content-['_'] after:absolute after:size-4 after:top-0 after:right-0 after:rounded-tl-full after:bg-transparent w-full increaseMultiplier transform rounded-t-lg bg-green-500 px-1 py-0 text-white hover:bg-green-600 active:bg-green-700 active:translate-x-6 active:scale-95 text-left"></button>
+					<button class="disabled:scale-100 disabled:bg-slate-500 h-1/2 translate-x-6 after:content-['_'] after:absolute after:size-4 after:top-0 after:right-0 after:rounded-bl-full after:bg-transparent w-full decreaseMultiplier transform rounded-b-lg bg-red-500 px-1 py-0 text-white hover:bg-red-600 active:bg-red-700 active:translate-x-6 active:scale-95 text-left"></button>
+					</div>
+				  <div class="relative flex-grow flex items-center justify-between">
+					<input type="number" class="number-config bg-violet-50 w-full rounded-xl border border-violet-400 px-4 py-1.5 text-center text-sm focus:outline-none focus:ring-2 focus:ring-violet-300 hover:border-violet-500" />
+					<span class="multiplierIndicator absolute p-1 inset-y-0 left-1 text-xs z-10 pointer-events-none"></span>
+				  </div>
 				</div>
-			 </div>
-			 <div class="relative flex-grow">
-				<button class="increaseValue w-full h-full rounded-r-md bg-violet-600 p-2 text-white hover:bg-violet-700 active:bg-violet-800"><i class="fas fa-plus"></i></button>
-				<div class="absolute left-0 top-1 z-10 flex items-center justify-start" style="display: ${displayMultiplier};">
-				   <button class="increaseMultiplier transform rounded-r-md bg-green-500 p-1 text-white hover:bg-green-600 active:bg-green-700 active:translate-y-1 active:scale-95"><i class="fas fa-plus"></i></button>
-				</div>
-			 </div>
-		  </div>
-	   </div>
-	</div>`;
-		}
-
+			  </div>
+			</div>
+			`;
+		  }
 		this.container.innerHTML = htmlContent;
 		this.setupSliderElements();
 	}
@@ -1024,6 +1097,12 @@ class SliderComponent {
 		this.multiplierIndicator = this.container.querySelector('.multiplierIndicator');
 		if (this.multiplierIndicator) {
 			this.multiplierIndicator.textContent = 'x' + this.DEFAULT_STEP;
+			const decreaseMultiplierButton = this.container.querySelector('.decreaseMultiplier');
+			const increaseMultiplierButton = this.container.querySelector('.increaseMultiplier');
+		
+			increaseMultiplierButton.textContent = 'x' + (this.DEFAULT_STEP * 10);
+			decreaseMultiplierButton.textContent = 'Min';
+			decreaseMultiplierButton.disabled = true;	
 		}
 	}
 	updateAllGraphs() {
@@ -1155,36 +1234,24 @@ class SliderComponent {
         }, 100); // Adjust this interval as needed
     };
 
-    // Modify event listeners for decrease/increase value buttons
-    if (decreaseValueButton && increaseValueButton) {
-        let decreaseInterval, increaseInterval;
-
-        const startAdjustment = (event) => {
-            event.preventDefault();
-            if (event.target === decreaseValueButton) {
-                decreaseInterval = handleContinuousAdjustment(-1);
-            } else if (event.target === increaseValueButton) {
-                increaseInterval = handleContinuousAdjustment(1);
-            }
-        };
-
-        const stopAdjustment = () => {
-            clearInterval(decreaseInterval);
-            clearInterval(increaseInterval);
-        };
-
-        // Add event listeners to start the interval
-        ['mousedown', 'touchstart'].forEach(event => {
-            decreaseValueButton.addEventListener(event, startAdjustment, {passive: false});
-            increaseValueButton.addEventListener(event, startAdjustment, {passive: false});
-        });
-
-        // Add event listeners to stop the interval
-        ['mouseup', 'mouseleave', 'touchend'].forEach(event => {
-            decreaseValueButton.addEventListener(event, stopAdjustment);
-            increaseValueButton.addEventListener(event, stopAdjustment);
-        });
+// Modify event listeners for decrease/increase value buttons
+if (decreaseValueButton && increaseValueButton) {
+    const adjustValue = (event) => {
+        event.preventDefault();
+        if (event.target === decreaseValueButton) {
+			this.adjustValue(-1);
+            this.rangeInput.dispatchEvent(new Event('input'));
+        } else if (event.target === increaseValueButton) {
+			this.adjustValue(1);
+            this.rangeInput.dispatchEvent(new Event('input'));
+		
 		}
+    };
+
+    // Add event listeners to adjust the value
+    decreaseValueButton.addEventListener('click', adjustValue);
+    increaseValueButton.addEventListener('click', adjustValue);
+}
 	
 		// Conditionally add event listeners for decrease/increase multiplier buttons
 		const decreaseMultiplierButton = this.container.querySelector('.decreaseMultiplier');
@@ -1225,13 +1292,36 @@ class SliderComponent {
 		this.rangeInput.dispatchEvent(new Event('change'));
 	}
 	adjustMultiplier(direction) {
+		const decreaseMultiplierButton = this.container.querySelector('.decreaseMultiplier');
+		const increaseMultiplierButton = this.container.querySelector('.increaseMultiplier');
+
 		let currentStep = parseFloat(this.rangeInput.step);
+	  
 		const maxMultiplier = Math.pow(10, Math.floor(Math.log10(this.DEFAULT_MAX) - 1));
 		const minMultiplier = this.DEFAULT_STEP;
 		if (direction === 1) {
 			currentStep = Math.min(maxMultiplier, currentStep * 10);
+			if (currentStep === maxMultiplier) {
+				increaseMultiplierButton.disabled = true;
+				increaseMultiplierButton.textContent = 'Max';
+			  }
+			  else{
+				increaseMultiplierButton.textContent = 'x' + (currentStep * 10);
+			  }
+			  decreaseMultiplierButton.textContent = 'x' + (currentStep / 10);
+			decreaseMultiplierButton.disabled = false;
+
 		} else if (direction === -1) {
 			currentStep = Math.max(minMultiplier, currentStep / 10);
+			if (currentStep === minMultiplier) {
+				decreaseMultiplierButton.disabled = true;
+				decreaseMultiplierButton.textContent = 'Min';
+			  }
+			  else{
+				decreaseMultiplierButton.textContent = 'x' + (currentStep / 10);
+			  }
+			  increaseMultiplierButton.textContent = 'x' + (currentStep * 10);
+			  increaseMultiplierButton.disabled = false;
 		}
 		this.rangeInput.step = currentStep.toString();
 		this.numberInput.step = currentStep.toString();
@@ -2915,6 +3005,11 @@ class EconVision {
 					});
 					selectedExp[idDiv] = func + "=" + newValue;
 				});
+			});
+			//trigger all mathfields input event to update the graph
+			let mathFields = document.querySelectorAll('input');
+			mathFields.forEach((mathField) => {
+					mathField.dispatchEvent(new Event('input'));
 			});
 		}
 	}
