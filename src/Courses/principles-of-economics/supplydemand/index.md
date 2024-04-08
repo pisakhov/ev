@@ -1,5 +1,5 @@
 ---
-tags: principal-economics
+tags: principles-of-economics
 thumbnail: /assets/img/InterventionsGraph.png
 title: Supply and Demand
 description: 10-16 words max here... don't repeat title words.
