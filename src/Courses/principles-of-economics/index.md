@@ -7,7 +7,7 @@ color: cyan
 show: true
 ---
 <ul class="relative [&_li]:bg-[color:var(--c-2)] hover:[&_li]:bg-[color:var(--c-1)] [&_li]:rounded-md [&_li]:flex-auto hover:[&_li]:shadow-lg grid lg:grid-cols-1 grid-cols-1 gap-4 items-center flex p-8 w-full">
-{% for model in collections.principal-economics %}{% if model.data.show %}
+{% for model in collections.principles-of-economics %}{% if model.data.show %}
 <li class="w-full accordion-item">
 <div class="accordion-header bg-[color:var(--c-2)] hover:bg-[color:var(--c-1)] rounded-md flex flex-col">
 <div class="group accordion-title text-[color:var(--c-3)] hover:text-[color:var(--c-2)] font-semibold text-[clamp(0.875rem,2vw,1rem)] p-2 transition duration-200 flex justify-between items-center cursor-pointer">

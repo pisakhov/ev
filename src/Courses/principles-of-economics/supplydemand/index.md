@@ -2,7 +2,7 @@
 tags: principles-of-economics
 thumbnail: /assets/img/InterventionsGraph.png
 title: Supply and Demand
-description: 10-16 words max here... don't repeat title words.
+description: Visualize shifts and elasticity changes in supply and demand
 layout: model.njk
 show: true
 ---

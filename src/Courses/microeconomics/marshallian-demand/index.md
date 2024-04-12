@@ -2,7 +2,7 @@
 tags: microeconomics
 thumbnail: /assets/img/marshallian-demand.png
 title: Marshallian Demand
-description: Utility-maximizing consumption bundle dictated by prices and budget via equating marginal utilities
+description: Input utility functions and budget lines to find Marshallian demand bundles
 layout: model.njk
 show: true
 ---

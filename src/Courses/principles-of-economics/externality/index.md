@@ -1,8 +1,8 @@
 ---
 tags: principles-of-economics
 thumbnail: /assets/img/externality.png
-title: Externality
-description: 10-16 words max here... don't repeat title words.
+title: Externalities
+description: Graph positive/ negative externalities in production and consumption
 layout: model.njk
 show: true
 ---

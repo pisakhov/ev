@@ -2,13 +2,13 @@
 tags: principles-of-economics
 thumbnail: /assets/img/InterventionsGraph.png
 title: Stepwise Supply and Demand
-description: 10-16 words max here... don't repeat title words.
+description: Graph customizable stepwise supply and demand curves
 layout: model.njk
 show: true
 ---
 <script defer>
 const myCalculator = new EconVision();
-myCalculator.setGraphs({ 'engine': 'desmos', 'idDiv': 'StepwiseDemandGraph', 'height': '500px', 'width': '100', 'left': '-1', 'right': '20', 'bottom': '-1', 'top': '20', 'copy': true, 'expressions': true, 'zoomFit': true, 'showXAxis': true, 'showYAxis': true, 'xAxisLabel': 'Quantity', 'yAxisLabel': 'Price' });
+myCalculator.setGraphs({ 'engine': 'desmos', 'idDiv': 'StepwiseDemandGraph', 'height': '500px', 'width': '100', 'left': '-1', 'right': '20', 'bottom': '-1', 'top': '20', 'copy': true, 'expressions': false, 'zoomFit': true, 'showXAxis': true, 'showYAxis': true, 'xAxisLabel': 'Quantity', 'yAxisLabel': 'Price' });
 
 //Supply Function 
 myCalculator.addTemplateInput({'idDiv':'SQuantity','title':'Quantity Supplied','func':'X','placeholders':["[{\\placeholder[a]{1,2,3,4,5,6}}]"],'listGraphs':[0]});

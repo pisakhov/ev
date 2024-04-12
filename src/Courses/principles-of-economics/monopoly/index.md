@@ -2,7 +2,7 @@
 tags: principles-of-economics
 thumbnail: /assets/img/InterventionsGraph.png
 title: Monopoly
-description: 10-16 words max here... don't repeat title words.
+description: Visualize cost curves and profits in a monopolistic firm
 layout: model.njk
 show: true
 ---
@@ -18,7 +18,7 @@ myCalculator.setGraphs({
   "bottom": -10,
   "top": 150,
   "showGrid": false,
-  "expressions": true,
+  "expressions": false,
   "keypad": false,
   "zoomFit": true,
   "settingsMenu": true,

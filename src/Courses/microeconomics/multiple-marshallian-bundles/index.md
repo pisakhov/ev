@@ -2,7 +2,7 @@
 tags: microeconomics
 thumbnail: /assets/img/multiple-marshallian.png
 title: Multiple Marshallian Bundles
-description: Visualizing consumer equilibria across varying budget constraints by tangencies with indifference curves
+description: Visualize how budget changes affect Marshallian demand bundles
 layout: model.njk
 show: true
 ---

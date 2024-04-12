@@ -2,7 +2,7 @@
 tags: microeconomics
 thumbnail: /assets/img/stackelberg.png
 title: Stackelberg
-description: Leader-follower dynamics with sequential quantity choices impacting market price and profits
+description: Model leader-follower dynamics
 layout: model.njk
 show: true
 ---

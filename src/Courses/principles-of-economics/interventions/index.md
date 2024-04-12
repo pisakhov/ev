@@ -2,7 +2,7 @@
 tags: principles-of-economics
 thumbnail: /assets/img/InterventionsGraph.png
 title: Interventions
-description: 10-16 words max here... don't repeat title words.
+description: Visualize welfare impacts of price floors, price ceilings and quotas
 layout: model.njk
 show: true
 ---
