@@ -2,7 +2,7 @@
 tags: principles-of-economics
 thumbnail: /assets/img/InterventionsGraph.png
 title: Perfect Competition
-description: 10-16 words max here... don't repeat title words.
+description: Visualize cost curves and profits in a perfectly competitive firm
 layout: model.njk
 show: true
 ---
