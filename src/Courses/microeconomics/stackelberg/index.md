@@ -1,6 +1,8 @@
 ---
 tags: microeconomics
+thumbnail: /assets/img/stackelberg.png
 title: Stackelberg
+description: Model leader-follower dynamics
 layout: model.njk
 show: true
 ---
@@ -17,7 +19,7 @@ myCalculator.addFuncInput({'idDiv':'InverseDemandFunc','title':'Inverse Demand F
 myCalculator.addFuncInput({'idDiv':'LeaderTC','title':'Leader’s Total Cost','func':'f_{TCL}(Q)','latex':"\\frac{Q^2}{10}",'hidden':true,'listGraphs':[0]});
 myCalculator.addFuncInput({'idDiv':'FollowerTC','title':'Follower’s Total Cost','func':'f_{TCF}(Q)','latex':"\\frac{Q^2}{8}",'hidden':true,'listGraphs':[0]});
 
-//Leader and Follower MC
+// //Leader and Follower MC
 myCalculator.addExpression({'calc':'simpleDerive','idDiv':'LeaderMC','parentIdDiv':'LeaderTC','NewfunEqu':"f_{mcL}(Q)",'hidden':true,'listGraphs':[0]});
 myCalculator.addExpression({'calc':'simpleDerive','idDiv':'FollowerMC','parentIdDiv':'FollowerTC','NewfunEqu':"f_{mcF}(Q)",'hidden':true,'listGraphs':[0]});
 
@@ -44,9 +46,9 @@ myCalculator.addExpression({'calc':'simpleCompute','idDiv':'FollowerProfitFunc',
 
 // //MR
 myCalculator.addExpression({'calc':"simpleCompute", 'idDiv':"revenueTotal", 'compute':"InverseDemandFunc*[Q]", 'NewfunEqu':"f_{rT}(Q)", 'hidden':true, 'listGraphs':[0]});
-myCalculator.addExpression({'calc':"simpleDerive", 'idDiv':"MRFunc", 'parentIdDiv':"revenueTotal", 'NewfunEqu':"F_{MR}(Q)", 'color':"red", 'listGraphs':[0]});
+myCalculator.addExpression({ 'calc': "simpleDerive", 'idDiv': "MRFunc", 'parentIdDiv': "revenueTotal", 'NewfunEqu': "F_{MR}(Q)", 'color':"#DC143C", 'listGraphs':[0]});
 
-// //Optimal MR=MC
+// // //Optimal MR=MC
 myCalculator.addExpression({'idDiv':"OptimalCheckq", 'latex':"F_{MR}(Q_{q})\\sim f_{mcT}(Q_{q})", 'hidden':true, 'listGraphs':[0]});
 myCalculator.addExpression({'idDiv':"OptimalCheckp", 'latex':"Q_{p}=f_D(Q_{q})", 'hidden':true, 'listGraphs':[0]});
 myCalculator.addExpression({'idDiv':"OptimalCheckShade", 'color': 'gray', 'lineStyle': Desmos.Styles.DASHED, 'lineWidth': "0.9", 'latex':"\\operatorname{polygon}\\left(\\left[\\left(Q_{q},0\\right),\\left(Q_{q},Q_{p}\\right),\\left(0,Q_{p}\\right),\\left(0,0\\right)\\right]\\right)", 'listGraphs':[0]});
@@ -160,5 +162,4 @@ myCalculator.setCreators({
 	school: "CC’24"
 });
 
-myCalculator.setScriptPackage({'replaceExp':true,'replaceLatex':true,'replaceTip':true,'replaceTheory':true,'refresh':false});
   </script>

@@ -1,0 +1,55 @@
+<div class="glowit col-span-1 md:col-span-2">
+  <div class="grid grid-cols-3 gap-2">
+    <ul id="tabs" class="shadow-md [&_li]:p-2 [&_li]:rounded-md absolute [&_li]:z-20 [&_li]:cursor-pointer
+    col-span-1 flex flex-col p-1 list-none rounded-lg text-xs md:text-md text-[color:var(--c-2)] bg-[color:var(--c-1)] relative">
+      <li class="tab active" data-target="math">
+        <i class="fas fa-calculator"></i>
+        Advanced Functions</li>
+      <li class="tab" data-target="graph">
+        <i class="fas fa-chart-line"></i>
+        Interactive Graphing</li>
+      <li class="tab" data-target="help">
+        <i class="fas fa-info-circle"></i>
+        Helpful Resources</li>
+      <div id="highlight" class="absolute shadow-md h-content z-10 w-[96%] left-0 ml-1 m-auto bg-indigo-100 rounded-md opacity-100 transition-all duration-300"></div>
+    </ul>
+    <div class="col-span-2 p-5 text-sm md:text-md rounded-md shadow-[1px_1px_10px_rgba(0,0,0,0.2),-1px_-1px_10px_rgba(255,255,255,0.2)]">
+      <div id="math" class="content active">Our tool is capable of using advanced mathematical functions in our graphing calculator, offering you complete freedom and flexibility in the input section.</div>
+      <div id="graph" class="content hidden">Our graph not only displays precise input, but is also highly interactive, allowing you to explore and manipulate the graph for a more in-depth understanding.</div>
+      <div id="help" class="content hidden">We've got you covered with our help section, providing instructions and guidance on how to use our model effectively and make the most out of our tools.</div>
+    </div>
+</div>
+
+<script>
+document.querySelectorAll('.tab').forEach(button => {
+  button.addEventListener('click', () => {
+    const highlight = document.getElementById('highlight');
+    highlight.style.top = `${button.offsetTop}px`;
+    highlight.style.height = `${button.offsetHeight}px`;
+  });
+
+  button.addEventListener('click', () => {
+    document.querySelectorAll('.tab').forEach(btn => btn.classList.remove('active'));
+    button.classList.add('active');
+    const target = button.dataset.target;
+    document.querySelectorAll('.content').forEach(content => {
+      if (content.id === target) {
+        content.classList.remove('hidden');
+        content.classList.add('active', 'block');
+      } else {
+        content.classList.add('hidden');
+        content.classList.remove('active', 'block');
+      }
+    });
+  });
+});
+
+window.addEventListener('load', () => {
+  const activeTab = document.querySelector('.tab.active');
+  const highlight = document.getElementById('highlight');
+  highlight.style.top = `${activeTab.offsetTop}px`;
+  highlight.style.height = `${activeTab.offsetHeight}px`;
+});
+</script>
+
+</div>

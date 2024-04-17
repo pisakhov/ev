@@ -1,6 +1,8 @@
 ---
 tags: microeconomics
+thumbnail: /assets/img/effect-on-price-change.png
 title: Effect of a Price Change
+description: Visualize the impact of a price change on Marshallian and Hicksian demands
 layout: model.njk
 show: true
 ---

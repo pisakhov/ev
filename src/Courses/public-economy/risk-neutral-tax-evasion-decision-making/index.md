@@ -1,6 +1,8 @@
 ---
 tags: public-economy
+thumbnail: /assets/img/tax-evasion.png
 title: Risk-Neutral Tax Evasion Decision-Making
+description: Optimizing evasion amount where marginal benefit equals marginal cost of detection risk
 layout: model.njk
 show: true
 ---

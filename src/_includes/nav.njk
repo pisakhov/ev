@@ -1,134 +1,125 @@
-<nav class="p-6 w-full z-40 fixed top-0 flex items-center justify-between backdrop-blur-[3px] bg-white/1 h-16 md:h-16 lg:h-24 xl:h-32">
-         <div class="flex items-center">
-            <div class="text-xl text-gray-700 contrast-200">
-               <a href="/"><img class="main-logo h-14 w-14 md:h-16 md:w-16 lg:h-24 lg:w-24 xl:h-32 xl:w-32" src="https://econ.vision/assets/img/logo.png" alt=""></a>
-               <div class="zebra-2 text-center text-xs md:text-sm leading-none text-violet-300 -mt-2 md:-mt-4">Econ.vision</div>
-            </div>
-         </div>
-         <div class="hidden md:flex">
-            <a class="zebra-1 text-lg px-3 py-2 rounded-lg text-gray-100 hover:text-violet-500 transition-colors duration-300" href="/">
-            <i class="fas fa-home mr-2"></i> Home
+<nav class="z-20 sticky flex-col px-4 w-full items-center flex justify-center">
+      <div class="col-span-1 z-10 flex justify-center items-center p-2">
+            <a href="/">
+                  <img class="fade-in-top [clip-path:circle(100px)] shadow-[inset_-20px_20px_20px_var(--c-3)] hover:shadow-[inset_-20px_-20px_20px_var(--c-3)] rounded-full transition-all duration-1000 saturate-200 w-24 md:w-28" src="/assets/img/__aalogo.png" alt=""> 
             </a>
-            <div class="relative group flex">
-               <a class="zebra-1 text-lg px-3 py-2 rounded-lg text-gray-100 hover:text-violet-500 transition-colors duration-300 cursor-pointer">
-               <i class="fas fa-graduation-cap mr-2"></i> Courses
-               </a>
-               <div class="absolute left-0 -ml-[200px] mt-8 w-[600px] bg-transparent z-50 hidden group-hover:block">
-                  <div class="p-4">
-                     <div class="flex flex-wrap justify-center h-[90px]">
-                        <!--1-->
-                        <div class="w-full bg-gradient-to-br from-violet-500 to-violet-900 p-6 rounded-lg shadow-lg">
-                           <div class="flex">
-                           <ul class="course-list space-y-2 backdrop-blur-md bg-white/30 p-4">
+      </div>
 
-                                {% for course in collections.index %}{% if course.data.show %}
-
-                                <li>
-                                  <a href="#" class="text-xl font-bold text-white mb-1 cursor-pointer course-link" data-course="{{ course.data.title }}">
-                                  {{ course.data.title }}
-                                  </a>
-                                </li>
-
-                                 {% endif %}{% endfor %}
-
-
-
-
-                              </ul>
-
-
-                              <div class="subcourses-container ml-6">
-                                 {% for course in collections.index %}
-                                       <ul class="subcourse-list space-y-2 hidden" data-course="{{ course.data.title }}">
-                                       {% for model in collections.all %}{% if course.data.tag == model.data.tags and model.data.show %}
-                                       <li>
-                                          <a href="{{model.url}}" class="flex items-center text-gray-200 hover:text-white transition-colors duration-300">
-                                          <i class="fas fa-play-circle mr-2"></i>
-                                          <span>{{model.data.title}}</span>
-                                          </a>
-                                          </li>
-                                       {% endif %}{% endfor %}
-                                       </ul>
-                                 {% endfor %}      
-                              </div>
-
-
-                           </div>
+   <div class="hidden md:flex flex-row justify-center gap-4
+   lg:w-[600px] md:w-[450px]
+   [&_summary]:list-none  [&_summary::-webkit-details-marker]:hidden
+   [&_summary]:text-md [&_summary]:text-[color:var(--c-3)] hover:[&_summary]:text-[color:var(--c-3)] [&_summary]:transition-colors [&_summary]:duration-300
+   [&_a]:text-center [&_a]:text-md [&_a]:text-[color:var(--c-1)] hover:[&_a]:text-[color:var(--c-3)] [&_a]:transition-colors [&_a]:duration-300
+    ">
+      <div class="fade-in-900 relative group flex justify-between flex flex-row">
+            <details class="flex flex-col">
+                  <summary class="cursor-pointer flex flex-row gap-2 items-center">
+                        <i class="fas fa-graduation-cap fade-in-900 self-center"></i> 
+                        <div class="fade-in-800">Courses
+                              <div class="inset-0 opacity-80 h-[1px] from-1% to-99% bg-gradient-to-r from-transparent via-[color:var(--c-3)] to-transparent"></div>
                         </div>
-                        <!--2-->
-                     </div>
+                  </summary>
+                  <div class="absolute w-[320px] right-1/2 translate-x-1/2 bg-transparent z-50">
+                        <div class="flex flex-row justify-center">
+                              <div class="w-full bg-[color:var(--c-1)] rounded-lg shadow-lg">
+                                    <ul class="p-0 hover:[&_li]:bg-[color:var(--c-3)] [&_li]:p-2 first:[&_li]:rounded-t-md last:[&_li]:rounded-b-md divide-y">
+                                          {% for course in collections.index %}
+                                                {% if course.data.show %}
+                                                <li class="cursor-pointer group/menu transition-colors duration-300">
+                                                      <a href="{{course.url}}" class="text-md">
+                                                            <p class="text-[color:var(--c-2)] text-left">{{ course.data.title }}</p>
+                                                      </a>
+                                                </li>
+                                                {% endif %}
+                                          {% endfor %}
+                                    </ul>
+                              </div>
+                        </div>
                   </div>
-               </div>
-            </div>
-            <!-- end mega menu-->
-            {% for page in collections.pages %}{% if page.data.show %}
-            <a class="zebra-1 text-lg px-3 py-2 rounded-lg text-gray-100 hover:text-violet-500 transition-colors duration-300" href="{{page.url}}">
-            <i class="{{page.data.icon}} mr-2"></i> {{page.data.title}}
-            </a>
-            {% endif %}{% endfor %}
-            {# <a class="zebra-1 text-lg px-3 py-2 rounded-lg text-gray-100 hover:text-violet-500 transition-colors duration-300" href="?page=about">
-            <i class="fas fa-info-circle /fa-user-friends mr-2"></i> About
-            </a>
-            <a class="zebra-1 text-lg px-3 py-2 rounded-lg text-gray-100 hover:text-violet-500 transition-colors duration-300" href="?page=contact">
-            <i class="fas fa-envelope mr-2"></i> Contact
-            </a>
-            <a class="zebra-1 text-lg px-3 py-2 rounded-lg text-gray-100 hover:text-violet-500 transition-colors duration-300" href="?page=contact">
-            <i class="fas fa-user-plus mr-2"></i> Join us
-            </a> #}
-         </div>
-         <div class="relative inline-block text-left lg:hidden md:hidden">
-            <div>
-               <span class="rounded-md shadow-sm">
-               <button type="button" class="zebra-3 nav-button-mobile inline-flex justify-center w-full rounded-md px-2 py-2  text-sm leading-5 text-violet-100 hover:backdrop-blur-sm hover:bg-white/10 active:backdrop-blur-sm active:bg-white/10 hover:text-violet-300 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue">
-               <i class="fas fa-align-left"></i>
-               </button>
-               </span>
-            </div>
-            <div class="nav-menu-mobile z-40 absolute right-0 mt-2 w-56 rounded-md shadow-lg hidden">
-               <div class="rounded-lg backdrop-blur-sm bg-white/90 shadow-lg">
+            </details>
+      </div>
+      <!-- end mega menu-->
+      {% for page in collections.pages %}{% if page.data.show %}
+      <a class="fade-in-900 flex flex-row gap-2 items-center" href="{{page.url}}">
+      <i class="{{page.data.icon}} fade-in-900"></i>
+      <div class="fade-in-800">{{page.data.title}}</div>
+      </a>
+      {% endif %}{% endfor %}
+   </div>
+<!-- Mobile -->
+  
+<details class="w-full z-[9999] relative text-center inline-block lg:hidden md:hidden [&_summary]:list-none [&_summary::-webkit-details-marker]:hidden">
+      <summary class="">
+            <span class="relative rounded-md hover:shadow-md cursor-pointer hover:bg-[color:var(--c-3)] text-[color:var(--c-1)] hover:text-[color:var(--c-2)] p-3 w-36 h-36">
+            Menu <i class="fas fa-align-left inset-0"></i>
+            </span>
+      </summary>
+      <div class="absolute left-[0%] top-10 w-full rounded-md shadow-lg text-left w-full">
+            <div class="rounded-lg bg-[color:var(--c-2)] shadow-lg">
                   <div class="py-4">
-                     <a class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-violet-900 hover:text-white transition-colors duration-300 focus:outline-none focus:bg-violet-900 focus:text-gray-900" href="/">
-                     <i class="fas fa-home mr-2"></i> Home
-                     </a>
-                     <div class="relative group">
-                        <a class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-violet-900 hover:text-white transition-colors duration-300 focus:outline-none focus:bg-violet-900 focus:text-gray-900 cursor-pointer courses-btn">
-                        <i class="fas fa-graduation-cap mr-2"></i> Courses
+                        <a class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-[color:var(--c-3)] hover:text-white transition-colors duration-300 focus:outline-none focus:bg-[color:var(--c-3)]" href="/">
+                              <i class="fas fa-home mr-2"></i> Home
                         </a>
-                        <div class="courses-accordion absolute left-0 w-56 bg-transparent z-50 hidden">
-                           <div class="rounded-lg backdrop-blur-sm bg-white/90 shadow-lg">
-                              <div class="py-4">
-
-                                       {% for course in collections.index %}{% if course.data.show %} 
-                                       <div class="course">
-                                       <a class="block px-4 py-2 text-sm leading-5 text-gray-700 bg-gray-200 hover:bg-violet-900 hover:text-white transition-colors duration-300 focus:outline-none focus:bg-violet-900 focus:text-gray-900 cursor-pointer">
-                                       {{ course.data.title }}
-                                       </a>
-
-                                          <div class="subcourse hidden">
-                                          {% for model in collections.all %}{% if course.data.tag == model.data.tags and model.data.show %}
-                                          <a href="{{model.url}}" class="block px-8 py-2 text-sm leading-5 text-gray-700 hover:bg-violet-900 hover:text-white transition-colors duration-300 focus:outline-none focus:bg-violet-900 focus:text-gray-900">
-                                          {{model.data.title}}
-                                          </a>
-                                          {% endif %}{% endfor %}
+                        <details class="relative group">
+                              <summary class="block px-4 py-2 text-sm leading-5 text-[color:var(--c-1)] group-hover:bg-[color:var(--c-3)] group-hover:text-white transition-colors duration-300 focus:outline-none focus:bg-[color:var(--c-3)] cursor-pointer courses-btn">
+                                    <i class="fas fa-graduation-cap mr-2"></i> Courses
+                              </summary>
+                              <div class="courses-accordion top-0 left-0 w-full bg-transparent z-50">
+                                    <div class="bg-[color:var(--c-1)] shadow-lg w-[106%] -translate-x-[3%] rounded-md">
+                                          <div class="py-0 mb-1 divide-y divide-[color:var(--c-2)] first:[&_a]:rounded-t-md last:[&_a]:rounded-b-md">
+                                                {% for course in collections.index %}
+                                                      {% if course.data.show %}
+                                                                  <a href="{{course.url}}" class="block px-4 py-2 text-sm leading-5 text-[color:var(--c-2)] bg-[color:var(--c-1)] hover:bg-[color:var(--c-3)] hover:text-[color:var(--c-2)] transition-colors duration-300 focus:outline-none cursor-pointer">
+                                                                        {{ course.data.title }}
+                                                                  </a>
+                                                      {% endif %}
+                                                {% endfor %}
                                           </div>
-                                       
-                                       </div>
-                                       {% endif %}{% endfor %}
+                                    </div>
                               </div>
-                           </div>
-                        </div>
-                     </div>
-                     <!---->
-                     {% for page in collections.pages %}{% if page.data.show %}
-                     <a class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-violet-900 hover:text-white transition-colors duration-300 focus:outline-none focus:bg-violet-900 focus:text-gray-900" href="{{page.url}}">
-                     <i class="{{page.data.icon}} mr-2"></i> {{page.data.title}}
-                     </a>
-                     {% endif %}{% endfor %}
+                        </details>
+                        {% for page in collections.pages %}
+                              {% if page.data.show %}
+                                    <a class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-[color:var(--c-3)] hover:text-white transition-colors duration-300 focus:outline-none focus:bg-[color:var(--c-3)] focus:text-gray-900" href="{{page.url}}">
+                                          <i class="{{page.data.icon}} mr-2"></i> {{page.data.title}}
+                                    </a>
+                              {% endif %}
+                        {% endfor %}
                   </div>
-               </div>
             </div>
-         </div>
-      </nav>
+      </div>
+</details>
 
 
+{% if layout == "model.njk" %}
+
+
+   <!-- breadcrumb-->
+   <nav class="mx-[4rem] col-span-1 bg-[color:var(--c-2)] shadow-lg rounded-xl text-center md:px-2 mt-6">
+      <div class="mx-auto px-1">
+            <ol class="list-none p-2 md:p-0 md:inline-flex
+            [&_li]:text-[color:var(--c-1)] hover:[&_li]:text-[color:var(--c-3)]">
+            <li class="flex items-center">
+                  <a href="/" class="font-normal transition-colors duration-300 hover:underline decoration-1 decoration-dotted lg:text-lg md:text-md text-sm">Home</a>
+                  <i class="hidden md:block fas fa-angle-right text-[color:var(--c-1)] mx-2 text-lg"></i>
+                  <!-- <i class="md:hidden block fa-solid fa-turn-down text-[color:var(--c-1)] mx-1 pt-2 text-xs"></i> -->
+            </li>
+            {% for cls in collections.index %}
+            {% if cls.data.tag == tags %}
+            <li class="flex items-center">
+                  <a href="{{ cls.url }}" class="font-normal transition-colors duration-300 hover:underline decoration-1 decoration-dotted lg:text-lg md:text-md text-sm">{{ cls.data.title }}</a>
+                  <i class="hidden md:block fas fa-angle-right text-[color:var(--c-1)] mx-2 text-lg"></i>
+                  <!-- <i class="md:hidden block fa-solid fa-turn-down text-[color:var(--c-1)] mx-1 pt-2 text-xs"></i> -->
+            </li>
+            {% endif %}
+            {% endfor %}
+            <li class="flex items-center">
+                  <p class="font-normal text-[color:var(--c-3)] underline decoration-1 decoration-dotted lg:text-lg md:text-md text-sm">{{ title }}</p>
+            </li>
+            </ol>
+      </div>
+   </nav>
+   {% endif %}
+
+</nav>
 

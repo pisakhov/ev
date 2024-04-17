@@ -1,6 +1,8 @@
 ---
 tags: microeconomics
+thumbnail: /assets/img/risk.png
 title: Risk - Expected Utility
+description: Find expected utility, compensating variation and equivalent variation
 layout: model.njk
 show: true
 ---
