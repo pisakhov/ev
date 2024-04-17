@@ -1,6 +1,6 @@
 ---
 tags: principles-of-economics
-thumbnail: /assets/img/InterventionsGraph.png
+thumbnail: /assets/img/MonopolyGraph.png
 title: Monopoly
 description: Visualize cost curves and profits in a monopolistic firm
 layout: model.njk
@@ -10,7 +10,7 @@ show: true
 const myCalculator = new EconVision();
 
 myCalculator.setGraphs({
-  "idDiv": "CostCurvesGraph",
+  "idDiv": "MonopolyGraph",
   "height": "650px",
   "width": "100",
   "left": -15,
@@ -21,6 +21,7 @@ myCalculator.setGraphs({
   "expressions": false,
   "keypad": false,
   "zoomFit": true,
+  'copy': true, 
   "settingsMenu": true,
   "showXAxis": true,
   "showYAxis": true,

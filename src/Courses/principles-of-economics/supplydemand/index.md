@@ -1,6 +1,6 @@
 ---
 tags: principles-of-economics
-thumbnail: /assets/img/InterventionsGraph.png
+thumbnail: /assets/img/SupplyDemandGraph.png
 title: Supply and Demand
 description: Visualize shifts and elasticity changes in supply and demand
 layout: model.njk

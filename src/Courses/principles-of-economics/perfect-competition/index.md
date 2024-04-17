@@ -1,6 +1,6 @@
 ---
 tags: principles-of-economics
-thumbnail: /assets/img/InterventionsGraph.png
+thumbnail: /assets/img/CostCurvesGraph.png
 title: Perfect Competition
 description: Visualize cost curves and profits in a perfectly competitive firm
 layout: model.njk
@@ -8,6 +8,7 @@ show: true
 ---
 <script defer>
 const myCalculator = new EconVision();
+
 
 myCalculator.setGraphs({
   "idDiv": "CostCurvesGraph",
@@ -24,6 +25,7 @@ myCalculator.setGraphs({
   "settingsMenu": true,
   "showXAxis": true,
   "showYAxis": true,
+  'copy': true, 
   "xAxisLabel": "Quantity (units)",
   "yAxisLabel": "Price per unit ($)"})
 
