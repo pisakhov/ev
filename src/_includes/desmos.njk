@@ -1,31 +1,29 @@
-<section class="light-section bg-gray-100 py-20">
-            <div class="container mx-auto px-6">
-               <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">Insightful Charts</h2>
-               <div id="calculator" class="w-full h-[50vh]"></div>
 
-            </div>
-         </section>
+
+               <div id="calculator" class="fixed w-full w-full h-full md:block hidden p-4 rounded-md"></div>
+
 
          <script >
              var elt = document.getElementById('calculator');
              var calculator = Desmos.GraphingCalculator(elt);
 
              calculator.setMathBounds({
-				left: -10,
-				right: 100,
-				bottom: -10,
+				left: -20,
+				right: 200,
+				bottom: -40,
 				top: 100
 			});
 
                         calculator.setGraphSettings({
-            xAxisLabel: 'Quantity',
-            yAxisLabel: 'Price',
+            // backgroundColor: '#232323',
+            xAxisLabel: 'Q       ',
+            yAxisLabel: 'P',
             xAxisStep: 10,
             yAxisStep: 10,
             xAxisArrows: true,
             yAxisArrows: true,
-            xAxisNumbers: true,
-            yAxisNumbers: true,
+            xAxisNumbers: false,
+            yAxisNumbers: false,
             xAxisMinorSubdivisions: 1,
             yAxisMinorSubdivisions: 1,
             lockViewport: true,
@@ -34,20 +32,21 @@
             keypad: false,
 				zoomFit: false,
 				settingsMenu: false,
-            fontSize: 18
+            fontSize: 10
             });
 
        
-            calculator.setExpression({id: 'demand', latex: 'D(x) = 50 - x^2/100+a \\left\\{x\\ge0\\right\\}', color: Desmos.Colors.BLUE});
-calculator.setExpression({id: 'supply', latex: 'S(x) = x^2/100+b \\left\\{x\\ge0\\right\\}', color: Desmos.Colors.RED});
-calculator.setExpression({id: 'labelPoint1', latex: '(a,D(a))', showLabel:true, label: 'Demand Curve', hidden:false, color: Desmos.Colors.BLUE});
-calculator.setExpression({id: 'labelPoint2', latex: '(b,S(b))', showLabel:true, label: 'Supply Curve', hidden:false, color: Desmos.Colors.RED});
+          calculator.setExpression({id: 'demand', latex: 'D(x) = b - 1/2*x', color: 'rgb(124, 58, 237)'});
+          calculator.setExpression({id: 'supply', latex: 'S(x) = x-a', color: 'color: rgb(13, 148, 136);'});
+          calculator.setExpression({id: 'eq', latex: 'S(q)~D(q)', color: 'color: rgb(13, 148, 136);'});
+          calculator.setExpression({id: 'eq2', latex: 'p=S(q)', color: 'color: rgb(13, 148, 136);'});
+          calculator.setExpression({id: 'labelq', latex: '(q,p)',label:'',showLabel:true, color: 'color: rgb(13, 148, 136);'});
 
 
        
              var updateVariable = function (evt) {
-               calculator.setExpression({id:'1', latex:'a='+(evt.pageX/100)});
-               calculator.setExpression({id:'2', latex:'b='+(evt.pageY/100)});
+               calculator.setExpression({id:'1', latex:'a='+(evt.pageX/10)});
+               calculator.setExpression({id:'2', latex:'b='+(evt.pageY/10)});
              };
        
              // Register the callback as a listener on mousemove, and use it to

@@ -2,12 +2,400 @@
 title: Econ.vision
 layout: 'base.njk'
 ---
+<!-- <video autoplay muted loop class="inset-0 h-1/2 w-screen object-cover snap-start relative">
+  <source src="./assets/img/hero.mp4" type="video/mp4">
+</video> -->
+<!-- {% include "desmos.njk" %} -->
 
-{% include "hero.njk" %}
-{% include "features.njk" %}
-{% include "desmos.njk" %}
+<section class="group snap-center bg-fixed bg-center bg-cover h-screen relative bg-[color:var(--background)]">
+  <video autoplay muted loop class="absolute h-screen w-screen object-cover opacity-70">
+    <source src="./assets/img/hero.webm" type="video/webm">
+    <source src="./assets/img/hero.mp4" type="video/mp4">
+  </video>
+
+  
+  <div id="isSticky" class="fade-in-1000 backdrop-blur-[20px] group-hover:backdrop-blur-[0px] transition-all duration-[2000ms] bg-gradient-to-bl from-violet-300/90 via-violet-300/60 to-violet-300/30 rounded-xl shadow-[inset_0px_-12px_20px_8px_rgba(255,255,255,0.3),0_20px_20px_0px_rgba(0,0,0,0.5)] mb-8 md:px-12 p-2 text-[color:var(--c-1)] sticky top-[20%] lg:mx-[10%] md:mx-4 mx-0  z-[9990] flex flex-col justify-center items-center space-y-6">
+    <!-- LOGO -->
+     {% include "nav.njk" %}
+    <!-- LOGO -->
+    <div id="mainlogo" class="text-[clamp(1.875rem,5vw,2.25rem)] font-bold"></div>
+    <p class="md:[text-shadow:0_0_10px_rgba(0,0,0,0.4)] md:group-hover:[text-shadow:0_0_5px_rgba(43,45,56,0)] duration-[1500ms] md:text-transparent md:group-hover:text-[color:var(--c-1)] text-center text-[clamp(1.125rem,3vw,1.375rem)]">
+  Unlock the hidden depths of economics by embracing the power of visualization.<br>
+Let graphs and charts be your guide, and discover a new world of understanding, analysis, and insight.
+</p>
+<a href="#courses" class="fade-in-1000 group md:w-1/4 w-1/3 text-[clamp(0.7rem,2vw,0.875rem)] font-semibold bg-[color:var(--c-3)] hover:bg-[color:var(--c-1)] text-[color:var(--c-2)] hover:text-[color:var(--c-2)] font-bold py-3 px-6 rounded text-center flex items-center justify-center gap-2 transition-all duration-300 ring-3 ring-[color:var(--c-1)]">
+  Explore Models <i class="fas fa-arrow-down group-hover:animate-bounce"></i> 
+</a>
+
+
+</div>
+
+  
+</section> 
+<script src='/assets/js/typewriter.js'></script>
+
+<script>
+
+// get the sticky element
+const stickyElm = document.getElementById('isSticky')
+
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 20) {
+    stickyElm.classList.add('isSticky')
+  } else {
+    stickyElm.classList.remove('isSticky')
+  }
+})
+
+
+             		const typewriter = new Typewriter('#mainlogo', {
+         			autoStart: true
+         		});
+         		typewriter.typeString('Envision economic models.').pauseFor(1500).deleteChars(24).typeString('con').pauseFor(500).typeString('<strong>.</strong>').pauseFor(100).typeString('vision').pauseFor(2500).start();
+         	
+</script>
+
+<section class="relative bg-center bg-fixed snap-center">
+
+
+
+  <main class="lg:mx-[10%] md:mx-4 mx-1 snap-start">
+
+
+
+<div class="group/title mt-[10%] mb-[5%] grid grid-cols-1 grid-rows-1 md:grid-cols-4 lg:gap-6 md:gap-4 gap-2 md:[&>div]:h-auto first:[&>div]:h-[80vh] first:[&>div]:mb-14 first:md:[&>div]:mb-10 [&>div]:ring-[color:var(--c-2)] [&>div]:ring-2  [&>div]:shadow-[-4px_-4px_10px_rgba(255,255,255,0.2),6px_6px_10px_rgba(0,0,0,0.2)] md:[&>div]:rounded-lg [&>div]:rounded-md md:hover:[&>div]:bg-white/0 [&>div]:backdrop-blur-[3px] [&>div]:bg-transparent [&>div]:py-2 [&>div]:px-2  [&>div]:text-gray-100">
+
+
+  
+
+
+
+    <!--Courses-->
+<div class="relative md:col-span-4 row-span-1 h-[400px] min-h-[400px] transition-all duration-500" id="courses">
+
+
+          <div id="heroImage" class="backdrop-blur-xs opacity-100 snap-center h-full bg-center absolute inset-0 z-[999]">
+            <div class="circle-container h-full w-full transform flex justify-around">
+              <div class="circle-half cursor-pointer bg-[color:var(--c-2)] rounded-l-lg flex flex-col items-center justify-around md:p-20 p-0" onclick="openDoor()"> 
+                <div class="text-[clamp(3rem,7vw,4rem)] font-extrabold text-[color:var(--c-1)] tracking-widest uppercase [writing-mode:vertical-lr] -translate-x-5 group-hover/title:-translate-x-10 transition duration-[2.5s]">Unlock</div>
+                <div class="text-[clamp(0.75rem,2vw,1rem)] text-[color:var(--c-1)] hover:text-[color:var(--c-2)] ring-2 ring-[color:var(--c-1)] hover:bg-[color:var(--c-1)] text-center rounded-3xl md:py-2 py-1 md:px-4 px-2 font-normal tracking-wide uppercase">ECONOMIC INSIGHTS</div>
+              </div>
+              <div class="circle-half cursor-pointer bg-[color:var(--c-2)] rounded-r-lg flex flex-col items-center justify-center md:p-40 p-0" onclick="openDoor()">
+                <div class="text-[clamp(2.5rem,6vw,3rem)] font-extrabold text-[color:var(--c-2)] text-center bg-[color:var(--c-1)] hover:text-[color:var(--c-1)] hover:bg-[color:var(--c-2)] tracking-widest uppercase transition duration-300 text-center">EXPLORE</div>
+                <div class="text-[clamp(1rem,2.5vw,1rem)] text-[color:var(--c-1)] font-light tracking-wide -translate-y-10 opacity-0 group-hover/title:opacity-100 group-hover/title:translate-y-5 transition duration-[2.3s] uppercase text-left">GRAPHICAL MODELS</div>
+              </div>
+            </div>
+          </div>
+          
+          <div id="lamp" class="relative flex flex-col md:flex-row gap-2 [&>*]:transition-all [&>*]:duration-500 [&>*]:delay-1000 [&>*]:ease-in-out md:[&>*]:w-[100%] md:[&_div]:min-w-10 [&_div]:h-[100%] [&_div]:min-h-10 h-full w-full [&>*]:flex-1 first:[&>*]:flex-auto">
+            {% for course in collections.index %}
+            <div class="choice md:hover:[&_h5]:bg-[color:var(--c-2)] items-center overflow-hidden rounded-md bg-[color:var(--c-2)] text-[color:var(--c-2)] relative">
+              <h5 class="p-2 rounded-md text-[clamp(1rem,2.5vw,1.125rem)] select-none md:hover:text-[color:var(--c-1)] font-semibold md:[writing-mode:vertical-lr] sticky z-20 top-0 cursor-pointer md:left-0 md:h-full bg-[color:var(--c-1)]">{{ course.data.title }}</h5>
+              <span class="">
+                <ul class="gap-4 md:left-12 md:top-0 top-10 absolute z-10 animate-pulse bg-[color:var(--c-2)] rounded-md flex flex-col w-full md:pl-16 md:-ml-12 p-8">
+                  {% for model in collections[course.data.tag] %}
+                  <li class="w-full accordion-item">
+                    <div class="accordion-header bg-[color:var(--c-2)] hover:bg-[color:var(--c-1)] rounded-md flex flex-col">
+                      <div class="group accordion-title text-[color:var(--c-3)] hover:text-[color:var(--c-2)] font-semibold text-[clamp(0.875rem,2vw,1rem)] p-2 transition duration-200 flex justify-between items-center cursor-pointer">
+                        <span class="model-title group-hover:text-[color:var(--c-2)]">{{ model.data.title }}</span>
+                        <i class="accordion-arrow fas fa-chevron-down text-[color:var(--c-3)] group-hover:text-[color:var(--c-2)]"></i>
+                      </div>
+                      <div class="accordion-content shadow-md bg-gradient-to-t from-10% backdrop-blur-sm from-violet-300/10 to-slate-100/10 p-2 rounded-md transition-colors transition-all duration-1000 hidden">
+                        <p class="translate-y-0 opacity-100 text-[color:var(--c-2)] h-full relative w-full line-clamp-4 p-1 text-sm">
+                          {{ model.data.description }}
+                        </p>
+                        <div class="relative group">
+                          <img src="{{ model.data.thumbnail }}" alt="{{ model.data.title }}" class="opacity-100 w-full md:h-24 h-12 object-cover rounded-md transform transition-all duration-500 group-hover:blur  group-hover:scale-[0.9]">
+                          <a href="{{ model.url }}" class="ring-2 ring-[color:var(--c-1)] py-2 px-4 absolute z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transition duration-400 delay-200 text-[color:var(--c-1)] opacity-0 group-hover:opacity-100 hover:bg-[color:var(--c-1)] hover:text-[color:var(--c-2)]">Open</a>
+                        </div>
+                        
+                      </div>
+                    </div>
+                  </li>
+                  {% endfor %}
+                </ul>
+              </span>
+            </div>
+            {% endfor %}
+          </div>
+          
+          <script>
+            // JavaScript code for the accordion functionality
+            const choiceContainers = document.querySelectorAll('.choice');
+          
+            choiceContainers.forEach((choiceContainer) => {
+              const accordionHeaders = choiceContainer.querySelectorAll('.accordion-header');
+              let openAccordion = null;
+          
+              accordionHeaders.forEach((header) => {
+                const title = header.querySelector('.accordion-title');
+                const modelTitle = header.querySelector('.model-title');
+                const arrow = header.querySelector('.accordion-arrow');
+                title.addEventListener('click', () => {
+                  const content = header.querySelector('.accordion-content');
+          
+                  closeAllAccordions();
+                  content.classList.toggle('hidden');
+                  arrow.classList.toggle('fa-chevron-down');
+                  arrow.classList.toggle('fa-chevron-up');
+          
+                  if (!content.classList.contains('hidden')) {
+                    header.classList.add('bg-[color:var(--c-1)]');
+                    header.classList.remove('bg-[color:var(--c-2)]');
+                    modelTitle.classList.remove('text-[color:var(--c-3)]');
+                    modelTitle.classList.add('text-[color:var(--c-2)]');
+                    arrow.classList.remove('text-[color:var(--c-3)]');
+                    arrow.classList.add('text-[color:var(--c-2)]');
+                    openAccordion = header;
+                  } else {
+                    header.classList.remove('bg-[color:var(--c-1)]');
+                    header.classList.add('bg-[color:var(--c-2)]');
+                    modelTitle.classList.remove('text-[color:var(--c-2)]');
+                    modelTitle.classList.add('text-[color:var(--c-3)]');
+                    arrow.classList.remove('text-[color:var(--c-2)]');
+                    arrow.classList.add('text-[color:var(--c-3)]');
+                    openAccordion = null;
+                  }
+                });
+              });
+          
+              function closeAllAccordions() {
+                const accordionContents = choiceContainer.querySelectorAll('.accordion-content');
+                const accordionArrows = choiceContainer.querySelectorAll('.accordion-arrow');
+                const accordionHeaders = choiceContainer.querySelectorAll('.accordion-header');
+                const modelTitles = choiceContainer.querySelectorAll('.model-title');
+          
+                accordionContents.forEach((content) => {
+                  content.classList.add('hidden');
+                });
+          
+                accordionArrows.forEach((arrow) => {
+                  arrow.classList.remove('fa-chevron-up');
+                  arrow.classList.add('fa-chevron-down');
+                  arrow.classList.remove('text-[color:var(--c-2)]');
+                  arrow.classList.add('text-[color:var(--c-3)]');
+                });
+          
+                accordionHeaders.forEach((header) => {
+                  header.classList.remove('bg-[color:var(--c-1)]');
+                  header.classList.add('bg-[color:var(--c-2)]');
+                });
+          
+                modelTitles.forEach((title) => {
+                  title.classList.remove('text-[color:var(--c-2)]');
+                  title.classList.add('text-[color:var(--c-3)]');
+                });
+              }
+            });
+          </script>
+
+
+
+<style>
+  .circle-half {
+    width: 50%;
+    transition: transform 2s ease;
+  }
+
+  .circle-container:hover .circle-half:first-child {
+    transform: translateX(-10px); /* Adjust as needed */
+  }
+
+  .circle-container:hover .circle-half:last-child {
+    transform: translateX(10px); /* Adjust as needed */
+  }
+
+  .swing-out-left-fwd{-webkit-animation:swing-out-left-fwd .55s cubic-bezier(.6,-.28,.735,.045) both;animation:swing-out-left-fwd .55s cubic-bezier(.6,-.28,.735,.045) both}
+  @-webkit-keyframes swing-out-left-fwd{0%{-webkit-transform:rotateY(0);transform:rotateY(0);-webkit-transform-origin:left;transform-origin:left;opacity:1}100%{-webkit-transform:rotateY(-70deg);transform:rotateY(-70deg);-webkit-transform-origin:left;transform-origin:left;opacity:0}}@keyframes swing-out-left-fwd{0%{-webkit-transform:rotateY(0);transform:rotateY(0);-webkit-transform-origin:left;transform-origin:left;opacity:1}100%{-webkit-transform:rotateY(-70deg);transform:rotateY(-70deg);-webkit-transform-origin:left;transform-origin:left;opacity:0}}
+  .swing-out-right-fwd{-webkit-animation:swing-out-right-fwd .55s cubic-bezier(.6,-.28,.735,.045) both;animation:swing-out-right-fwd .55s cubic-bezier(.6,-.28,.735,.045) both}
+  @-webkit-keyframes swing-out-right-fwd{0%{-webkit-transform:rotateY(0);transform:rotateY(0);-webkit-transform-origin:right;transform-origin:right;opacity:1}100%{-webkit-transform:rotateY(70deg);transform:rotateY(70deg);-webkit-transform-origin:right;transform-origin:right;opacity:0}}@keyframes swing-out-right-fwd{0%{-webkit-transform:rotateY(0);transform:rotateY(0);-webkit-transform-origin:right;transform-origin:right;opacity:1}100%{-webkit-transform:rotateY(70deg);transform:rotateY(70deg);-webkit-transform-origin:right;transform-origin:right;opacity:0}}
+
+</style>
+
+    <script>
+
+//hide heroImage and make lamp non hidden
+
+function openDoor() {
+  var heroImage = document.getElementById("heroImage");
+  var lamp = document.getElementById("lamp");
+  var circleHalves = document.getElementsByClassName("circle-half");
+
+
+
+  circleHalves[0].classList.add("swing-out-left-fwd");
+  circleHalves[1].classList.add("swing-out-right-fwd");
+
+  setTimeout(function() {
+    heroImage.classList.add("hidden");
+  }, 1000); // Delay of 1 second
+
+
+}
+
+    </script>
+</div>
+
+
+<!-- STATS -->
 {% include "stats.njk" %}
-<!-- courses -->
-{% include "courses.njk" %}
-{% include "about.njk" %}
-{% include "contact.njk" %}
+
+
+<div class="relative md:col-span-1 row-span-1 flex items-center snap-center bg-fixed bg-center bg-cover contrast-100" style="background-color:transparent;">
+  <div class="relative bg-[color:var(--c-2)] shadow-md rounded flex flex-col h-full" style="padding: clamp(1rem, 2vw, 2rem);">
+    <h2 class="font-bold text-[clamp(1rem,3vw,1.5rem)] mb-2 text-[color:var(--c-1)]">Advanced Functions</h2>
+    <span class="text-sm text-[color:var(--c-1)] text-wrap">Our tool is capable of using advanced mathematical functions in our graphing calculator, offering you complete freedom and flexibility in the input section.</span>
+  </div>
+</div>
+
+
+<div class="relative md:col-span-1 row-span-1 flex items-center snap-center bg-fixed bg-center bg-cover contrast-100" style="background-color:transparent;">
+  <div class="relative bg-[color:var(--c-2)] shadow-md rounded flex flex-col h-full" style="padding: clamp(1rem, 2vw, 2rem);">
+    <h2 class="font-bold text-[clamp(1.25rem,3.5vw,1.5rem)] mb-2 text-[color:var(--c-1)]">Interactive Graphing</h2>
+    <span class="text-sm text-[color:var(--c-1)]">Our graph not only displays precise input, but is also highly interactive, allowing you to explore and manipulate the graph for a more in-depth understanding.</span>
+  </div>
+</div>
+
+<div class="relative right md:col-span-1 row-span-1 flex items-center snap-center bg-fixed bg-center bg-cover contrast-100" style="background-color:transparent;">
+  <div class="relative bg-[color:var(--c-2)] shadow-md rounded flex flex-col h-full" style="padding: clamp(1rem, 2vw, 2rem);">
+    <h2 class="font-bold text-[clamp(1.25rem,3.5vw,1.5rem)] mb-2 text-[color:var(--c-1)]">Helpful Resources</h2>
+    <span class="text-sm text-[color:var(--c-1)]">We've got you covered with our help section, providing instructions and guidance on how to use our model effectively and make the most out of our tools.</span>
+  </div>
+</div>   
+
+
+
+<!-- GET IN TOUCH -->
+<div class="glowit right flex flex-col justify-center items-center md:col-span-1 md:row-span-2 transition-all duration-500" style="padding: clamp(1rem, 2vw, 2rem);background-color:var(--c-2)">
+  <h2 class="text-[clamp(1.5rem,4vw,1.875rem)] font-bold text-center text-[color:var(--c-1)] mb-[clamp(0.5rem,1vw,1rem)]">Get in Touch</h2>
+  <p class="text-[clamp(0.75rem,2vw,1rem)] text-center text-[color:var(--c-1)] mb-[clamp(0.5rem,1vw,1rem)]">Have questions? Reach out to our dedicated Econ.Vision team.</p>
+  <a href="/Page/contact/" class="bg-[color:var(--c-3)] hover:bg-[color:var(--c-1)] text-[color:var(--c-2)] hover:text-[color:var(--c-2)] font-bold py-[clamp(0.5rem,1vw,1rem)] px-[clamp(0.5rem,1vw,1rem)] rounded-md flex items-center justify-center gap-2 transition-all duration-300">
+    <span>Contact Us</span>
+    <i class="fas fa-arrow-right"></i>
+  </a>
+</div>
+<!-- GET IN TOUCH -->
+
+
+     <!-- CREATORS -->
+
+
+     <div class="group/title2 relative glowit left md:col-span-3 row-span-1 flex items-center group transition-all duration-500" style="background-color:transparent;">
+      <div class="w-full flex md:space-x-4 space-x-2 py-2 justify-between hover:[&_a>img]:grayscale-0 [&_a>img]:grayscale">
+        {% for creator in collections.creators %}
+            {% if creator.data.show %}
+            <div class="ring-2 ring-[color:var(--c-1)] rounded-lg shadow-md w-full min-h-full object-cover">
+              <a href="{{creator.url}}" class="transition duration-500 ease-in-out relative">
+                <img src="{{creator.data.thumbnail}}" alt="{{creator.data.name}}" class="h-full w-full relative transition-all duration-1000 object-cover rounded-lg"/>
+                <h3 class="absolute md:text-md text-xs bottom-0 w-content bg-[color:var(--c-3)] px-2 rounded-tr-md rounded-bl-md">{{creator.data.name | trim}}</h3>
+            </a>
+            </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+   
+          <!-- Title -->
+          <span  class="flex bottom-0 left-0 flex-col items-end md:opacity-0 md:group-hover/title2:opacity-100 md:-translate-y-10 translate-y-5 -z-20 md:group-hover/title2:translate-y-6 absolute transition duration-1000 ease-in-out">
+            <h1 class="md:text-base text-sm font-light uppercase tracking-wide text-[color:var(--c-1)] ">Meet Our Team</h1>
+          </span>
+  </div>
+
+<!-- CREATORS -->
+
+
+</main>
+</section>
+
+
+<script>
+  // Get all the choice elements
+  var choices = document.getElementsByClassName('choice');
+  
+  // Keep track of the currently selected choice
+  var currentChoice = choices[0];
+  
+  // Function to handle click event
+  function handleClick(event) {
+      // If there is a currently selected choice, minimize it
+      if (currentChoice) {
+          currentChoice.style.flex = '1';
+          currentChoice.style.overflow = 'hidden';
+          currentChoice.classList.remove('scroll-smooth'); // Remove smooth scroll
+      }
+  
+      // Expand the clicked choice
+      event.currentTarget.style.flex = 'auto';
+  
+      //replace overflow-hidden for overflow-auto
+      event.currentTarget.style.overflow = 'auto';
+      event.currentTarget.classList.add('scroll-smooth'); // Add smooth scroll
+  
+      // Update the currently selected choice
+      currentChoice = event.currentTarget;
+  }
+  
+  // Attach the event handler to all choices
+  for (var i = 0; i < choices.length; i++) {
+      choices[i].addEventListener('click', handleClick);
+  }
+  
+  // Expand the first choice by default
+  choices[0].style.flex = 'auto';
+  choices[0].style.overflow = 'auto';
+  choices[0].classList.add('scroll-smooth'); // Add smooth scroll
+  </script>
+  
+
+<script>
+   const scrollers = document.querySelectorAll(".scroller");
+   
+   // If a user hasn't opted in for recuded motion, then we add the animation
+   if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+     addAnimation();
+   }
+   
+   function addAnimation() {
+     scrollers.forEach((scroller) => {
+       // add data-animated="true" to every `.scroller` on the page
+       scroller.setAttribute("data-animated", true);
+ 
+ 
+     // Make an array from the elements within `.scroller-inner`
+     const scrollerInner = scroller.querySelector(".scroller__inner");
+     const scrollerContent = Array.from(scrollerInner.children);
+ 
+     // For each item in the array, clone it
+     // add aria-hidden to it
+     // add it into the `.scroller-inner`
+     scrollerContent.forEach((item) => {
+       const duplicatedItem = item.cloneNode(true);
+       duplicatedItem.setAttribute("aria-hidden", true);
+       scrollerInner.appendChild(duplicatedItem);
+     });
+   });
+ }
+ 
+ 
+ </script>
+
+ <script>
+window.addEventListener('load', function() {
+    var ulElements = document.getElementsByTagName('ul');
+    for(var i = 0; i < ulElements.length; i++) {
+        ulElements[i].classList.remove('animate-pulse');
+
+        var imgElements = ulElements[i].getElementsByTagName('img');
+        for(var j = 0; j < imgElements.length; j++) {
+            imgElements[j].classList.remove('invisible');
+        }
+
+        var h2Elements = ulElements[i].getElementsByTagName('h2');
+        for(var k = 0; k < h2Elements.length; k++) {
+            h2Elements[k].classList.remove('invisible');
+        }
+    }
+});
+
+ </script>
+
+

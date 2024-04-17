@@ -1,0 +1,32 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .text-sm {
+    font-size: min(4vw, 0.875rem);
+    line-height: 1.25rem;
+  }
+
+  .text-base {
+    font-size: min(6vw, 1rem);
+    line-height: 1.5rem;
+  }
+
+  .text-lg {
+    font-size: min(8vw, 1.25rem);
+    line-height: 1.75rem;
+  }
+
+  .text-xl {
+    font-size: min(10vw, 1.5rem);
+    line-height: 2rem;
+  }
+
+  .text-2xl {
+    font-size: min(12vw, 2.5rem);
+    line-height: 3rem;
+  }
+}
+  
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uL3NyYy9jc3MvdGFpbHdpbmQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBIiwiZmlsZSI6InN0eWxlcy5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJAdGFpbHdpbmQgYmFzZTtcbkB0YWlsd2luZCBjb21wb25lbnRzO1xuQHRhaWx3aW5kIHV0aWxpdGllcztcblxuQGxheWVyIHV0aWxpdGllcyB7XG4gIC50ZXh0LXNtIHtcbiAgICBmb250LXNpemU6IG1pbig0dncsIDAuODc1cmVtKTtcbiAgICBsaW5lLWhlaWdodDogMS4yNXJlbTtcbiAgfVxuXG4gIC50ZXh0LWJhc2Uge1xuICAgIGZvbnQtc2l6ZTogbWluKDZ2dywgMXJlbSk7XG4gICAgbGluZS1oZWlnaHQ6IDEuNXJlbTtcbiAgfVxuXG4gIC50ZXh0LWxnIHtcbiAgICBmb250LXNpemU6IG1pbig4dncsIDEuMjVyZW0pO1xuICAgIGxpbmUtaGVpZ2h0OiAxLjc1cmVtO1xuICB9XG5cbiAgLnRleHQteGwge1xuICAgIGZvbnQtc2l6ZTogbWluKDEwdncsIDEuNXJlbSk7XG4gICAgbGluZS1oZWlnaHQ6IDJyZW07XG4gIH1cblxuICAudGV4dC0yeGwge1xuICAgIGZvbnQtc2l6ZTogbWluKDEydncsIDIuNXJlbSk7XG4gICAgbGluZS1oZWlnaHQ6IDNyZW07XG4gIH1cbn1cbiAgIl19 */

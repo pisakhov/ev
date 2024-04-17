@@ -1,19 +1,146 @@
-<section class="dark-section bg-fixed bg-center bg-cover h-screen" style="background-image:url('https://econ.vision/img/hero-flat.png');">
-            <div class="bg-gray-900 bg-opacity-75 h-screen flex flex-col justify-center items-center">
-               <div class="relative">
-                  <video autoplay muted loop class="h-screen w-screen object-cover">
-                     <source src="./assets/img/hero.mp4" type="video/mp4">
-                  </video>
-                  <div class="absolute inset-0 bg-black opacity-50"></div>
-                  <div class="absolute inset-0 flex items-center justify-center">
-                     <div class="text-center text-white">
-                        <div id="mainlogo" class="text-5xl font-bold leading-tight mb-2"> </div>
-                        <p class="text-lg md:text-xl mb-4 text-center font-light whitespace-pre-line">Unlock the hidden depths of economics by embracing the power of visualization.
-                           Let graphs and charts be your guide, and discover a new world of understanding, analysis, and insight.
-                        </p>
-                        <a href="#courses" class="bg-violet-700 hover:bg-violet-900 text-white font-bold py-3 px-6 rounded">Get Started</a>
-                     </div>
-                  </div>
-               </div>
-            </div>
-         </section>
+<section class="bg-gray-900 relative bg-center bg-fixed">
+                    <!-- <video autoplay muted loop class="h-screen w-screen object-cover fixed opacity-10">
+                     <source src="https://cdn-cf-east.streamable.com/video/mp4/c0sb2q.mp4?Expires=1706038560&Signature=XTeCnhdNeBGCRGrIc8TL-DE4VRkNMtcF-qxhrTpaRH0R7iIxVxmmfGA2xQqVNDpNfMaYbRRRnsth9nSP0m1~8XnQtf900KVaa5Uc~G1smOBvgYRL4L~qAY~P4gX-T6AGwDsFZL5DNSB-5xcR-dhWXl0vcyUJB25RO8kxdQ-Q4~y7KvNfj4LR4oH4wPGs~MBalEWMXtJ31QTwYUgjrh1F5QOZQ-aR-6skjf7wjFpyL5Cqx67RBwFuZg3qIN3TbV-cF6-lt3doyV~UmFSL-EXbR~J69XYjEsu0T81vvc9eVEar0wLQ3aysp8892SAOJTs2rrWTOI~BJntG6uFy3dE6RQ__&Key-Pair-Id=APKAIEYUVEN4EVB2OKEQ" type="video/mp4">
+                  </video> -->
+
+{% include "desmos.njk" %}
+<base class="grid grid-rows-3 gap-8 content-between fixed">
+<div class="saturate-200 bg-violet-600 opacity-50 aspect-square w-1/2 blur-[200px] fixed top-0 left-0 rounded-full"></div>
+<div class="saturate-200 bg-cyan-600 opacity-50 aspect-square w-1/2  blur-[200px] fixed bottom-0 right-0 rounded-full"></div>
+</base>
+  <main class="lg:mx-[10%] md:mx-4 mx-0">
+
+
+<div class="grid grid-cols-1 grid-rows-1 md:grid-cols-3 md:grid-rows-2 lg:gap-4 md:gap-3 gap-2 [&>*:not(:first-child)]:ring-1 [&>*]:ring-white/20  [&>*:not(:first-child)]:shadow-md md:[&>*]:rounded-xl [&>*]:rounded-md hover:[&>*]:transition-all md:hover:[&>*:not(:first-child)]:bg-white/20 [&>*]:duration-300 [&>*]:delay-80 [&>*]:ease-in-out [&>*]:backdrop-blur-[1px] [&>*:not(:first-child)]:bg-white/10 [&>*]:p-2 m-2 [&>*]:text-gray-100">
+  <!-- LOGO -->
+   <div class="md:col-span-1 md:row-span-1 flex flex-row justify-normal items-center">
+   <div class="flex justify-center">
+         <img class="w-24 md:w-32 lg:w-36 saturate-200" src="./assets/img/__econ.png" alt=""> 
+   </div>
+  </div>
+    <!-- LOGO -->
+
+  <!-- ABOUT -->
+  <div class="font-light text-sm md:text-xl lg:text-[2rem] md:col-span-1 row-span-2 text-center text-transparent flex md:flex-col flex-row justify-evenly items-center">
+   <h1 class="saturate-200 w-full  tracking-wide antialiased leading-loose bg-clip-text text-transparent bg-gradient-to-b from-teal-300 via-cyan-400 to-blue-400 select-none">Smart Learning Through Interactive Economics...</h1>
+   <button class="bg-violet-500 hover:bg-violet-400 text-white md:py-2 md:px-4 md:border-b-4 py-1 px-2 border-b-2 border-violet-700 hover:border-violet-500 rounded">
+      Learn more
+    </button>
+</div>
+  <!-- ABOUT -->
+
+     <!-- CREATORS -->
+     <div class="md:col-span-2 row-span-1 md:h-full h-28 row-start-2">
+
+      <div class="scroller" data-direction="right" data-speed="slow">
+            <div class="
+            scroller__inner md:h-32 h-24 flex flex-row gap-8 hover:[&_img]:grayscale-0 hover:[&_img]:shadow-md [&_img]:grayscale [&_img]:rounded-full [&_img]:h-full [&_img]:object-cover">
+   
+           <img src="https://econ.vision/assets/img/radi.jpg" alt="" />
+           <img src="https://econ.vision/assets/img/kyla.jpg" alt="" />
+           <img src="https://econ.vision/assets/img/9a8f93cf-d51e-431f-9860-4a72adfcd95f.jpg" alt="" />
+           <img src="https://econ.vision/assets/img/img_0414.jpeg" alt="" />
+         </div>
+       </div>
+       
+   
+     </div>
+        <!-- CREATORS -->
+
+
+    <!--Courses-->
+<div class="md:col-span-3 row-span-1 h-full min-h-[400px]">
+   <div class="
+   flex flex-col md:flex-row gap-2 [&>*]:transition-all [&>*]:duration-500 [&>*]:delay-1000 [&>*]:ease-in-out md:[&>*]:w-[100%] md:[&_div]:min-w-10 [&_div]:h-[100%] [&_div]:min-h-10 h-full w-full [&>*]:flex-1 first:[&>*]:flex-auto">
+
+   {% for course in collections.index %}
+      <div class="saturate-200 choice md:hover:[&_h5]:bg-{{course.data.color}}-700 items-center overflow-hidden rounded-md bg-{{course.data.color}}-500 text-white p-4 relative">
+         <h5 class="p-2 rounded-md text-lg font-semibold md:[writing-mode:vertical-lr] md:absolute cursor-pointer md:-ml-4 -mt-4 md:h-full">{{ course.data.title }}</h5>
+         <span class="">
+            <ul class="md:ml-10 [&_li]:bg-{{course.data.color}}-600 hover:[&_li]:bg-{{course.data.color}}-700 [&_li]:rounded-md [&_li]:flex-auto [&_li]:p-1 grid md:grid-cols-2 md:grid-cols-1 gap-1 items-center flex">
+               {% for model in collections[course.data.tag] %}
+               <li><a href="{{ model.url }}">{{ model.data.title }}</a></li>
+               {% endfor %}
+            </ul>
+         </span>
+      </div>
+   {% endfor %}
+
+   </div>
+
+
+</div>
+
+
+
+
+
+  <div class="md:col-span-3 row-span-1 h-18">
+
+   <div class="scroller" data-speed="slow">
+      <ul class="scroller__inner flex flex-row h-full items-center [&_li]:bg-violet-600 [&_li]:p-2 [&_li]:rounded-md">
+         <li>Microeconomics</li>
+         <li>Macroeconomics</li>
+         <li>Supply and Demand</li>
+         <li>Market Structure</li>
+         <li>Income Elasticity</li>
+         <li>Price Elasticity</li>
+         <li>Consumer Surplus</li>
+         <li>Producer Surplus</li>
+         <li>Opportunity Cost</li>
+         <li>Comparative Advantage</li>
+         <li>Game Theory</li>
+         <li>Monetary Policy</li>
+         <li>Fiscal Policy</li>
+         <li>Exchange Rates</li>         
+        </ul>
+    </div>
+ 
+
+
+</div>
+  <!-- GET IN TOUCH -->
+  <div class="flex flex-row justify-end items-center md:col-span-3 md:row-span-1 md:max-h-48 max-h-24">
+   <h1 class="saturate-200 text-xl lg:text-3xl lg:text-2xl font-bold tracking-wide bg-clip-text text-transparent bg-gradient-to-br from-violet-600 to-violet-400 select-none">GET IN TOUCH</h1>
+   <img src="./assets/img/contactus.png" class="saturate-200 h-full aspect-square">
+  </div>
+   <!-- GET IN TOUCH -->
+
+</main>
+</section>
+
+
+<script>
+// Get all the choice elements
+var choices = document.getElementsByClassName('choice');
+
+// Keep track of the currently selected choice
+var currentChoice = choices[0];
+
+// Function to handle click event
+function handleClick(event) {
+    // If there is a currently selected choice, minimize it
+    if (currentChoice) {
+        currentChoice.style.flex = '1';
+        currentChoice.style.overflow = 'hidden';
+    }
+
+    // Expand the clicked choice
+    event.currentTarget.style.flex = 'auto';
+
+    //replace overflow-hidden for overflow-auto
+    event.currentTarget.style.overflow = 'auto';
+
+    // Update the currently selected choice
+    currentChoice = event.currentTarget;
+}
+
+// Attach the event handler to all choices
+for (var i = 0; i < choices.length; i++) {
+    choices[i].addEventListener('click', handleClick);
+}
+
+// Expand the first choice by default
+choices[0].style.flex = 'auto';
+choices[0].style.overflow = 'auto';
+</script>

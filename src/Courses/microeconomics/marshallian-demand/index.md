@@ -1,6 +1,8 @@
 ---
 tags: microeconomics
+thumbnail: /assets/img/marshallian-demand.png
 title: Marshallian Demand
+description: Input utility functions and budget lines to find Marshallian demand bundles
 layout: model.njk
 show: true
 ---
@@ -42,7 +44,6 @@ myCalculator.setInstructions({ 'title': 'Input Total Budget', 'content': '<b> In
 //creators
 myCalculator.setCreators({ 'title': 'Developer', 'name': 'Kyla', 'school': "CC’24" });
 
-//set script package
-myCalculator.setScriptPackage({ 'replaceExp': true, 'replaceLatex': true, 'replaceTip': true, 'replaceTheory': true, 'refresh': true });
+
 
 </script>

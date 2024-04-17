@@ -1,6 +1,8 @@
 ---
 tags: public-economy
+thumbnail: /assets/img/tax-incidence.png
 title: Tax Incidence
+description: Distributional burden of taxes between consumers and producers from demand/supply shifts
 layout: model.njk
 show: true
 ---
@@ -10,6 +12,7 @@ TAX.setGraphs({
   "idDiv": "TAXGraph",
   "height": "650px",
   "width": "100",
+  "copy": true,
   "left": -25,
   "right": 150,
   "bottom": -15,

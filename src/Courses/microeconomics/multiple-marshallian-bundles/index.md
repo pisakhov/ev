@@ -1,6 +1,8 @@
 ---
 tags: microeconomics
+thumbnail: /assets/img/multiple-marshallian.png
 title: Multiple Marshallian Bundles
+description: Visualize how budget changes affect Marshallian demand bundles
 layout: model.njk
 show: true
 ---
@@ -20,6 +22,7 @@ myCalculator.addExpression({ idDiv: "Pi2I1", latex: 'x_{2}\\left(x,y\\right)=x\\
 myCalculator.addExpression({ idDiv: "Pi2I2", latex: 'y_{2}\\left(x,y\\right)=x\\sin\\left(-2\\pi\\right)+y\\cos\\left(-2\\pi\\right)', listGraphs: [0] });
 
 myCalculator.addDynamicExp({ 'calc': 'simpleDraw', 'color': 'purple', 'idDiv': 'solvecompute', 'parentIdDiv': 'BudgetLine', 'lhs': ["x_{2}(x,y)", "y_{2}(x,y)"], 'rhs': 'I', 'listGraphs': [0] });
+
 myCalculator.addDynamicExp({ 'calc': 'simpleCompute', 'idDiv': 'dynamicUtil', 'parentIdDiv': 'BudgetLine', 'compute': 'UtilityFunction', 'NewfunEqu': 'G(x,y)', 'listGraphs': [0] });
 
 
@@ -41,5 +44,4 @@ myCalculator.setCreators({
 	school: "CC’24"
 });
 
-myCalculator.setScriptPackage({ 'replaceExp': true, 'replaceLatex': true, 'replaceTip': true, 'replaceTheory': true, 'refresh': true });
 </script>

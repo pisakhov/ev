@@ -13,13 +13,19 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./style.css">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
-    <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
-	<script src="https://www.desmos.com/api/v1.7/calculator.js?apiKey=296e9d0d244b4835b87cfba555a952c1"></script>
-    <script src="https://cdn.jsdelivr.net/npm/nerdamer@latest/all.min.js"></script>
-    <script src="https://unpkg.com/mathlive@0.89.4/dist/mathlive.min.js"></script>
+	<script src="https://www.desmos.com/api/v1.8/calculator.js?apiKey=296e9d0d244b4835b87cfba555a952c1"></script>	
+
+	<link href="https://unpkg.com/monaco-editor@0.43.0/min/vs/loader.js" rel="preload" as="script">
+  <link rel="stylesheet" href="/style.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+<script src="/nerdamer.core.js"></script>
+<script src="/Algebra.js"></script>
+<script src="/Calculus.js"></script>
+<script src="/Solve.js"></script>
+  <script defer src="/main.js"></script>
+    <script defer src="https://unpkg.com/monaco-editor@0.43.0/min/vs/loader.js"></script>
+
+
 	<!-- Primary Meta Tags -->
 	<title>Econ.vision - {{ title }}</title>
 	<meta name="title" content="Econ.vision">
@@ -28,103 +34,37 @@
 	<!-- Open Graph / Facebook -->
 	<meta property="og:type" content="website">
 	<meta property="og:url" content="https://econ.vision/">
-	<meta property="og:title" content="Econ.vision - <?php echo getTitle(); ?>">
+	<meta property="og:title" content="Econ.vision - {{ title }}">
 	<meta property="og:description" content="Unlock the hidden depths of economics by embracing the power of visualization. Let graphs and charts be your guide, and discover a new world of understanding, analysis, and insight.">
 	<meta property="og:image" content="https://econ.vision/img/rsz_hero-3d.png">
 
 	<!-- Twitter -->
 	<meta property="twitter:card" content="summary_large_image">
 	<meta property="twitter:url" content="https://econ.vision/">
-	<meta property="twitter:title" content="Econ.vision - <?php echo getTitle(); ?>">
+	<meta property="twitter:title" content="Econ.vision - {{ title }}">
 	<meta property="twitter:description" content="Unlock the hidden depths of economics by embracing the power of visualization. Let graphs and charts be your guide, and discover a new world of understanding, analysis, and insight.">
 	<meta property="twitter:image" content="https://econ.vision/img/rsz_hero-3d.png">
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-   <style>
-		/* ===== Scrollbar CSS ===== */
-  /* Firefox */
-  #sideInputsContent {
-    scrollbar-width: thin;
-    scrollbar-color: #8b5cf6 #dabfdd;
-  }
-
-  /* Chrome, Edge, and Safari */
-  #sideInputsContent::-webkit-scrollbar {
-    width: 12px;
-  }
-
-  #sideInputsContent::-webkit-scrollbar-track {
-    background: #dabfdd;
-  }
-
-  #sideInputsContent::-webkit-scrollbar-thumb {
-    background-color: #8b5cf6;
-    border-radius: 12px;
-    border: 0px none #ffffff;
-  }
-	</style>
 </head>
-<body>
+<body class="bg-gradient-to-b from-violet-300 to-purple-200">
             <!-- navbar -->
-            {% include "nav.njk" %}
-
-<div class="light-section wrapper relative bg-gradient-to-b from-[#e8c1f0] to-[#dfd8d5] font-sans min-h-screen pb-[8rem]">
-
-
-
-<div id="mainContainer" class="relative mx-4 lg:mx-[8rem] md:mx-[2rem] min-h-screen py-[6rem] lg:py-[10rem] md:py-[8rem]">
-	  
-	<div class="grid grid-cols-12 gap-3 p-4 justify-between">
-		<nav class="col-span-12 backdrop-blur-[10px] bg-white/1 shadow-[0_0px_5px_1px_rgba(192,132,252,0.8)] py-2">
-			<div class="mx-auto px-4">
-				<ol class="list-none p-0 inline-flex">
-				<li class="flex items-center">
-					<a href="/" class="text-gray-600 font-normal hover:text-violet-300 transition-colors duration-300 hover:underline decoration-1 decoration-dotted md:text-md text-xs">Home</a>
-					<i class="fas fa-angle-right text-gray-600 mx-2 md:text-md text-xs"></i>
-				</li>
-				{% for cls in collections.index %}
-				{% if cls.data.tag == tags %}
-				<li class="flex items-center">
-					<a href="{{ cls.url }}" class="text-gray-600 font-normal hover:text-violet-600 transition-colors duration-300 hover:underline decoration-1 decoration-dotted md:text-md text-xs">{{ cls.data.title }}</a>
-					<i class="fas fa-angle-right text-gray-600 mx-2 md:text-md text-xs"></i>
-				</li>
-				{% endif %}
-				{% endfor %}
-				<li class="flex items-center">
-					<p class="font-normal text-violet-600 underline decoration-1 decoration-dotted md:text-md text-xs">{{ title }}</p>
-				</li>
-				</ol>
-			</div>
-		</nav>
+<header class="flex flex-col items-center justify-center w-full [&_img]:absolute md:[&_img]:left-10 [&_img]:left-5 md:[&_img]:w-20 [&_img]:w-14">
+{% include "nav.njk" %}
+</header>
+<div id="myCalculator" class="relative z-10 h-screen  md:mx-[min(5vw,50px)]"></div>
+<script>
+window.addEventListener('load', function () {
+	document.getElementById('myCalculator').classList.remove('h-screen');
+});
+</script>
+{% include "footer.njk" %}
 
 
-		<div class="col-span-12 md:col-span-4 min-[1460px]:col-span-2 min-w-[200px] rounded-md active-page-mobile overflow-y-auto" id="sideInputsContent">
-			<!-- Inputs -->
-			<div id="creatorsContent" class="sticky top-0 col-span-12 xl:col-span-2 md:col-span-2 relative">
-				<!-- Creators -->
-			</div>
-		</div>
-		<div class="col-span-12 md:col-span-8 min-[1460px]:col-span-10 text-left shadow-2xl rounded-md hidden md:block">
-			<div class="grid grid-cols-12" id="graphsContent">
-				<!-- Graphs -->
-			</div>
-		</div>
-
-		<div class="md:fixed relative top-0 right-0 z-[45] opacity-50 bg-black md:h-full md:w-full hidden cursor-pointer" id="dark-screen"></div>
-		<div class="col-span-12 lg:col-span-10 md:col-span-9 md:fixed relative right-0 top-0 w-full max-h-full h-[95%] overflow-y-auto shadow-2xl p-8 md:backdrop-blur-xl md:bg-white/80 z-[100] hidden md:w-1/2" id="offcanvasPanel">
-			<button class="exit-offcanvas float-right absolute top-0 right-0 m-4 hidden md:block"><i class="fa fa-times text-black"></i></button>
-			<div id="sideInstructionsContent" class="mt-8">
-				<!-- Instructions -->
-			</div>
-		</div>
-	</div>
-</div>
-
-			<script src="/assets/js/ev.min.js"></script>
+			<script src="/assets/js/ev.js"></script>
 			
             <!-- content -->
 			{{ content | safe }}
             <!-- footer -->
-            {% include "footer-model.njk" %}
 
 
 			   </body>

@@ -1,6 +1,8 @@
 ---
 tags: public-economy
+thumbnail: /assets/img/progressive-tax.png
 title: Progressive Tax Rich Vs Poor
+description: Analyzing differential deadweight loss impacts of taxing higher versus lower income groups
 layout: model.njk
 show: true
 ---
