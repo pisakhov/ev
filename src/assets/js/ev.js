@@ -2567,7 +2567,7 @@ class EconVision {
 
 		function runDynamicEvent(caclIt, parms) {
 			if (!hasKey(selectedExp, parentIdDiv)) {
-				alert("parentIdDiv does not exist, choose a different one");
+				//alert("parentIdDiv does not exist, choose a different one");
 				return;
 			}
 			if (removeLast(getKeyPath(selectedExp, parentIdDiv)).length > 1) { //sub
@@ -2666,8 +2666,12 @@ class EconVision {
 						let eventListenerFunc = () => {
 							this.addDynamicExp.apply(this, [options]);
 						};
+						// Remove previous event listeners
 						element.removeEventListener('input', eventListenerFunc);
+						element.removeEventListener('change', eventListenerFunc);
+						// Add new event listeners
 						element.addEventListener('input', eventListenerFunc);
+						element.addEventListener('change', eventListenerFunc);
 					};
 
 					let addEventListenerFuncBtn = (element) => {
