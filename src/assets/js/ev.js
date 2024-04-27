@@ -1799,8 +1799,8 @@ class View {
                   <div id="creatorsContent" class="sticky top-0 col-span-12 md:col-span-3 z-40"></div>
                 </div>
                 <div class="md:col-span-8 lg:col-span-9 col-span-12 text-left d-inline shadow-2xl rounded-md">
-                  <div class="grid grid-cols-12" id="graphsContent"></div>
-                </div>
+					<div class="flex" id="graphsContent"></div>
+				</div>
                 <div style="display:none;" class="md:fixed relative top-0 right-0 z-40 backdrop-blur-lg bg-violet-100/50 md:h-full md:w-full cursor-pointer" id="dark-screen"></div>
                 <dialog style="display:none;" class="col-span-12 rounded-lg md:absolute md:overflow-y-auto relative md:inset-0 w-full md:w-3/4 lg:w-1/2 md:h-fit shadow-[0_0px_16px_-6px_rgba(0,0,0,0.9)] px-10 py-2 md:backdrop-blur-md md:bg-white/50 z-50 flex flex-col items-center justify-around" id="offcanvasPanel">
 				<button id="integrate-mode" class="group md:block hidden absolute right-0 bottom-0 transform px-4 py-2 bg-violet-600 hover:bg-violet-900 text-white text-center rounded-ee-lg rounded-ss-lg">
@@ -2027,9 +2027,16 @@ class EconVision {
 		let width = listSettings.hasOwnProperty("width") ? listSettings["width"] : "100";
 		width = Math.ceil(parseInt(width) * 12 / 100);
 		let graphsContent = document.getElementById("graphsContent");
+
+		// Set graphsContent to be a flex container
+		graphsContent.style.display = "flex";
+
 		let newDiv = document.createElement("div");
 		newDiv.id = idDiv;
-		newDiv.className = "col-span-" + width;
+
+		// Set the flex property based on the width
+		newDiv.style.flex = width == 12 ? "1" : "0 0 50%";
+
 		graphsContent.appendChild(newDiv);
 		let divElement = document.getElementById(idDiv);
 		divElement.style.height = height;
