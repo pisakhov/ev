@@ -590,31 +590,18 @@ class RunCalc {
 		} else {
 			// Handle general cases
 
-			console.log("mainFunc: ", mainFunc);
 			nerdamer.setFunction('U', ['x', 'y'], mainFunc);
 			nerdamer.setFunction('B', ['x', 'y'], constraintFunc);
-			console.log('Set function U',nerdamer('U(x, y)'.toString()));
-
 
 			const MUx = nerdamer.diff('U(x, y)', 'x').text('decimals',20);
 			const MUy = nerdamer.diff('U(x, y)', 'y').text('decimals');
 			const dBdx = nerdamer.diff('B(x, y)', 'x').text('decimals');
 			const dBdy = nerdamer.diff('B(x, y)', 'y').text('decimals');
 
-			console.log("MUx: ", MUx);
-			console.log("MUy: ", MUy);
-			console.log("dBdx: ", dBdx);
-			console.log("dBdy: ", dBdy);
-
 			const priceRatio = nerdamer(`${dBdx}/(${dBdy})`).text('decimals');
 			const MRS = nerdamer(`${MUx}/(${MUy})`).text('decimals');
 
-			console.log("priceRatio: ", priceRatio);
-			console.log("MRS: ", MRS);
-
 			const equation = `${MRS}=${priceRatio}`;
-			console.log("equation: ", equation);
-
 			nerdamer.set('SOLUTIONS_AS_OBJECT', true);
 
 			if (equation.includes('x') && equation.includes('y')) {
@@ -624,7 +611,6 @@ class RunCalc {
 				sol.x = Number(subEq.solveFor('x')[0]);
 				sol.y = Number(nerdamer('B(x,y)').evaluate({x:sol.x}).solveFor('y')[0]);
 			} else if (equation.includes('y')) {
-				console.log("here",equation)
 				const subEq = nerdamer(`${MRS}-${priceRatio}=0`);
 				sol.y = Number(subEq.solveFor('y')[0]);
 				sol.x = Number(nerdamer('B(x,y)').evaluate({y:sol.y}).solveFor('x')[0]);
@@ -885,30 +871,19 @@ class RunCalc {
 		} else {
     // Handle general cases
 
-    console.log("mainFunc: ", mainFunc);
     nerdamer.setFunction('U', ['x', 'y'], mainFunc);
     nerdamer.setFunction('B', ['x', 'y'], constraintFunc);
-    console.log('Set function U',nerdamer('U(x, y)'.toString()));
-
 
     const MUx = nerdamer.diff('U(x, y)', 'x').text('decimals',20);
     const MUy = nerdamer.diff('U(x, y)', 'y').text('decimals');
     const dBdx = nerdamer.diff('B(x, y)', 'x').text('decimals');
     const dBdy = nerdamer.diff('B(x, y)', 'y').text('decimals');
 
-    console.log("MUx: ", MUx);
-    console.log("MUy: ", MUy);
-    console.log("dBdx: ", dBdx);
-    console.log("dBdy: ", dBdy);
-
     const priceRatio = nerdamer(`${dBdx}/(${dBdy})`).text('decimals');
     const MRS = nerdamer(`${MUx}/(${MUy})`).text('decimals');
 
-    console.log("priceRatio: ", priceRatio);
-    console.log("MRS: ", MRS);
 
     const equation = `${MRS}=${priceRatio}`;
-    console.log("equation: ", equation);
 
     nerdamer.set('SOLUTIONS_AS_OBJECT', true);
 
@@ -919,7 +894,6 @@ class RunCalc {
         sol.x = Number(subEq.solveFor('x')[0]);
         sol.y = Number(nerdamer('B(x,y)').evaluate({x:sol.x}).solveFor('y')[0]);
     } else if (equation.includes('y')) {
-        console.log("here",equation)
         const subEq = nerdamer(`${MRS}-${priceRatio}=0`);
         sol.y = Number(subEq.solveFor('y')[0]);
         sol.x = Number(nerdamer('B(x,y)').evaluate({y:sol.y}).solveFor('x')[0]);
@@ -1825,7 +1799,7 @@ class View {
                   <div id="creatorsContent" class="sticky top-0 col-span-12 md:col-span-3 z-40"></div>
                 </div>
                 <div class="md:col-span-8 lg:col-span-9 col-span-12 text-left d-inline shadow-2xl rounded-md">
-                  <div class="flex flex-row" id="graphsContent"></div>
+                  <div class="grid grid-cols-12" id="graphsContent"></div>
                 </div>
                 <div style="display:none;" class="md:fixed relative top-0 right-0 z-40 backdrop-blur-lg bg-violet-100/50 md:h-full md:w-full cursor-pointer" id="dark-screen"></div>
                 <dialog style="display:none;" class="col-span-12 rounded-lg md:absolute md:overflow-y-auto relative md:inset-0 w-full md:w-3/4 lg:w-1/2 md:h-fit shadow-[0_0px_16px_-6px_rgba(0,0,0,0.9)] px-10 py-2 md:backdrop-blur-md md:bg-white/50 z-50 flex flex-col items-center justify-around" id="offcanvasPanel">
@@ -2051,21 +2025,11 @@ class EconVision {
 		let idDiv = listSettings.idDiv;
 		let height = listSettings.hasOwnProperty("height") ? listSettings["height"] : "650px";
 		let width = listSettings.hasOwnProperty("width") ? listSettings["width"] : "100";
-		// width = Math.ceil(parseInt(width) * 12 / 100);
-		//if width is 100 then make width to be w-full elseif is 50 make width w-1/2
-		function getWidthClass(width) {
-		if (width === '100') {
-			return 'w-full';
-		} else if (width === '50') {
-			return 'w-1/2';
-		} else {
-			return '';
-		}
-		}
+		width = Math.ceil(parseInt(width) * 12 / 100);
 		let graphsContent = document.getElementById("graphsContent");
 		let newDiv = document.createElement("div");
 		newDiv.id = idDiv;
-		newDiv.className = getWidthClass(width);
+		newDiv.className = "col-span-" + width;
 		graphsContent.appendChild(newDiv);
 		let divElement = document.getElementById(idDiv);
 		divElement.style.height = height;
@@ -2331,8 +2295,7 @@ class EconVision {
 		});
 	}
 
-	debounce(idDiv, func, timeout = 300) {
-
+	debounce(idDiv, func) {
 		// If the queue for this idDiv doesn't exist, create it
 		this.queue[idDiv] = this.queue[idDiv] || [];
 
@@ -2344,7 +2307,8 @@ class EconVision {
 		// If the debounce timer for this idDiv doesn't exist, create it
 		this.debounceTimers[idDiv] = this.debounceTimers[idDiv] || {
 			timer: null,
-			status: false
+			status: false,
+			timeout: 1000  // Add a new property to store the current timeout value
 		};
 
 		// Clear the existing timer
@@ -2359,8 +2323,12 @@ class EconVision {
 				let func = this.queue[idDiv].shift();
 				func();
 			}
-		}, timeout);
+
+			// After the function is executed, update the timeout value
+			this.debounceTimers[idDiv].timeout = 100;
+		}, this.debounceTimers[idDiv].timeout);  // Use the current timeout value
 	}
+
 
 	addExpression(options) {
 		let idDiv = options.idDiv;
@@ -2413,98 +2381,118 @@ class EconVision {
 			});
 		}
 
-		if (calc === undefined) {
-			selectedExp[idDiv] = latex;
-			runDesmos();
-		} else {
-			this.debounce(idDiv, () => {
-				try {
-					switch (calc) {
-						case 'simpleCompute':
-							parms['compute'] = compute;
-							parms['NewfunEqu'] = NewfunEqu;
-							latex = this.runcalc.simpleCompute(parms);
-							break;
-						case 'simpleDerive':
-							parms['parentIdDiv'] = parentIdDiv;
-							parms['NewfunEqu'] = NewfunEqu;
-							parms['solveFor'] = solveFor;
-							latex = this.runcalc.simpleDerive(parms);
-							break;
-						case 'simpleInverse':
-							parms['parentIdDiv'] = parentIdDiv;
-							parms['NewfunEqu'] = NewfunEqu;
-							parms['solveFor'] = solveFor;
-							latex = this.runcalc.simpleInverse(parms);
-							break;
-						case 'simpleFOC':
-							parms['parentIdDiv'] = parentIdDiv;
-							parms['NewfunEqu'] = NewfunEqu;
-							parms['solveFor'] = solveFor;
-							parms['FOCmax'] = FOCmax;
-							latex = this.runcalc.simpleFOC(parms);
-							break;
-						case 'simpleLag':
-							parms['idDiv'] = idDiv;
-							parms['parentIdDiv'] = parentIdDiv;
-							parms['constraint'] = constraint;
-							parms['FOCmax'] = FOCmax;
-							parms['NewfunEqu'] = NewfunEqu;
-							parms['listGraphs'] = listGraphs;
-							latex = this.runcalc.simpleLag(parms);
-							break;
-						case 'simpleSubstitute':
-							parms['parentIdDiv'] = parentIdDiv;
-							parms['NewfunEqu'] = NewfunEqu;
-							latex = this.runcalc.simpleSubstitute(parms);
-							break;
-						case 'simpleMarshalian':
-							parms['idDiv'] = idDiv;
-							parms['parentIdDiv'] = parentIdDiv;
-							parms['constraint'] = constraint;
-							parms['NewfunEqu'] = NewfunEqu;
-							parms['listGraphs'] = listGraphs;
-							latex = this.runcalc.simpleMarshalian(parms);
-							break;
-						case 'advanceSubstitute':
-							parms['parentIdDiv'] = parentIdDiv;
-							parms['NewfunEqu'] = NewfunEqu;
-							parms['subWith'] = subWith;
-							latex = this.runcalc.advanceSubstitute(parms);
-							break;
-						default:
-							throw new Error(`Invalid calculation type: ${calc}`);
-					}
-				} catch (error) {
-					// console.error(error);
-					this.addExpression.apply(this, [options]);
-				} finally {
-					selectedExp[idDiv] = latex;
-					runDesmos();
+		function addExpressionAfterLoad() {
+			if (calc === undefined) {
+				selectedExp[idDiv] = latex;
+				runDesmos();
+			} else {
+				this.debounce(idDiv, () => {
+					try {
+						switch (calc) {
+							case 'simpleCompute':
+								parms['compute'] = compute;
+								parms['NewfunEqu'] = NewfunEqu;
+								latex = this.runcalc.simpleCompute(parms);
+								break;
+							case 'simpleDerive':
+								parms['parentIdDiv'] = parentIdDiv;
+								parms['NewfunEqu'] = NewfunEqu;
+								parms['solveFor'] = solveFor;
+								latex = this.runcalc.simpleDerive(parms);
+								break;
+							case 'simpleInverse':
+								parms['parentIdDiv'] = parentIdDiv;
+								parms['NewfunEqu'] = NewfunEqu;
+								parms['solveFor'] = solveFor;
+								latex = this.runcalc.simpleInverse(parms);
+								break;
+							case 'simpleFOC':
+								parms['parentIdDiv'] = parentIdDiv;
+								parms['NewfunEqu'] = NewfunEqu;
+								parms['solveFor'] = solveFor;
+								parms['FOCmax'] = FOCmax;
+								latex = this.runcalc.simpleFOC(parms);
+								break;
+							case 'simpleLag':
+								parms['idDiv'] = idDiv;
+								parms['parentIdDiv'] = parentIdDiv;
+								parms['constraint'] = constraint;
+								parms['FOCmax'] = FOCmax;
+								parms['NewfunEqu'] = NewfunEqu;
+								parms['listGraphs'] = listGraphs;
+								latex = this.runcalc.simpleLag(parms);
+								break;
+							case 'simpleSubstitute':
+								parms['parentIdDiv'] = parentIdDiv;
+								parms['NewfunEqu'] = NewfunEqu;
+								latex = this.runcalc.simpleSubstitute(parms);
+								break;
+							case 'simpleMarshalian':
+								parms['idDiv'] = idDiv;
+								parms['parentIdDiv'] = parentIdDiv;
+								parms['constraint'] = constraint;
+								parms['NewfunEqu'] = NewfunEqu;
+								parms['listGraphs'] = listGraphs;
+								latex = this.runcalc.simpleMarshalian(parms);
+								break;
+							case 'advanceSubstitute':
+								parms['parentIdDiv'] = parentIdDiv;
+								parms['NewfunEqu'] = NewfunEqu;
+								parms['subWith'] = subWith;
+								latex = this.runcalc.advanceSubstitute(parms);
+								break;
+							default:
+								throw new Error(`Invalid calculation type: ${calc}`);
+						}
+					} catch (error) {
+						// console.error(error);
+						this.addExpression.apply(this, [options]);
+					} finally {
+						selectedExp[idDiv] = latex;
+						runDesmos();
 
-					let sideInputsContent = document.getElementById('sideInputsContent');
-					let mathFields = sideInputsContent.querySelectorAll('math-field');
-					let rangeInputs = sideInputsContent.querySelectorAll('input[type=range]');
+						let sideInputsContent = document.getElementById('sideInputsContent');
+						let mathFields = sideInputsContent.querySelectorAll('math-field');
+						let rangeInputs = sideInputsContent.querySelectorAll('input[type=range]');
 
-					let addEventListenerFunc = (element) => {
-						let eventListenerFunc = () => {
-							this.addExpression.apply(this, [options]);
-						};
-						element.removeEventListener('input', eventListenerFunc);
-						element.addEventListener('input', eventListenerFunc);
+				let addInputEventListenerFunc = (element) => {
+					let eventListenerFunc = () => {
+						this.addExpression.apply(this, [options]);
 					};
+					element.removeEventListener('input', eventListenerFunc);
+					element.addEventListener('input', eventListenerFunc);
+				};
 
-					mathFields.forEach(addEventListenerFunc);
-					rangeInputs.forEach(addEventListenerFunc);
+				let addChangeAndInputEventListenerFunc = (element) => {
+					let eventListenerFunc = () => {
+						this.addExpression.apply(this, [options]);
+					};
+					// Remove previous event listeners
+					element.removeEventListener('change', eventListenerFunc);
+					element.removeEventListener('input', eventListenerFunc);
+					// Add new event listeners
+					element.addEventListener('change', eventListenerFunc);
+					element.addEventListener('input', eventListenerFunc);
+				};
+
+
+				mathFields.forEach(addInputEventListenerFunc);
+				rangeInputs.forEach(addChangeAndInputEventListenerFunc);
 
 
 
 
-					this.debounceTimers[idDiv].status = false;
+						this.debounceTimers[idDiv].status = false;
 
 
-				}
-			});
+					}
+				});
+			}
+		}
+		if (document.readyState === 'loading') {  // If document is still loading
+			document.addEventListener('DOMContentLoaded', addExpressionAfterLoad.bind(this));  // Bind this to the function
+		} else {  // Document is already loaded
+			addExpressionAfterLoad.call(this);  // Call the function with this bound to it
 		}
 	}
 	addDynamicExp(options) {
@@ -3108,9 +3096,6 @@ class EconVision {
 
 					// Enable the plus button when a component is removed
 					const plusButton = document.getElementById(idDiv + '1plus');
-					console.log("this is index", this)
-					console.log("index", index)
-					console.log("plusButton", plusButton)
 					if (plusButton) {
 						plusButton.disabled = false;
 					}
@@ -3258,7 +3243,6 @@ class EconVision {
 			//onchange from desmos
 			calculator.observeEvent('change.' + idDiv + index, function(eventName, event) {
 				const expressionX = getExpressionById(calculator, idDiv + index + 'x');
-				console.log
 				inputX.value = getSubstringAfterEquals(expressionX);
 				selectedExp[idDiv][index] = func + '_{p' + index + '}=(' + inputX.value + ',' + inputY.value + ')';
 
@@ -3671,18 +3655,14 @@ class EconVision {
 		}
 		collectSelectData();
 
-		console.log(`addSelectInputData after collectSelectData: ${JSON.stringify(this.addSelectInputData)}`);
-
 		const trackMethodCalls = async () => {
 			const intervalId = setInterval(() => {
-				console.log(selectedExp);
 				if (selectedExp && typeof selectedExp === 'object') {
 					this.addSelectInputData[idDiv].children.forEach(child => {
 						const keys = Object.keys(selectedExp);
 						const hasKey = keys.some(key => child.listGroup.includes(key));
 						if (hasKey) {
 							hideAllListGroups();
-							console.log(`hideAllListGroups called for idDiv: ${idDiv}`);
 							clearInterval(intervalId);
 						}
 					});
@@ -3789,8 +3769,6 @@ class EconVision {
 		addSelectInputField();
 		hideAllListGroups();
 		trackMethodCalls();
-
-		console.log(`addSelectInputData after trackMethodCalls: ${JSON.stringify(this.addSelectInputData)}`);
 
 		document.getElementById(idDiv).addEventListener('change', function() {
 			const pickedItem = this.value;
