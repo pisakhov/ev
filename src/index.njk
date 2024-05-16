@@ -13,6 +13,7 @@ layout: 'base.njk'
     <source src="./assets/img/hero.mp4" type="video/mp4">
   </video>
 
+
   
   <div id="isSticky" class="fade-in-1000 backdrop-blur-[20px] group-hover:backdrop-blur-[0px] transition-all duration-[2000ms] bg-gradient-to-bl from-violet-300/90 via-violet-300/60 to-violet-300/30 rounded-xl shadow-[inset_0px_-12px_20px_8px_rgba(255,255,255,0.3),0_20px_20px_0px_rgba(0,0,0,0.5)] mb-8 md:px-12 p-2 text-[color:var(--c-1)] sticky top-[20%] lg:mx-[10%] md:mx-4 mx-0  z-[9990] flex flex-col justify-center items-center space-y-6">
     <!-- LOGO -->
@@ -27,6 +28,61 @@ Let graphs and charts be your guide, and discover a new world of understanding, 
   Explore Models <i class="fas fa-arrow-down group-hover:animate-bounce"></i> 
 </a>
 
+<style>
+  @keyframes rotate {
+    0% { transform: translateY(-50%) rotate(0deg); }
+    100% { transform: translateY(-50%) rotate(360deg); }
+  }
+
+    .red-circle::after {
+      content: "";
+      position: absolute;
+      width: 1rem;
+      height: 1rem;
+      background: linear-gradient(90deg, violet, mediumvioletred, violet);
+      border-radius: 100%;
+      top: 50%;
+      right: -1.5rem;
+      transform: translateY(-50%);
+      transition: all 0.3s ease-in-out;
+      animation: rotate 2s linear infinite;
+    }
+  
+</style>
+<div class="relative">
+  <input type="text" class="border-2 border-violet-700 focus:outline-none rounded-lg px-4 py-2 transition duration-500 ease-in-out w-full" id="fancy-input">
+  <i class="fas fa-pencil-alt absolute right-3 top-3 opacity-0 transition duration-500 ease-in-out" id="edit-icon"></i>
+</div>
+
+<script>
+  const inputElement = document.querySelector('#fancy-input');
+  const editIcon = document.querySelector('#edit-icon');
+
+
+  inputElement.addEventListener('focus', () => {
+    editIcon.style.opacity = "1";
+    inputElement.classList.remove('border-violet-700', 'shadow-md');
+    inputElement.classList.add('border-violet-300', 'shadow-md');
+  
+    });
+
+    inputElement.addEventListener('blur', () => {
+    editIcon.style.opacity = "0";
+    setTimeout(() => {
+      inputElement.classList.remove('border-violet-300', 'shadow-md');
+      inputElement.classList.add('border-violet-700', 'shadow-md');
+    }, 500);
+
+    });
+
+    inputElement.addEventListener('change', () => {
+    inputElement.parentElement.classList.add('red-circle');
+    setTimeout(() => {
+      inputElement.parentElement.classList.remove('red-circle');
+    }, 3000);
+  });
+
+</script>
 
 </div>
 

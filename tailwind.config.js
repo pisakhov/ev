@@ -10,4 +10,9 @@ module.exports = {
     },
   },
   plugins: [],
+  safelist: [
+    {
+      pattern: /./, // the "." means "everything"
+    },
+  ],
 }
