@@ -4,7 +4,6 @@
                   <img class="fade-in-top [clip-path:circle(100px)] shadow-[inset_-20px_20px_20px_var(--c-3)] hover:shadow-[inset_-20px_-20px_20px_var(--c-3)] rounded-full transition-all duration-1000 saturate-200 w-24 md:w-28" src="/assets/img/__aalogo.png" alt=""> 
             </a>
       </div>
-
    <div class="hidden md:flex flex-row justify-center gap-4
    lg:w-[600px] md:w-[450px]
    [&_summary]:list-none  [&_summary::-webkit-details-marker]:hidden
@@ -14,30 +13,57 @@
       <div class="fade-in-900 relative group flex justify-between flex flex-row">
             <details class="flex flex-col">
                   <summary class="cursor-pointer flex flex-row gap-2 items-center">
-                        <i class="fas fa-graduation-cap fade-in-900 self-center"></i> 
-                        <div class="fade-in-800">Courses
-                              <div class="inset-0 opacity-80 h-[1px] from-1% to-99% bg-gradient-to-r from-transparent via-[color:var(--c-3)] to-transparent"></div>
-                        </div>
+                    <i class="fas fa-graduation-cap fade-in-900 self-center"></i>
+                    <div class="fade-in-800">Courses
+                      <div class="inset-0 opacity-80 h-[1px] from-1% to-99% bg-gradient-to-r from-transparent via-[color:var(--c-3)] to-transparent"></div>
+                    </div>
                   </summary>
                   <div class="absolute w-[320px] right-1/2 translate-x-1/2 bg-transparent z-50">
-                        <div class="flex flex-row justify-center">
-                              <div class="w-full bg-[color:var(--c-1)] rounded-lg shadow-lg">
-                                    <ul class="p-0 hover:[&_li]:bg-[color:var(--c-3)] [&_li]:p-2 first:[&_li]:rounded-t-md last:[&_li]:rounded-b-md divide-y">
-                                          {% for course in collections.index %}
-                                                {% if course.data.show %}
-                                                <li class="cursor-pointer group/menu transition-colors duration-300">
-                                                      <a href="{{course.url}}" class="text-md">
-                                                            <p class="text-[color:var(--c-2)] text-left">{{ course.data.title }}</p>
-                                                      </a>
-                                                </li>
-                                                {% endif %}
-                                          {% endfor %}
-                                    </ul>
-                              </div>
-                        </div>
+                    <div class="flex flex-row justify-center">
+                      <div class="w-full bg-[color:var(--c-1)] rounded-lg shadow-lg">
+                        <ul class="p-0 hover:[&_li]:bg-[color:var(--c-3)] [&_li]:p-2 first:[&_li]:rounded-t-md last:[&_li]:rounded-b-md divide-y">
+                          {% for course in collections.index %}
+                            {% if course.data.show %}
+                              <li class="cursor-pointer transition-colors duration-300 relative" onclick="toggleSubMenu(this)">
+                                <a href="#" class="block">
+                                  <p class="text-[color:var(--c-2)] text-left">{{ course.data.title }}</p>
+                                </a>
+                                <div class="absolute left-full top-0 w-[320px] h-40 rounded-lg shadow-lg hidden submenu overflow-y-auto scrollbar-thin scrollbar-track-[color:var(--c-1)] scrollbar-thumb-[color:var(--c-2)]" id="submenu-{{ course.data.title }}">
+                                    <ul class="p-0 hover:[&_li]:bg-[color:var(--c-3)] h-full [&_li]:bg-[color:var(--c-1)] [&_li]:p-2 first:[&_li]:rounded-t-md last:[&_li]:rounded-b-md divide-y">
+                                    {% for model in collections.all %}
+                                      {% if course.data.tag == model.data.tags and model.data.show %}
+                                        <li class="bg-[color:var(--c-1)]">
+                                          <a href="{{model.url}}"><p class="text-[color:var(--c-2)] text-left text-xs">{{ model.data.title }}</p></a>
+                                        </li>
+                                      {% endif %}
+                                    {% endfor %}
+                                  </ul>
+                                </div>
+                              </li>
+                            {% endif %}
+                          {% endfor %}
+                        </ul>
+                      </div>
+                    </div>
                   </div>
-            </details>
-      </div>
+                </details>
+            
+            </div>
+<script>
+function toggleSubMenu(element) {
+  // Hide all submenus
+  const submenus = document.querySelectorAll('.submenu');
+  submenus.forEach((submenu) => {
+    submenu.classList.add('hidden');
+    console.log('hidden')
+  });
+
+  // Toggle the new submenu
+  const submenuId = `submenu-${element.querySelector('p').textContent}`;
+  const submenu = document.getElementById(submenuId);
+  submenu.classList.toggle('hidden');
+}
+</script>
       <!-- end mega menu-->
       {% for page in collections.pages %}{% if page.data.show %}
       <a class="fade-in-900 flex flex-row gap-2 items-center" href="{{page.url}}">
