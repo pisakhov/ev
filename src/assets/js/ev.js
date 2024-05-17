@@ -1041,7 +1041,11 @@ class SliderComponent {
 					<button class="disabled:scale-100 disabled:bg-slate-500 h-1/2 translate-x-6 after:content-['_'] after:absolute after:size-4 after:top-0 after:right-0 after:rounded-bl-full after:bg-transparent w-full decreaseMultiplier transform rounded-b-lg bg-red-500 px-1 py-0 text-white hover:bg-red-600 active:bg-red-700 active:translate-x-6 active:scale-95 text-left"></button>
 					</div>
 				  <div class="relative flex-grow flex items-center justify-between">
-					<input type="number" class="number-config bg-violet-50 w-full rounded-xl border border-violet-400 px-4 py-1.5 text-center text-sm focus:outline-none focus:ring-2 focus:ring-violet-300 hover:border-violet-500" />
+					
+					<div class="h-full w-full rounded-xl bg-gradient-to-r from-violet-700 via-violet-500 to-violet-700 p-[1px]">
+						<input type="number" class="number-config bg-slate-50 opacity-90 w-full rounded-[10px] border border-violet-400 px-4 py-1.5 text-center text-sm focus:outline-none" />
+					</div>
+					
 					<span class="multiplierIndicator absolute p-1 inset-y-0 left-1 text-xs z-10 pointer-events-none"></span>
 				  </div>
 				</div>
@@ -2332,7 +2336,7 @@ class EconVision {
 			}
 
 			// After the function is executed, update the timeout value
-			this.debounceTimers[idDiv].timeout = 100;
+			this.debounceTimers[idDiv].timeout = 1000;
 		}, this.debounceTimers[idDiv].timeout);  // Use the current timeout value
 	}
 
@@ -2466,8 +2470,8 @@ class EconVision {
 					let eventListenerFunc = () => {
 						this.addExpression.apply(this, [options]);
 					};
-					element.removeEventListener('input', eventListenerFunc);
-					element.addEventListener('input', eventListenerFunc);
+					element.removeEventListener('change', eventListenerFunc);
+					element.addEventListener('change', eventListenerFunc);
 				};
 
 				let addChangeAndInputEventListenerFunc = (element) => {
@@ -2749,123 +2753,104 @@ class EconVision {
 		let listGraphs = options.listGraphs;
 		let listOfGraphs = this.view.graphs.listOfGraphs;
 		let selectedExp = this.view.inputs.selectedExpressions;
-		// Append the element to the #sideInputsContent
-		let container = document.getElementById("sideInputsContent");
-		let pElement = document.createElement("p");
-		let mathField = document.createElement("math-field");
-		mathField.id = idDiv;
-		mathField.setAttribute("virtual-keyboard-mode", "manual");
 
-		mathField.className = "shadow-md w-full rounded-md px-4 py-2 border-2 border-violet-500 bg-transparent form-control";
-		mathField.innerHTML = latex;
-		pElement.innerHTML = title + ': ';
-		pElement.appendChild(mathField);
-		container.appendChild(pElement);
-		// Set the CSS variable
+		// Style
 		document.body.style.setProperty("--keyboard-zindex", "3000");
-		document.body.style.setProperty("--keyboard-background", "white");
-		let styleMathField = document.createElement('style');
-		styleMathField.type = 'text/css';
-		styleMathField.innerHTML = `
-		math-field::part(virtual-keyboard-toggle) {
-			display: none;
-		  }
-		  math-field:focus::part(virtual-keyboard-toggle) {
-			display: flex;
-		  }
-		  math-field::part(menu-toggle) {
-			display: none;
-		  }
-		.MLK__backdrop{
-			background: white !important;
-			opacity:0.96 !important;
-			backdrop-filter: blur(12px) !important;
-		  }
-		`;
-		document.getElementsByTagName('head')[0].appendChild(styleMathField);
-		// document.querySelector('math-field').
-		// addEventListener('focus', () => { 
-		// 	mathVirtualKeyboard.layouts = [
-		// 		{
-		// 			label: "Econ.Vision",
-		// 			tooltip: "Only the essential",
-		// 			layers: [
-		// 				{
-		// 					style: `
-		// 					.digit { background: #8A2BE2; color: white; } /* Deep Violet for Digits */
-		// 					.digit:hover {color: black;}
-		// 					.func { background: #9370DB; color: white; } /* Lighter Violet for Functions */
-		// 					.func:hover {color:black;}
-		// 					.operator { background: #7B68EE; color: white; } /* Medium Violet for Operators */
-		// 					.operator:hover {color:black;}
-		// 					.control { background: #6A5ACD; color: white; } /* Slate Blue for Control Keys */
-		// 					.control:hover {color:black;}
-		// 					.edit { background: #483D8B; color: white; } /* Dark Slate Blue for Editing Keys */
-		// 					.edit:hover {color:black;}
-		// 					.special { background: #4B0082; color: white; } /* Indigo for Special Function Keys */
-		// 					.special:hover {color:black;}
-		// 				`,
+document.body.style.setProperty("--keyboard-background", "white");
 
-		// 				rows: [
+let styleMathField = document.createElement('style');
+styleMathField.type = 'text/css';
+styleMathField.innerHTML = `
+@keyframes rotate {
+    0% { transform: translateY(-50%) rotate(0deg); }
+    100% { transform: translateY(-50%) rotate(360deg); }
+}
+.red-circle::after {
+    content: "";
+    position: absolute;
+    width: 1rem;
+    height: 1rem;
+    background: linear-gradient(90deg, violet, mediumvioletred, violet);
+    border-radius: 100%;
+	left:1rem;
+    transform: translateY(-50%);
+    transition: all 0.3s ease-in-out;
+    animation: rotate 2s linear infinite;
+}
+math-field::part(virtual-keyboard-toggle) {
+    display: none;
+}
+math-field:focus::part(virtual-keyboard-toggle) {
+    display: flex;
+	color:rgb(109 40 217);
+	background-color: rgb(221 214 254);
+	height:24px;
+}
+math-field::part(menu-toggle) {
+    display: none;
+}
+.MLK__backdrop{
+    background: white !important;
+    opacity:0.96 !important;
+    backdrop-filter: blur(12px) !important;
+}
+@keyframes rotate-bg {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+.rotate-bg {
+    background: linear-gradient(270deg, rgb(109 40 217), rgb(221 214 254), rgb(109 40 217));
+    background-size: 200% 200%;
+    animation: rotate-bg 1s ease-in-out infinite;
+}
+`;
+document.head.appendChild(styleMathField);
 
-		// 						[
-		// 							{ class: 'control', label: '[hide-keyboard]', tooltip: 'Hide Keyboard' },
-		// 							{ class: 'func', label: '[left]', tooltip: 'Left' },
-		// 							{ class: 'func', label: '[right]', tooltip: 'Right' },
-		// 							{ class: 'func', label: '[backspace]', tooltip: 'Backspace' },
-		// 						],
-		// 						[
-		// 							{ label: '[hr]', width: 0.5 }
-		// 						],
-		// 						[
-		// 							{ width: 2, class: 'special', latex: '{#@}\\cdot\\ln({#?})', ariaLabel: 'natural logarithm', tooltip: 'Natural Logarithm' },
-		// 							{ label: '[separator]', width: 0.5 },
-		// 							{ class: 'digit', latex: '7' },
-		// 							{ class: 'digit', latex: '8' },
-		// 							{ class: 'digit', latex: '9' },
-		// 							{ label: '[separator]', width: 0.5 },
-		// 							{ class: 'func', latex: '\\sqrt{#0}', ariaLabel: 'square root', tooltip: 'Square Root' },
-		// 							{ class: 'func', latex: '#@^{#?}', ariaLabel: 'power', tooltip: 'Power' },
-		// 						],
-		// 						[
-		// 							{ width: 2, class: 'special', latex: '\\min({#?},{#?})', ariaLabel: 'minimum', tooltip: 'Minimum' },
-		// 							{ label: '[separator]', width: 0.5 },
+let container = document.getElementById("sideInputsContent");
+let pElement = document.createElement("p");
+let gradientDiv = document.createElement("div");
+let mathField = document.createElement("math-field");
 
-		// 							{ class: 'digit', latex: '4' },
-		// 							{ class: 'digit', latex: '5' },
-		// 							{ class: 'digit', latex: '6' },
-		// 							{ label: '[separator]', width: 0.5 },
-		// 							{ class: 'operator', latex: '+', ariaLabel: 'plus', tooltip: 'Plus' },
-		// 							{ class: 'operator', latex: '-', ariaLabel: 'minus', tooltip: 'Minus' },
-		// 						],
-		// 						[
-		// 							{ width: 2, class: 'special', latex: '\\max({#?},{#?})', ariaLabel: 'maximum', tooltip: 'Maximum', },
-		// 							{ label: '[separator]', width: 0.5 },
+gradientDiv.className = "h-content w-full rounded-xl bg-gradient-to-r from-violet-700 via-violet-500 to-violet-700 p-[2px]";
+mathField.id = idDiv;
+mathField.setAttribute("virtual-keyboard-mode", "manual");
+mathField.className = "focus:outline-none flex h-full w-full rounded-[10px] pl-[24px] bg-slate-50 opacity-90 grow justify-around";
 
-		// 							{ class: 'digit', latex: '1' },
-		// 							{ class: 'digit', latex: '2' },
-		// 							{ class: 'digit', latex: '3' },
-		// 							{ label: '[separator]', width: 0.5 },
-		// 							{ class: 'operator', latex: '\\times', ariaLabel: 'multiply', tooltip: 'Multiply' },
-		// 							{ class: 'operator', latex: '\\div', ariaLabel: 'divide', tooltip: 'Divide' },
-		// 						],
-		// 						[
-		// 							{ label: '[separator]', width: 1 },
-		// 							{ class: 'digit', latex: '0' },
-		// 							{ class: 'digit', latex: '.' },
-		// 							{ class: 'edit', latex: '=', ariaLabel: 'equals', tooltip: 'Equals' },
-		// 							{ label: '[separator]', width: 0.5 },
-		// 							{ class: 'operator', latex: '(', ariaLabel: 'open parenthesis', tooltip: 'Open Parenthesis' },
-		// 							{ class: 'operator', latex: ')', ariaLabel: 'close parenthesis', tooltip: 'Close Parenthesis' },
-		// 						],
-		// 					],
-		// 				},
-		// 			],
+let editIcon = document.createElement("i");
+editIcon.className = "text-violet-700 justify-end fas fa-pencil-alt absolute left-6 -translate-y-6 opacity-0 transition duration-500 ease-in-out";
+editIcon.id = "edit-icon";
 
-		// 		},
-		// 	];
+mathField.innerHTML = latex;
+pElement.innerHTML = title + ': ';
+gradientDiv.appendChild(mathField);
+pElement.appendChild(gradientDiv);
+pElement.appendChild(editIcon); // Add the edit icon to the p element
+container.appendChild(pElement);
+const inputElement = document.querySelector(`#${idDiv}`);
 
-		// });
+inputElement.addEventListener('focus', () => {
+    editIcon.style.opacity = "0.5";
+    inputElement.classList.remove('border-violet-700', 'shadow-md');
+    inputElement.classList.add('border-violet-500', 'shadow-md');
+});
+
+inputElement.addEventListener('blur', () => {
+    editIcon.style.opacity = "0";
+    setTimeout(() => {
+        inputElement.classList.remove('border-violet-500', 'shadow-md');
+        inputElement.classList.add('border-violet-700', 'shadow-md');
+    }, 500);
+});
+
+inputElement.addEventListener('change', () => {
+    gradientDiv.classList.add('rotate-bg');
+    setTimeout(() => {
+        gradientDiv.classList.remove('rotate-bg');
+    }, 1000);
+});
+
+
 
 		listGraphs.forEach(function(i) {
 			listOfGraphs[i].setExpression({
