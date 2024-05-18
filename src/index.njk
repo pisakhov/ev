@@ -8,6 +8,16 @@ layout: 'base.njk'
 <!-- {% include "desmos.njk" %} -->
 
 <section class="group snap-center bg-fixed bg-center bg-cover h-screen relative bg-[color:var(--background)]">
+  <div class="absolute flex flex-col z-100 w-full h-full translate-y-0
+  [&_span]:bg-gradient-to-b [&_span]:from-zinc-200/20
+  [&_span]:to-zinc-400/20 [&_span]:backdrop-blur-md [&_span]:backdrop-saturate-200 [&_span]:h-[30%] [&_span]:h-full divide-y-2 divide-violet-50/20
+  first:[&_span]:rounded-l-lg
+  last:[&_span]:rounded-r-lg
+  ">
+    {% for i in range(0, 10) %}
+      <span></span>
+    {% endfor %}
+  </div>
   <video autoplay muted loop class="absolute h-screen w-screen object-cover opacity-70">
     <source src="./assets/img/hero.webm" type="video/webm">
     <source src="./assets/img/hero.mp4" type="video/mp4">
@@ -16,19 +26,18 @@ layout: 'base.njk'
 
   
   <div id="isSticky" class="fade-in-1000 backdrop-blur-[20px] group-hover:backdrop-blur-[0px] transition-all duration-[2000ms] bg-gradient-to-bl from-violet-300/90 via-violet-300/60 to-violet-300/30 rounded-xl shadow-[inset_0px_-12px_20px_8px_rgba(255,255,255,0.3),0_20px_20px_0px_rgba(0,0,0,0.5)] mb-8 md:px-12 p-2 text-[color:var(--c-1)] sticky top-[20%] lg:mx-[10%] md:mx-4 mx-0  z-[9990] flex flex-col justify-center items-center space-y-6">
-    <!-- LOGO -->
-     {% include "nav.njk" %}
-    <!-- LOGO -->
-    <div id="mainlogo" class="text-[clamp(1.875rem,5vw,2.25rem)] font-bold"></div>
-    <p class="md:[text-shadow:0_0_10px_rgba(0,0,0,0.4)] md:group-hover:[text-shadow:0_0_5px_rgba(43,45,56,0)] duration-[1500ms] md:text-transparent md:group-hover:text-[color:var(--c-1)] text-center text-[clamp(1.125rem,3vw,1.375rem)]">
-  Unlock the hidden depths of economics by embracing the power of visualization.<br>
-Let graphs and charts be your guide, and discover a new world of understanding, analysis, and insight.
-</p>
-<a href="#courses" class="fade-in-1000 group md:w-1/4 w-1/3 text-[clamp(0.7rem,2vw,0.875rem)] font-semibold bg-[color:var(--c-3)] hover:bg-[color:var(--c-1)] text-[color:var(--c-2)] hover:text-[color:var(--c-2)] font-bold py-3 px-6 rounded text-center flex items-center justify-center gap-2 transition-all duration-300 ring-3 ring-[color:var(--c-1)]">
-  Explore Models <i class="fas fa-arrow-down group-hover:animate-bounce"></i> 
-</a>
-
-</div>
+          <!-- LOGO -->
+         <div class="z-20">{% include "nav.njk" %}</div>
+        <!-- LOGO -->
+        <div id="mainlogo" class="z-10 text-[clamp(1.875rem,5vw,2.25rem)] font-bold"></div>
+        <p class="md:[text-shadow:0_0_10px_rgba(0,0,0,0.4)] md:group-hover:[text-shadow:0_0_5px_rgba(43,45,56,0)] duration-[1500ms] md:text-transparent md:group-hover:text-[color:var(--c-1)] text-center text-[clamp(1.125rem,3vw,1.375rem)] z-10">
+      Unlock the hidden depths of economics by embracing the power of visualization.<br>
+    Let graphs and charts be your guide, and discover a new world of understanding, analysis, and insight.
+    </p>
+    <a href="#courses" class="z-10 fade-in-1000 group md:w-1/4 w-1/3 text-[clamp(0.7rem,2vw,0.875rem)] font-semibold bg-[color:var(--c-3)] hover:bg-[color:var(--c-1)] text-[color:var(--c-2)] hover:text-[color:var(--c-2)] font-bold py-3 px-6 rounded text-center flex items-center justify-center gap-2 transition-all duration-300 ring-3 ring-[color:var(--c-1)]">
+      Explore Models <i class="fas fa-arrow-down group-hover:animate-bounce"></i> 
+    </a>
+      </div>
 
   
 </section> 
@@ -49,7 +58,9 @@ window.addEventListener('scroll', () => {
 
 
              		const typewriter = new Typewriter('#mainlogo', {
-         			autoStart: true
+         			autoStart: true,
+              
+
          		});
          		typewriter.typeString('Envision economic models.').pauseFor(1500).deleteChars(24).typeString('con').pauseFor(500).typeString('<strong>.</strong>').pauseFor(100).typeString('vision').pauseFor(2500).start();
          	
@@ -67,6 +78,101 @@ window.addEventListener('scroll', () => {
 
 
   
+<!-- Math-Field -->
+<script defer src="/main.js"></script>
+<script src="/assets/js/ev.js"></script>
+<style>
+  math-field::part(virtual-keyboard-toggle) {
+    display: none;
+}
+math-field::part(menu-toggle) {
+    display: none;
+}
+</style>
+<span class="rounded-lg h-screen p-6 mb-20 flex flex-col justify-around items-center md:col-span-4 md:row-span-1 transition-all duration-500 bg-fixed bg-center bg-cover relative contrast-100" style="background-image: url('./assets/img/background.jpg');">
+  <span class="glowit left text-violet-50 bg-violet-700/80 p-4 rounded-xl">Function Showcase
+    <div class="h-content w-full rounded-xl bg-gradient-to-r from-violet-700 via-violet-500 to-violet-700 p-[2px]">
+      <math-field id="idDiv" class="focus:outline-none flex h-full w-full rounded-[10px] pl-[24px] bg-slate-50 opacity-90 grow justify-around">
+        2\ln{x}+3\ln{y}
+      </math-field>
+    </div>
+    <i id="edit-icon" class="text-violet-700 justify-end fas fa-pencil-alt absolute left-6 -translate-y-6 opacity-1 transition duration-500 ease-in-out"></i>
+    <p class="text-sm text-violet-50 bg-violet-700/80 p-4 rounded-xl">Enter your values and adjust the slider to see the math function in action!</p>
+
+  </span>
+  <div class="glowit right border-l border-2 border-violet-700 h-1/2 mx-auto"></div>
+  <span class="glowit right">
+    <input type="range" min="10" max="30" value="20" step="0.01" class="w-full appearance-none bg-violet-50 [&::-webkit-slider-runnable-track]:rounded-full [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:h-4 [&::-webkit-slider-thumb]:w-4 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-violet-600 cursor-pointer rounded-lg hover:bg-violet-300 dark:hover:bg-gray-600 active:outline-none active:ring-2 active:ring-violet-600"/>
+    <p class="text-sm text-violet-50 bg-violet-700/80 p-4 rounded-xl">Adjust the slider to change the values</p>
+  </span>
+  <div class="glowit right border-l border-2 border-violet-700 h-1/2 mx-auto"></div>
+  <p class="glowit left text-sm text-violet-50 bg-violet-700/80 p-4 pb-10 rounded-xl h-full  w-1/2">Result:
+  <span id="calculator" class=" w-full h-full p-4 rounded-md"></span>
+</p>
+</span>
+
+
+<script defer>
+
+  var elt = document.getElementById('calculator');
+  var calculator = Desmos.GraphingCalculator(elt);
+
+  calculator.setMathBounds({
+left: 1,
+right: 180,
+bottom: -10,
+top: 100
+});
+
+             calculator.setGraphSettings({
+ // backgroundColor: '#232323',
+ xAxisLabel: '      ',
+ yAxisLabel: '',
+ xAxisStep: 10,
+ yAxisStep: 10,
+ xAxisArrows: true,
+ yAxisArrows: true,
+ xAxisNumbers: false,
+ yAxisNumbers: false,
+ xAxisMinorSubdivisions: 1,
+ yAxisMinorSubdivisions: 1,
+ lockViewport: true,
+ expressions: false,
+ showGrid: false,
+ keypad: false,
+zoomFit: false,
+settingsMenu: false,
+ fontSize: 10
+ });
+
+
+calculator.setExpression({id: 'x1', latex: 'x_{1}\\left(x,y\\right)=x\\cos\\left(-\\pi\\right)-y\\sin\\left(-\\pi\\right)', color: 'rgb(124, 58, 237)'});
+calculator.setExpression({id: 'y1', latex: 'y_{1}\\left(x,y\\right)=x\\sin\\left(-\\pi\\right)+y\\cos\\left(-\\pi\\right)', color: 'color: rgb(13, 148, 136);'});
+calculator.setExpression({id: 'x2', latex: 'x_{2}\\left(x,y\\right)=x\\cos\\left(-2\\pi\\right)-y\\sin\\left(-2\\pi\\right)', color: 'rgb(124, 58, 237)'});
+calculator.setExpression({id: 'y2', latex: 'y_{2}\\left(x,y\\right)=x\\sin\\left(-2\\pi\\right)+y\\cos\\left(-2\\pi\\right)', color: 'color: rgb(13, 148, 136);'});
+calculator.setExpression({id: 'eq', latex: 'f\\left(x_{2}\\left(x,y\\right),y_{2}\\left(x,y\\right)\\right)=I', color: '#601bc1'});
+calculator.setExpression({id: 'eqq', latex: 'f\\left(x_{1}\\left(x-150,y\\right),y_{1}\\left(x,y-100\\right)\\right)=I', color: '#2b2d38'});
+calculator.setExpression({id: 'expression1', latex: "f(x,y)=2\\ln{x}+3\\ln{y}"});
+calculator.setExpression({id: 'eq2', latex: 'I=15', color: '#0D9488', sliderBounds: {
+						min: 10,
+						max: 30,
+						step: 0.01
+					}});
+
+    //on input event change eq2
+    document.querySelector('#idDiv').addEventListener('input', (event) => {
+      calculator.setExpression({id: 'expression1', latex: "f(x,y)="+event.target.value});
+    });
+
+    //on input event change eq2
+    document.querySelector('input[type="range"]').addEventListener('input', (event) => {
+      calculator.setExpression({id: 'eq2', latex: "I="+event.target.value});
+    });
+
+
+
+</script>
+<!-- Math-Field -->
 
 
 
@@ -198,11 +304,11 @@ window.addEventListener('scroll', () => {
   }
 
   .circle-container:hover .circle-half:first-child {
-    transform: translateX(-10px); /* Adjust as needed */
+    transform: translateX(-100px); /* Adjust as needed */
   }
 
   .circle-container:hover .circle-half:last-child {
-    transform: translateX(10px); /* Adjust as needed */
+    transform: translateX(100px); /* Adjust as needed */
   }
 
   .swing-out-left-fwd{-webkit-animation:swing-out-left-fwd .55s cubic-bezier(.6,-.28,.735,.045) both;animation:swing-out-left-fwd .55s cubic-bezier(.6,-.28,.735,.045) both}
