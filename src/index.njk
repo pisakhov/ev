@@ -8,23 +8,13 @@ layout: 'base.njk'
 <!-- {% include "desmos.njk" %} -->
 
 <section class="group snap-center bg-fixed bg-center bg-cover h-screen relative bg-[color:var(--background)]">
-  <div class="absolute flex flex-col z-100 w-full h-full translate-y-0
-  [&_span]:bg-gradient-to-b [&_span]:from-zinc-200/20
-  [&_span]:to-zinc-400/20 [&_span]:backdrop-blur-md [&_span]:backdrop-saturate-200 [&_span]:h-[30%] [&_span]:h-full divide-y-2 divide-violet-50/20
-  first:[&_span]:rounded-l-lg
-  last:[&_span]:rounded-r-lg
-  ">
-    {% for i in range(0, 10) %}
-      <span></span>
-    {% endfor %}
-  </div>
   <video autoplay muted loop class="absolute h-screen w-screen object-cover opacity-70">
     <source src="./assets/img/hero.webm" type="video/webm">
     <source src="./assets/img/hero.mp4" type="video/mp4">
   </video>
 
 
-  
+
   <div id="isSticky" class="fade-in-1000 backdrop-blur-[20px] group-hover:backdrop-blur-[0px] transition-all duration-[2000ms] bg-gradient-to-bl from-violet-300/90 via-violet-300/60 to-violet-300/30 rounded-xl shadow-[inset_0px_-12px_20px_8px_rgba(255,255,255,0.3),0_20px_20px_0px_rgba(0,0,0,0.5)] mb-8 md:px-12 p-2 text-[color:var(--c-1)] sticky top-[20%] lg:mx-[10%] md:mx-4 mx-0  z-[9990] flex flex-col justify-center items-center space-y-6">
           <!-- LOGO -->
          <div class="z-20">{% include "nav.njk" %}</div>
@@ -35,12 +25,12 @@ layout: 'base.njk'
     Let graphs and charts be your guide, and discover a new world of understanding, analysis, and insight.
     </p>
     <a href="#courses" class="z-10 fade-in-1000 group md:w-1/4 w-1/3 text-[clamp(0.7rem,2vw,0.875rem)] font-semibold bg-[color:var(--c-3)] hover:bg-[color:var(--c-1)] text-[color:var(--c-2)] hover:text-[color:var(--c-2)] font-bold py-3 px-6 rounded text-center flex items-center justify-center gap-2 transition-all duration-300 ring-3 ring-[color:var(--c-1)]">
-      Explore Models <i class="fas fa-arrow-down group-hover:animate-bounce"></i> 
+      Explore Models <i class="fas fa-arrow-down group-hover:animate-bounce"></i>
     </a>
       </div>
 
-  
-</section> 
+
+</section>
 <script src='/assets/js/typewriter.js'></script>
 
 <script>
@@ -59,11 +49,11 @@ window.addEventListener('scroll', () => {
 
              		const typewriter = new Typewriter('#mainlogo', {
          			autoStart: true,
-              
+
 
          		});
          		typewriter.typeString('Envision economic models.').pauseFor(1500).deleteChars(24).typeString('con').pauseFor(500).typeString('<strong>.</strong>').pauseFor(100).typeString('vision').pauseFor(2500).start();
-         	
+
 </script>
 
 <section class="relative bg-center bg-fixed snap-center">
@@ -74,137 +64,103 @@ window.addEventListener('scroll', () => {
 
 
 
-<div class="group/title mt-[10%] mb-[5%] grid grid-cols-1 grid-rows-1 md:grid-cols-4 lg:gap-6 md:gap-4 gap-2 md:[&>div]:h-auto first:[&>div]:h-[80vh] first:[&>div]:mb-14 first:md:[&>div]:mb-10 [&>div]:ring-[color:var(--c-2)] [&>div]:ring-2  [&>div]:shadow-[-4px_-4px_10px_rgba(255,255,255,0.2),6px_6px_10px_rgba(0,0,0,0.2)] md:[&>div]:rounded-lg [&>div]:rounded-md md:hover:[&>div]:bg-white/0 [&>div]:backdrop-blur-[3px] [&>div]:bg-transparent [&>div]:py-2 [&>div]:px-2  [&>div]:text-gray-100">
+      <div class="group/title my-[5%] grid grid-cols-1 grid-rows-1 md:grid-cols-4 lg:gap-6 md:gap-4 gap-2">
+
+          <div class="md:col-span-4 py-8 sm:py-12 md:py-16 lg:py-20 xl:py-24">
+              <h2 class="text-center text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-[color:var(--c-1)] mb-4 sm:mb-6 md:mb-8 lg:mb-10 xl:mb-12 tracking-tight group">
+              Featured Models
+              <div class="mt-2 sm:mt-3 md:mt-4 lg:mt-5 xl:mt-6 h-[2px] w-24 sm:w-32 md:w-40 lg:w-48 xl:w-56 bg-gradient-to-r from-transparent via-[color:var(--c-3)] to-transparent mx-auto opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              </h2>
+              <div class="relative px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12">
+                  {% set allModels = [] %}
+                  {% for course in collections.index %}
+                      {% for model in collections[course.data.tag] %}
+                      {% set allModels = (allModels.push(model), allModels) %}
+                      {% endfor %}
+                  {% endfor %}
+              <div class="flex items-center justify-between">
+                  <button id="prevBtn" class="bg-[color:var(--c-1)] text-white px-4 py-2 m-2 rounded-md text-md transition-all duration-300 shadow-md hover:shadow-lg focus:outline-none transform">
+                      <i class="fas fa-chevron-left"></i>
+                  </button>
+
+                  <div id="modelCarousel" class="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8 md:gap-10 lg:gap-12 xl:gap-16 overflow-hidden">
+                      {% for model in allModels %}
+                      <div class="bg-[color:var(--c-2)] shadow-xl rounded-lg overflow-hidden transition-all duration-500 hover:shadow-2xl w-full">
+                          <img src="{{ model.data.thumbnail }}" alt="{{ model.data.title }}" class="w-full h-48 sm:h-56 md:h-64 lg:h-72 xl:h-80 object-cover transition-all duration-500 hover:opacity-90">
+                          <div class="p-6 sm:p-8 md:p-10 lg:p-12 xl:p-14">
+                              <h3 class="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl font-semibold text-[color:var(--c-1)] mb-2 truncate">{{ model.data.title }}</h3>
+                              <p class="hidden md:block text-xs sm:text-sm md:text-base text-[color:var(--c-1)] mb-2 sm:mb-3 md:mb-4 line-clamp-2">{{ model.data.description }}</p>
+                          <a href="{{ model.url }}" class="inline-block bg-[color:var(--c-1)] text-white px-4 py-2 rounded-md text-base hover:bg-[color:var(--c-3)] transition-all duration-300 shadow-md hover:shadow-lg">
+                            Explore Model
+                          </a>
+                          </div>
+                      </div>
+                      {% endfor %}
+                  </div>
 
 
-  
-<!-- Math-Field -->
-<script defer src="/main.js"></script>
-<script src="/assets/js/ev.js"></script>
-<style>
-  math-field::part(virtual-keyboard-toggle) {
-    display: none;
-}
-math-field::part(menu-toggle) {
-    display: none;
-}
-</style>
-<span class="rounded-lg h-screen p-6 mb-20 flex flex-col justify-around items-center md:col-span-4 md:row-span-1 transition-all duration-500 bg-fixed bg-center bg-cover relative contrast-100" style="background-image: url('./assets/img/background.jpg');">
-  <span class="glowit left text-violet-50 bg-violet-700/80 p-4 rounded-xl">Function Showcase
-    <div class="h-content w-full rounded-xl bg-gradient-to-r from-violet-700 via-violet-500 to-violet-700 p-[2px]">
-      <math-field id="idDiv" class="focus:outline-none flex h-full w-full rounded-[10px] pl-[24px] bg-slate-50 opacity-90 grow justify-around">
-        2\ln{x}+3\ln{y}
-      </math-field>
-    </div>
-    <i id="edit-icon" class="text-violet-700 justify-end fas fa-pencil-alt absolute left-6 -translate-y-6 opacity-1 transition duration-500 ease-in-out"></i>
-    <p class="text-sm text-violet-50 bg-violet-700/80 p-4 rounded-xl">Enter your values and adjust the slider to see the math function in action!</p>
+                                    <button id="nextBtn" class="bg-[color:var(--c-1)] text-white px-4 py-2 m-2 rounded-md text-md transition-all duration-300 shadow-md hover:shadow-lg focus:outline-none transform">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </button>
+              </div>
+              </div>
+          </div>
+          <script>
+              const carousel = document.getElementById('modelCarousel');
+              const prevBtn = document.getElementById('prevBtn');
+              const nextBtn = document.getElementById('nextBtn');
+              let currentIndex = 0;
 
-  </span>
-  <div class="glowit right border-l border-2 border-violet-700 h-1/2 mx-auto"></div>
-  <span class="glowit right">
-    <input type="range" min="10" max="30" value="20" step="0.01" class="w-full appearance-none bg-violet-50 [&::-webkit-slider-runnable-track]:rounded-full [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:h-4 [&::-webkit-slider-thumb]:w-4 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-violet-600 cursor-pointer rounded-lg hover:bg-violet-300 dark:hover:bg-gray-600 active:outline-none active:ring-2 active:ring-violet-600"/>
-    <p class="text-sm text-violet-50 bg-violet-700/80 p-4 rounded-xl">Adjust the slider to change the values</p>
-  </span>
-  <div class="glowit right border-l border-2 border-violet-700 h-1/2 mx-auto"></div>
-  <p class="glowit left text-sm text-violet-50 bg-violet-700/80 p-4 pb-10 rounded-xl h-full  w-1/2">Result:
-  <span id="calculator" class=" w-full h-full p-4 rounded-md"></span>
-</p>
-</span>
+              function showModels(index) {
+                  const models = carousel.children;
+                  const totalModels = models.length;
+                  const isLargeScreen = window.innerWidth >= 1024; // lg breakpoint
+                  const modelsToShow = isLargeScreen ? 3 : 1;
 
+                  for (let i = 0; i < totalModels; i++) {
+                      if (i >= index && i < index + modelsToShow) {
+                          models[i].style.display = 'block';
+                      } else {
+                          models[i].style.display = 'none';
+                      }
+                  }
+              }
 
-<script defer>
+              prevBtn.addEventListener('click', () => {
+                  const isLargeScreen = window.innerWidth >= 1024;
+                  const step = isLargeScreen ? 3 : 1;
+                  currentIndex = (currentIndex - step + carousel.children.length) % carousel.children.length;
+                  showModels(currentIndex);
+              });
 
-  var elt = document.getElementById('calculator');
-  var calculator = Desmos.GraphingCalculator(elt);
+              nextBtn.addEventListener('click', () => {
+                  const isLargeScreen = window.innerWidth >= 1024;
+                  const step = isLargeScreen ? 3 : 1;
+                  currentIndex = (currentIndex + step) % carousel.children.length;
+                  showModels(currentIndex);
+              });
 
-  calculator.setMathBounds({
-left: 1,
-right: 180,
-bottom: -10,
-top: 100
-});
+              window.addEventListener('resize', () => {
+                  showModels(currentIndex);
+              });
 
-             calculator.setGraphSettings({
- // backgroundColor: '#232323',
- xAxisLabel: '      ',
- yAxisLabel: '',
- xAxisStep: 10,
- yAxisStep: 10,
- xAxisArrows: true,
- yAxisArrows: true,
- xAxisNumbers: false,
- yAxisNumbers: false,
- xAxisMinorSubdivisions: 1,
- yAxisMinorSubdivisions: 1,
- lockViewport: true,
- expressions: false,
- showGrid: false,
- keypad: false,
-zoomFit: false,
-settingsMenu: false,
- fontSize: 10
- });
-
-
-calculator.setExpression({id: 'x1', latex: 'x_{1}\\left(x,y\\right)=x\\cos\\left(-\\pi\\right)-y\\sin\\left(-\\pi\\right)', color: 'rgb(124, 58, 237)'});
-calculator.setExpression({id: 'y1', latex: 'y_{1}\\left(x,y\\right)=x\\sin\\left(-\\pi\\right)+y\\cos\\left(-\\pi\\right)', color: 'color: rgb(13, 148, 136);'});
-calculator.setExpression({id: 'x2', latex: 'x_{2}\\left(x,y\\right)=x\\cos\\left(-2\\pi\\right)-y\\sin\\left(-2\\pi\\right)', color: 'rgb(124, 58, 237)'});
-calculator.setExpression({id: 'y2', latex: 'y_{2}\\left(x,y\\right)=x\\sin\\left(-2\\pi\\right)+y\\cos\\left(-2\\pi\\right)', color: 'color: rgb(13, 148, 136);'});
-calculator.setExpression({id: 'eq', latex: 'f\\left(x_{2}\\left(x,y\\right),y_{2}\\left(x,y\\right)\\right)=I', color: '#601bc1'});
-calculator.setExpression({id: 'eqq', latex: 'f\\left(x_{1}\\left(x-150,y\\right),y_{1}\\left(x,y-100\\right)\\right)=I', color: '#2b2d38'});
-calculator.setExpression({id: 'expression1', latex: "f(x,y)=2\\ln{x}+3\\ln{y}"});
-calculator.setExpression({id: 'eq2', latex: 'I=15', color: '#0D9488', sliderBounds: {
-						min: 10,
-						max: 30,
-						step: 0.01
-					}});
-
-    //on input event change eq2
-    document.querySelector('#idDiv').addEventListener('input', (event) => {
-      calculator.setExpression({id: 'expression1', latex: "f(x,y)="+event.target.value});
-    });
-
-    //on input event change eq2
-    document.querySelector('input[type="range"]').addEventListener('input', (event) => {
-      calculator.setExpression({id: 'eq2', latex: "I="+event.target.value});
-    });
-
-
-
-</script>
-<!-- Math-Field -->
-
-
+              showModels(currentIndex);
+          </script>
 
     <!--Courses-->
-<div class="relative md:col-span-4 row-span-1 h-[400px] min-h-[400px] transition-all duration-500" id="courses">
-
-
-          <div id="heroImage" class="backdrop-blur-xs opacity-100 snap-center h-full bg-center absolute inset-0 z-[999]">
-            <div class="circle-container h-full w-full transform flex justify-around">
-              <div class="circle-half cursor-pointer bg-[color:var(--c-2)] rounded-l-lg flex flex-col items-center justify-around md:p-20 p-0" onclick="openDoor()"> 
-                <div class="text-[clamp(3rem,7vw,4rem)] font-extrabold text-[color:var(--c-1)] tracking-widest uppercase [writing-mode:vertical-lr] -translate-x-5 group-hover/title:-translate-x-10 transition duration-[2.5s]">Unlock</div>
-                <div class="text-[clamp(0.75rem,2vw,1rem)] text-[color:var(--c-1)] hover:text-[color:var(--c-2)] ring-2 ring-[color:var(--c-1)] hover:bg-[color:var(--c-1)] text-center rounded-3xl md:py-2 py-1 md:px-4 px-2 font-normal tracking-wide uppercase">ECONOMIC INSIGHTS</div>
-              </div>
-              <div class="circle-half cursor-pointer bg-[color:var(--c-2)] rounded-r-lg flex flex-col items-center justify-center md:p-40 p-0" onclick="openDoor()">
-                <div class="text-[clamp(2.5rem,6vw,3rem)] font-extrabold text-[color:var(--c-2)] text-center bg-[color:var(--c-1)] hover:text-[color:var(--c-1)] hover:bg-[color:var(--c-2)] tracking-widest uppercase transition duration-300 text-center">EXPLORE</div>
-                <div class="text-[clamp(1rem,2.5vw,1rem)] text-[color:var(--c-1)] font-light tracking-wide -translate-y-10 opacity-0 group-hover/title:opacity-100 group-hover/title:translate-y-5 transition duration-[2.3s] uppercase text-left">GRAPHICAL MODELS</div>
-              </div>
-            </div>
-          </div>
-          
+    <div class="relative md:col-span-4 row-span-1 h-[400px] min-h-[400px] transition-all duration-500" id="courses">
           <div id="lamp" class="relative flex flex-col md:flex-row gap-2 [&>*]:transition-all [&>*]:duration-500 [&>*]:delay-1000 [&>*]:ease-in-out md:[&>*]:w-[100%] md:[&_div]:min-w-10 [&_div]:h-[100%] [&_div]:min-h-10 h-full w-full [&>*]:flex-1 first:[&>*]:flex-auto">
             {% for course in collections.index %}
             <div class="choice md:hover:[&_h5]:bg-[color:var(--c-2)] items-center overflow-hidden rounded-md bg-[color:var(--c-2)] text-[color:var(--c-2)] relative">
               <h5 class="p-2 rounded-md text-[clamp(1rem,2.5vw,1.125rem)] select-none md:hover:text-[color:var(--c-1)] font-semibold md:[writing-mode:vertical-lr] sticky z-20 top-0 cursor-pointer md:left-0 md:h-full bg-[color:var(--c-1)]">{{ course.data.title }}</h5>
               <span class="">
-                <ul class="gap-4 md:left-12 md:top-0 top-10 absolute z-10 animate-pulse bg-[color:var(--c-2)] rounded-md flex flex-col w-full md:pl-16 md:-ml-12 p-8">
+                <ul class="gap-4 md:left-12 md:top-0 top-10 absolute z-10 bg-[color:var(--c-2)] rounded-md flex flex-col w-full md:pl-16 md:-ml-12 p-8">
                   {% for model in collections[course.data.tag] %}
                   <li class="w-full accordion-item">
                     <div class="accordion-header bg-[color:var(--c-2)] hover:bg-[color:var(--c-1)] rounded-md flex flex-col">
                       <div class="group accordion-title text-[color:var(--c-3)] hover:text-[color:var(--c-2)] font-semibold text-[clamp(0.875rem,2vw,1rem)] p-2 transition duration-200 flex justify-between items-center cursor-pointer">
                         <span class="model-title group-hover:text-[color:var(--c-2)]">{{ model.data.title }}</span>
-                        <i class="accordion-arrow fas fa-chevron-down text-[color:var(--c-3)] group-hover:text-[color:var(--c-2)]"></i>
+                        <i class="accordion-arrow fas fa-ellipsis-v text-[color:var(--c-3)] group-hover:text-[color:var(--c-2)]"></i>
                       </div>
                       <div class="accordion-content shadow-md bg-gradient-to-t from-10% backdrop-blur-sm from-violet-300/10 to-slate-100/10 p-2 rounded-md transition-colors transition-all duration-1000 hidden">
                         <p class="translate-y-0 opacity-100 text-[color:var(--c-2)] h-full relative w-full line-clamp-4 p-1 text-sm">
@@ -214,7 +170,7 @@ calculator.setExpression({id: 'eq2', latex: 'I=15', color: '#0D9488', sliderBoun
                           <img src="{{ model.data.thumbnail }}" alt="{{ model.data.title }}" class="opacity-100 w-full md:h-24 h-12 object-cover rounded-md transform transition-all duration-500 group-hover:blur  group-hover:scale-[0.9]">
                           <a href="{{ model.url }}" class="ring-2 ring-[color:var(--c-1)] py-2 px-4 absolute z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transition duration-400 delay-200 text-[color:var(--c-1)] opacity-0 group-hover:opacity-100 hover:bg-[color:var(--c-1)] hover:text-[color:var(--c-2)]">Open</a>
                         </div>
-                        
+
                       </div>
                     </div>
                   </li>
@@ -224,27 +180,27 @@ calculator.setExpression({id: 'eq2', latex: 'I=15', color: '#0D9488', sliderBoun
             </div>
             {% endfor %}
           </div>
-          
+
           <script>
             // JavaScript code for the accordion functionality
             const choiceContainers = document.querySelectorAll('.choice');
-          
+
             choiceContainers.forEach((choiceContainer) => {
               const accordionHeaders = choiceContainer.querySelectorAll('.accordion-header');
               let openAccordion = null;
-          
+
               accordionHeaders.forEach((header) => {
                 const title = header.querySelector('.accordion-title');
                 const modelTitle = header.querySelector('.model-title');
                 const arrow = header.querySelector('.accordion-arrow');
                 title.addEventListener('click', () => {
                   const content = header.querySelector('.accordion-content');
-          
+
                   closeAllAccordions();
                   content.classList.toggle('hidden');
-                  arrow.classList.toggle('fa-chevron-down');
-                  arrow.classList.toggle('fa-chevron-up');
-          
+                  arrow.classList.toggle('fa-ellipsis-v');
+                  arrow.classList.toggle('fa-ellipsis-h');
+
                   if (!content.classList.contains('hidden')) {
                     header.classList.add('bg-[color:var(--c-1)]');
                     header.classList.remove('bg-[color:var(--c-2)]');
@@ -264,29 +220,29 @@ calculator.setExpression({id: 'eq2', latex: 'I=15', color: '#0D9488', sliderBoun
                   }
                 });
               });
-          
+
               function closeAllAccordions() {
                 const accordionContents = choiceContainer.querySelectorAll('.accordion-content');
                 const accordionArrows = choiceContainer.querySelectorAll('.accordion-arrow');
                 const accordionHeaders = choiceContainer.querySelectorAll('.accordion-header');
                 const modelTitles = choiceContainer.querySelectorAll('.model-title');
-          
+
                 accordionContents.forEach((content) => {
                   content.classList.add('hidden');
                 });
-          
+
                 accordionArrows.forEach((arrow) => {
-                  arrow.classList.remove('fa-chevron-up');
-                  arrow.classList.add('fa-chevron-down');
+                  arrow.classList.remove('fa-ellipsis-h');
+                  arrow.classList.add('fa-ellipsis-v');
                   arrow.classList.remove('text-[color:var(--c-2)]');
                   arrow.classList.add('text-[color:var(--c-3)]');
                 });
-          
+
                 accordionHeaders.forEach((header) => {
                   header.classList.remove('bg-[color:var(--c-1)]');
                   header.classList.add('bg-[color:var(--c-2)]');
                 });
-          
+
                 modelTitles.forEach((title) => {
                   title.classList.remove('text-[color:var(--c-2)]');
                   title.classList.add('text-[color:var(--c-3)]');
@@ -295,51 +251,6 @@ calculator.setExpression({id: 'eq2', latex: 'I=15', color: '#0D9488', sliderBoun
             });
           </script>
 
-
-
-<style>
-  .circle-half {
-    width: 50%;
-    transition: transform 2s ease;
-  }
-
-  .circle-container:hover .circle-half:first-child {
-    transform: translateX(-10px); /* Adjust as needed */
-  }
-
-  .circle-container:hover .circle-half:last-child {
-    transform: translateX(10px); /* Adjust as needed */
-  }
-
-  .swing-out-left-fwd{-webkit-animation:swing-out-left-fwd .55s cubic-bezier(.6,-.28,.735,.045) both;animation:swing-out-left-fwd .55s cubic-bezier(.6,-.28,.735,.045) both}
-  @-webkit-keyframes swing-out-left-fwd{0%{-webkit-transform:rotateY(0);transform:rotateY(0);-webkit-transform-origin:left;transform-origin:left;opacity:1}100%{-webkit-transform:rotateY(-70deg);transform:rotateY(-70deg);-webkit-transform-origin:left;transform-origin:left;opacity:0}}@keyframes swing-out-left-fwd{0%{-webkit-transform:rotateY(0);transform:rotateY(0);-webkit-transform-origin:left;transform-origin:left;opacity:1}100%{-webkit-transform:rotateY(-70deg);transform:rotateY(-70deg);-webkit-transform-origin:left;transform-origin:left;opacity:0}}
-  .swing-out-right-fwd{-webkit-animation:swing-out-right-fwd .55s cubic-bezier(.6,-.28,.735,.045) both;animation:swing-out-right-fwd .55s cubic-bezier(.6,-.28,.735,.045) both}
-  @-webkit-keyframes swing-out-right-fwd{0%{-webkit-transform:rotateY(0);transform:rotateY(0);-webkit-transform-origin:right;transform-origin:right;opacity:1}100%{-webkit-transform:rotateY(70deg);transform:rotateY(70deg);-webkit-transform-origin:right;transform-origin:right;opacity:0}}@keyframes swing-out-right-fwd{0%{-webkit-transform:rotateY(0);transform:rotateY(0);-webkit-transform-origin:right;transform-origin:right;opacity:1}100%{-webkit-transform:rotateY(70deg);transform:rotateY(70deg);-webkit-transform-origin:right;transform-origin:right;opacity:0}}
-
-</style>
-
-    <script>
-
-//hide heroImage and make lamp non hidden
-
-function openDoor() {
-  var heroImage = document.getElementById("heroImage");
-  var lamp = document.getElementById("lamp");
-  var circleHalves = document.getElementsByClassName("circle-half");
-
-
-
-  circleHalves[0].classList.add("swing-out-left-fwd");
-  circleHalves[1].classList.add("swing-out-right-fwd");
-
-  setTimeout(function() {
-    heroImage.classList.add("hidden");
-  }, 1000); // Delay of 1 second
-
-
-}
-
-    </script>
 </div>
 
 
@@ -367,12 +278,12 @@ function openDoor() {
     <h2 class="font-bold text-[clamp(1.25rem,3.5vw,1.5rem)] mb-2 text-[color:var(--c-1)]">Helpful Resources</h2>
     <span class="text-sm text-[color:var(--c-1)]">We've got you covered with our help section, providing instructions and guidance on how to use our model effectively and make the most out of our tools.</span>
   </div>
-</div>   
+</div>
 
 
 
 <!-- GET IN TOUCH -->
-<div class="glowit right flex flex-col justify-center items-center md:col-span-1 md:row-span-2 transition-all duration-500" style="padding: clamp(1rem, 2vw, 2rem);background-color:var(--c-2)">
+<div class="glowit right flex flex-col justify-center items-center md:col-span-1 md:row-span-2 transition-all duration-500 rounded-lg" style="padding: clamp(1rem, 2vw, 2rem);background-color:var(--c-2)">
   <h2 class="text-[clamp(1.5rem,4vw,1.875rem)] font-bold text-center text-[color:var(--c-1)] mb-[clamp(0.5rem,1vw,1rem)]">Get in Touch</h2>
   <p class="text-[clamp(0.75rem,2vw,1rem)] text-center text-[color:var(--c-1)] mb-[clamp(0.5rem,1vw,1rem)]">Have questions? Reach out to our dedicated Econ.Vision team.</p>
   <a href="/Page/contact/" class="bg-[color:var(--c-3)] hover:bg-[color:var(--c-1)] text-[color:var(--c-2)] hover:text-[color:var(--c-2)] font-bold py-[clamp(0.5rem,1vw,1rem)] px-[clamp(0.5rem,1vw,1rem)] rounded-md flex items-center justify-center gap-2 transition-all duration-300">
@@ -387,19 +298,21 @@ function openDoor() {
 
 
      <div class="group/title2 relative glowit left md:col-span-3 row-span-1 flex items-center group transition-all duration-500" style="background-color:transparent;">
-      <div class="w-full flex md:space-x-4 space-x-2 py-2 justify-between hover:[&_a>img]:grayscale-0 [&_a>img]:grayscale">
-        {% for creator in collections.creators %}
-            {% if creator.data.show %}
-            <div class="ring-2 ring-[color:var(--c-1)] rounded-lg shadow-md w-full min-h-full object-cover">
-              <a href="{{creator.url}}" class="transition duration-500 ease-in-out relative">
-                <img src="{{creator.data.thumbnail}}" alt="{{creator.data.name}}" class="h-full w-full relative transition-all duration-1000 object-cover rounded-lg"/>
-                <h3 class="absolute md:text-md text-xs bottom-0 w-content bg-[color:var(--c-3)] px-2 rounded-tr-md rounded-bl-md">{{creator.data.name | trim}}</h3>
-            </a>
-            </div>
-            {% endif %}
-        {% endfor %}
-    </div>
-   
+         <div class="w-full flex md:space-x-4 space-x-2 py-2 justify-between hover:[&_a>img]:grayscale-0 [&_a>img]:grayscale">
+           {% for creator in collections.creators %}
+               {% if creator.data.show %}
+               <div class="ring-2 ring-[color:var(--c-1)] rounded-lg shadow-md w-full min-h-full object-cover">
+                 <a href="{{creator.url}}" class="transition duration-500 ease-in-out relative">
+                   <img src="{{creator.data.thumbnail}}" alt="{{creator.data.name}}" class="h-full w-full relative transition-all duration-1000 object-cover rounded-lg"/>
+                   <div class="absolute bottom-0 left-0 w-full bg-[color:var(--c-1)] p-2">
+                     <h3 class="text-[color:var(--c-2)] md:text-sm text-xs tracking-wide truncate">{{creator.data.name | trim}}</h3>
+                   </div>
+               </a>
+               </div>
+               {% endif %}
+           {% endfor %}
+       </div>
+
           <!-- Title -->
           <span  class="flex bottom-0 left-0 flex-col items-end md:opacity-0 md:group-hover/title2:opacity-100 md:-translate-y-10 translate-y-5 -z-20 md:group-hover/title2:translate-y-6 absolute transition duration-1000 ease-in-out">
             <h1 class="md:text-base text-sm font-light uppercase tracking-wide text-[color:var(--c-1)] ">Meet Our Team</h1>
@@ -416,10 +329,10 @@ function openDoor() {
 <script>
   // Get all the choice elements
   var choices = document.getElementsByClassName('choice');
-  
+
   // Keep track of the currently selected choice
   var currentChoice = choices[0];
-  
+
   // Function to handle click event
   function handleClick(event) {
       // If there is a currently selected choice, minimize it
@@ -428,48 +341,48 @@ function openDoor() {
           currentChoice.style.overflow = 'hidden';
           currentChoice.classList.remove('scroll-smooth'); // Remove smooth scroll
       }
-  
+
       // Expand the clicked choice
       event.currentTarget.style.flex = 'auto';
-  
+
       //replace overflow-hidden for overflow-auto
       event.currentTarget.style.overflow = 'auto';
       event.currentTarget.classList.add('scroll-smooth'); // Add smooth scroll
-  
+
       // Update the currently selected choice
       currentChoice = event.currentTarget;
   }
-  
+
   // Attach the event handler to all choices
   for (var i = 0; i < choices.length; i++) {
       choices[i].addEventListener('click', handleClick);
   }
-  
+
   // Expand the first choice by default
   choices[0].style.flex = 'auto';
   choices[0].style.overflow = 'auto';
   choices[0].classList.add('scroll-smooth'); // Add smooth scroll
   </script>
-  
+
 
 <script>
    const scrollers = document.querySelectorAll(".scroller");
-   
+
    // If a user hasn't opted in for recuded motion, then we add the animation
    if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
      addAnimation();
    }
-   
+
    function addAnimation() {
      scrollers.forEach((scroller) => {
        // add data-animated="true" to every `.scroller` on the page
        scroller.setAttribute("data-animated", true);
- 
- 
+
+
      // Make an array from the elements within `.scroller-inner`
      const scrollerInner = scroller.querySelector(".scroller__inner");
      const scrollerContent = Array.from(scrollerInner.children);
- 
+
      // For each item in the array, clone it
      // add aria-hidden to it
      // add it into the `.scroller-inner`
@@ -480,8 +393,8 @@ function openDoor() {
      });
    });
  }
- 
- 
+
+
  </script>
 
  <script>
@@ -503,5 +416,3 @@ window.addEventListener('load', function() {
 });
 
  </script>
-
-
