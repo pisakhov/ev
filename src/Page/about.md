@@ -14,7 +14,7 @@ One of the great benefits of Econ.Vision is its ability to help students with th
 
 But we don't stop at just providing answers. Econ.Vision also offers a comprehensive help section for learning economic concepts. You can interact with dynamic models using sliders and other advanced features, allowing you to see how changes in variables affect outcomes in real-time. This hands-on approach enhances your understanding and makes learning economics more intuitive and engaging.
 
-We understand the common experience of facing an economics problem and feeling uncertain. If you find yourself in this situation, please don't hesitate to [contact us](https://econ.vision/?page=contact), and we'll do our best to assist you. We're not only here to provide a tool; we're committed to supporting you throughout your studies at Columbia.
+We understand the common experience of facing an economics problem and feeling uncertain. If you find yourself in this situation, please don't hesitate to [contact us](/Page/contact/), and we'll do our best to assist you. We're not only here to provide a tool; we're committed to supporting you throughout your studies at Columbia.
 
 Ultimately, we developed Econ.Vision to be a valuable asset in your academic journey. We're here to support you every step of the way, and we look forward to seeing you overcome your economics challenges successfully!
 </div>
