@@ -2,12 +2,11 @@
   "name": "ev",
   "version": "1.0.0",
   "description": "These are the starting files used by [Kevin Powell](https://kevinpowell.co) to create a personal blog site for the [Codementor](https://www.codementor.io/) DevProjects Challenge, [Create a fast and secure blog using JAMStack](https://www.codementor.io/projects/web/create-a-fast-and-secure-blog-using-jamstack-c93coupnxb). You are free to use them however you want to get started with the challenge, if you'd like to start working on creating the site without worrying about the content itself.",
-  "main": "index.js",
   "scripts": {
-    "start": "npm run build:css && eleventy --serve & parcel serve src/main.js --dist-dir public --public-url ./",
+    "start": "npm run build && eleventy --serve",
     "build": "npm run build:css && npm run build:js && eleventy",
     "build:css": "npx tailwindcss -i ./style.css -o ./public/style.css",
-    "build:js": "parcel build src/main.js --dist-dir public --no-source-maps --no-cache --public-url ./"
+    "build:js": "parcel build src/main.js --dist-dir public --no-source-maps --no-cache"
   },
   "keywords": [],
   "author": "",
