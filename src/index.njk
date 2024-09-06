@@ -15,9 +15,9 @@ layout: 'base.njk'
 
 
 
-  <div id="isSticky" class="fade-in-1000 backdrop-blur-[20px] group-hover:backdrop-blur-[0px] transition-all duration-[2000ms] bg-gradient-to-bl from-violet-300/90 via-violet-300/60 to-violet-300/30 rounded-xl shadow-[inset_0px_-12px_20px_8px_rgba(255,255,255,0.3),0_20px_20px_0px_rgba(0,0,0,0.5)] mb-8 md:px-12 p-2 text-[color:var(--c-1)] sticky top-[20%] lg:mx-[10%] md:mx-4 mx-0  z-[9990] flex flex-col justify-center items-center space-y-6">
+  <div id="isSticky" class="fade-in-1000 backdrop-blur-[20px] group-hover:backdrop-blur-[0px] transition-all duration-[2000ms] bg-gradient-to-bl from-violet-300/90 via-violet-300/60 to-violet-300/30 rounded-xl shadow-[inset_0px_-12px_20px_8px_rgba(255,255,255,0.3),0_20px_20px_0px_rgba(0,0,0,0.5)] mb-8 p-2 text-[color:var(--c-1)] sticky top-[20%] lg:mx-[10%] md:mx-4 mx-0  z-[9990] flex flex-col justify-center items-center space-y-6">
           <!-- LOGO -->
-         <div class="z-20">{% include "nav.njk" %}</div>
+         <div class="z-20 w-full">{% include "nav.njk" %}</div>
         <!-- LOGO -->
         <div id="mainlogo" class="z-10 text-[clamp(1.875rem,5vw,2.25rem)] font-bold"></div>
         <p class="md:[text-shadow:0_0_10px_rgba(0,0,0,0.4)] md:group-hover:[text-shadow:0_0_5px_rgba(43,45,56,0)] duration-[1500ms] md:text-transparent md:group-hover:text-[color:var(--c-1)] text-center text-[clamp(1.125rem,3vw,1.375rem)] z-10">
@@ -83,7 +83,7 @@ window.addEventListener('scroll', () => {
                       <i class="fas fa-chevron-left"></i>
                   </button>
 
-                  <div id="modelCarousel" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-4 md:gap-8 lg:gap-12 overflow-hidden touch-pan-x">
+                  <div id="modelCarousel" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-4 md:gap-6 lg:gap-8 overflow-hidden touch-pan-x">
                       {% for model in allModels %}
                       <div class="bg-[color:var(--c-2)] shadow-xl rounded-lg overflow-hidden transition-all duration-500 hover:shadow-2xl w-full h-[300px] md:h-[400px] flex flex-col">
                           <img src="{{ model.data.thumbnail }}" alt="{{ model.data.title }}" class="w-full h-48 md:h-56 object-cover transition-all duration-500 hover:opacity-90">
@@ -333,7 +333,7 @@ window.addEventListener('scroll', () => {
                <div class="ring-2 ring-[color:var(--c-1)] rounded-lg shadow-md w-full min-h-full object-cover">
                  <a href="{{creator.url}}" class="transition duration-500 ease-in-out relative">
                    <img src="{{creator.data.thumbnail}}" alt="{{creator.data.name}}" class="h-full w-full relative transition-all duration-1000 object-cover rounded-lg"/>
-                   <div class="absolute bottom-0 left-0 w-full bg-[color:var(--c-1)] p-2">
+                   <div class="absolute bottom-0 left-0 rounded-b-lg w-full bg-[color:var(--c-1)] p-2">
                      <h3 class="text-[color:var(--c-2)] md:text-sm text-xs tracking-wide truncate">{{creator.data.name | trim}}</h3>
                    </div>
                </a>

@@ -6,80 +6,80 @@ tag: microeconomics
 color: violet
 show: true
 ---
-<ul class="relative [&_li]:bg-[color:var(--c-2)] hover:[&_li]:bg-[color:var(--c-1)] [&_li]:rounded-md [&_li]:flex-auto hover:[&_li]:shadow-lg grid lg:grid-cols-1 grid-cols-1 gap-4 items-center flex p-8 w-full">
-{% for model in collections.microeconomics %}{% if model.data.show %}
-<li class="w-full accordion-item">
-<div class="accordion-header bg-[color:var(--c-2)] hover:bg-[color:var(--c-1)] rounded-md flex flex-col">
-<div class="group accordion-title text-[color:var(--c-3)] hover:text-[color:var(--c-2)] font-semibold text-[clamp(0.875rem,2vw,1rem)] p-2 transition duration-200 flex justify-between items-center cursor-pointer">
-<span class="model-title group-hover:text-[color:var(--c-2)]">{{ model.data.title }}</span>
-<i class="accordion-arrow fas fa-chevron-down text-[color:var(--c-3)] group-hover:text-[color:var(--c-2)]"></i></div>
-<div class="accordion-content shadow-md bg-gradient-to-t from-10% backdrop-blur-sm from-violet-300/10 to-slate-100/10 p-2 rounded-md transition-colors transition-all duration-1000 hidden">
-<p class="translate-y-0 opacity-100 text-[color:var(--c-2)] h-full relative w-full line-clamp-4 p-1 text-sm">{{ model.data.description }}</p>
-<div class="relative group">
-<img src="{{ model.data.thumbnail }}" alt="{{ model.data.title }}" class="opacity-100 w-full md:h-24 h-12 object-cover rounded-md transform transition-all duration-500 group-hover:blur  group-hover:scale-[0.9]">
-<a href="{{ model.url }}" class="ring-2 ring-[color:var(--c-1)] py-2 px-4 absolute z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transition duration-400 delay-200 text-[color:var(--c-1)] opacity-0 group-hover:opacity-100 hover:bg-[color:var(--c-1)] hover:text-[color:var(--c-2)]">Open</a>
-</div>
-</div>
-</div>
-</li>
-{% endif %}{% endfor %}
-</ul>
-<script>
-// JavaScript code for the accordion functionality
-document.addEventListener('DOMContentLoaded', (event) => {
-    const accordionHeaders = document.querySelectorAll('.accordion-header');
-    let openAccordion = null;
-    accordionHeaders.forEach((header) => {
-        const title = header.querySelector('.accordion-title');
-        const modelTitle = header.querySelector('.model-title');
-        const arrow = header.querySelector('.accordion-arrow');
-        title.addEventListener('click', () => {
-            const content = header.querySelector('.accordion-content');
-            closeAllAccordions();
-            content.classList.toggle('hidden');
-            arrow.classList.toggle('fa-chevron-down');
-            arrow.classList.toggle('fa-chevron-up');
-            if (!content.classList.contains('hidden')) {
-                header.classList.add('bg-[color:var(--c-1)]');
-                header.classList.remove('bg-[color:var(--c-2)]');
-                modelTitle.classList.remove('text-[color:var(--c-3)]');
-                modelTitle.classList.add('text-[color:var(--c-2)]');
-                arrow.classList.remove('text-[color:var(--c-3)]');
-                arrow.classList.add('text-[color:var(--c-2)]');
-                openAccordion = header;
-            } else {
-                header.classList.remove('bg-[color:var(--c-1)]');
-                header.classList.add('bg-[color:var(--c-2)]');
-                modelTitle.classList.remove('text-[color:var(--c-2)]');
-                modelTitle.classList.add('text-[color:var(--c-3)]');
-                arrow.classList.remove('text-[color:var(--c-2)]');
-                arrow.classList.add('text-[color:var(--c-3)]');
-                openAccordion = null;
-            }
-        });
+<div x-data="{
+  searchTerm: '',
+  get filteredModels() {
+    return this.getFilteredModels();
+  },
+  getFilteredModels() {
+    return Array.from(this.$refs.modelGrid.children).filter(model => {
+      if (this.searchTerm === '') return true;
+      const title = model.querySelector('h2').textContent.toLowerCase();
+      const description = model.querySelector('p').textContent.toLowerCase();
+      return title.includes(this.searchTerm.toLowerCase()) || description.includes(this.searchTerm.toLowerCase());
     });
-    function closeAllAccordions() {
-        const accordionContents = document.querySelectorAll('.accordion-content');
-        const accordionArrows = document.querySelectorAll('.accordion-arrow');
-        const accordionHeaders = document.querySelectorAll('.accordion-header');
-        const modelTitles = document.querySelectorAll('.model-title');
-        accordionContents.forEach((content) => {
-            content.classList.add('hidden');
-        });
-        accordionArrows.forEach((arrow) => {
-            arrow.classList.remove('fa-chevron-up');
-            arrow.classList.add('fa-chevron-down');
-            arrow.classList.remove('text-[color:var(--c-2)]');
-            arrow.classList.add('text-[color:var(--c-3)]');
-        });
-        accordionHeaders.forEach((header) => {
-            header.classList.remove('bg-[color:var(--c-1)]');
-            header.classList.add('bg-[color:var(--c-2)]');
-        });
-        modelTitles.forEach((title) => {
-            title.classList.remove('text-[color:var(--c-2)]');
-            title.classList.add('text-[color:var(--c-3)]');
-        });
-    }
-});
-</script>
+  }
+}" x-init="$watch('searchTerm', value => { $nextTick(() => { filteredModels; }) })">
+  <!-- Main container -->
+  <main class="container px-4 md:px-6 py-8 space-y-8 dark:bg-gray-900">
+      <!-- Search bar container -->
+      <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0 md:space-x-4">
+          <!-- Search bar -->
+          <div class="relative flex items-center w-full max-w-2xl mx-auto">
+              <input
+                type="text"
+                placeholder="Search models in {{ title }}"
+                x-model="searchTerm"
+                :placeholder="window.innerWidth < 640 ? 'Search...' : 'Search models in {{ title }}'"
+                @resize.window="$el.setAttribute('placeholder', window.innerWidth < 640 ? 'Search...' : 'Search models in {{ title }}')"
+                class="w-full pl-12 pr-4 py-3 border-2 border-violet-300 rounded-full focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-transparent transition duration-300 ease-in-out shadow-sm text-lg"
+              >
+            <!-- Search icon -->
+            <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+              <i class="fas fa-search text-violet-400 text-xl"></i>
+            </div>
+          </div>
+      </div>
+    <!-- Grid container for models -->
+    <div x-ref="modelGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {%- for model in collections[tag] -%}
+        {%- if model.data.show -%}
+          <!-- Individual model card -->
+          <div x-show="searchTerm === '' ||
+                       '{{ model.data.title }}'.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                       '{{ model.data.description }}'.toLowerCase().includes(searchTerm.toLowerCase())"
+            class="bg-white rounded-lg shadow-md overflow-hidden dark:bg-gray-800 dark:text-white flex flex-col h-full">            <!-- Model thumbnail with magnifying glass overlay -->
+                <div class="relative group">
+                  <img src="{{ model.data.thumbnail }}" alt="{{ model.data.title }}" class="w-full h-48 object-cover transition duration-300 ease-in-out group-hover:opacity-75">
+                  <a href="{{ model.url }}" class="absolute inset-0 flex items-center justify-center md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300 bg-black bg-opacity-50">
+                    <i class="fas fa-search-plus text-white text-4xl hidden md:block"></i>
+                  </a>
+                </div>
+            <!-- Model details -->
+            <div class="p-4 flex-grow">
+              <h2 class="text-lg font-semibold mb-2 line-clamp-2 h-14">{{ model.data.title }}</h2>
+              <p class="text-sm text-gray-600 dark:text-gray-300 mb-4 line-clamp-3 h-18">{{ model.data.description }}</p>
+            </div>
+            <!-- Learn More button -->
+            <div class="p-4 pt-0 mt-auto">
+                <a href="{{ model.url }}" class="inline-block text-center bg-[color:var(--c-1)] text-white text-sm px-3 py-1.5 rounded-md hover:bg-[color:var(--c-3)] transition shadow-sm">
+                  Learn More
+                </a>
+            </div>
+          </div>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+    <!-- No results message -->
+    <div x-show="filteredModels.length === 0" class="flex flex-col items-center justify-center py-16 px-4">
+      <div class="mb-8">
+        <i class="fas fa-search text-violet-500 dark:text-violet-300 text-6xl animate-pulse"></i>
+      </div>
+      <h3 class="text-4xl font-bold text-violet-700 dark:text-violet-300 mb-4 text-center">No results found</h3>
+      <p class="text-xl text-gray-600 dark:text-gray-400 mb-8 text-center max-w-lg">We couldn't find any models matching your search. Try different keywords or check your spelling.</p>
+      <button @click="searchTerm = ''" class="bg-gradient-to-r from-violet-500 to-purple-600 text-white font-semibold py-3 px-8 rounded-full transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-violet-400 focus:ring-opacity-50 shadow-lg hover:shadow-xl">
+        Clear Search
+      </button>
+    </div>
+  </main>
+</div>
