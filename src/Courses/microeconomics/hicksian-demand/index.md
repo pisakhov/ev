@@ -7,7 +7,7 @@ layout: model.njk
 show: true
 ---
 <script defer>
-const myCalculator = new EconVision(true);
+const myCalculator = new EconVision();
 myCalculator.setGraphs({ 'engine': 'desmos', 'idDiv': 'SimpleHicksianGraph', 'height': '650px', 'width': '100', 'left': '-2', 'right': '15', 'bottom': '-1', 'top': '10', 'copy': true, 'showGrid': false, 'expressions': true, 'zoomFit': true, 'showXAxis': true, 'showYAxis': true, 'xAxisLabel': 'x', 'yAxisLabel': 'y' });
 
 //util function
