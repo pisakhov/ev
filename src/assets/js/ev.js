@@ -15,7 +15,7 @@ async function solveEquations(equations) {
   };
 
   try {
-    const response = await fetch('/ev-ai/api/solve_operations/', {
+    const response = await fetch('https://pisakhov.com/ev-ai/api/solve_operations/', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -842,7 +842,7 @@ class RunCalc {
 
     // Solve Equations API
     const solveEquations = (equations) => {
-        return fetch('/ev-ai/api/solve_operations/', {
+        return fetch('https://pisakhov.com/ev-ai/api/solve_operations/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
