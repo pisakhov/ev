@@ -2,6 +2,44 @@
 function getRandomInt(min, max) { //returns a random integer between min and max
 	return Math.floor(Math.random() * (max - min + 1)) + min;
 }
+async function solveEquations(equations) {
+  if (!Array.isArray(equations) || equations.length !== 3) {
+    throw new Error('Input must be an array of 3 equations');
+  }
+
+  const payload = {
+    operation: 'solveEquations',
+    data: {
+      equations: equations
+    }
+  };
+
+  try {
+    const response = await fetch('/ev-ai/api/solve_operations/', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(payload),
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    const data = await response.json();
+
+    // Check if the solution is in the expected format
+    if (typeof data.solution === 'object' && data.solution !== null) {
+      return data.solution;
+    } else {
+      return data; // Return the entire response if it's not in the expected format
+    }
+  } catch (error) {
+    console.error('Error solving equations:', error);
+    throw error;
+  }
+}
 
 function generateColorShades(color) {
 	var colors = {
@@ -214,7 +252,7 @@ function capitalizeLn(str) { //replace ln to LN
 	return str.replace(/ln/g, 'LN');
 }
 
-function replaceLn(str) { //replace log to ln  
+function replaceLn(str) { //replace log to ln
 	return str.replace(/ln/gi, "log");
 }
 
@@ -507,7 +545,7 @@ class RunCalc {
 				aggregatedSum = lastSum.reduce((total, num) => {
 					let newTotal = nerdamer(inMath(total)).add(inMath(num)).toString();
 					return newTotal;
-				}, '0');			
+				}, '0');
 			});
 		} else { //main
 			var expIdDiv = getValueFromKeyPath(selectedExp, getKeyPath(selectedExp, parentIdDiv));
@@ -817,7 +855,8 @@ class RunCalc {
 		});
 		return NewfunEqu + "=[" + returnValue + "]";
 	}
-	simpleSubstitute(parms) {
+
+  simpleSubstitute(parms) {
 		let parentIdDiv = parms['parentIdDiv'];
 		let NewfunEqu = parms['NewfunEqu'];
 
@@ -899,7 +938,7 @@ class RunCalc {
         sol.x = Number(nerdamer('B(x,y)').evaluate({y:sol.y}).solveFor('x')[0]);
     }
 
-}
+		}
 		Object.entries(sol).forEach(([key, value]) => {
 			const subId = `${idDiv}_${key}`;
 			const subNewfunEqu = `${NewfunEqu}_${key}`;
@@ -916,6 +955,144 @@ class RunCalc {
 		});
 		return `${NewfunEqu}=[${returnValue.join(', ')}]`;
 	}
+
+	simpleHicksian(parms) {
+    const {
+        idDiv,
+        utilityFunction,
+        isocostLine,
+        fixedUtilityLevel,
+        NewfunEqu,
+        listGraphs
+    } = parms;
+
+    const listOfGraphs = this.listOfGraphs;
+    const selectedExp = this.selectedExpressions;
+    let sol = {};
+    var data = {};
+
+    const utilityFunc = inMath(replaceLn(getSubstringAfterEquals(selectedExp[utilityFunction]))).toString();
+    const isocostLineFunc = inMath(getSubstringAfterEquals(selectedExp[isocostLine])).toString();
+    const valuesInParens = getValuesInParens(getSubstringBeforeEquals(selectedExp[isocostLine]));
+    const fixedUtility = inMath(getSubstringAfterEquals(selectedExp[fixedUtilityLevel])).toString();
+
+    if (utilityFunc.includes('min(')) {
+        const startIdx = utilityFunc.indexOf('(') + 1;
+        const endIdx = utilityFunc.lastIndexOf(')');
+        if (startIdx !== -1 && endIdx !== -1) {
+            const innerFuncs = utilityFunc.substring(startIdx, endIdx).split(',');
+            if (innerFuncs.length === 2) {
+                sol.x = nerdamer(`${fixedUtility} / (${innerFuncs[0]}/x)`).evaluate().text();
+                sol.y = nerdamer(`${fixedUtility} / (${innerFuncs[1]}/y)`).evaluate().text();
+
+                listGraphs.forEach((i) => {
+                    listOfGraphs[i].setExpression({
+                        id: `${idDiv}_y`,
+                        type: "expression",
+                        latex: getSubstringBeforeEquals(selectedExp[utilityFunction])
+                            .replace(/y/g, `${NewfunEqu}_y`)
+                            .replace(/x/g, sol.x) + `~${getSubstringBeforeEquals(selectedExp[fixedUtilityLevel])}`,
+                        hidden: true
+                    });
+                    listOfGraphs[i].setExpression({
+                        id: `${idDiv}_x`,
+                        type: "expression",
+                        latex: `${NewfunEqu}_x=${sol.x}`,
+                        hidden: true
+                    });
+                });
+            }
+        }
+    } else {
+        nerdamer.setFunction('U', ['x', 'y'], utilityFunc);
+
+        const MUx = nerdamer.diff('U(x, y)', 'x').text('decimals', 20);
+        const MUy = nerdamer.diff('U(x, y)', 'y').text('decimals', 20);
+        const MRS = nerdamer(`(${MUx})/(${MUy})`).text('decimals', 20);
+
+        const dEdx = nerdamer.diff(isocostLineFunc, 'x').evaluate().text('decimals', 20);
+        const dEdy = nerdamer.diff(isocostLineFunc, 'y').evaluate().text('decimals', 20);
+        const priceRatio = nerdamer(`(${dEdx})/(${dEdy})`).evaluate().text('decimals', 20);
+
+        const equation1 = `${MRS} = ${priceRatio}`;
+        const equation2 = `${utilityFunc} = ${fixedUtility}`;
+
+        if (equation1.includes('x') && equation1.includes('y')) {
+            let mainFunc = `(${isocostLineFunc}) - lambda * (${utilityFunc} - ${fixedUtility})`;
+
+            valuesInParens.forEach((i, k) => {
+                nerdamer.setFunction('f', valuesInParens[k], mainFunc);
+                data[i] = nerdamer.diff(nerdamer(`f(${valuesInParens[k]})`), valuesInParens[k]).toString();
+            });
+
+            nerdamer.setFunction('f', ['lambda'], mainFunc);
+            data['lambda'] = nerdamer.diff(nerdamer('f(lambda)'), 'lambda').toString();
+
+            var arrayLag = [];
+            Object.entries(data).forEach(([key, value]) => {
+                arrayLag.push(value + "=0");
+            });
+
+            nerdamer.set('SOLUTIONS_AS_OBJECT', true);
+            sol = nerdamer.solveEquations(arrayLag);
+
+            Object.entries(sol).forEach(([key, value]) => {
+                var subId = `${idDiv}_${key}`;
+                var subNewfunEqu = `${NewfunEqu}_{${key}}`;
+                selectedExp[subId] = `${subNewfunEqu}=${nerdamer(value).evaluate().toString()}`;
+                listGraphs.forEach((i) => {
+                    listOfGraphs[i].setExpression({
+                        id: subId,
+                        type: "expression",
+                        latex: `${subNewfunEqu}=${nerdamer(value).evaluate().toString()}`
+                    });
+                });
+            });
+        } else if (equation1.includes('x')) {
+            const subEq = nerdamer(`${MRS} - ${priceRatio} = 0`);
+            sol.x = subEq.solveFor('x').toString();
+            listGraphs.forEach((i) => {
+                listOfGraphs[i].setExpression({
+                    id: `${idDiv}_y`,
+                    type: "expression",
+                    latex: getSubstringBeforeEquals(selectedExp[utilityFunction])
+                        .replace(/y/g, `${NewfunEqu}_y`)
+                        .replace(/x/g, sol.x) + `~${getSubstringBeforeEquals(selectedExp[fixedUtilityLevel])}`,
+                    hidden: true
+                });
+                listOfGraphs[i].setExpression({
+                    id: `${idDiv}_x`,
+                    type: "expression",
+                    latex: `${NewfunEqu}_x=${sol.x}`,
+                    hidden: true
+                });
+            });
+        } else if (equation1.includes('y')) {
+            const subEq = nerdamer(`${MRS} - ${priceRatio} = 0`);
+            sol.y = subEq.solveFor('y').toString();
+            listGraphs.forEach((i) => {
+                listOfGraphs[i].setExpression({
+                    id: `${idDiv}_x`,
+                    type: "expression",
+                    latex: getSubstringBeforeEquals(selectedExp[utilityFunction])
+                        .replace(/x/g, `${NewfunEqu}_x`)
+                        .replace(/y/g, sol.y) + `~${getSubstringBeforeEquals(selectedExp[fixedUtilityLevel])}`,
+                    hidden: true
+                });
+                listOfGraphs[i].setExpression({
+                    id: `${idDiv}_y`,
+                    type: "expression",
+                    latex: `${NewfunEqu}_y=${sol.y}`,
+                    hidden: true
+                });
+            });
+        }
+    }
+    return `${NewfunEqu}=[${NewfunEqu}_x, ${NewfunEqu}_y]`;
+}
+
+
+
 }
 
 class SliderComponent {
@@ -1041,11 +1218,11 @@ class SliderComponent {
 					<button class="disabled:scale-100 disabled:bg-slate-500 h-1/2 translate-x-6 after:content-['_'] after:absolute after:size-4 after:top-0 after:right-0 after:rounded-bl-full after:bg-transparent w-full decreaseMultiplier transform rounded-b-lg bg-red-500 px-1 py-0 text-white hover:bg-red-600 active:bg-red-700 active:translate-x-6 active:scale-95 text-left"></button>
 					</div>
 				  <div class="relative flex-grow flex items-center justify-between">
-					
+
 					<div class="h-full w-full rounded-xl bg-gradient-to-r from-violet-700 via-violet-500 to-violet-700 p-[1px]">
 						<input type="number" class="number-config bg-slate-50 opacity-90 w-full rounded-[10px] border border-violet-400 px-4 py-1.5 text-center text-sm focus:outline-none" />
 					</div>
-					
+
 					<span class="multiplierIndicator absolute p-1 inset-y-0 left-1 text-xs z-10 pointer-events-none"></span>
 				  </div>
 				</div>
@@ -1077,10 +1254,10 @@ class SliderComponent {
 			this.multiplierIndicator.textContent = 'x' + this.DEFAULT_STEP;
 			const decreaseMultiplierButton = this.container.querySelector('.decreaseMultiplier');
 			const increaseMultiplierButton = this.container.querySelector('.increaseMultiplier');
-		
+
 			increaseMultiplierButton.textContent = 'x' + (this.DEFAULT_STEP * 10);
 			decreaseMultiplierButton.textContent = 'Min';
-			decreaseMultiplierButton.disabled = true;	
+			decreaseMultiplierButton.disabled = true;
 		}
 	}
 	updateAllGraphs() {
@@ -1222,7 +1399,7 @@ if (decreaseValueButton && increaseValueButton) {
         } else if (event.target === increaseValueButton) {
 			this.adjustValue(1);
             this.rangeInput.dispatchEvent(new Event('input'));
-		
+
 		}
     };
 
@@ -1230,7 +1407,7 @@ if (decreaseValueButton && increaseValueButton) {
     decreaseValueButton.addEventListener('click', adjustValue);
     increaseValueButton.addEventListener('click', adjustValue);
 }
-	
+
 		// Conditionally add event listeners for decrease/increase multiplier buttons
 		const decreaseMultiplierButton = this.container.querySelector('.decreaseMultiplier');
 		const increaseMultiplierButton = this.container.querySelector('.increaseMultiplier');
@@ -1274,7 +1451,7 @@ if (decreaseValueButton && increaseValueButton) {
 		const increaseMultiplierButton = this.container.querySelector('.increaseMultiplier');
 
 		let currentStep = parseFloat(this.rangeInput.step);
-	  
+
 		const maxMultiplier = Math.pow(10, Math.floor(Math.log10(this.DEFAULT_MAX) - 1));
 		const minMultiplier = this.DEFAULT_STEP;
 		if (direction === 1) {
@@ -1560,7 +1737,7 @@ class Instructions {
             </h3>
             <button id="toggle-${randomSubId}" data-target="body-${randomSubId}" class="toggle-button bg-transparent text-gray-700 hover:text-gray-800 font-medium h-10 aspect-square rounded-full hover:-rotate-90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-violet-500 d-flex align-items-center justify-content-center">
             <i class="fas fa-chevron-left text-sm"></i>
-          </button>          
+          </button>
           </div>
           <div id="body-${randomSubId}" data-display="none" class="hidden p-2 md:p-6 bg-violet-600 text-white [&_math-field]:text-white rounded-lg text-sm">
             ${p2}
@@ -1788,7 +1965,7 @@ class View {
 			}
 
 		}
-    
+
 
         `;
 		document.head.appendChild(style);
@@ -1808,7 +1985,7 @@ class View {
                 <div style="display:none;" class="md:fixed relative top-0 right-0 z-40 backdrop-blur-lg bg-violet-100/50 md:h-full md:w-full cursor-pointer" id="dark-screen"></div>
                 <dialog style="display:none;" class="col-span-12 rounded-lg md:absolute md:overflow-y-auto relative md:inset-0 w-full md:w-3/4 lg:w-1/2 md:h-fit shadow-[0_0px_16px_-6px_rgba(0,0,0,0.9)] px-10 py-2 md:backdrop-blur-md md:bg-white/50 z-50 flex flex-col items-center justify-around" id="offcanvasPanel">
 				<button id="integrate-mode" class="group md:block hidden absolute right-0 bottom-0 transform px-4 py-2 bg-violet-600 hover:bg-violet-900 text-white text-center rounded-ee-lg rounded-ss-lg">
-				<i class="fas fa-hand-point-down group-hover:animate-bounce"></i>				
+				<i class="fas fa-hand-point-down group-hover:animate-bounce"></i>
 				</button>
 				<div class="md:m-auto w-full"> <!-- This div centers the content vertically on medium screens -->
                   <button class="float-right absolute top-0 right-0 m-4 hidden md:block" id="exit-button-offcanvas"><i class="fa fa-times text-black"></i></button>
@@ -1873,7 +2050,7 @@ class View {
 			if (icon.classList.contains('fa-hand-point-down')) {
 				icon.classList.remove('fa-hand-point-down');
 				icon.classList.add('fa-hand-point-up');
-				window.scrollTo({top: document.body.scrollHeight, behavior: 'smooth'});				
+				window.scrollTo({top: document.body.scrollHeight, behavior: 'smooth'});
 			} else {
 				icon.classList.remove('fa-hand-point-up');
 				icon.classList.add('fa-hand-point-down');
@@ -2161,7 +2338,94 @@ class EconVision {
 			}
 		}
 	}
-	setBounds(options) {
+	addPractice(options) {
+    const { idDiv, selectedIdDivs, samplePractice } = options;
+    const sideInputsContent = document.getElementById("sideInputsContent");
+
+    // Create practice button
+    const practiceButton = document.createElement('button');
+    practiceButton.id = idDiv;
+    practiceButton.className = "w-full px-6 py-3 bg-violet-600 text-white rounded-lg hover:bg-violet-700 active:bg-violet-800 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:ring-offset-2 transition-all duration-300 ease-in-out transform shadow-lg hover:shadow-xl flex items-center justify-center space-x-3 font-bold text-lg";
+    practiceButton.innerHTML = '<i class="fas fa-pen text-2xl mr-2"></i><span>Practice Now</span><i class="fas fa-arrow-down ml-2"></i>';
+    sideInputsContent.insertAdjacentElement('afterbegin', practiceButton);
+
+    // Create modal
+    const modal = document.createElement('div');
+    modal.id = `${idDiv}-modal`;
+    modal.className = "fixed inset-0 bg-gradient-to-br from-indigo-900 to-violet-900 bg-opacity-90 overflow-y-auto h-full w-full hidden z-[999] md:backdrop-blur-md md:transition-all md:duration-500 md:ease-in-out flex items-center justify-center";
+    modal.innerHTML = `
+        <div class="relative mx-auto p-4 md:p-8 border-2 border-violet-300 w-full md:w-2/3 lg:w-1/2 shadow-2xl rounded-2xl bg-white bg-opacity-95 md:transform md:transition-all md:duration-500 md:ease-in-out md:hover:scale-105">
+            <div class="mt-3">
+                <div class="flex items-center justify-between pb-6 border-b-2 border-violet-200">
+                    <h3 class="text-2xl md:text-4xl font-extrabold text-violet-800 flex items-center">
+                        <i class="fas fa-pen text-violet-600 mr-2 md:mr-4 text-3xl md:text-5xl"></i>
+                        <span class="bg-clip-text text-transparent bg-gradient-to-r from-violet-600 to-indigo-600">Time to Practice!</span>
+                    </h3>
+                    <button id="${idDiv}-close" class="text-gray-400 hover:text-red-500 transition duration-300 focus:outline-none group" title="Close question">
+                        <i class="fas fa-times text-2xl md:text-4xl group-hover:opacity-50 md:hover:rotate-90 md:transition-transform md:duration-300"></i>
+                        <span class="absolute invisible group-hover:visible bg-gray-800 text-white text-xs rounded py-1 px-2 -mt-8 -ml-16">Question will be removed</span>
+                    </button>
+                </div>
+                <div class="mt-4 md:mt-8 text-gray-700">
+                    <div class="mb-4 md:mb-6 text-lg md:text-xl font-semibold text-violet-700">Grab a pen and write down the following question:</div>
+                    <div id="${idDiv}-content" class="bg-violet-50 p-4 md:p-8 rounded-2xl shadow-lg border-2 border-violet-300 font-serif text-lg md:text-xl leading-relaxed md:transition-all md:duration-300 md:hover:shadow-xl"></div>
+                </div>
+            </div>
+        </div>
+    `;
+    document.body.appendChild(modal);
+
+    // Open modal and populate with current values and practice question
+    practiceButton.addEventListener('click', () => {
+        modal.classList.remove('hidden');
+        const content = document.getElementById(`${idDiv}-content`);
+        content.innerHTML = '<div class="flex items-center justify-center space-x-2"><i class="fas fa-spinner fa-spin text-violet-600"></i><span>Loading practice question...</span></div>';
+
+        const currentValues = {};
+        selectedIdDivs.forEach(selectedId => {
+            currentValues[selectedId] = this.view.inputs.selectedExpressions[selectedId];
+        });
+
+        fetch('/ev-ai/api/addpractice/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                currentValues: currentValues,
+                samplePractices: samplePractice
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log("Received data:", data);  // Add this line for debugging
+            if (data.error) {
+                throw new Error(data.error);
+            }
+            if (!data.practiceQuestion) {
+                throw new Error("No practice question received");
+            }
+            content.innerHTML = `
+                <div class="text-left space-y-4">
+                    <h4 class="font-bold text-lg text-violet-700 mb-2">Practice Question:</h4>
+                    <div class="p-4">
+                        ${data.practiceQuestion.replace(/\n/g, '<br>')}
+                    </div>
+                </div>
+            `;
+        })
+        .catch(error => {
+            console.error('Error generating practice question:', error);
+            content.innerHTML = `<div class="text-red-500"><i class="fas fa-exclamation-circle mr-2"></i>Error generating practice question: ${error.message}</div>`;
+        });
+    });
+
+    // Close modal
+    document.getElementById(`${idDiv}-close`).addEventListener('click', () => {
+        modal.classList.add('hidden');
+    });
+}
+  setBounds(options) {
 		let tolerance = (("tolerance" in options) ? options["tolerance"] : 1.1);
 		let mtolerance = (("mtolerance" in options) ? options["mtolerance"] : 1.2);
 		let top = (("top" in options) ? options["top"] : "0");
@@ -2346,6 +2610,9 @@ class EconVision {
 		let calc = options.calc;
 		let latex = options.latex;
 		let parentIdDiv = options.parentIdDiv;
+		let utilityFunction = options.utilityFunction;
+		let isocostLine = options.isocostLine;
+		let fixedUtilityLevel = options.fixedUtilityLevel;
 		let compute = options.compute;
 		let NewfunEqu = options.NewfunEqu;
 		let constraint = options.constraint;
@@ -2439,13 +2706,22 @@ class EconVision {
 								latex = this.runcalc.simpleSubstitute(parms);
 								break;
 							case 'simpleMarshalian':
-								parms['idDiv'] = idDiv;
-								parms['parentIdDiv'] = parentIdDiv;
-								parms['constraint'] = constraint;
-								parms['NewfunEqu'] = NewfunEqu;
-								parms['listGraphs'] = listGraphs;
-								latex = this.runcalc.simpleMarshalian(parms);
-								break;
+									parms['idDiv'] = idDiv;
+									parms['parentIdDiv'] = parentIdDiv;
+									parms['constraint'] = constraint;
+									parms['NewfunEqu'] = NewfunEqu;
+									parms['listGraphs'] = listGraphs;
+									latex = this.runcalc.simpleMarshalian(parms);
+									break;
+							case 'simpleHicksian':
+									parms['idDiv'] = idDiv;
+									parms['utilityFunction'] = utilityFunction;
+									parms['isocostLine'] = isocostLine;
+									parms['fixedUtilityLevel'] = fixedUtilityLevel;
+									parms['NewfunEqu'] = NewfunEqu;
+									parms['listGraphs'] = listGraphs;
+									latex = this.runcalc.simpleHicksian(parms);
+									break;
 							case 'advanceSubstitute':
 								parms['parentIdDiv'] = parentIdDiv;
 								parms['NewfunEqu'] = NewfunEqu;
@@ -3142,7 +3418,7 @@ inputElement.addEventListener('change', () => {
 			if (direction==='up') {
 				minForThisIndex = min + step * (index - 1);
 				maxForThisIndex = minForThisIndex + step;
-			} 
+			}
 			else if (direction==='down') {
 				maxForThisIndex = max - step * (index - 1);
 				minForThisIndex = maxForThisIndex - step;
@@ -3350,7 +3626,7 @@ inputElement.addEventListener('change', () => {
 
 			});
 		}
-	}	
+	}
 	addDynamicInput(options) {
 		let idDiv = options["idDiv"];
 		let idDiv_rhs = idDiv + "_rhs";
