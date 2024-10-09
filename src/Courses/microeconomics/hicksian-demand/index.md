@@ -6,6 +6,4 @@ description: Input utility functions and isocost lines to find Hicksian demand b
 layout: model.njk
 show: true
 ---
-<script defer>
-
-</script>
+<script src="/assets/js/hicksian.js" defer></script>
