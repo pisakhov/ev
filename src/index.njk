@@ -367,7 +367,7 @@ window.addEventListener('scroll', () => {
 
 
      <div class="group/title2 relative glowit left md:col-span-3 row-span-1 flex items-center group transition-all duration-500" style="background-color:transparent;">
-         <div class="w-full flex md:space-x-4 space-x-2 py-2 justify-between hover:[&_a>img]:grayscale-0 [&_a>img]:grayscale">
+         <div class="w-full grid grid-cols-1 md:grid-cols-3 gap-4 row-span-2 py-2 hover:[&_a>img]:grayscale-0 [&_a>img]:grayscale">
            {% for creator in collections.creators %}
                {% if creator.data.show %}
                <div class="ring-2 ring-[color:var(--c-1)] rounded-lg shadow-md w-full min-h-full object-cover">
