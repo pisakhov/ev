@@ -186,7 +186,7 @@ window.addEventListener('scroll', () => {
     showModels(currentIndex);
 
     // Hover effect for large screens
-    if (window.innerWidth >= 1024) {
+    if (window.innerWidth >= 2048) {
         const cards = document.querySelectorAll('#modelCarousel > div');
         cards.forEach(card => {
             card.addEventListener('mouseenter', () => {
@@ -215,7 +215,6 @@ window.addEventListener('scroll', () => {
         });
     }
 </script>
-
     <!--Courses-->
     <div class="relative md:col-span-4 row-span-1 h-[400px] min-h-[400px] transition-all duration-500" id="courses">
           <div id="lamp" class="relative flex flex-col md:flex-row gap-2 [&>*]:transition-all [&>*]:duration-500 [&>*]:delay-1000 [&>*]:ease-in-out md:[&>*]:w-[100%] md:[&_div]:min-w-10 [&_div]:h-[100%] [&_div]:min-h-10 h-full w-full [&>*]:flex-1 first:[&>*]:flex-auto">
@@ -367,7 +366,7 @@ window.addEventListener('scroll', () => {
 
 
      <div class="group/title2 relative glowit left md:col-span-3 row-span-1 flex items-center group transition-all duration-500" style="background-color:transparent;">
-         <div class="w-full grid grid-cols-1 md:grid-cols-3 gap-4 row-span-2 py-2 hover:[&_a>img]:grayscale-0 [&_a>img]:grayscale">
+         <div class="w-full grid grid-cols-2 md:grid-cols-3 gap-4 row-span-2 py-2 hover:[&_a>img]:grayscale-0 [&_a>img]:grayscale">
            {% for creator in collections.creators %}
                {% if creator.data.show %}
                <div class="ring-2 ring-[color:var(--c-1)] rounded-lg shadow-md w-full min-h-full object-cover">
